@@ -5,6 +5,7 @@ import { AlertService } from '../_services/alert.service';
 import { LoadingController, Platform, AlertController } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { User, LoginType } from '../_models/user';
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.page.html',
@@ -50,20 +51,21 @@ export class LoginPage implements OnInit {
 			this.fb.login(permissions)
 			.then(response =>{
 				let userId = response.authResponse.userID;
-				
 				//Getting name and gender properties
 				this.fb.api("/me?fields=name,email", permissions)
-				.then(user =>{
-					user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
+				.then(_user =>{
+					let user: User = {
+						name : _user.name,
+						profileImg : "https://graph.facebook.com/" + userId + "/picture?type=large",
+						email : _user.email,
+						loginType : LoginType.FACEBOOK,
+						token: response.authResponse.accessToken
+					}
 					//now we have the users info, let's save it in the NativeStorage
-					this.nativeStorage.setItem('facebook_user',
-					{
-						name: user.name,
-						email: user.email,
-						picture: user.picture
-					})
+					this.authService.externalLogin(user)
 					.then(() =>{
-						this.router.navigate(["/user"]);
+						console.log(user)
+						this.router.navigate([this.returnUrl]);
 						loading.dismiss();
 					}, error =>{
 						console.log(error);

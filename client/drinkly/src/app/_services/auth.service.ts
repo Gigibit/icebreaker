@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
-import { BehaviorSubject, Observable } from  'rxjs';
+import { BehaviorSubject, Observable, of } from  'rxjs';
 import { Storage } from  '@ionic/storage';
 import { Platform } from '@ionic/angular';
 import { AUTH_SERVER } from '../config';
@@ -48,6 +48,19 @@ export class AuthService {
       
       return user;
     }));
+  }
+  externalLogin(user: User){
+    return new Promise<User>((resolve, reject)=>{
+      if (user && user.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        resolve(user)
+      }
+      else{
+        reject("No access token")
+      }
+    });
   }
   contextRefresh(user:User){
     localStorage.setItem('currentUser', JSON.stringify(user));

@@ -1,12 +1,14 @@
 <ion-content>
-<label>    
-  <div id="player" class="player" [class.voted]="flipped">
+  <label>    
+    <div id="player" class="player" [class.voted]="flipped">
       <div class="front">
-        <img [src]="imgSrc">
+        <img src="/src/assets/imgs/coffee.svg">
+      </div>
+      <div class="back">
+        <img [src]="userImg">
+      </div>
     </div>
-      <div class="back">Back</div>
-  </div>
-</label>
-
-<button class="btn-primary" ngbButton (click)="flipIt()">Flip: {{ flipped }}</button>
+  </label>
+  
+  <button class="btn-primary" ngbButton (click)="flipIt()">Flip: {{ flipped }}</button>
 </ion-content>

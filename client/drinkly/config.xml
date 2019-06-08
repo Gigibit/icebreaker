@@ -91,4 +91,5 @@
         <variable name="APP_NAME" value="kokify" />
     </plugin>
     <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
+    <engine name="browser" spec="5.0.4" />
 </widget>

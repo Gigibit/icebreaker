@@ -1,6 +1,5 @@
 export interface User{
     name: string
-    surname: string
     age?: number
     id?: string
     email: string
@@ -10,16 +9,19 @@ export interface User{
     imgs? : string[]
     props? : string[]
     iLike?:  boolean
+    loginType?: LoginType
     token? : string
     address?: string
 
 }
-
+export enum LoginType{
+    NATIVE,
+    FACEBOOK
+}
 export class UserMapper{
     static fromJson(data:any): User{
         return data ? {
             name: data['name'],
-            surname: data['surname'],
             age: data['age'],
             id: data['id'],
             profileImg: data['profile_img']+'?'+new Date().getTime(),

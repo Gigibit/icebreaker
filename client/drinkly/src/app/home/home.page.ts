@@ -17,6 +17,7 @@ const USE_OWN_LANGUAGE = 'useMyLanguage'
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   filterSelectOptions = {
     header: 'filter',
     // subHeader: 'pllllll',
