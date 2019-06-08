@@ -5,6 +5,7 @@ import { ProposalService } from '../_services/proposal.service';
 import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { Place } from '../autocomplete-input.component';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 const USE_OWN_LOCATION = 'useMyPosition'
