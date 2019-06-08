@@ -9,7 +9,7 @@ import { Place } from '../autocomplete-input.component';
 
 const USE_OWN_LOCATION = 'useMyPosition'
 const USE_OWN_LANGUAGE = 'useMyLanguage'
-
+// for integrate maps https://edupala.com/how-to-add-leaflet-map-in-ionic-4/
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
