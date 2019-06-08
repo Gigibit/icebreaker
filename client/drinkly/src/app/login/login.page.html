@@ -1,5 +1,5 @@
 <ion-content padding>
-  <h1 text-center>wanadoo</h1>
+  <h1 text-center>kokify</h1>
   <form #f="ngForm" (ngSubmit)="login(f)">
     <ion-grid>
       <ion-row justify-content-center>
@@ -17,6 +17,7 @@
           </div>
           <div padding>
             <ion-button size="large" color="primary"  type="submit" [disabled]="f.invalid" expand="block">Login</ion-button>
+            <ion-button size="large" color="primary" (click)="doFbLogin()" expand="block">Login</ion-button>
             <ion-button expand="block" routerLink="/register" routerDirection="forward">Register</ion-button>
           </div>
 

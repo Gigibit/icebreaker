@@ -40,6 +40,8 @@ import { Globalization } from '@ionic-native/globalization/ngx';
 //import { EditProfileComponent } from './_components/edit-profile/edit-profile.component';
 //import { SharedModule } from './shared/shared.module';
 import { iosTransitionAnimation } from './_utils/transitions';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Facebook } from '@ionic-native/facebook/ngx';
 
 
 
@@ -94,6 +96,8 @@ function createTranslateLoader(http: HttpClient) {
     Geolocation,
     NativeGeocoder,
     Globalization,
+    NativeStorage,
+    Facebook,
     Camera,
     File,
     FileTransfer,

@@ -13,6 +13,8 @@ const REGISTER_URL = AUTH_SERVER + '/api/register'
 const LOGIN_URL = AUTH_SERVER + '/api/login'
 const LOGOUT_URL = AUTH_SERVER + '/api/logout'
 
+
+//TODO: replace localstorage with nativestorage
 @Injectable({
   providedIn: 'root'
 })
