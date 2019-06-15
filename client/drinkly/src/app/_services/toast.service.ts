@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
+
+const SOMETHING_WENT_WRONG = 'something_went_wrong'
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +15,10 @@ export class ToastService {
     private toastCtrl: ToastController,
 		private translateService: TranslateService,
   ) { }
+
+  async somethingWentWrong(){
+    this.toastError(SOMETHING_WENT_WRONG)
+  }
 
   async toastError(key : string){
     let messageObservable = this.getStringObservableFromKey(key)

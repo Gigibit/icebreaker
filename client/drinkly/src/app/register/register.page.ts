@@ -21,16 +21,14 @@ export class RegisterPage implements OnInit {
       translateService.get(getLanguageByPrefix(this.translateService.getBrowserLang()))
                         .subscribe( result=>this.language = result )
     }
-  
     ngOnInit() {
-      window['tra'] = this.translateService
   
     }
   register(form) {
-    this.authService.register(form.value).subscribe(data=>{
-      if(data['status_code'] == 200){
+    this.authService
+    .register(form.value)
+    .subscribe(data=>{
         this.location.back()
-      }
     })
   }
 }

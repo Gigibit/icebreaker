@@ -7,6 +7,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { Platform } from '@ionic/angular';
 import { User } from '../_models/user';
 import { ThrowStmt } from '@angular/compiler';
+import { Observable } from 'rxjs';
 
 const CONTEXT = AUTH_SERVER + '/api/get-context'
 const UPLOAD_URL = SERVICE_SERVER + "/api/upload-image"
@@ -15,6 +16,10 @@ const USER_INFO = SERVICE_SERVER + "/api/get-user-info/"
 const PROPS_HIM = SERVICE_SERVER + "/api/props/"
 const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
 const UPDATE_USER_ADDRESS = SERVICE_SERVER + "/api/update-address"
+
+
+
+
 const STORAGE_KEY = 'experience_key_img';
 
 @Injectable({
@@ -168,9 +173,11 @@ export class UserService {
       return this.http.post(UNPROPS_HIM + userInfo.id, {})
     }
     
-    updateAddress(address : string){
-      return this.http.post(UPDATE_USER_ADDRESS, { address : address })
-    }
 
+
+    updateAddress(address : string, latitude: number, longitude: number){
+      return this.http.post(UPDATE_USER_ADDRESS, { address : address, latitude: latitude, longitude: longitude })
+    }
+    
   }
   

@@ -11,7 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { ToastService } from '../_services/toast.service';
 
-const SOMETHING_WENT_WRONG = 'something_went_wrong'
 
 @Component({
 	selector: 'app-login',
@@ -54,7 +53,7 @@ export class LoginPage implements OnInit {
 				loading.dismiss();
 			}, error =>{
 				console.log(error);
-				this.toastService.toastError(SOMETHING_WENT_WRONG)
+				this.toastService.somethingWentWrong()
 				loading.dismiss();
 			})
 		}
@@ -89,7 +88,7 @@ export class LoginPage implements OnInit {
 						loading.dismiss();
 					}, error =>{
 						console.log(error);
-						this.toastService.toastError(SOMETHING_WENT_WRONG)
+						this.toastService.somethingWentWrong()
 						loading.dismiss();
 					})
 				})

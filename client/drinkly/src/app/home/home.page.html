@@ -1,11 +1,22 @@
-<ion-content>
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <!-- <ion-buttons slot="start"  (click)="location.back()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-buttons> -->
+    <ion-buttons slot="end"  (click)="profile()">
+      <img class="profile-img-btn" [src]="userImg">
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
   <label>    
-    <div id="player" class="player" [class.voted]="flipped">
+    <div id="player" class="player" [class.voted]="flipped" (click)="flipIt()">
       <div class="front">
-        <div id="container">
+        <div id="container" >
           <div class="coffy-img-container">
-              <img src="/src/assets/imgs/coffee.svg">
-            </div>
+            <!-- <img src="/src/assets/imgs/coffee.svg"> -->
+          </div>
           <div class="circle" style="animation-delay: -3s"></div>
           <div class="circle" style="animation-delay: -2s"></div>
           <div class="circle" style="animation-delay: -1s"></div>
@@ -13,10 +24,10 @@
         </div>
       </div>
       <div class="back">
-        <img [src]="userImg">
+        <div *ngFor="let user of localizedUsers">
+            {{user.name}}
+        </div>
       </div>
     </div>
   </label>
-  
-  <button class="btn-primary" ngbButton (click)="flipIt()">Flip: {{ flipped }}</button>
 </ion-content>
