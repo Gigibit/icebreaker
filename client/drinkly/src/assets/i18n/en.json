@@ -1,6 +1,6 @@
 {
-    "fake_name": "Pippo",
-    "fake_surname": "Dal Sacco",
+    "fake_name": "Tom",
+    "fake_surname": "Catson",
     "chat_room_title" : "chat room",
     "create_new_proposal_title": "create new proposal",
     "title" : "title",
@@ -22,6 +22,6 @@
     "there_are_no_pending_requests": "there are no pending requests",
     "add": "add",
     "please_add_image" : "you have no photos! upload image to convince others to participate and get involved!",
-    "no_proposals" : "there are no proposals, create one and involve!"
-
+    "no_proposals" : "there are no proposals, create one and involve!",
+    "something_went_wrong" : "ops, something went wrong!"
 }

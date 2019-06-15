@@ -2,8 +2,6 @@ export interface User{
     name: string
     age?: number
     id?: string
-    email: string
-    password?: string
     profileImg: string
     description?: string
     imgs? : string[]
@@ -12,7 +10,6 @@ export interface User{
     loginType?: LoginType
     token? : string
     address?: string
-
 }
 export enum LoginType{
     NATIVE,
@@ -21,7 +18,7 @@ export enum LoginType{
 export class UserMapper{
     static fromJson(data:any): User{
         return data ? {
-            name: data['name'],
+            name: data['firstName'] + ' ' + data['lastName'],
             age: data['age'],
             id: data['id'],
             profileImg: data['profile_img']+'?'+new Date().getTime(),
@@ -29,7 +26,6 @@ export class UserMapper{
             iLike: data['has_propsed'],
             imgs: data['imgs'],
             props: data['props'],
-            email: data['email'],
             address: data['address'],
             token: data['token']
         } : null

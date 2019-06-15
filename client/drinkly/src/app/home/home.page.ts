@@ -55,9 +55,10 @@ export class HomePage {
     private loadingCtrl : LoadingController,
     private nativeGeocoder: NativeGeocoder
   ) {
-    console.log('this.authService.currentUserValue')
-    this.userImg = this.authService.currentUserValue.profileImg
-    console.log(this.authService.currentUserValue)
+    if(this.authService.currentUserValue){
+      this.userImg = this.authService.currentUserValue.profileImg
+      console.log(this.authService.currentUserValue)
+    }
   }
  
   flipIt() {

@@ -111,7 +111,7 @@ export class UserService {
         chunkedMode: false,
         mimeType: "image/jpeg",
         headers: {
-          'auth-token' : this.auth.token()
+          'auth-token' : this.auth.authToken
         },
         fileName :  this.createFileName()
       }

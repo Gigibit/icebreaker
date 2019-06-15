@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from '../_services/auth.service';
 import { AlertService } from '../_services/alert.service';
-import { LoadingController, Platform, AlertController } from '@ionic/angular';
+import { LoadingController, Platform, AlertController, ToastController } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { User, LoginType } from '../_models/user';
+import { concatMap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { ToastService } from '../_services/toast.service';
+
+const SOMETHING_WENT_WRONG = 'something_went_wrong'
+
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.page.html',
@@ -22,21 +29,34 @@ export class LoginPage implements OnInit {
 		private fb: Facebook,
 		private nativeStorage: NativeStorage,
 		public loadingController: LoadingController,
-		private platform: Platform,
+        private route: ActivatedRoute,
+		private toastService: ToastService,
 		public alertController: AlertController,
 		private router: Router) { }
 		ngOnInit() {
+			this.authService.logout()
 			// this.authenticationService.logout();
-			this.returnUrl = '/';
+			this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 			
 		}
-		login(form){
-			this.authService.login(form.value['email'], form.value['password']).subscribe(data=>{
-				this.router.navigate([this.returnUrl]);
-			},error =>{
-				this.alertService.error(error)
-				this.error = error
+		async login(form){
+			const loading = await this.loadingController.create({
+				message: 'Please wait...'
 			});
+			this.presentLoading(loading);
+			
+			this.authService
+			.nativeLogin(form.value['email'], form.value['password'])
+			.pipe(concatMap( _ => this.authService.userInfo()))
+			.subscribe(user =>{
+				console.log(user)
+				this.router.navigate([this.returnUrl]);
+				loading.dismiss();
+			}, error =>{
+				console.log(error);
+				this.toastService.toastError(SOMETHING_WENT_WRONG)
+				loading.dismiss();
+			})
 		}
 		
 		async doFbLogin(){
@@ -57,18 +77,19 @@ export class LoginPage implements OnInit {
 					let user: User = {
 						name : _user.name,
 						profileImg : "https://graph.facebook.com/" + userId + "/picture?type=large",
-						email : _user.email,
 						loginType : LoginType.FACEBOOK,
 						token: response.authResponse.accessToken
 					}
 					//now we have the users info, let's save it in the NativeStorage
-					this.authService.externalLogin(user)
-					.then(() =>{
+					this.authService.facebookLogin(response.authResponse.accessToken)
+					.pipe(concatMap( _ => this.authService.userInfo()))
+					.subscribe(user =>{
 						console.log(user)
 						this.router.navigate([this.returnUrl]);
 						loading.dismiss();
 					}, error =>{
 						console.log(error);
+						this.toastService.toastError(SOMETHING_WENT_WRONG)
 						loading.dismiss();
 					})
 				})
@@ -81,4 +102,6 @@ export class LoginPage implements OnInit {
 		async presentLoading(loading) {
 			return await loading.present();
 		}
+		
+		
 	}

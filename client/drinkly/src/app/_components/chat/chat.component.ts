@@ -1,9 +1,9 @@
 import { Component, Input, ViewChild, NgZone } from '@angular/core';
 import { ToastController, IonContent } from '@ionic/angular';
-import { ChatService } from '../_services/chat.service';
-import { Proposal } from '../_models/proposal';
-import { AuthService } from '../_services/auth.service';
-import { timeSince } from '../_utils/functions';
+import { ChatService } from '../../_services/chat.service';
+import { Proposal } from '../../_models/proposal';
+import { AuthService } from '../../_services/auth.service';
+import { timeSince } from '../../_utils/functions';
  
 @Component({
   selector: 'app-chat',
@@ -29,7 +29,7 @@ export class ChatRoomPage{
   }
   
   messages = [];
-  nickname = '';
+  name = '';
   message = '';
  
   constructor(
@@ -37,7 +37,7 @@ export class ChatRoomPage{
     private chatService: ChatService,
     private ngZone: NgZone,
     private toastCtrl: ToastController) {
-      this.authService.currentUser.subscribe(user=> this.email = user.email)
+      this.authService.currentUser.subscribe(user=> this.name = user.name)
 
     
     // this.chatService.getUsers().subscribe(data => {

@@ -20,7 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-import { ChatRoomPage } from './chat/chat.component';
+import { ChatRoomPage } from './_components/chat/chat.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { LoginPageModule } from './login/login.module';

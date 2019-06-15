@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from  '@angular/common/http';
+import { HttpClient, HttpHeaders } from  '@angular/common/http';
 import { BehaviorSubject, Observable, of } from  'rxjs';
 import { Storage } from  '@ionic/storage';
 import { Platform } from '@ionic/angular';
@@ -9,10 +9,10 @@ import { map } from 'rxjs/operators';
 
 const TOKEN_KEY = 'auth-token';
 
-const REGISTER_URL = AUTH_SERVER + '/api/register'
-const LOGIN_URL = AUTH_SERVER + '/api/login'
+const REGISTER_URL = AUTH_SERVER + '/public/users'
+const LOGIN_URL = AUTH_SERVER + '/oauth/token'
 const LOGOUT_URL = AUTH_SERVER + '/api/logout'
-
+const USER_INFO = AUTH_SERVER + '/users/me'
 
 //TODO: replace localstorage with nativestorage
 @Injectable({
@@ -20,7 +20,7 @@ const LOGOUT_URL = AUTH_SERVER + '/api/logout'
 })
 export class AuthService {
   
-  access_token : string
+  authToken : string
   authenticationState = new BehaviorSubject(false);
   
   private currentUserSubject: BehaviorSubject<User>;
@@ -29,39 +29,62 @@ export class AuthService {
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
+    this.authToken = localStorage.getItem(TOKEN_KEY)
   }
   
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
   
-  login(email: string, password: string) {
-    return this.http.post<User>(LOGIN_URL, { email : email, password:password })
+  nativeLogin(email: string, password: string) {
+    return this.login(`username=${email}&password=${password}&grant_type=password`)
+  }
+  facebookLogin(token: string){
+    return this.login(`access_token=${token}&grant_type=social&network=facebook`)
+  }
+  
+  
+  login (loginParams: any) : Observable<String>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded',
+        'Authorization' : 'Basic c3ByaW5nLXNlY3VyaXR5LW9hdXRoMi1yZWFkLXdyaXRlLWNsaWVudDpzcHJpbmctc2VjdXJpdHktb2F1dGgyLXJlYWQtd3JpdGUtY2xpZW50LXBhc3N3b3JkMTIzNA=='
+      })
+    };
+    return this.http.post<string>(LOGIN_URL, loginParams, httpOptions)
     .pipe(map(response => {
-      let user = UserMapper.fromJson(response['data'])
+      let token = response['access_token']
       // login successful if there's a jwt token in the response
-      if (user && user.token) {
+      if (token) {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+        localStorage.setItem(TOKEN_KEY, token);
+        
+        this.authToken = token;
       }
-      
-      return user;
+      return token;
     }));
   }
-  externalLogin(user: User){
-    return new Promise<User>((resolve, reject)=>{
-      if (user && user.token) {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
+  
+  userInfo(): Observable<User>{
+    return this.http.get<User>(USER_INFO)
+    .pipe(map(response=>{
+      
+      let user = response && 
+                  response['context'] && 
+                  response['context']['user'] && 
+                  UserMapper.fromJson(response['context']['user']['user'])
+      if(user){
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        resolve(user)
       }
-      else{
-        reject("No access token")
-      }
-    });
+      return user;
+    }))
+    
   }
+  
+  
+  
+  
   contextRefresh(user:User){
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.currentUserSubject.next(user);
@@ -70,6 +93,8 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem(TOKEN_KEY);
+    this.authToken = null;
     this.currentUserSubject.next(null);
     return this.http.get(LOGOUT_URL)
   }
@@ -78,9 +103,7 @@ export class AuthService {
     return this.http.post(REGISTER_URL, form)
   }
   
-  token(){
-    return this.access_token
-  }
+  
   isAuthenticated() {
     return this.authenticationState.value;
   }

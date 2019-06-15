@@ -2,7 +2,15 @@
   <label>    
     <div id="player" class="player" [class.voted]="flipped">
       <div class="front">
-        <img src="/src/assets/imgs/coffee.svg">
+        <div id="container">
+          <div class="coffy-img-container">
+              <img src="/src/assets/imgs/coffee.svg">
+            </div>
+          <div class="circle" style="animation-delay: -3s"></div>
+          <div class="circle" style="animation-delay: -2s"></div>
+          <div class="circle" style="animation-delay: -1s"></div>
+          <div class="circle" style="animation-delay: 0s"></div>
+        </div>
       </div>
       <div class="back">
         <img [src]="userImg">
