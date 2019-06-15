@@ -152,6 +152,7 @@ export class HomePage {
         console.log(this.geoLatitude, this.geoLongitude)
         loader.dismiss()
         this.localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
+        console.log(this.localizedUsers)
       },error =>{
         console.log(error);
         this.toastService.somethingWentWrong()
