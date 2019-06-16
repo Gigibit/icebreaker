@@ -68,11 +68,11 @@ export class AuthService {
   userInfo(): Observable<User>{
     return this.http.get<User>(USER_INFO)
     .pipe(map(response=>{
-      
+      console.log('userInfo',response)
       let user = response && 
                   response['context'] && 
                   response['context']['user'] && 
-                  UserMapper.fromJson(response['context']['user']['user'])
+                  UserMapper.fromJson(response['context']['user'])
       if(user){
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);

@@ -85,9 +85,13 @@
   --ion-font-family: 'Gloria Hallelujah', cursive;
   --ion-text-color: #fff;
   --ion-toolbar-background: #956f5a;
+  --ion-item-background: transparent;
 }
 ion-segment-button{
   color: #fff;
+  &.segment-button-checked{
+    font-size: 21px;
+  }
 }
 
 ion-content{
@@ -104,4 +108,8 @@ ion-toolbar{
 }
 .plus-button{
   color: #fff;
+}
+
+ion-input{
+  --color: #222;
 }

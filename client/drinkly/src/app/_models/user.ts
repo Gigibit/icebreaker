@@ -6,7 +6,7 @@ export interface User{
     id?: string
     profileImg: string
     description?: string
-    imgs? : string[]
+    images? : string[]
     props? : string[]
     iLike?:  boolean
     loginType?: LoginType
@@ -30,8 +30,10 @@ export class LocalizedUserMapper{
         return {
             address  : data['address'],
             distance : data['distance'],
-            user     : UserMapper.fromJson(data['user'])
-        }
+            user     : {
+                name: data['firstName'] + ' ' + ['lastName'],
+                profileImg: data['imageUrl']
+            }}
     }
     static fromJsonArray(data:any[]): LocalizedUser[]{
         return data ?  data.map(user => LocalizedUserMapper.fromJson(user)) : []
@@ -42,13 +44,13 @@ export class LocalizedUserMapper{
 export class UserMapper{
     static fromJson(data:any): User{
         return data ? {
-            name: data['firstName'] + ' ' + data['lastName'],
+            name: data['user']['firstName'] + ' ' + data['user']['lastName'],
             age: data['age'],
             id: data['id'],
-            profileImg: data['profileImg'] && data['profileImg'] !== 'null' ? (data['profileImg']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
+            profileImg: data['user'] && data['user']['imageUrl'] ? (data['user']['imageUrl']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
             description: data['description'],
             iLike: data['has_propsed'],
-            imgs: data['imgs'],
+            images: data['images'],
             props: data['props'],
             address: data['address'],
             token: data['token']

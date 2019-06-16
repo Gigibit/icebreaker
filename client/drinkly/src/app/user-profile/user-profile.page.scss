@@ -31,6 +31,16 @@
     padding: 30px
 }
 
-.one-image {
-    margin: 2px;
+.user-image {
+    width: 100%;
+    border-radius: 15px;
+    height: 100%;
+}
+.image-container-wrapper{
+    height: 180px;    
+}
+.image-container{
+    border-radius: 10px;
+    border: 2px solid #fff;
+    height: 180px;
 }

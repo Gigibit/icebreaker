@@ -42,6 +42,8 @@ import { Globalization } from '@ionic-native/globalization/ngx';
 import { iosTransitionAnimation } from './_utils/transitions';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { ImageModalComponent } from './_components/image-modal/image-modal.component';
+import { LocalizedUsersComponent } from './_components/localized-users/localized-users.component';
 
 
 
@@ -56,14 +58,12 @@ function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     ChatRoomPage,
-
-
+    ImageModalComponent, 
+    LocalizedUsersComponent,
   ],
   entryComponents: [ 
-    // ImageModalComponent, 
-    // ProposalThreeDotsPopoverComponent, 
-    // UserProfilePopoverComponent, 
-    // EditProfileComponent 
+    ImageModalComponent, 
+    LocalizedUsersComponent
   ],
   imports: [
     BrowserModule, 

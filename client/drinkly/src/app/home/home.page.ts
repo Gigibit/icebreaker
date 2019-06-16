@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { NativeGeocoderOptions, NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { ModalController, PopoverController, ToastController, LoadingController } from '@ionic/angular';
 import { CoffeeService, CoffeeServiceMock } from '../_services/coffe.service';
@@ -10,6 +10,7 @@ import { joinWithCommaOrEmpty } from '../_utils/functions';
 import { LocalizedUserMapper, LocalizedUser } from '../_models/user';
 import { ToastService } from '../_services/toast.service';
 import { Router } from '@angular/router';
+import { LocalizedUsersComponent } from '../_components/localized-users/localized-users.component';
 
 
 const USE_OWN_LOCATION = 'useMyPosition'
@@ -58,35 +59,34 @@ export class HomePage implements OnInit {
     private userService: UserService,
     private geolocation: Geolocation,
     public popoverController: PopoverController,
-    private toastCtrl: ToastController,
+    private ngZone: NgZone,
     private router: Router,
     private authService: AuthService,
     private toastService: ToastService,
     private loadingCtrl : LoadingController,
     private nativeGeocoder: NativeGeocoder
     ) {
-      if(this.authService.currentUserValue){
-        this.userImg = this.authService.currentUserValue.profileImg
-        console.log(this.authService.currentUserValue)
-      }
       this.getGeolocation()
     }
     
+    
     flipIt() {
       this.flipped = !this.flipped;
-      
       if(this.flipped) this.findClosestUsers()
-      
     }
     
     profile(){
       this.router.navigate(['user-profile'])
     }
-
+    
     ngOnInit(){
       this.authService.userInfo().subscribe(data=>{
         console.log(data)
       })
+      if(this.authService.currentUserValue){
+        this.userImg = this.authService.currentUserValue.profileImg
+        console.log(this.authService.currentUserValue)
+      }
     }
     
     //Get current coordinates of device
@@ -110,7 +110,7 @@ export class HomePage implements OnInit {
       .then((result: NativeGeocoderResult[]) => {
         this.geoAddress = joinWithCommaOrEmpty( /* result[0].thoroughfare,*/ result[0].locality , result[0].subLocality , /* result[0].administrativeArea ,*/ result[0].countryName );
         this.userService.updateAddress(this.geoAddress, latitude, longitude).subscribe()
-        })
+      })
       .catch((error: any) => {
         console.log(error)
         this.userService.updateAddress(null, latitude, longitude).subscribe()
@@ -170,22 +170,18 @@ export class HomePage implements OnInit {
       })
     }
     
-    //Start location update watch
-    watchLocation(){
-      this.isWatching = true;
-      this.watchLocationUpdates = this.geolocation.watchPosition();
-      this.watchLocationUpdates.subscribe((resp) => {
-        this.geoLatitude = resp.coords.latitude;
-        this.geoLongitude = resp.coords.longitude; 
-        this.getGeoencoder(this.geoLatitude,this.geoLongitude);
-      });
-    }
     
-    //Stop location update watch
-    stopLocationWatch(){
-      this.isWatching = false;
-      this.watchLocationUpdates.unsubscribe();
-    }
+    openLocalizedUsersModal(){
+      console.log(this.localizedUsers)
+      this.modalController.create({
+        component: LocalizedUsersComponent,
+        componentProps: {
+          localizedUsers: this.localizedUsers
+        }
+      }).then(modal => {
+        modal.present();
+      });
+    }    
     
     
     onRangeChanged(){

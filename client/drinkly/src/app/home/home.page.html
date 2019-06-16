@@ -6,28 +6,35 @@
     <ion-buttons slot="end"  (click)="profile()">
       <img class="profile-img-btn" [src]="userImg">
     </ion-buttons>
-
+    
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
   <label>    
-    <div id="player" class="player" [class.voted]="flipped" (click)="flipIt()">
-      <div class="front">
-        <div id="container" >
-          <div class="coffy-img-container">
+    <div id="player" class="player" [class.voted]="flipped">
+      <div class="front flippable" (click)="flipIt()">
+        <div id="container flippable" >
+          <div class="coffy-img-container flippable">
             <!-- <img src="/src/assets/imgs/coffee.svg"> -->
           </div>
-          <div class="circle" style="animation-delay: -3s"></div>
-          <div class="circle" style="animation-delay: -2s"></div>
-          <div class="circle" style="animation-delay: -1s"></div>
-          <div class="circle" style="animation-delay: 0s"></div>
+          <div class="circle flippable" style="animation-delay: -3s"></div>
+          <div class="circle flippable" style="animation-delay: -2s"></div>
+          <div class="circle flippable" style="animation-delay: -1s"></div>
+          <div class="circle flippable" style="animation-delay: 0s"></div>
         </div>
       </div>
-      <div class="back">
-        <div *ngFor="let localizedUser of localizedUsers">
-            <img [src]="localizedUser.profileImg">{{localizedUser.user.name}}
+      <div class="back flippable" (click)="openLocalizedUsersModal()">
+        <div class="localized-users flippable">
+          <div class="localized-users-wrapper">
+            <h3>{{localizedUsers?.length}} {{'close_to_you' | translate}}</h3>
+            <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
+            [style.z-index]="i+1"
+            [style.margin-left]="( 71*i/localizedUsers.length ) + 'px'">
+            <img [src]="localizedUser.user.profileImg">
+          </ion-avatar>
         </div>
       </div>
     </div>
-  </label>
+  </div>
+</label>
 </ion-content>

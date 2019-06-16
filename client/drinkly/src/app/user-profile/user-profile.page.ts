@@ -40,7 +40,8 @@ export class UserProfilePage implements OnInit {
     ngOnInit() {
       
       this.userInfo = this.authService.currentUserValue
-      
+      console.log(this.userInfo)
+
       // this.userService.getContext().subscribe(data=>{
       //   console.log(data)
       //   //this.requestedProposals = data['requested_proposals']
@@ -87,16 +88,7 @@ export class UserProfilePage implements OnInit {
         });
         toast.present();
       }
-      
-      async selectImage() {
-        this.uploadImage(
-          () => {
-            this.userService.uploadImage(PictureSourceType.CAMERA, (uri)=> this.images.push(uri) );
-          },
-          () => {
-            this.userService.uploadImage(PictureSourceType.PHOTOLIBRARY, (uri)=> this.images.push(uri));
-          })
-        }
+    
         // async userPopover(event){
         //   const popover = await this.popoverController.create({
         //     component: UserProfilePopoverComponent,
@@ -150,6 +142,15 @@ export class UserProfilePage implements OnInit {
         await actionSheet.present();
       }
       
+      editImage(index: number){
+        this.uploadImage(
+          () => {
+            this.userService.uploadImage(index, PictureSourceType.CAMERA, (uri)=> this.images.push(uri) );
+          },
+          () => {
+            this.userService.uploadImage(index, PictureSourceType.PHOTOLIBRARY, (uri)=> this.images.push(uri));
+          })
+      }
       
       openPreview(img) {
         this.modalController.create({

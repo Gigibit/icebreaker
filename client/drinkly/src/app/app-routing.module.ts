@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'home', canActivate: [AuthGuard], loadChildren : './home/home.module#HomePageModule'},
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
-  { path: 'user-profile', loadChildren: './user-profile/user-profile.module#UserProfilePageModule' }
+  { path: 'user-profile',  canActivate: [AuthGuard], loadChildren: './user-profile/user-profile.module#UserProfilePageModule' }
 ];
 
 @NgModule({

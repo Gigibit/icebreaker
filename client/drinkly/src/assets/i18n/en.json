@@ -23,5 +23,6 @@
     "add": "add",
     "please_add_image" : "you have no photos! upload image to convince others to participate and get involved!",
     "no_proposals" : "there are no proposals, create one and involve!",
-    "something_went_wrong" : "ops, something went wrong!"
+    "something_went_wrong" : "ops, something went wrong!",
+    "close_to_you" : "close to you!"
 }

@@ -6,12 +6,9 @@ import { AUTH_SERVER, SERVICE_SERVER } from '../config';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx'
 import { Platform } from '@ionic/angular';
 import { User } from '../_models/user';
-import { ThrowStmt } from '@angular/compiler';
-import { Observable } from 'rxjs';
-
 const CONTEXT = AUTH_SERVER + '/api/get-context'
-const UPLOAD_URL = SERVICE_SERVER + "/api/upload-image"
-const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/users/me/update-profile-img"
+const UPLOAD_URL = SERVICE_SERVER + "/users/me/images"
+const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/users/me/image"
 const USER_INFO = SERVICE_SERVER + "/api/get-user-info/"
 const PROPS_HIM = SERVICE_SERVER + "/api/props/"
 const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
@@ -41,7 +38,8 @@ export class UserService {
       return this.http.get( CONTEXT )
     }
     
-    uploadImage(sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null) {
+    uploadImage(index: number, sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null) {
+      if(index > 3) return;
       var options: CameraOptions = {
         quality: 100,
         destinationType: this.camera.DestinationType.FILE_URI,
@@ -59,11 +57,17 @@ export class UserService {
           imageData = "data:image/jpeg;base64," + imageData;
           const formData = new FormData();
           const imgBlob = this.dataURItoBlob(imageData);
-          formData.append('file', imgBlob, this.createFileName());
-          this.uploadImageData(UPLOAD_URL, formData);
+          formData.append('image', imgBlob, this.createFileName());
+          this.uploadImageData(UPLOAD_URL + `/${index}`, formData, (user, response)=>{
+            if(!user.images){
+              user.images = new Array(3)
+            }
+            user.images[index - 1 ] = response['url']
+            return user;
+          });
         }
         else{
-          this.uploadUri(UPLOAD_URL, imageData)
+          this.uploadUri(UPLOAD_URL + `/${index}`, imageData)
         }
         if(onUri){
           // onUri(imageData)
@@ -93,8 +97,11 @@ export class UserService {
           imageData = "data:image/jpeg;base64," + imageData;
           const formData = new FormData();
           const imgBlob = this.dataURItoBlob(imageData);
-          formData.append('file', imgBlob, this.createFileName());
-          this.uploadImageData(UPDATE_PROFILE_IMG_URL, formData);
+          formData.append('image', imgBlob, this.createFileName());
+          this.uploadImageData(UPDATE_PROFILE_IMG_URL, formData,(user,response)=>{
+            user.profileImg = response['url']
+            return user
+          });
         }
         else{
           this.uploadUri(UPDATE_PROFILE_IMG_URL, imageData)
@@ -108,7 +115,7 @@ export class UserService {
     }
 
 
-
+    //todo: check request whether is an profile or  generic image
     uploadUri(upload_url, uri, onSuccess: (data)=>void = data=>{ console.log(data) }){
       
       let options: FileUploadOptions = {
@@ -121,19 +128,18 @@ export class UserService {
         fileName :  this.createFileName()
       }
       this.fileTransfer.upload(encodeURI(uri), upload_url, options)
-      .then(data=>{ 
-        console.log("yuppi")
-
-        onSuccess(data)
-        console.log("yuppi")
+      .then(response=>{ 
+        let user = this.auth.currentUserValue
+        user.profileImg = response['url']
+        this.auth.contextRefresh(user)
       })
       .catch( (err) => console.log(err));
     }
-    uploadImageData(upload_url, formData: FormData) {
-      return this.http.post(upload_url, formData ).subscribe(data=> {
-        console.log(data)
-        console.log("yuppi")
-
+    uploadImageData(upload_url, formData: FormData, getUpdatedUser:(user:User,response: any)=>User) {
+      return this.http.post(upload_url, formData ).subscribe(response=> {
+        let user = getUpdatedUser(this.auth.currentUserValue, response)
+        console.log(user)
+        this.auth.contextRefresh(user)
       });
     }
     

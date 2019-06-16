@@ -28,8 +28,7 @@ label {
     transition: all 600ms;
     z-index: 20;
 }
-
-.player div {
+.player .flippable {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -40,6 +39,7 @@ label {
     backface-visibility: hidden;
     border-radius: 50%;
 }
+
 .player img {
     border-radius: 50%;
 }
@@ -102,3 +102,19 @@ input {
     border-radius: 50px;
     border: 1px solid #222;
 }
+.localized-user-img{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+.localized-users-wrapper{
+    position: relative;
+    width: 45%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
