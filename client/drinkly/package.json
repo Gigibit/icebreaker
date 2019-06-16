@@ -37,6 +37,7 @@
     "@ionic/storage": "^2.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "cordova-android": "7.0.0",
     "cordova-browser": "5.0.4",
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-crop": "^0.4.0",
@@ -114,7 +115,8 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

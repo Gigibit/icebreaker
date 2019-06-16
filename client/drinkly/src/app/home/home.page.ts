@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NativeGeocoderOptions, NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { ModalController, PopoverController, ToastController, LoadingController } from '@ionic/angular';
-import { CoffeeService } from '../_services/coffe.service';
+import { CoffeeService, CoffeeServiceMock } from '../_services/coffe.service';
 import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { Place } from '../autocomplete-input.component';
@@ -9,6 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { joinWithCommaOrEmpty } from '../_utils/functions';
 import { LocalizedUserMapper, LocalizedUser } from '../_models/user';
 import { ToastService } from '../_services/toast.service';
+import { Router } from '@angular/router';
 
 
 const USE_OWN_LOCATION = 'useMyPosition'
@@ -22,7 +23,7 @@ const USE_OWN_LANGUAGE = 'useMyLanguage'
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   
   filterSelectOptions = {
     header: 'filter',
@@ -53,11 +54,12 @@ export class HomePage {
   };
   constructor(
     private modalController: ModalController,
-    private coffeeService: CoffeeService,
+    private coffeeService: CoffeeServiceMock,
     private userService: UserService,
     private geolocation: Geolocation,
     public popoverController: PopoverController,
     private toastCtrl: ToastController,
+    private router: Router,
     private authService: AuthService,
     private toastService: ToastService,
     private loadingCtrl : LoadingController,
@@ -77,6 +79,15 @@ export class HomePage {
       
     }
     
+    profile(){
+      this.router.navigate(['user-profile'])
+    }
+
+    ngOnInit(){
+      this.authService.userInfo().subscribe(data=>{
+        console.log(data)
+      })
+    }
     
     //Get current coordinates of device
     async getGeolocation(){
@@ -98,12 +109,11 @@ export class HomePage {
       this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
       .then((result: NativeGeocoderResult[]) => {
         this.geoAddress = joinWithCommaOrEmpty( /* result[0].thoroughfare,*/ result[0].locality , result[0].subLocality , /* result[0].administrativeArea ,*/ result[0].countryName );
-        this.userService.updateAddress(this.geoAddress, latitude, longitude).subscribe(data=>{
-          console.log(data)
+        this.userService.updateAddress(this.geoAddress, latitude, longitude).subscribe()
         })
-      })
       .catch((error: any) => {
         console.log(error)
+        this.userService.updateAddress(null, latitude, longitude).subscribe()
       });
     }
     onUseMyPositionStatusChanged(){

@@ -61,10 +61,42 @@ export class CoffeeService {
   // }
 
   findClosestUsers(mLat: number, mLong: number,  maxDistance: number = null): Observable<LocalizedUser[]>{
-    return this.http.get<LocalizedUser[]>(FIND_CLOSEST_USERS_URL +
+    return this.http.get<any>(FIND_CLOSEST_USERS_URL +
                       '?longitude='+mLong+
                       '&latitude='+mLat  +
                       ( maxDistance ? '&distance=' + maxDistance : "" ) )
+  }
+
+}
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CoffeeServiceMock{
+  constructor(
+    private http: HttpClient
+    ) {   }
+
+  findClosestUsers(mLat: number, mLong: number,  maxDistance: number = null): Observable<any>{
+    return of({
+      'users':[{
+        'distance' : 500,
+        'user': {
+          'firstName' : 'Johnny',
+          'lastName' : 'Snow',
+          'profileImg' : 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwigz4G_qOziAhUKLlAKHVveDrAQjRx6BAgBEAU&url=https%3A%2F%2Fgameofthrones.fandom.com%2Fwiki%2FJon_Snow&psig=AOvVaw0JW78dzeXCQ0Rn_4qBOsAp&ust=1560716585358654'
+        }
+      },
+      {
+        'distance' : 500,
+        'user': {
+          'firstName' : 'Lindsey',
+          'lastName' : 'Pelas',
+          'profileImg' : 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.thesun.co.uk%2Fwp-content%2Fuploads%2F2017%2F04%2Finstagram.png&imgrefurl=https%3A%2F%2Fwww.thesun.co.uk%2Ftvandshowbiz%2F3232924%2Fcalum-bests-girlfriend-lindsey-pelas-reveals-theyve-not-seen-each-other-in-weeks-as-their-romance-continues-at-slow-pace%2F&docid=wMEBDa4aOfZXIM&tbnid=cCzNGMdKTSY2WM%3A&vet=10ahUKEwj5x7XWqOziAhX5QRUIHV0BBeAQMwhRKAEwAQ..i&w=593&h=594&bih=627&biw=1110&q=lindsey%20pela&ved=0ahUKEwj5x7XWqOziAhX5QRUIHV0BBeAQMwhRKAEwAQ&iact=mrc&uact=8'
+        }
+      }]
+    })
   }
 
 }

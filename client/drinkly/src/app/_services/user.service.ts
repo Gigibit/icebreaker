@@ -11,11 +11,11 @@ import { Observable } from 'rxjs';
 
 const CONTEXT = AUTH_SERVER + '/api/get-context'
 const UPLOAD_URL = SERVICE_SERVER + "/api/upload-image"
-const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/api/update-profile-img"
+const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/users/me/update-profile-img"
 const USER_INFO = SERVICE_SERVER + "/api/get-user-info/"
 const PROPS_HIM = SERVICE_SERVER + "/api/props/"
 const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
-const UPDATE_USER_ADDRESS = SERVICE_SERVER + "/api/update-address"
+const UPDATE_USER_ADDRESS = SERVICE_SERVER + "/users/position"
 
 
 
@@ -41,7 +41,7 @@ export class UserService {
       return this.http.get( CONTEXT )
     }
     
-    takePicture(sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null) {
+    uploadImage(sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null) {
       var options: CameraOptions = {
         quality: 100,
         destinationType: this.camera.DestinationType.FILE_URI,

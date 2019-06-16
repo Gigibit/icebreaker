@@ -7,6 +7,7 @@
   src: url('../assets/fonts/GloriaHallelujah.ttf');
 }
 
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -82,13 +83,12 @@
   --ion-color-light-tint: #f5f6f9;
 
   --ion-font-family: 'Gloria Hallelujah', cursive;
-  font-family: 'Gloria Hallelujah', cursive;
+  --ion-text-color: #fff;
+  --ion-toolbar-background: #956f5a;
 }
-
-h1, h3, h5 {
+ion-segment-button{
   color: #fff;
 }
-
 
 ion-content{
   --background: radial-gradient(#956f5a 0%, #6e4228 100%);
@@ -100,8 +100,8 @@ ion-button{
 }
 
 ion-toolbar{
-  color: #fff;
   font-size: 32px;
-  --background: #956f5a;
-
+}
+.plus-button{
+  color: #fff;
 }

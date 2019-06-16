@@ -1,0 +1,36 @@
+#profileImage{
+    width: 80px;
+    height: 80px;
+    margin: 30px auto;
+    border: 2px solid #222;
+    background: #fff ;
+}
+
+
+.user-name{
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 0 auto;
+    display: block;
+}
+.userInfo{
+    border-bottom: 2px solid;
+    border-radius: 50%;
+    padding: 0px 30px 30px 30px;
+    box-shadow: 0 4px 2px -2px gray;
+    -webkit-box-shadow: 0 4px 2px -2px gray;
+    -moz-box-shadow: 0 4px 2px -2px gray;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.dots{
+    float: right;
+}
+.gallery{
+    padding: 30px
+}
+
+.one-image {
+    margin: 2px;
+}

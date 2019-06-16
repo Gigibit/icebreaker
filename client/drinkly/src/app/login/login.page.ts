@@ -46,9 +46,9 @@ export class LoginPage implements OnInit {
 			
 			this.authService
 			.nativeLogin(form.value['email'], form.value['password'])
-			.pipe(concatMap( _ => this.authService.userInfo()))
-			.subscribe(user =>{
-				console.log(user)
+			// .pipe(concatMap( _ => this.authService.userInfo()))
+			.subscribe(token =>{
+				console.log(token)
 				this.router.navigate([this.returnUrl]);
 				loading.dismiss();
 			}, error =>{
@@ -81,9 +81,9 @@ export class LoginPage implements OnInit {
 					}
 					//now we have the users info, let's save it in the NativeStorage
 					this.authService.facebookLogin(response.authResponse.accessToken)
-					.pipe(concatMap( _ => this.authService.userInfo()))
-					.subscribe(user =>{
-						console.log(user)
+					// .pipe(concatMap( _ => this.authService.userInfo()))
+					.subscribe(token =>{
+						console.log(token)
 						this.router.navigate([this.returnUrl]);
 						loading.dismiss();
 					}, error =>{

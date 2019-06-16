@@ -25,7 +25,7 @@
       </div>
       <div class="back">
         <div *ngFor="let localizedUser of localizedUsers">
-            {{localizedUser.user.name}}
+            <img [src]="localizedUser.profileImg">{{localizedUser.user.name}}
         </div>
       </div>
     </div>

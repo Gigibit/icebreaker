@@ -45,7 +45,7 @@ export class UserMapper{
             name: data['firstName'] + ' ' + data['lastName'],
             age: data['age'],
             id: data['id'],
-            profileImg: data['profile_img'] ? (data['profile_img']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
+            profileImg: data['profileImg'] && data['profileImg'] !== 'null' ? (data['profileImg']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
             description: data['description'],
             iLike: data['has_propsed'],
             imgs: data['imgs'],
