@@ -1,22 +1,37 @@
-<div *ngIf="proposal">
+  
+  <ion-header no-border>
+      <ion-toolbar transparent>
+        <ion-buttons slot="start"  (click)="location.back()">
+          <ion-icon name="ios-arrow-back"></ion-icon>
+        </ion-buttons>
+        <!-- <ion-title text-center>
+          {{'register_page_title'| translate}}
+        </ion-title> -->
+        <ion-buttons slot="end">
+          <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
   <ion-content padding class="container" #messagesContent>
-    <div *ngFor="let msg of messages" class="message" [class.right]="this.email == msg.sender.email" [class.left]="this.email != msg.sender.email">
-      <img *ngIf="msg.sender.profile_img" class="user-img"  alt="" src="{{msg.sender.profile_img}}">
+    <div class="vertical-space message right"></div>
+    <div *ngFor="let msg of messages" class="message" [class.right]="this.email == msg.user.email" [class.left]="this.email != msg.user.email">
+      <img *ngIf="msg.user.profileImg" class="user-img"  alt="" src="{{msg.user.profileImg}}">
       
       <div class="msg-detail">
         <div class="msg-info">
           <p>
-            {{msg.sender.name}} {{msg.sender.surname}}
+            {{msg.user.name}}
           </p>
         </div>
         <div class="msg-content">
           <span class="triangle"></span>
-          <p class="line-breaker ">{{msg.text}}</p>
-          <div class="created-at">{{ getTime(msg.created_at) }}</div>
+          <p class="line-breaker ">{{msg.content}}</p>
+          <div class="created-at">{{ getTime(msg.createdAt) }}</div>
         </div>
       </div>
     </div>
-    <div class="vertical-space vertical-space message right"></div>
+    <div class="vertical-space message right"></div>
   </ion-content>
   <ion-footer no-border>
     <div class="input-wrap">
@@ -29,4 +44,3 @@
       </button>
     </div>
   </ion-footer>
-</div>

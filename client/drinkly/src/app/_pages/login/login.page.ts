@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { AuthService } from '../_services/auth.service';
-import { AlertService } from '../_services/alert.service';
+import { AuthService } from '../../_services/auth.service';
+import { AlertService } from '../../_services/alert.service';
 import { LoadingController, Platform, AlertController, ToastController } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
-import { User, LoginType } from '../_models/user';
+import { User, LoginType } from '../../_models/user';
 import { concatMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { ToastService } from '../_services/toast.service';
+import { ToastService } from '../../_services/toast.service';
 
 
 @Component({
