@@ -26,9 +26,8 @@
         <ion-label>{{localizedUser.user.name}}</ion-label>
       </ion-item>
       <ion-item-options side="end">
-          <ion-item-option (click)="favorite(item)"><ion-icon name="happy"></ion-icon>invite</ion-item-option>
-          <ion-item-option (click)="share(item)"><ion-icon name="send"></ion-icon>send message</ion-item-option>
+          <ion-item-option (click)="invite(localizedUser)"><ion-icon name="happy"></ion-icon>invite</ion-item-option>
+          <ion-item-option (click)="chatWith(localizedUser)"><ion-icon name="send"></ion-icon>send message</ion-item-option>
         </ion-item-options>
   </ion-item-sliding>
-  
 </ion-content>

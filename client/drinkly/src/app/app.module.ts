@@ -20,11 +20,11 @@ import { IonicStorageModule } from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-import { ChatRoomPage } from './_components/chat/chat.component';
+import { ChatRoomPageModule } from './_pages/chat/chat.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-import { LoginPageModule } from './login/login.module';
-import { RegisterPageModule } from './register/register.module';
+import { LoginPageModule } from './_pages/login/login.module';
+import { RegisterPageModule } from './_pages/register/register.module';
 
  
 import { Camera } from '@ionic-native/Camera/ngx';
@@ -57,7 +57,6 @@ function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    ChatRoomPage,
     ImageModalComponent, 
     LocalizedUsersComponent,
   ],
@@ -71,6 +70,7 @@ function createTranslateLoader(http: HttpClient) {
       navAnimation: iosTransitionAnimation,
     }), 
     AppRoutingModule,
+    ChatRoomPageModule,
     HttpModule,
     HttpClientModule,
 //    SharedModule,

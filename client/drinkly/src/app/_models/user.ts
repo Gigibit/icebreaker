@@ -35,7 +35,7 @@ export class LocalizedUserMapper{
                 profileImg: data['imageUrl']
             }}
     }
-    static fromJsonArray(data:any[]): LocalizedUser[]{
+    static fromJsonArray(data:any): LocalizedUser[]{
         return data ?  data.map(user => LocalizedUserMapper.fromJson(user)) : []
     }
 }

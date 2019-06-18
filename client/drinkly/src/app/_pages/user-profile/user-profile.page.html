@@ -67,7 +67,14 @@
     
     
     <div *ngSwitchCase="'messages'">
-      <h3>not implemented yet!</h3>
+      <ion-list>
+        <ion-item *ngFor="let chat of chats">
+      <ion-avatar slot="start">
+        <img [src]="chat.profileImg">
+      </ion-avatar>
+      <ion-label>{{chat.name}}</ion-label>
+        </ion-item>
+      </ion-list>
     </div>
   </div>
   

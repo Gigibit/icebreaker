@@ -5,8 +5,12 @@ import { Proposal } from '../_models/proposal';
 import { HttpClient } from '@angular/common/http';
 import { SERVICE_SERVER } from '../config';
 import { keyframes } from '@angular/animations';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { MessageMapper } from '../_models/message';
+import { Chat, ChatMapper } from '../_models/chat';
 
 const MESSAGE_API_URL = SERVICE_SERVER + '/api/messages/'
+const GET_CHATS_API_URL = SERVICE_SERVER + '/users/me/chats'
 
 
 @Injectable({
@@ -36,15 +40,14 @@ export class ChatService {
     this.socket.disconnect();
   }
   
-  getMessages(forKey : string, onFirstDataRetrieved: (()=>void)=null) {
+  getMessages(forKey : string) {
     let observable = new Observable(observer => {
       this.http.get(MESSAGE_API_URL + forKey).subscribe(response=> {
-        JSON.parse(response['data']).forEach(message => {
+        MessageMapper.fromJsonArray(response['chatLines']).forEach(message => {
           observer.next(message);       
         });
         this.socket.on('message', (data) => {
           observer.next(data);
-          console.log(data)
         });
       });
     });
@@ -58,6 +61,9 @@ export class ChatService {
       });
     });
     return observable;
+  }
+  getChats(){
+    return this.http.get(GET_CHATS_API_URL)
   }
 
 }

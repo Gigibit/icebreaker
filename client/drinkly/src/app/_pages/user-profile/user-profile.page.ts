@@ -1,13 +1,15 @@
 import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
-import { UserService } from '../_services/user.service';
-import { User, UserMapper } from '../_models/user';
+import { UserService } from '../../_services/user.service';
+import { User, UserMapper } from '../../_models/user';
 import { ToastController, ActionSheetController, Platform, LoadingController, ModalController, PopoverController } from '@ionic/angular';
 import { PictureSourceType } from '@ionic-native/Camera/ngx';
 import { Location } from '@angular/common';
 import { OverlayEventDetail } from '@ionic/core';
-import { ImageModalComponent } from '../_components/image-modal/image-modal.component';
+import { ImageModalComponent } from '../../_components/image-modal/image-modal.component';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from '../_services/auth.service';
+import { AuthService } from '../../_services/auth.service';
+import { Chat, ChatMapper } from 'src/app/_models/chat';
+import { ChatService } from 'src/app/_services/chat.service';
 
 const COLUMN_COUNT = 4
 
@@ -21,6 +23,7 @@ export class UserProfilePage implements OnInit {
   section = 'gallery'
   images = []
   uri
+  chats : Chat[]
   //requestedProposals: Proposal[]
   userInfo: User 
   constructor(
@@ -31,6 +34,7 @@ export class UserProfilePage implements OnInit {
     private translateService : TranslateService,
     private loadingController: LoadingController,
     private ref: ChangeDetectorRef, 
+    private chatService: ChatService,
     private popoverController: PopoverController,
     private userService: UserService,
     private authService : AuthService
@@ -41,31 +45,9 @@ export class UserProfilePage implements OnInit {
       
       this.userInfo = this.authService.currentUserValue
       console.log(this.userInfo)
-
-      // this.userService.getContext().subscribe(data=>{
-      //   console.log(data)
-      //   //this.requestedProposals = data['requested_proposals']
-      //   const info = UserMapper.fromJson(data['user_info'])
-      //   if(this.userInfo == null && info != null && info.imgs != null ){
-      //     this.userInfo = info
-      //     this.userInfo.imgs.forEach((img, index) => {
-      //       if(index % COLUMN_COUNT == 0) {
-      //         let row = [];
-      //         row.push(img);
-      //         this.images.push(row);
-      //       } else {
-      //         this.images[this.images.length - 1].push(img);
-      //       }
-      //     });
-      //     if(this.images[this.images.length -1] && this.images[this.images.length -1].length%COLUMN_COUNT !== 0){
-      //       for(var i = 0; i < this.images[this.images.length -1].length%COLUMN_COUNT; i++ )
-      //       this.images[this.images.length - 1].push('');
-      //     }
-      //   }
-      //   else{
-      //     console.log('data not found or user already loaded')
-      //   }
-      // })
+      this.chatService.getChats().subscribe(response=>{
+        this.chats = ChatMapper.fromJsonArray(response['chats'])
+      })
     }
     
     async editProfileImg() {
