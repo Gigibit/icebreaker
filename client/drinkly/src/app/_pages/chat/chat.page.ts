@@ -6,6 +6,7 @@ import { AuthService } from '../../_services/auth.service';
 import { timeSince } from '../../_utils/functions';
 import { ActivatedRoute } from "@angular/router";
 import { switchMap } from 'rxjs/operators';
+import { Location } from '@angular/common';
  
 @Component({
   selector: 'app-chat',
@@ -15,23 +16,7 @@ import { switchMap } from 'rxjs/operators';
 export class ChatRoomPage implements OnInit{
   @ViewChild(IonContent)  messagesContent: IonContent;
   email: string
- 
- /*
-  _proposal: Proposal
-  @Input() public set proposal (proposal: Proposal){
-    this.chatService.connect(proposal)
 
-    this.chatService.getMessages(proposal.id)    
-    .subscribe(message => {
-      this.messages.push(message);
-      setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
-    });
-    this._proposal = proposal
-  }
-  public get proposal(){
-    return this._proposal
-  }
-*/
   messages = [];
   name = '';
   message = '';
@@ -39,18 +24,20 @@ export class ChatRoomPage implements OnInit{
   constructor(
     private authService: AuthService,
     private chatService: ChatService,
+    private location: Location,
     private ngZone: NgZone,
-    private route: ActivatedRoute,
-    private toastCtrl: ToastController) {
+    private route: ActivatedRoute) {
       this.authService.currentUser.subscribe(user=> this.name = user.name)
   }
   ngOnInit(){
     this.route.paramMap.pipe(
       switchMap(params => {
         this.chatKey = params.get("with")
-        return this.chatService.getMessages(this.chatKey)    
+        this.chatService.connect(this.chatKey)
+        return this.chatService.getMessages()    
       })
     ).subscribe(message => {
+      console.log(message)
       this.messages.push(message);
       setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
     });
@@ -60,10 +47,8 @@ export class ChatRoomPage implements OnInit{
 
   sendMessage(){
     if(this.chatKey)
-    this.chatService.sendMessage(this.message, this.chatKey).subscribe(data => {
-        console.log(data)
-    });
-    this.message = '';
+    this.chatService.sendMessage(this.message)
+    this.message = ''
   }
  
   ionViewWillLeave() {
@@ -74,10 +59,4 @@ export class ChatRoomPage implements OnInit{
     return timeSince(date)
   }
 
-  showToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 2000
-    });
-  }
 }

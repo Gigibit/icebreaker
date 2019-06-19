@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+import { AuthService } from '../../_services/auth.service';
 import { Location } from '@angular/common';
-import { languages, getLanguageByPrefix } from '../_datasources/languages';
+import { languages, getLanguageByPrefix } from '../../_datasources/languages';
 import { IonSelect } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 

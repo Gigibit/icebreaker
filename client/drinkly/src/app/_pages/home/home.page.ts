@@ -1,16 +1,16 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { NativeGeocoderOptions, NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { ModalController, PopoverController, ToastController, LoadingController } from '@ionic/angular';
-import { CoffeeService, CoffeeServiceMock } from '../_services/coffe.service';
-import { UserService } from '../_services/user.service';
-import { AuthService } from '../_services/auth.service';
-import { Place } from '../autocomplete-input.component';
+import { CoffeeService, CoffeeServiceMock } from '../../_services/coffe.service';
+import { UserService } from '../../_services/user.service';
+import { AuthService } from '../../_services/auth.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { joinWithCommaOrEmpty } from '../_utils/functions';
-import { LocalizedUserMapper, LocalizedUser } from '../_models/user';
-import { ToastService } from '../_services/toast.service';
+import { joinWithCommaOrEmpty } from '../../_utils/functions';
+import { LocalizedUserMapper, LocalizedUser } from '../../_models/user';
+import { ToastService } from '../../_services/toast.service';
 import { Router } from '@angular/router';
-import { LocalizedUsersComponent } from '../_components/localized-users/localized-users.component';
+import { Place } from '../../_components/autocomplete/autocomplete-input.component';
+import { LocalizedUsersComponent } from '../../_components/localized-users/localized-users.component';
 
 
 const USE_OWN_LOCATION = 'useMyPosition'
