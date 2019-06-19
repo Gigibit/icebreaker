@@ -32,6 +32,9 @@ export class LoginPage implements OnInit {
 		private toastService: ToastService,
 		public alertController: AlertController,
 		private router: Router) { }
+
+
+		@validate(this.error)
 		ngOnInit() {
 			this.authService.logout()
 			// this.authenticationService.logout();
@@ -104,3 +107,10 @@ export class LoginPage implements OnInit {
 		
 		
 	}
+
+
+	function validate(target: any) {
+		return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+			console.log(descriptor)
+		}
+}
