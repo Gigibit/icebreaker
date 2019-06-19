@@ -48,12 +48,7 @@ export class ChatRoomPage implements OnInit{
     this.route.paramMap.pipe(
       switchMap(params => {
         this.chatKey = params.get("with")
-<<<<<<< Updated upstream
         return this.chatService.getMessages(this.chatKey)    
-=======
-        this.chatService.connect(this.chatKey)
-        return this.chatService.getMessages()    
->>>>>>> Stashed changes
       })
     ).subscribe(message => {
       this.messages.push(message);
@@ -65,8 +60,10 @@ export class ChatRoomPage implements OnInit{
 
   sendMessage(){
     if(this.chatKey)
-    this.chatService.sendMessage(this.message)
-    this.message = ''
+    this.chatService.sendMessage(this.message, this.chatKey).subscribe(data => {
+        console.log(data)
+    });
+    this.message = '';
   }
  
   ionViewWillLeave() {
