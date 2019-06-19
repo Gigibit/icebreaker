@@ -6,7 +6,6 @@ import { AuthService } from '../../_services/auth.service';
 import { timeSince } from '../../_utils/functions';
 import { ActivatedRoute } from "@angular/router";
 import { switchMap } from 'rxjs/operators';
-import { Location } from '@angular/common';
  
 @Component({
   selector: 'app-chat',
@@ -16,7 +15,23 @@ import { Location } from '@angular/common';
 export class ChatRoomPage implements OnInit{
   @ViewChild(IonContent)  messagesContent: IonContent;
   email: string
+ 
+ /*
+  _proposal: Proposal
+  @Input() public set proposal (proposal: Proposal){
+    this.chatService.connect(proposal)
 
+    this.chatService.getMessages(proposal.id)    
+    .subscribe(message => {
+      this.messages.push(message);
+      setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
+    });
+    this._proposal = proposal
+  }
+  public get proposal(){
+    return this._proposal
+  }
+*/
   messages = [];
   name = '';
   message = '';
@@ -24,20 +39,18 @@ export class ChatRoomPage implements OnInit{
   constructor(
     private authService: AuthService,
     private chatService: ChatService,
-    private location: Location,
     private ngZone: NgZone,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private toastCtrl: ToastController) {
       this.authService.currentUser.subscribe(user=> this.name = user.name)
   }
   ngOnInit(){
     this.route.paramMap.pipe(
       switchMap(params => {
         this.chatKey = params.get("with")
-        this.chatService.connect(this.chatKey)
         return this.chatService.getMessages(this.chatKey)    
       })
     ).subscribe(message => {
-      console.log(message)
       this.messages.push(message);
       setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
     });
@@ -61,4 +74,10 @@ export class ChatRoomPage implements OnInit{
     return timeSince(date)
   }
 
+  showToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+  }
 }

@@ -33,13 +33,7 @@ export function joinWithCommaOrEmpty(...str: string[]){
 }
 
 
-export function getErrorForCode(code: string){ 
+export function getErrorForCode(code: string){
+  
   return code
-}
-
-export function format(str: string, ...args: string[]) {
-  for (var k in args) {
-      str = str.replace(new RegExp("\\{" + k + "\\}", 'g'), arguments[k]);
-  }
-  return str
 }

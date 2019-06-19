@@ -1,8 +1,8 @@
-import { DEFAULT_USER_IMG, User } from './user';
+import { LocalizedUser, LocalizedUserMapper } from './user';
 
 export interface Message{
     id: number,
-    user: User,
+    user: LocalizedUser,
     content: string,
     createdAt: string
 }
@@ -11,13 +11,7 @@ export class MessageMapper{
     public static fromJson(data: any): Message{
         return {
             id: data['id'],
-            user: {
-                name : data['user'] && ( data['user']['firstName'] + ' ' + data['user']['lastName'] ),
-                profileImg: ( data['user'] && 
-                            ( data['user']['imageUrl'] && 
-                            ( data['imageUrl']+'?'+new Date().getTime() ) )  ) 
-                            || DEFAULT_USER_IMG
-            },
+            user: LocalizedUserMapper.fromJson(data['user']),
             content: data['content'],
             createdAt: data['createdAt']
         }

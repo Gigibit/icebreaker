@@ -5,10 +5,9 @@
     border: 0;
     padding: 17px;
     resize: none;
-    background : #f1f1f1;
+    background : #fff;
     margin-right: 5px;
     margin-bottom: 5px;
-    margin-left: 15px;
     border-radius: 35px;
     border-top-right-radius: 0;
     border: 1px solid #222;
@@ -23,7 +22,7 @@
     margin-right: 20px;
   }
   .send-icon{
-    color: #f1f1f1;
+    color: #fff;
   }
 
   .icon-wrapper{
@@ -52,7 +51,7 @@ ion-content .scroll-content {
   white-space: pre-line;
 }
 .vertical-space{
-  height: 120px;
+  height: 221px;
 }
 .container {
   position: absolute;
@@ -81,7 +80,6 @@ ion-content .scroll-content {
       height: 25px;
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.36);
       border: 1px solid #222;
-      background: #f1f1f1;
     }
     .created-at{
       color: #999;
@@ -99,7 +97,7 @@ ion-content .scroll-content {
       .msg-info {
         p {
           font-size: .8em;
-          color: #f1f1f1;
+          color: #888;
         }
       }
     }

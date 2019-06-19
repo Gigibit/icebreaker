@@ -104,9 +104,7 @@
       "cordova-plugin-globalization": {},
       "cordova-plugin-facebook4": {
         "APP_ID": "2314645505268736",
-        "APP_NAME": "kokify",
-        "FACEBOOK_HYBRID_APP_EVENTS": "false",
-        "FACEBOOK_ANDROID_SDK_VERSION": "4.40.0"
+        "APP_NAME": "kokify"
       },
       "cordova-plugin-nativestorage": {},
       "cordova-plugin-whitelist": {},

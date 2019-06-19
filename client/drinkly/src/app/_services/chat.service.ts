@@ -8,9 +8,8 @@ import { keyframes } from '@angular/animations';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { MessageMapper } from '../_models/message';
 import { Chat, ChatMapper } from '../_models/chat';
-import { format } from '../_utils/functions';
 
-const MESSAGE_API_URL = SERVICE_SERVER + '/chats/%KEY%/lines'
+const MESSAGE_API_URL = SERVICE_SERVER + '/api/messages/'
 const GET_CHATS_API_URL = SERVICE_SERVER + '/users/me/chats'
 
 
@@ -24,10 +23,10 @@ export class ChatService {
     private http: HttpClient
   ){}
 
-  connect(key: string){
+  connect(proposal: Proposal){
     this.socket.connect();
-    this.socket.emit('join', {'sender': 'me', 'key': key });
-    console.log({'sender': 'me', 'key': key })
+    this.socket.emit('join', {'sender': 'me', 'proposal': proposal.id });
+    console.log({'sender': 'me', 'proposal': proposal.id })
   }
 
 
@@ -43,7 +42,7 @@ export class ChatService {
   
   getMessages(forKey : string) {
     let observable = new Observable(observer => {
-      this.http.get(MESSAGE_API_URL.replace('%KEY%', forKey)).subscribe(response=> {
+      this.http.get(MESSAGE_API_URL + forKey).subscribe(response=> {
         MessageMapper.fromJsonArray(response['chatLines']).forEach(message => {
           observer.next(message);       
         });
