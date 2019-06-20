@@ -19,7 +19,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common
 import { IonicStorageModule } from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+// import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { ChatRoomPageModule } from './_pages/chat/chat.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
@@ -47,7 +47,6 @@ import { LocalizedUsersComponent } from './_components/localized-users/localized
 
 
 
-const config: SocketIoConfig = { url: 'http://localhost:3001/messages', options: {} };
 
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -88,7 +87,6 @@ function createTranslateLoader(http: HttpClient) {
     ReactiveFormsModule,
     IonicStorageModule.forRoot(),
     BrowserAnimationsModule,
-    SocketIoModule.forRoot(config)
   ],
   providers: [
     StatusBar,

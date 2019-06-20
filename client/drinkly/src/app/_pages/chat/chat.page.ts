@@ -20,35 +20,42 @@ export class ChatRoomPage implements OnInit{
   messages = [];
   name = '';
   message = '';
+  id : string
   chatKey: string
   constructor(
-    private authService: AuthService,
+    authService: AuthService,
     private chatService: ChatService,
     private location: Location,
     private ngZone: NgZone,
     private route: ActivatedRoute) {
-      this.authService.currentUser.subscribe(user=> this.name = user.name)
+      console.log(authService.currentUser)
+      console.log(authService.currentUserValue)
+      authService.currentUser.subscribe(user=>{
+        this.id = user.id
+      })
   }
   ngOnInit(){
-    this.route.paramMap.pipe(
-      switchMap(params => {
-        this.chatKey = params.get("with")
-        this.chatService.connect(this.chatKey)
-        return this.chatService.getMessages()    
-      })
-    ).subscribe(message => {
-      console.log(message)
-      this.messages.push(message);
-      setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
-    });
+    this.route.paramMap.subscribe(params=>{
+      this.chatKey = params.get('with')
+      console.log(params)
+      this.chatService.connect(this.chatKey,()=>{
+       this.chatService.getMessages()
+       .subscribe(message => {
+        this.messages.push(message);
+        setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
+       })
+      }) 
+    })
   }
 
 
 
   sendMessage(){
-    if(this.chatKey)
-    this.chatService.sendMessage(this.message)
-    this.message = ''
+    if(this.message && this.message.length > 0){
+      this.chatService.sendMessage(this.message)
+      this.message = ''
+    }
+    
   }
  
   ionViewWillLeave() {

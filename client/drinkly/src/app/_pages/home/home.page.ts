@@ -42,7 +42,7 @@ export class HomePage implements OnInit {
   geoAddress: string;
   useMyPosition = true
   useMyLanguage = true
-  maxDistance = 5000
+  maxDistance = 500
   watchLocationUpdates:any; 
   loading:any;
   isWatching:boolean;
@@ -213,5 +213,7 @@ export class HomePage implements OnInit {
     //   })
     //   return await popover.present();
     // }
-    
+    distanceInPercentage(){
+      return this.maxDistance/500*100 
+    }
   }

@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Socket } from 'ng-socket-io';
-import { Proposal } from '../_models/proposal';
 import { HttpClient } from '@angular/common/http';
-import { SERVICE_SERVER } from '../config';
-import { keyframes } from '@angular/animations';
+import { SERVICE_SERVER, WEBSOCKET_SERVICE_SERVER } from '../config';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { MessageMapper } from '../_models/message';
-import { Chat, ChatMapper } from '../_models/chat';
-
+import * as Stomp from '@stomp/stompjs';
+import * as SockJS from 'sockjs-client';
+import { AuthService } from './auth.service';
 
 
 const KEY = '%KEY%'
@@ -17,67 +15,82 @@ const MESSAGE_API_URL = SERVICE_SERVER + `/chats/${KEY}/lines`
 const GET_CHATS_API_URL = SERVICE_SERVER + '/users/me/chats'
 
 
-const RECEIVE_ENDPOINT = SERVICE_SERVER + `/chat/${KEY}/receive`
-const SEND_ENDPOINT = SERVICE_SERVER + `/chat/${KEY}/send`
-
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
   key: string
+  socket: SockJS
   constructor(
-    private socket: Socket,
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ){}
 
-  connect(key: string){
-    if(key){
-      this.key = key
-      this.socket.connect();
-    }
+  connect(key: string, onConnected : ()=> void){
+    this.key = key
+    this.socket = new SockJS(WEBSOCKET_SERVICE_SERVER + `?access_token=${this.authService.authToken}`)
+    this.stompClient = Stomp.Stomp.over(this.socket)
+ 
+    const _this = this;
+    this.stompClient.connect({ }, function (frame) {
+      _this.setConnected(true);
+      onConnected()
+      console.log('Connected: ' + frame);
+    });
   }
 
 
   sendMessage(msg : string) {
-    this.socket.emit(SEND_ENDPOINT.replace(KEY, this.key), msg);
+    if(this.key == null) throw new Error('key must not be null!');
+    this.stompClient.send(
+      '/app/' + this.key,
+      {},
+      JSON.stringify({ 'content' : msg  })
+    );
   }
 
-  disconnect(){
-    this.socket.disconnect();
-  }
   
   getMessages() {
+    if(this.key == null) throw new Error('key must not be null!');
+    const _this = this;
+
     let observable = new Observable(observer => {
       this.http.get(MESSAGE_API_URL.replace(KEY, this.key)).subscribe(response=> {
         MessageMapper.fromJsonArray(response['chatLines']).forEach(message => {
           observer.next(message);       
         });
-        this.socket.on('message', (data) => {
-          observer.next(data);
+        _this.stompClient.subscribe( '/user/chat/' + this.key, function (data) {
+          if(data['body']) observer.next(MessageMapper.fromJson(JSON.parse(data['body'])));
         });
       });
     });
     return observable;
   }
 
-  getUsers() {
-    let observable = new Observable(observer => {
-      this.socket.on('users-changed', (data) => {
-        observer.next(data);
-      });
-    });
-    return observable;
-  }
-  
   getChats(){
     return this.http.get(GET_CHATS_API_URL)
   }
 
 
-}
-
-function keyNotVoid(){
-  return function(target){
-    
+  disabled = true;
+  name: string;
+  private stompClient = null;
+ 
+ 
+  setConnected(connected: boolean) {
+    this.disabled = !connected;
   }
+ 
+  
+ 
+  disconnect() {
+    if (this.stompClient != null) {
+      this.stompClient.disconnect();
+    }
+ 
+    this.setConnected(false);
+    console.log('Disconnected!');
+  }
+
+
 }

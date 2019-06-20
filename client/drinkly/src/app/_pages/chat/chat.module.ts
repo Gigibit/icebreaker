@@ -6,17 +6,22 @@ import { RouterModule } from '@angular/router';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { ChatRoomPage } from './chat.page';
+// import { SocketIoConfig, SocketIoModule } from 'ng-socket-io';
+import { WEBSOCKET_SERVICE_SERVER } from '../../config';
 
+// const config: SocketIoConfig = { url: WEBSOCKET_SERVICE_SERVER + '/', options: {} };
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    // SocketIoModule.forRoot(config),
+
     TranslateModule.forChild(),
     RouterModule.forChild([
       {
         path: '',
-        component: ChatRoomPage
+        component: ChatRoomPage,
       }
     ])
   ],

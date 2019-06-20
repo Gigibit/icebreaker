@@ -1,6 +1,5 @@
-import { LocalizedUser, LocalizedUserMapper } from './user';
+import { LocalizedUser, LocalizedUserMapper, DEFAULT_USER_IMG } from './user';
 import { Message, MessageMapper } from './message';
-
 export interface Chat{
     id: number,
     lastMessage: Message,
@@ -17,7 +16,7 @@ export class ChatMapper{
             id: data['id'],
             lastMessage: MessageMapper.fromJson(data['lastMessage']),
             users: users,
-            img : users[0].user.profileImg,
+            img : users[0].user.profileImg || DEFAULT_USER_IMG,
             name : users[0].user.name
         }
     }

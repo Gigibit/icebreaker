@@ -10,9 +10,15 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
+  <!-- <app-autocomplete-input [static]="true" *ngIf="!useMyPosition" ngDefaultControl  [placeholder]="'district'" (onSearchResult)="onZoneSelected($event)" [region]="selectedCity" ></app-autocomplete-input> -->
+  <ion-range (mouseup)="onRangeChanged()" (touchend)="onRangeChanged()" class="col-md-12" pin="true" [(ngModel)]="maxDistance"  min="50" max="500" step="2">
+    <ion-icon size="small" slot="start" name="walk"></ion-icon>
+    <ion-icon slot="end" name="walk"></ion-icon>
+  </ion-range>
+  
   <label>    
     <div id="player" class="player" [class.voted]="flipped">
-      <div class="front flippable" (click)="flipIt()">
+      <div class="front flippable" (click)="flipIt()" [style.width]="distanceInPercentage() + '%'" [style.height]="distanceInPercentage() + '%'">
         <div id="container flippable" >
           <div class="coffy-img-container flippable">
             <!-- <img src="/src/assets/imgs/coffee.svg"> -->
