@@ -43,16 +43,19 @@
           <ion-col class="image-container-wrapper" (click)="editImage(1)" col-6 col-md-4 col-xl-3 >
             <div class="image-container first-image">
               <img class="user-image" [src]="userInfo?.images && userInfo?.images[0]">
+              <ion-icon class="edit-icon" name="create"></ion-icon>
             </div>
           </ion-col>
           <ion-col class="image-container-wrapper" (click)="editImage(2)" col-6 col-md-4 col-xl-3>
             <div class="image-container second-image">
               <img class="user-image" [src]="userInfo?.images && userInfo?.images[1]">
+              <ion-icon class="edit-icon" name="create"></ion-icon>
             </div>
           </ion-col>
           <ion-col class="image-container-wrapper" (click)="editImage(3)" col-6 col-md-4 col-xl-3 >
             <div class="image-container third-image">
               <img class="user-image" [src]="userInfo?.images && userInfo?.images[2]">
+              <ion-icon class="edit-icon" name="create"></ion-icon>
             </div>
           </ion-col>
         </ion-row>
@@ -70,7 +73,7 @@
       <ion-list>
         <ion-item *ngFor="let chat of chats" [routerLink]="['/chat', chat.id]">
       <ion-avatar slot="start">
-        <img [src]="chat.profileImg">
+        <img [src]="chat.img">
       </ion-avatar>
       <ion-label>{{chat.name}}</ion-label>
         </ion-item>

@@ -55,7 +55,7 @@ export class HomePage implements OnInit {
   };
   constructor(
     private modalController: ModalController,
-    private coffeeService: CoffeeServiceMock,
+    private coffeeService: CoffeeService,
     private userService: UserService,
     private geolocation: Geolocation,
     public popoverController: PopoverController,

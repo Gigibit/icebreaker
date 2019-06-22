@@ -45,8 +45,7 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 import { ImageModalComponent } from './_components/image-modal/image-modal.component';
 import { LocalizedUsersComponent } from './_components/localized-users/localized-users.component';
 
-
-
+import { OneSignal } from '@ionic-native/onesignal/ngx'
 
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -98,6 +97,7 @@ function createTranslateLoader(http: HttpClient) {
     Facebook,
     Camera,
     File,
+    OneSignal,
     FileTransfer,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
