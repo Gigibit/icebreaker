@@ -11,6 +11,8 @@ import { ToastService } from '../../_services/toast.service';
 import { Router } from '@angular/router';
 import { Place } from '../../_components/autocomplete/autocomplete-input.component';
 import { LocalizedUsersComponent } from '../../_components/localized-users/localized-users.component';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { from } from 'rxjs';
 
 
 const USE_OWN_LOCATION = 'useMyPosition'
@@ -42,7 +44,7 @@ export class HomePage implements OnInit {
   geoAddress: string;
   useMyPosition = true
   useMyLanguage = true
-  maxDistance = 500
+  maxDistance = 2500
   watchLocationUpdates:any; 
   loading:any;
   isWatching:boolean;
@@ -60,6 +62,7 @@ export class HomePage implements OnInit {
     private geolocation: Geolocation,
     public popoverController: PopoverController,
     private ngZone: NgZone,
+    private oneSignal: OneSignal,
     private router: Router,
     private authService: AuthService,
     private toastService: ToastService,
@@ -71,8 +74,12 @@ export class HomePage implements OnInit {
     
     
     flipIt() {
-      this.flipped = !this.flipped;
-      if(this.flipped) this.findClosestUsers()
+      if(!this.flipped){
+        this.findClosestUsers()
+      } 
+      else{
+        this.flipped = !this.flipped;
+      }
     }
     
     profile(){
@@ -82,6 +89,9 @@ export class HomePage implements OnInit {
     ngOnInit(){
       this.authService.userInfo().subscribe(data=>{
         console.log(data)
+      })
+      from(this.oneSignal.getIds()).subscribe(data=>{
+        this.userService.subscribeToPushNotifications(data.userId ,data.pushToken).subscribe()
       })
       if(this.authService.currentUserValue){
         this.userImg = this.authService.currentUserValue.profileImg
@@ -155,19 +165,23 @@ export class HomePage implements OnInit {
       return address.slice(0, -2);
     }
     async findClosestUsers(){
-      let loader = await this.load()
-      loader.present()
-      this.coffeeService.findClosestUsers(this.geoLatitude, this.geoLongitude, this.maxDistance)
-      .subscribe(response=>{
-        console.log(this.geoLatitude, this.geoLongitude)
-        loader.dismiss()
-        this.localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
-        console.log(this.localizedUsers)
-      },error =>{
-        console.log(error);
-        this.toastService.somethingWentWrong()
-        loader.dismiss()
-      })
+      if(this.geoLatitude && this.geoLongitude) {
+        let loader = await this.toastService.load()
+        loader.present()
+        this.coffeeService.findClosestUsers(this.geoLatitude, this.geoLongitude, this.maxDistance)
+        .subscribe(response=>{
+          // loader.dismiss()
+          this.localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
+          this.flipped = !this.flipped
+        },error =>{
+          console.log(error);
+          this.toastService.somethingWentWrong()
+          loader.dismiss()
+        })
+      }
+      else{
+        this.getGeolocation()
+      }
     }
     
     
@@ -188,15 +202,6 @@ export class HomePage implements OnInit {
       this.getGeolocation()
     }
     
-    load() {
-      return this.loadingCtrl.create({
-        spinner: null,
-        message: 'Please wait...',
-        translucent: true,
-        cssClass: 'custom-class custom-loading'
-      });
-    }
-    
     // async presentPopover(ev: any, proposal: Proposal) {
     //   const popover = await this.popoverController.create({
     //     component: ProposalThreeDotsPopoverComponent,
@@ -214,6 +219,6 @@ export class HomePage implements OnInit {
     //   return await popover.present();
     // }
     distanceInPercentage(){
-      return this.maxDistance/500*100 
+      return this.maxDistance/5000*100 
     }
   }

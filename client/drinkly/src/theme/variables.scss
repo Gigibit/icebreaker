@@ -8,20 +8,24 @@
 }
 
 
+$color-white: #F5ECE1;
+$color-mug: #D1B378;
+$color-coffee: #6e4228;
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
   --ion-color-primary: #956f5a;
   --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast: #222222;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #DEB887;
   --ion-color-primary-tint: #D2B48C;
 
   /** secondary **/
-  --ion-color-secondary: #AB958C;
+  --ion-color-secondary: #F5ECE1;
   --ion-color-secondary-rgb: 12, 209, 232;
-  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast: #222222;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
   --ion-color-secondary-shade: #F5DEB3;
   --ion-color-secondary-tint: #FFEBCD;
@@ -29,7 +33,7 @@
   /** tertiary **/
   --ion-color-tertiary: #7044ff;
   --ion-color-tertiary-rgb: 112, 68, 255;
-  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast: #222222;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
   --ion-color-tertiary-shade: #633ce0;
   --ion-color-tertiary-tint: #7e57ff;
@@ -37,7 +41,7 @@
   /** success **/
   --ion-color-success: #10dc60;
   --ion-color-success-rgb: 16, 220, 96;
-  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast: #222222;
   --ion-color-success-contrast-rgb: 255, 255, 255;
   --ion-color-success-shade: #0ec254;
   --ion-color-success-tint: #28e070;
@@ -45,7 +49,7 @@
   /** warning **/
   --ion-color-warning: #ffce00;
   --ion-color-warning-rgb: 255, 206, 0;
-  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast: #222222;
   --ion-color-warning-contrast-rgb: 255, 255, 255;
   --ion-color-warning-shade: #e0b500;
   --ion-color-warning-tint: #ffd31a;
@@ -53,7 +57,7 @@
   /** danger **/
   --ion-color-danger: #f04141;
   --ion-color-danger-rgb: 245, 61, 61;
-  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast: #222222;
   --ion-color-danger-contrast-rgb: 255, 255, 255;
   --ion-color-danger-shade: #d33939;
   --ion-color-danger-tint: #f25454;
@@ -61,7 +65,7 @@
   /** dark **/
   --ion-color-dark: #6e4228;
   --ion-color-dark-rgb: 34, 34, 34;
-  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast: #222222;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
   --ion-color-dark-shade: #6e4228;
   --ion-color-dark-tint: #383a3e;
@@ -69,7 +73,7 @@
   /** medium **/
   --ion-color-medium: #989aa2;
   --ion-color-medium-rgb: 152, 154, 162;
-  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast: #222222;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
   --ion-color-medium-shade: #86888f;
   --ion-color-medium-tint: #a2a4ab;
@@ -83,33 +87,117 @@
   --ion-color-light-tint: #f5f6f9;
 
   --ion-font-family: 'Gloria Hallelujah', cursive;
-  --ion-text-color: #fff;
-  --ion-toolbar-background: #956f5a;
+  --ion-text-color: #222;
+  --ion-toolbar-background: #F5ECE1;
   --ion-item-background: transparent;
 }
 ion-segment-button{
-  color: #fff;
+  color: #222;
   &.segment-button-checked{
     font-size: 21px;
   }
 }
 
 ion-content{
-  --background: radial-gradient(#956f5a 0%, #6e4228 100%);
-
+  --background: #FDF9F1;
 }
 
 ion-button{
-  --background: linear-gradient(#AB958C, #6e4228);
+  --background: #6e4228;
+  --color: #fff;
 }
 
 ion-toolbar{
   font-size: 32px;
 }
-.plus-button{
-  color: #fff;
+
+h1,h2,h3,h3, ion-input, .plus-button{
+  color: #222;
 }
 
-ion-input{
-  --color: #222;
+
+.coffee-mug {
+  top: 45%;
+  margin: 0 auto;
+  width: 60px;
+  height: 50px;
+  border-radius: 2px 2px 30px 30px;
+  box-shadow: 0 0 0 3px $color-mug;
+  
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 5px;
+    width: 15px;
+    height: 20px;
+    box-shadow: 0 0 0 3px $color-mug;
+    margin-left: 2px;
+    border-radius: 0 20px 20px 0;
+  }
+  
+  .loading-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-coffee;
+    background-color: $color-coffee!important;
+    animation: coffee-load 3.3s infinite;
+    
+    &:before {
+      content: '';
+      display: block;
+      width: 200%;
+      height: 1em;
+      position: absolute;
+      left: -50%;
+      top: -.5em;
+      background: $color-white;
+      animation: coffee-wave .9s ease-in-out infinite;
+      border-radius: 50%;
+    }
+  }
+}
+
+
+@keyframes coffee-load {
+	0% {
+		transform: translateY(100%);
+	}
+	70% {
+		transform: translateY(30%);
+	}
+	90% {
+		transform: translateY(0);
+	}
+	95% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+@keyframes coffee-wave {
+	0% {
+		transform: rotate(2deg);
+	}
+	50% {
+		transform: rotate(-2deg);
+  }
+	100% {
+		transform: rotate(2deg);
+	}
+}
+.visibile{
+  display: block;
+}
+.gone{
+  display: none;
+}
+#loading-backdrop{
+  opacity: 0.3;
 }

@@ -3,31 +3,33 @@
     <ion-buttons slot="start"  (click)="close()">
       <ion-icon name="ios-arrow-back"></ion-icon>
     </ion-buttons>
-    <!-- <ion-title text-center>
-      {{'register_page_title'| translate}}
-    </ion-title> -->
-    <!-- <ion-buttons slot="end">
-      <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
-    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-  
+    
+    
+    <ion-card *ngFor="let localizedUser of localizedUsers">
+      <ion-card-header>
+        <img class="localized-user-img" [src]="localizedUser.user.profileImg">
+        
+        <ion-card-title>
+          <ion-label class="localized-user-name">{{localizedUser.user.name}}</ion-label>
+        </ion-card-title>
+        <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="localized-user-btn-wrp">
+          <ion-button slot="start" (click)="invite(localizedUser)" class="invite-btn localized-user-btn">
+            <ion-icon name="cafe"></ion-icon>  invite
+          </ion-button>
+          <ion-button slot="end" (click)="chatWith(localizedUser)" class="send-btn localized-user-btn">
+            <ion-icon name="happy"></ion-icon>  send message
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
-  <ion-item-sliding *ngFor="let localizedUser of localizedUsers">
-    
-    
-    <ion-item>
-        <ion-avatar slot="start">
-          <img [src]="localizedUser.user.profileImg">
-        </ion-avatar>
-        <ion-label>{{localizedUser.user.name}}</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-          <ion-item-option (click)="invite(localizedUser)"><ion-icon name="happy"></ion-icon>invite</ion-item-option>
-          <ion-item-option (click)="chatWith(localizedUser)"><ion-icon name="send"></ion-icon>send message</ion-item-option>
-        </ion-item-options>
-  </ion-item-sliding>
 </ion-content>

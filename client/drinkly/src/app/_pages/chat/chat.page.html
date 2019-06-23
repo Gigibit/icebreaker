@@ -26,6 +26,10 @@
         </div>
         <div class="msg-content">
           <span class="triangle"></span>
+          <div class="coffee-wrapper" *ngIf="msg.type == 'INVITATION'">
+            <img class="coffee" src="../../../assets/imgs/coffee.svg">
+            <!-- <p class="question-mark">?</p> -->
+          </div>
           <p class="line-breaker ">{{msg.content}}</p>
           <div class="created-at">{{ getTime(msg.createdAt) }}</div>
         </div>
@@ -39,7 +43,7 @@
       </textarea>
       <button class="send-btn" ion-button clear icon-only item-right (click)="sendMessage()">
         <div class="icon-wrapper">
-          <ion-icon class="send-icon" name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+          <ion-icon class="send-icon" name="md-send"></ion-icon>
         </div>
       </button>
     </div>

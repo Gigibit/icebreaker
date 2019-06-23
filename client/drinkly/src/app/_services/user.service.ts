@@ -13,7 +13,7 @@ const USER_INFO = SERVICE_SERVER + "/api/get-user-info/"
 const PROPS_HIM = SERVICE_SERVER + "/api/props/"
 const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
 const UPDATE_USER_ADDRESS = SERVICE_SERVER + "/users/position"
-
+const SUBSCRIBE_TO_PUSH_URL = SERVICE_SERVER + "/notifications"
 
 
 
@@ -143,6 +143,14 @@ export class UserService {
       });
     }
     
+    subscribeToPushNotifications(id:string, pushToken: string){
+      return this.http.post(SUBSCRIBE_TO_PUSH_URL, {
+        id: id,
+        pushToken: pushToken
+      })
+    }
+
+
     dataURItoBlob(dataURI) {
       // convert base64/URLEncoded data component to raw binary data held in a string
       var byteString;

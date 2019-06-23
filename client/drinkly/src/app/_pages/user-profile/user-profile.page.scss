@@ -5,7 +5,10 @@
     border: 2px solid #222;
     background: #fff ;
 }
-
+.user-message-img{
+    border: 2px solid #222;
+    background: #fff ;
+}
 
 .user-name{
     text-align: center;
@@ -37,13 +40,18 @@
     height: 100%;
 }
 .image-container-wrapper{
-    height: 180px;    
+    height: 33vw;    
 }
 .image-container{
     border-radius: 10px;
-    border: 2px solid #fff;
-    height: 180px;
+    border: 2px solid #222;
+    height: 100%;
     position: relative;
+}
+.localized-user-img{
+    background: #fff;
+    border-radius: 25%;
+    border: 2px solid #222;
 }
 .edit-icon{
     position: absolute;
@@ -61,3 +69,7 @@
     right: 0;
     margin: 0 auto;
 }
+.image-container {
+    background-size: cover;
+}
+

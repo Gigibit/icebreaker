@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../_services/auth.service';
 import { Chat, ChatMapper } from 'src/app/_models/chat';
 import { ChatService } from 'src/app/_services/chat.service';
+import { UserProfilePopoverComponent } from 'src/app/_components/user-profile-popover/user-profile-popover.component';
 
 const COLUMN_COUNT = 4
 
@@ -71,32 +72,23 @@ export class UserProfilePage implements OnInit {
         toast.present();
       }
     
-        // async userPopover(event){
-        //   const popover = await this.popoverController.create({
-        //     component: UserProfilePopoverComponent,
-        //     event: event,
-        //     translucent: true,
-        //     // componentProps:{
-        //     //   userId : proposal.createdBy
-        //     // }
-        //   });
-        //   // popover.onDidDismiss().then((hasDoneSomethingOverlay:OverlayEventDetail)=>{
-        //   //   if(hasDoneSomethingOverlay.data){
-        //   //     this.getGeolocation()
-        //   //   }
-        //   // })
-        //   return await popover.present();
-        // }
-        
-        //   modal.onDidDismiss().then((proposal: OverlayEventDetail<Proposal>) => {
-        //     if (proposal.data != null) {
-        //       console.log('The result:', proposal.data.id);
-        //     }
-        //   });
-        
-        //   await modal.present();
-        // }
-        
+        async userPopover(event){
+          const popover = await this.popoverController.create({
+            component: UserProfilePopoverComponent,
+            event: event,
+            translucent: true,
+            // componentProps:{
+            //   userId : proposal.createdBy
+            // }
+          });
+          // popover.onDidDismiss().then((hasDoneSomethingOverlay:OverlayEventDetail)=>{
+          //   if(hasDoneSomethingOverlay.data){
+          //     this.getGeolocation()
+          //   }
+          // })
+          return await popover.present();
+        }
+
         
         async uploadImage(cameraHandler: ()=> void, libraryHandler: ()=>void ){
           let selectImageSourceString = await this.translateService.get('select_image_source').toPromise()

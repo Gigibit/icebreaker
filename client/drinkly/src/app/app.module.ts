@@ -46,6 +46,7 @@ import { ImageModalComponent } from './_components/image-modal/image-modal.compo
 import { LocalizedUsersComponent } from './_components/localized-users/localized-users.component';
 
 import { OneSignal } from '@ionic-native/onesignal/ngx'
+import { UserProfilePopoverComponent } from './_components/user-profile-popover/user-profile-popover.component';
 
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -57,10 +58,13 @@ function createTranslateLoader(http: HttpClient) {
     AppComponent,
     ImageModalComponent, 
     LocalizedUsersComponent,
+    UserProfilePopoverComponent
+
   ],
   entryComponents: [ 
     ImageModalComponent, 
-    LocalizedUsersComponent
+    LocalizedUsersComponent,
+    UserProfilePopoverComponent
   ],
   imports: [
     BrowserModule, 

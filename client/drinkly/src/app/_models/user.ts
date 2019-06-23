@@ -27,12 +27,14 @@ export enum LoginType{
 
 export class LocalizedUserMapper{
     static fromJson(data: any): LocalizedUser{
+        console.log('mapping user',data)
         return {
             address  : data['address'],
             distance : data['distance'],
             user     : {
-                name: data['firstName'] + ' ' + data['lastName'],
-                profileImg: data['imageUrl'] ? ( data['imageUrl']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
+                id : data['user']['id'],
+                name: data['user']['firstName'] + ' ' + data['user']['lastName'],
+                profileImg: data['user']['imageUrl'] ? ( data['user']['imageUrl']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
             }}
     }
     static fromJsonArray(data:any): LocalizedUser[]{

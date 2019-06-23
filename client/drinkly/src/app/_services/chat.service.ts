@@ -13,6 +13,7 @@ const KEY = '%KEY%'
 
 const MESSAGE_API_URL = SERVICE_SERVER + `/chats/${KEY}/lines`
 const GET_CHATS_API_URL = SERVICE_SERVER + '/users/me/chats'
+const FIND_OR_CREATE_CHAT = SERVICE_SERVER + `/chats`
 
 
 @Injectable({
@@ -49,6 +50,12 @@ export class ChatService {
     );
   }
 
+
+  findOrCreate(keys: string[]) {
+    return this.http.post( FIND_OR_CREATE_CHAT, {
+      userIds: keys
+    })
+  }
   
   getMessages() {
     if(this.key == null) throw new Error('key must not be null!');

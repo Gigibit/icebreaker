@@ -4,7 +4,11 @@ export interface Message{
     id: number,
     user: User,
     content: string,
+    type: Type,
     createdAt: string
+}
+export enum Type{
+    INVITATION, DEFAULT
 }
 
 export class MessageMapper{
@@ -19,6 +23,7 @@ export class MessageMapper{
                             ( data['imageUrl']+'?'+new Date().getTime() ) )  ) 
                             || DEFAULT_USER_IMG
             },
+            type: data['type'],
             content: data['content'],
             createdAt: data['createdAt']
         }

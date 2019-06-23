@@ -5,6 +5,7 @@ import { SERVICE_SERVER } from '../config';
 import { LocalizedUser } from '../_models/user';
 
 const FIND_CLOSEST_USERS_URL  = SERVICE_SERVER + '/users/me/users'
+const SEND_COFFEE_INVITATION  = SERVICE_SERVER + '/invitations'
 // const SINGLE_PROPOSAL_SERVICE = SERVICE_SERVER + '/api/proposal'
 // const JOIN_PROPOSAL_SERVICE   = SERVICE_SERVER + '/api/join-proposal/'
 // const APPROVE_REQUEST_SERVICE   = SERVICE_SERVER + '/api/approve-request'
@@ -29,6 +30,14 @@ export class CoffeeService {
     
     //   return this.http.post(PROPOSALS_CRUD_SERVICE, proposal)
     // }
+
+
+    sendInvitation(userIds:string[], content: string = ''){
+      return this.http.post( SEND_COFFEE_INVITATION, {
+        userIds : userIds,
+        content: content
+      })
+    }
     
     
     // getProposalDetail(id: string){

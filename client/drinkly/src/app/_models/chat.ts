@@ -10,7 +10,14 @@ export interface Chat{
 
 export class ChatMapper{
     static fromJson(data: any): Chat{
-        const users = LocalizedUserMapper.fromJsonArray(data['users'])
+        const users: LocalizedUser[] = data['users'].map( user => { return {
+            user: {
+                id: user['id'],
+                name: user['firstName'] + ' ' + user['lastName'],
+                profileImg : user['imageUrl']
+            }
+        }
+    })
 
         return {
             id: data['id'],
