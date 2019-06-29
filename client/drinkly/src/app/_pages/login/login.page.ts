@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 		ngOnInit() {
 			this.authService.logout()
 			// this.authenticationService.logout();
-			this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+			this.returnUrl = '/';
 			
 		}
 		async login(form){

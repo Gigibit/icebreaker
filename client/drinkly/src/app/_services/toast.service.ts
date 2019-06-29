@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastOptions } from '@ionic/core';
 
 
 const SOMETHING_WENT_WRONG = 'something_went_wrong'
@@ -45,10 +46,12 @@ export class ToastService {
   async toastError(key : string){
     let messageObservable = this.getStringObservableFromKey(key)
     let message = await messageObservable.toPromise()
+
     let toast = await this.toastCtrl.create({
       message: message,
       duration: 3000,
-      position: 'top'
+      position: 'top',
+      cssClass: 'toast-error',
     });
     toast.present();
   }

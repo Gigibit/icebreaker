@@ -39,7 +39,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "@stomp/stompjs": "^5.4.2",
-    "cordova-android": "7.0.0",
+    "cordova-android": "^7.0.0",
     "cordova-browser": "5.0.4",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-add-swift-support": "^2.0.2",
@@ -63,7 +63,7 @@
     "leaflet": "^1.5.1",
     "leaflet-geosearch": "^2.7.0",
     "moment": "^2.24.0",
-    "onesignal-cordova-plugin": "2.4.7",
+    "onesignal-cordova-plugin": "^2.4.7",
     "rxjs": "~6.5.1",
     "rxjs-compat": "^6.5.2",
     "sockjs-client": "^1.3.0",
@@ -80,9 +80,10 @@
     "@angular/compiler-cli": "~7.2.2",
     "@angular/language-service": "~7.2.2",
     "@ionic/angular-toolkit": "~1.5.1",
-    "@types/node": "~12.0.0",
+    "@ionic/app-scripts": "^3.2.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~12.0.0",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -105,11 +106,15 @@
       "cordova-plugin-camera": {},
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-file": {},
-      "cordova-plugin-nativegeocoder": {},
+      "cordova-plugin-nativegeocoder": {
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service"
+      },
       "cordova-plugin-globalization": {},
       "cordova-plugin-facebook4": {
         "APP_ID": "2314645505268736",
-        "APP_NAME": "kokify"
+        "APP_NAME": "kokify",
+        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "FACEBOOK_ANDROID_SDK_VERSION": "4.40.0"
       },
       "cordova-plugin-nativestorage": {},
       "cordova-plugin-whitelist": {},

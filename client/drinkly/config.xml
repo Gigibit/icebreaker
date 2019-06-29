@@ -102,7 +102,7 @@
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Use geocoder service" />
     </plugin>
     <plugin name="cordova-plugin-globalization" spec="~1.11.0" />
-    <plugin name="onesignal-cordova-plugin" spec="~2.4.7" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.4.7" />
     <engine name="browser" spec="5.0.4" />
-    <engine name="android" spec="7.0.0" />
+    <engine name="android" spec="^7.0.0" />
 </widget>

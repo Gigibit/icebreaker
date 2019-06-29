@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { NativeGeocoderOptions, NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { ModalController, PopoverController, ToastController, LoadingController } from '@ionic/angular';
 import { CoffeeService, CoffeeServiceMock } from '../../_services/coffe.service';
@@ -6,7 +6,7 @@ import { UserService } from '../../_services/user.service';
 import { AuthService } from '../../_services/auth.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { joinWithCommaOrEmpty } from '../../_utils/functions';
-import { LocalizedUserMapper, LocalizedUser } from '../../_models/user';
+import { LocalizedUserMapper, LocalizedUser, DEFAULT_USER_IMG } from '../../_models/user';
 import { ToastService } from '../../_services/toast.service';
 import { Router } from '@angular/router';
 import { Place } from '../../_components/autocomplete/autocomplete-input.component';
@@ -27,7 +27,7 @@ const USE_OWN_LANGUAGE = 'useMyLanguage'
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  
+
   filterSelectOptions = {
     header: 'filter',
     // subHeader: 'pllllll',
@@ -36,7 +36,7 @@ export class HomePage implements OnInit {
   
   filter = [USE_OWN_LOCATION, USE_OWN_LANGUAGE]
   flipped = false
-  
+  coffeeContainerVisibilitiy = 'visibile'
   lastSelectedZone : Place
   geoLatitude: number;
   geoLongitude: number;
@@ -50,6 +50,7 @@ export class HomePage implements OnInit {
   isWatching:boolean;
   localizedUsers: LocalizedUser[]
   userImg:string
+  loadClass: string = ''
   //Geocoder configuration
   geoencoderOptions: NativeGeocoderOptions = {
     useLocale: true,
@@ -64,6 +65,7 @@ export class HomePage implements OnInit {
     private ngZone: NgZone,
     private oneSignal: OneSignal,
     private router: Router,
+    private renderer: Renderer,
     private authService: AuthService,
     private toastService: ToastService,
     private loadingCtrl : LoadingController,
@@ -79,6 +81,7 @@ export class HomePage implements OnInit {
       } 
       else{
         this.flipped = !this.flipped;
+        this.coffeeContainerVisibilitiy = 'visibile'
       }
     }
     
@@ -91,10 +94,12 @@ export class HomePage implements OnInit {
         console.log(data)
       })
       from(this.oneSignal.getIds()).subscribe(data=>{
-        this.userService.subscribeToPushNotifications(data.userId ,data.pushToken).subscribe()
+        this.userService
+        .subscribeToPushNotifications(data.userId ,data.pushToken)
+        .subscribe()
       })
       if(this.authService.currentUserValue){
-        this.userImg = this.authService.currentUserValue.profileImg
+        this.userImg = this.authService.currentUserValue.profileImg || DEFAULT_USER_IMG
         console.log(this.authService.currentUserValue)
       }
     }
@@ -166,17 +171,18 @@ export class HomePage implements OnInit {
     }
     async findClosestUsers(){
       if(this.geoLatitude && this.geoLongitude) {
-        let loader = await this.toastService.load()
-        loader.present()
+        this.loadClass = 'coffee-load'
         this.coffeeService.findClosestUsers(this.geoLatitude, this.geoLongitude, this.maxDistance)
         .subscribe(response=>{
           // loader.dismiss()
+          this.coffeeContainerVisibilitiy = 'gone'
+          this.loadClass = ''
           this.localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
           this.flipped = !this.flipped
         },error =>{
+          this.loadClass = ''
           console.log(error);
           this.toastService.somethingWentWrong()
-          loader.dismiss()
         })
       }
       else{

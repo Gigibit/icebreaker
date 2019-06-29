@@ -17,15 +17,18 @@
   
   <label>    
     <div id="player" class="player" [class.voted]="flipped">
-      <div class="front flippable" (click)="flipIt()" [style.width]="distanceInPercentage() + '%'" [style.height]="distanceInPercentage() + '%'">
+      <div class="front flippable" (click)="flipIt()" >
         <div id="container flippable" >
-          <div class="coffy-img-container flippable">
+          <div class="coffee-container flippable">
             <!-- <img src="/src/assets/imgs/coffee.svg"> -->
+        
+          <div [class]="'coffee-mug' + ' ' + coffeeContainerVisibilitiy" >
+            <div class="coffee-container">
+              <div [class]="'coffee' + ' ' + loadClass"></div>
+            </div>
           </div>
-          <div class="circle flippable" style="animation-delay: -3s"></div>
-          <div class="circle flippable" style="animation-delay: -2s"></div>
-          <div class="circle flippable" style="animation-delay: -1s"></div>
-          <div class="circle flippable" style="animation-delay: 0s"></div>
+        </div>
+
         </div>
       </div>
       <div class="back flippable" (click)="localizedUsers && localizedUsers.length > 0 ? openLocalizedUsersModal() : flipIt()">
