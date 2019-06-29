@@ -17,3 +17,22 @@
     margin-top: 15px;
 }
 
+.coffee-stain {
+    content: " ";
+    display: inline-block;
+    
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    z-index: 6;
+    opacity: .35;
+    
+    width: 200px;
+    height: 200px;
+    
+    background-image: url(https://openclipart.org/image/800px/svg_to_png/185884/coffeering.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 200px 200px;
+  }
+  

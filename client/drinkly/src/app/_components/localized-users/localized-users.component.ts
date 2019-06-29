@@ -5,6 +5,7 @@ import { CoffeeService } from 'src/app/_services/coffe.service';
 import { ToastService } from 'src/app/_services/toast.service';
 import { ChatService } from 'src/app/_services/chat.service';
 import { Router } from '@angular/router';
+import { ViewProfileComponent } from '../view-profile/view-profile.component';
 
 const INVITATION_SENT = 'invitation_sent'
 
@@ -46,5 +47,15 @@ export class LocalizedUsersComponent implements OnInit {
     .subscribe(data=>{
       this.router.navigate(['/chat', data['chat']['id']]).then( e => this.modalCtrl.dismiss())
     })
+  }
+  viewProfile(localizedUser: LocalizedUser){
+    this.modalCtrl.create({
+      component: ViewProfileComponent,
+      componentProps: {
+        localizedUser: localizedUser
+      }
+    }).then(modal => {
+      modal.present();
+    });
   }
 }

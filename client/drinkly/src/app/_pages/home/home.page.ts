@@ -49,7 +49,7 @@ export class HomePage implements OnInit {
   loading:any;
   isWatching:boolean;
   localizedUsers: LocalizedUser[]
-  userImg:string
+  userImg:string = DEFAULT_USER_IMG
   loadClass: string = ''
   //Geocoder configuration
   geoencoderOptions: NativeGeocoderOptions = {
@@ -98,10 +98,9 @@ export class HomePage implements OnInit {
         .subscribeToPushNotifications(data.userId ,data.pushToken)
         .subscribe()
       })
-      if(this.authService.currentUserValue){
-        this.userImg = this.authService.currentUserValue.profileImg || DEFAULT_USER_IMG
-        console.log(this.authService.currentUserValue)
-      }
+      this.authService.currentUser.subscribe(user=>{
+        this.userImg = user.profileImg || DEFAULT_USER_IMG
+      })
     }
     
     //Get current coordinates of device

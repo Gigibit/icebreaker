@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { UserService } from '../../_services/user.service';
-import { User, UserMapper } from '../../_models/user';
+import { User, UserMapper, DEFAULT_USER_IMG } from '../../_models/user';
 import { ToastController, ActionSheetController, Platform, LoadingController, ModalController, PopoverController } from '@ionic/angular';
 import { PictureSourceType } from '@ionic-native/Camera/ngx';
 import { Location } from '@angular/common';
@@ -49,6 +49,9 @@ export class UserProfilePage implements OnInit {
       this.chatService.getChats().subscribe(response=>{
         this.chats = ChatMapper.fromJsonArray(response['chats'])
       })
+      this.authService.currentUser.subscribe(user=>{
+        this.userInfo.profileImg = user.profileImg || DEFAULT_USER_IMG
+      })
     }
     
     async editProfileImg() {
@@ -75,17 +78,8 @@ export class UserProfilePage implements OnInit {
         async userPopover(event){
           const popover = await this.popoverController.create({
             component: UserProfilePopoverComponent,
-            event: event,
-            translucent: true,
-            // componentProps:{
-            //   userId : proposal.createdBy
-            // }
+            event: event
           });
-          // popover.onDidDismiss().then((hasDoneSomethingOverlay:OverlayEventDetail)=>{
-          //   if(hasDoneSomethingOverlay.data){
-          //     this.getGeolocation()
-          //   }
-          // })
           return await popover.present();
         }
 

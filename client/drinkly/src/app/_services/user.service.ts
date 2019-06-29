@@ -6,6 +6,8 @@ import { AUTH_SERVER, SERVICE_SERVER } from '../config';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx'
 import { Platform } from '@ionic/angular';
 import { User } from '../_models/user';
+const ID = "%ID%"
+
 const CONTEXT = AUTH_SERVER + '/api/get-context'
 const UPLOAD_URL = SERVICE_SERVER + "/users/me/images"
 const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/users/me/image"
@@ -14,6 +16,7 @@ const PROPS_HIM = SERVICE_SERVER + "/api/props/"
 const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
 const UPDATE_USER_ADDRESS = SERVICE_SERVER + "/users/position"
 const SUBSCRIBE_TO_PUSH_URL = SERVICE_SERVER + "/notifications"
+const GET_USER_BY_ID = SERVICE_SERVER + `/users/${ID}`
 
 
 
@@ -38,6 +41,12 @@ export class UserService {
       return this.http.get( CONTEXT )
     }
     
+    getUserById(id: string){
+      return this.http.get( GET_USER_BY_ID.replace(ID, id))
+    }
+
+
+
     uploadImage(index: number, sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null) {
       if(index > 3) return;
       var options: CameraOptions = {
@@ -67,7 +76,13 @@ export class UserService {
           });
         }
         else{
-          this.uploadUri(UPLOAD_URL + `/${index}`, imageData)
+          this.uploadUri(UPLOAD_URL + `/${index}`, imageData, (user, response)=>{
+            if(!user.images){
+              user.images = new Array(3)
+            }
+            user.images[index - 1 ] = response['url']
+            return user;
+          });
         }
         if(onUri){
           // onUri(imageData)
@@ -98,13 +113,18 @@ export class UserService {
           const formData = new FormData();
           const imgBlob = this.dataURItoBlob(imageData);
           formData.append('image', imgBlob, this.createFileName());
-          this.uploadImageData(UPDATE_PROFILE_IMG_URL, formData,(user,response)=>{
+          this.uploadImageData(UPDATE_PROFILE_IMG_URL, formData, (user,response)=>{
+            console.log('image successful updated -->' + response['url'] )
             user.profileImg = response['url']
             return user
           });
         }
         else{
-          this.uploadUri(UPDATE_PROFILE_IMG_URL, imageData)
+          this.uploadUri(UPDATE_PROFILE_IMG_URL, imageData, (user,response)=>{
+            console.log('image successful updated -->' + response['url'] )
+            user.profileImg = response['url']
+            return user
+          });
         }
         if(onUri){
           // onUri(imageData)
@@ -116,29 +136,33 @@ export class UserService {
 
 
     //todo: check request whether is an profile or  generic image
-    uploadUri(upload_url, uri, onSuccess: (data)=>void = data=>{ console.log(data) }){
+    uploadUri(upload_url, uri, getUpdatedUser:(user:User,response: any)=>User){
       
       let options: FileUploadOptions = {
-        fileKey: 'file',
+        fileKey: 'image',
         chunkedMode: false,
         mimeType: "image/jpeg",
         headers: {
-          'auth-token' : this.auth.authToken
+          'Authorization' : 'Bearer ' + this.auth.authToken
         },
         fileName :  this.createFileName()
       }
       this.fileTransfer.upload(encodeURI(uri), upload_url, options)
-      .then(response=>{ 
-        let user = this.auth.currentUserValue
-        user.profileImg = response['url']
+      .then(data=>{
+        console.log(data)
+        console.log('image successful updated -->', JSON.parse(data.response) )
+        let user = getUpdatedUser(this.auth.currentUserValue, JSON.parse(data.response))
+        console.log('user in upload image data-->', user)
         this.auth.contextRefresh(user)
       })
       .catch( (err) => console.log(err));
     }
     uploadImageData(upload_url, formData: FormData, getUpdatedUser:(user:User,response: any)=>User) {
-      return this.http.post(upload_url, formData ).subscribe(response=> {
-        let user = getUpdatedUser(this.auth.currentUserValue, response)
-        console.log(user)
+      return this.http.post(upload_url, formData ).subscribe(__response => {
+        alert(__response)
+        console.log('image successful updated -->' + __response['url'] )
+        let user = getUpdatedUser(this.auth.currentUserValue, __response)
+        console.log('user in upload image data-->', user)
         this.auth.contextRefresh(user)
       });
     }

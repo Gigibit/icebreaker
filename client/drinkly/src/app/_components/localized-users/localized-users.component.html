@@ -11,7 +11,7 @@
     
     
     <ion-card *ngFor="let localizedUser of localizedUsers">
-      <ion-card-header>
+      <ion-card-header (click)="viewProfile(localizedUser)">
         <img class="localized-user-img" [src]="localizedUser.user.profileImg">
         
         <ion-card-title>

@@ -1,3 +1,32 @@
-<p>
-  view-profile works!
-</p>
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons slot="start"  (click)="dismiss()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title text-center>
+      {{'register_page_title'| translate}}
+    </ion-title> -->
+    <ion-buttons slot="end">
+      <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="userInfo" *ngIf="user">
+    <ion-avatar id="profileImage" (click)="editProfileImg()">
+      <img [src]="user.profileImg" />
+    </ion-avatar>
+    <ion-label class="user-name">{{user.name}}</ion-label>
+  </div>
+  <ion-label *ngIf="user" class="user-distance">
+    <ion-icon name="pin"></ion-icon>{{ distance }}
+  </ion-label>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide  *ngFor="let img of user?.images">
+      <img [src]="img">
+    </ion-slide>
+  </ion-slides>
+  
+</ion-content>

@@ -33,6 +33,10 @@ export function joinWithCommaOrEmpty(...str: string[]){
 }
 
 
+export function getAppFormatDate(date){
+  return  moment(date).format('YYYY-MM-DD')
+}
+
 export function getErrorForCode(code: string){
   
   return code

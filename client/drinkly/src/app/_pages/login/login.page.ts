@@ -71,7 +71,7 @@ export class LoginPage implements OnInit {
 			.then(response =>{
 				let userId = response.authResponse.userID;
 				//Getting name and gender properties
-				this.fb.api("/me?fields=name,email", permissions)
+				this.fb.api("/me?fields=name,email,user_gender,user_birthday,age_range", permissions)
 				.then(_user =>{
 					let user: User = {
 						name : _user.name,

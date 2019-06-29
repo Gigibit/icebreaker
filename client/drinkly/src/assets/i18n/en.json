@@ -25,5 +25,9 @@
     "no_proposals" : "there are no proposals, create one and involve!",
     "something_went_wrong" : "ops, something went wrong!",
     "close_to_you" : "close to you!",
-    "invitation_sent" : "sent!"
+    "invitation_sent" : "sent!",
+    "of_distance" : "of distance",
+    "birthday" : "birthday",
+    "birthday_required" : "birthday required!"
+    
 }
