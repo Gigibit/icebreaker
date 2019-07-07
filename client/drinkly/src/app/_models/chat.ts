@@ -21,10 +21,10 @@ export class ChatMapper{
 
         return {
             id: data['id'],
-            lastMessage: MessageMapper.fromJson(data['lastMessage']),
+            lastMessage: data['lastMessage'] ? MessageMapper.fromJson(data['lastMessage']) : null,
             users: users,
             img : users[0].user.profileImg || DEFAULT_USER_IMG,
-            name : users[0].user.name
+            name : data['title'] || users[0].user.name
         }
     }
     static fromJsonArray(data: any): Chat[]{

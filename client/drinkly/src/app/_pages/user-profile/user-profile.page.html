@@ -15,11 +15,19 @@
 
 <ion-content>
   <div class="userInfo" *ngIf="userInfo">
-    <ion-avatar id="profileImage" (click)="editProfileImg()">
+    <ion-avatar class="profileImage" (click)="editProfileImg()">
       <img [src]="userInfo.profileImg" />
     </ion-avatar>
     <ion-label class="user-name">{{userInfo.name}} {{userInfo.surname}}</ion-label>
   </div>
+  <div class="userInfo" *ngIf="!userInfo">
+    <ion-avatar class="profileImageSkeleton" slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-skeleton-text class="user-name" animated></ion-skeleton-text>
+  </div>
+  
+  
   
   <ion-segment [(ngModel)]="section">
     <ion-segment-button value="gallery"  >  Photos   </ion-segment-button>
@@ -70,11 +78,15 @@
     
     <div *ngSwitchCase="'messages'">
       <ion-list>
-        <ion-item *ngFor="let chat of chats" [routerLink]="['/chat', chat.id]">
-      <ion-avatar class="user-message-img" slot="start">
-        <img [src]="chat.img">
-      </ion-avatar>
-      <ion-label>{{chat.name}}</ion-label>
+        <ion-item *ngFor="let chat of chats" (click)="goToChat(chat)">
+          <ion-avatar class="user-message-img" slot="start">
+            <img [src]="chat.img">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{chat.name}}</h3>
+            <p *ngIf="chat.lastMessage" [class.notReadMessage]="chat.lastMessage.readBy.indexOf(userInfo.id) == -1">{{chat.lastMessage.content}}</p>
+          </ion-label>
+          <div class="not-read-checker" *ngIf="chat.lastMessage.readBy.indexOf(userInfo.id) == -1">&bull;</div>
         </ion-item>
       </ion-list>
     </div>

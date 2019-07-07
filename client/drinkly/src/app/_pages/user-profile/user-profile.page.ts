@@ -11,6 +11,7 @@ import { AuthService } from '../../_services/auth.service';
 import { Chat, ChatMapper } from 'src/app/_models/chat';
 import { ChatService } from 'src/app/_services/chat.service';
 import { UserProfilePopoverComponent } from 'src/app/_components/user-profile-popover/user-profile-popover.component';
+import { Router } from '@angular/router';
 
 const COLUMN_COUNT = 4
 
@@ -38,7 +39,9 @@ export class UserProfilePage implements OnInit {
     private chatService: ChatService,
     private popoverController: PopoverController,
     private userService: UserService,
-    private authService : AuthService
+    private authService : AuthService,
+    private router: Router
+
     ) { 
     }
     
@@ -129,5 +132,9 @@ export class UserProfilePage implements OnInit {
         }).then(modal => {
           modal.present();
         });
+      }
+      goToChat(chat:Chat){
+        this.chatService.setActiveChat(chat)
+        this.router.navigate(['/chat', chat.id])
       }
     }

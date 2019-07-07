@@ -6,19 +6,25 @@
     <!-- <ion-title text-center>
       {{'register_page_title'| translate}}
     </ion-title> -->
-    <ion-buttons slot="end">
+    <!-- <ion-buttons slot="end">
       <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
   <div class="userInfo" *ngIf="user">
-    <ion-avatar id="profileImage" (click)="editProfileImg()">
+    <ion-avatar id="profileImage">
       <img [src]="user.profileImg" />
     </ion-avatar>
     <ion-label class="user-name">{{user.name}}</ion-label>
+  </div>
+  <div class="userInfo" *ngIf="!user">
+    <ion-avatar class="profileImageSkeleton" slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-skeleton-text class="user-name skeleton" animated></ion-skeleton-text>
   </div>
   <ion-label *ngIf="user" class="user-distance">
     <ion-icon name="pin"></ion-icon>{{ distance }}

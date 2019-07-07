@@ -5,11 +5,13 @@ export interface Message{
     user: User,
     content: string,
     type: Type,
-    createdAt: string
+    createdAt: string,
+    readBy: string[]
 }
 export enum Type{
     INVITATION, DEFAULT
 }
+
 
 export class MessageMapper{
     public static fromJson(data: any): Message{
@@ -25,7 +27,8 @@ export class MessageMapper{
             },
             type: data['type'],
             content: data['content'],
-            createdAt: data['createdAt']
+            createdAt: data['createdAt'],
+            readBy : data['readBy']
         }
     } 
 

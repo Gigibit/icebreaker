@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from  '@angular/common/http';
 import { BehaviorSubject, Observable, of } from  'rxjs';
-import { Storage } from  '@ionic/storage';
-import { Platform } from '@ionic/angular';
 import { AUTH_SERVER } from '../config';
 import { User, UserMapper } from '../_models/user';
 import { map } from 'rxjs/operators';

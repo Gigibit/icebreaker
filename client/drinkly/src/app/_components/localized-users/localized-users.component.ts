@@ -6,6 +6,7 @@ import { ToastService } from 'src/app/_services/toast.service';
 import { ChatService } from 'src/app/_services/chat.service';
 import { Router } from '@angular/router';
 import { ViewProfileComponent } from '../view-profile/view-profile.component';
+import { ChatMapper } from 'src/app/_models/chat';
 
 const INVITATION_SENT = 'invitation_sent'
 
@@ -45,7 +46,9 @@ export class LocalizedUsersComponent implements OnInit {
     this.chatService
     .findOrCreate([user.user.id])
     .subscribe(data=>{
-      this.router.navigate(['/chat', data['chat']['id']]).then( e => this.modalCtrl.dismiss())
+      let chat = ChatMapper.fromJson(data['chat'])
+      this.chatService.setActiveChat(chat)
+      this.router.navigate(['/chat', chat.id]).then( e => this.modalCtrl.dismiss())
     })
   }
   viewProfile(localizedUser: LocalizedUser){

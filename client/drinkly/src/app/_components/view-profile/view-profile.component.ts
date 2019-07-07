@@ -38,7 +38,7 @@ export class ViewProfileComponent implements OnInit {
     const distance = localizedUser.distance
     this.translateService.get(OF_DISTANCE_KEY).subscribe(value=>{
       this.distance = distance ? 
-                      distance > 1000  ? `${distance/1000} km ${value}` : 
+                      distance > 1000  ? `${Math.round(distance/10) / 100} km ${value}` : 
                       `${distance} m ${value}` : ''
     })
     

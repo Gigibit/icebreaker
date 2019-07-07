@@ -60,7 +60,7 @@
     right: 0;
     left: 0;
     .message {
-      max-width: 50%;
+      max-width: 100%;
       clear: both;
       display: inline-flex;
       position: relative;
@@ -118,6 +118,7 @@
         text-align: left;
       }
       .msg-content{
+        float: left;
         border-bottom-left-radius: 33px;
         border-top-right-radius: 33px;
       }
@@ -135,6 +136,7 @@
         text-align: right;
       }
       .msg-content{
+        float: right;
         border-bottom-right-radius: 33px;
         border-top-left-radius: 33px;
       }

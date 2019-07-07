@@ -7,6 +7,7 @@ import { timeSince } from '../../_utils/functions';
 import { ActivatedRoute } from "@angular/router";
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
+import { Chat } from 'src/app/_models/chat';
  
 @Component({
   selector: 'app-chat',
@@ -16,7 +17,7 @@ import { Location } from '@angular/common';
 export class ChatRoomPage implements OnInit{
   @ViewChild(IonContent)  messagesContent: IonContent;
   email: string
-
+  chat: Chat
   messages = [];
   name = '';
   message = '';
@@ -35,6 +36,8 @@ export class ChatRoomPage implements OnInit{
       })
   }
   ngOnInit(){
+    this.chat = this.chatService.getActiveChat()
+    window['chat'] = this.chat
     this.route.paramMap.subscribe(params=>{
       this.chatKey = params.get('with')
       console.log(params)

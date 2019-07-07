@@ -6,9 +6,6 @@ import { LoadingController, Platform, AlertController, ToastController } from '@
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { User, LoginType } from '../../_models/user';
-import { concatMap } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
 import { ToastService } from '../../_services/toast.service';
 
 
@@ -36,6 +33,19 @@ export class LoginPage implements OnInit {
 			this.authService.logout()
 			// this.authenticationService.logout();
 			this.returnUrl = '/';
+			const _this = this;
+			window['setFbAckToken'] = function(token){
+				_this.authService.facebookLogin(token)
+				// .pipe(concatMap( _ => this.authService.userInfo()))
+				.subscribe(token =>{
+					console.log(token)
+					_this.router.navigate([_this.returnUrl]);
+				}, error =>{
+					console.log(error);
+					_this.toastService.somethingWentWrong()
+				})
+			}
+			
 			
 		}
 		async login(form){
@@ -65,13 +75,13 @@ export class LoginPage implements OnInit {
 			this.presentLoading(loading);
 			
 			//the permissions your facebook app needs from the user
-			const permissions = ["public_profile", "email"];
+			const permissions = ["public_profile", "email",,"user_gender","user_birthday","age_range"];
 			
 			this.fb.login(permissions)
 			.then(response =>{
 				let userId = response.authResponse.userID;
 				//Getting name and gender properties
-				this.fb.api("/me?fields=name,email,user_gender,user_birthday,age_range", permissions)
+				this.fb.api("/me?fields=name,email", permissions)
 				.then(_user =>{
 					let user: User = {
 						name : _user.name,

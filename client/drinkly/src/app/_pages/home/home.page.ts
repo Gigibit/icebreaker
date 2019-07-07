@@ -99,8 +99,9 @@ export class HomePage implements OnInit {
         .subscribe()
       })
       this.authService.currentUser.subscribe(user=>{
-        this.userImg = user.profileImg || DEFAULT_USER_IMG
+        this.userImg = ( user && user.profileImg ) || DEFAULT_USER_IMG
       })
+      
     }
     
     //Get current coordinates of device

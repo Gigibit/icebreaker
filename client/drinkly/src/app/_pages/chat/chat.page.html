@@ -4,12 +4,13 @@
         <ion-buttons slot="start"  (click)="location.back()">
           <ion-icon name="ios-arrow-back"></ion-icon>
         </ion-buttons>
+        <h3>{{chat.name}}</h3>
         <!-- <ion-title text-center>
           {{'register_page_title'| translate}}
         </ion-title> -->
-        <ion-buttons slot="end">
+        <!-- <ion-buttons slot="end">
           <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
-        </ion-buttons>
+        </ion-buttons> -->
       </ion-toolbar>
     </ion-header>
 
@@ -19,11 +20,6 @@
       <img *ngIf="msg.user.profileImg" class="user-img"  alt="" src="{{msg.user.profileImg}}">
       
       <div class="msg-detail">
-        <div class="msg-info">
-          <p>
-            {{msg.user.name}}
-          </p>
-        </div>
         <div class="msg-content">
           <span class="triangle"></span>
           <div class="coffee-wrapper" *ngIf="msg.type == 'INVITATION'">
