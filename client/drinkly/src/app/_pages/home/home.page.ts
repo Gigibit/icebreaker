@@ -6,7 +6,7 @@ import { UserService } from '../../_services/user.service';
 import { AuthService } from '../../_services/auth.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { joinWithCommaOrEmpty } from '../../_utils/functions';
-import { LocalizedUserMapper, LocalizedUser, DEFAULT_USER_IMG } from '../../_models/user';
+import { LocalizedUserMapper, LocalizedUser } from '../../_models/user';
 import { ToastService } from '../../_services/toast.service';
 import { Router } from '@angular/router';
 import { Place } from '../../_components/autocomplete/autocomplete-input.component';
@@ -49,7 +49,7 @@ export class HomePage implements OnInit {
   loading:any;
   isWatching:boolean;
   localizedUsers: LocalizedUser[]
-  userImg:string = DEFAULT_USER_IMG
+  userImg:string
   loadClass: string = ''
   //Geocoder configuration
   geoencoderOptions: NativeGeocoderOptions = {
@@ -99,7 +99,7 @@ export class HomePage implements OnInit {
         .subscribe()
       })
       this.authService.currentUser.subscribe(user=>{
-        this.userImg = ( user && user.profileImg ) || DEFAULT_USER_IMG
+        this.userImg = user && user.profileImg 
       })
       
     }

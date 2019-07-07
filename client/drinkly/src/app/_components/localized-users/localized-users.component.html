@@ -12,7 +12,9 @@
     
     <ion-card *ngFor="let localizedUser of localizedUsers">
       <ion-card-header (click)="viewProfile(localizedUser)">
-        <img class="localized-user-img" [src]="localizedUser.user.profileImg">
+        <img class="localized-user-img" 
+        onError="this.src='../../assets/imgs/user.svg';" 
+        [src]="localizedUser.user.profileImg">
         
         <ion-card-title>
           <ion-label class="localized-user-name">{{localizedUser.user.name}}</ion-label>

@@ -1,4 +1,4 @@
-export const DEFAULT_USER_IMG = '../../assets/imgs/user.svg'
+// export const DEFAULT_USER_IMG = '../../assets/imgs/user.svg'
 
 export interface User{
     name: string
@@ -34,7 +34,7 @@ export class LocalizedUserMapper{
             user     : {
                 id : data['user']['id'],
                 name: data['user']['firstName'] + ' ' + data['user']['lastName'],
-                profileImg: data['user']['imageUrl'] ? ( data['user']['imageUrl']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
+                profileImg: data['user']['imageUrl']
             }}
     }
     static fromJsonArray(data:any): LocalizedUser[]{
@@ -50,7 +50,7 @@ export class UserMapper{
             name: data['user']['firstName'] + ' ' + data['user']['lastName'],
             age: data['age'],
             id: data['user']['id'],
-            profileImg: data['user'] && data['user']['imageUrl'] ? ( data['user']['imageUrl']+'?'+new Date().getTime() ) : DEFAULT_USER_IMG,
+            profileImg: data['user']['imageUrl'],
             description: data['description'],
             iLike: data['has_propsed'],
             images: data['images'],

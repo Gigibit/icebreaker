@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { UserService } from '../../_services/user.service';
-import { User, UserMapper, DEFAULT_USER_IMG } from '../../_models/user';
+import { User } from '../../_models/user';
 import { ToastController, ActionSheetController, Platform, LoadingController, ModalController, PopoverController } from '@ionic/angular';
 import { PictureSourceType } from '@ionic-native/Camera/ngx';
 import { Location } from '@angular/common';
@@ -49,11 +49,9 @@ export class UserProfilePage implements OnInit {
       
       this.userInfo = this.authService.currentUserValue
       console.log(this.userInfo)
-      this.chatService.getChats().subscribe(response=>{
-        this.chats = ChatMapper.fromJsonArray(response['chats'])
-      })
       this.authService.currentUser.subscribe(user=>{
-        this.userInfo.profileImg = user.profileImg || DEFAULT_USER_IMG
+        if(user)
+          this.userInfo.profileImg = user.profileImg
       })
     }
     
@@ -67,7 +65,11 @@ export class UserProfilePage implements OnInit {
         })
       }
       
-      
+      getChats(){
+        this.chatService.getChats().subscribe(response=>{
+          this.chats = ChatMapper.fromJsonArray(response['chats'])
+        })
+      }
       
       async presentToast(text) {
         const toast = await this.toastController.create({

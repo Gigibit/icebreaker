@@ -33,18 +33,18 @@ export class LoginPage implements OnInit {
 			this.authService.logout()
 			// this.authenticationService.logout();
 			this.returnUrl = '/';
-			const _this = this;
-			window['setFbAckToken'] = function(token){
-				_this.authService.facebookLogin(token)
-				// .pipe(concatMap( _ => this.authService.userInfo()))
-				.subscribe(token =>{
-					console.log(token)
-					_this.router.navigate([_this.returnUrl]);
-				}, error =>{
-					console.log(error);
-					_this.toastService.somethingWentWrong()
-				})
-			}
+			// const _this = this;
+			// window['setFbAckToken'] = function(token){
+			// 	_this.authService.facebookLogin(token)
+			// 	// .pipe(concatMap( _ => this.authService.userInfo()))
+			// 	.subscribe(token =>{
+			// 		console.log(token)
+			// 		_this.router.navigate([_this.returnUrl]);
+			// 	}, error =>{
+			// 		console.log(error);
+			// 		_this.toastService.somethingWentWrong()
+			// 	})
+			// }
 			
 			
 		}
@@ -75,7 +75,7 @@ export class LoginPage implements OnInit {
 			this.presentLoading(loading);
 			
 			//the permissions your facebook app needs from the user
-			const permissions = ["public_profile", "email",,"user_gender","user_birthday","age_range"];
+			const permissions = ["public_profile", "email","user_gender","user_birthday"];
 			
 			this.fb.login(permissions)
 			.then(response =>{
@@ -83,12 +83,6 @@ export class LoginPage implements OnInit {
 				//Getting name and gender properties
 				this.fb.api("/me?fields=name,email", permissions)
 				.then(_user =>{
-					let user: User = {
-						name : _user.name,
-						profileImg : "https://graph.facebook.com/" + userId + "/picture?type=large",
-						loginType : LoginType.FACEBOOK,
-						token: response.authResponse.accessToken
-					}
 					//now we have the users info, let's save it in the NativeStorage
 					this.authService.facebookLogin(response.authResponse.accessToken)
 					// .pipe(concatMap( _ => this.authService.userInfo()))

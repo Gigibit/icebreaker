@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, NgZone, OnInit } from '@angular/core';
-import { ToastController, IonContent } from '@ionic/angular';
+import { ToastController, IonContent, ModalController } from '@ionic/angular';
 import { ChatService } from '../../_services/chat.service';
 import { Proposal } from '../../_models/proposal';
 import { AuthService } from '../../_services/auth.service';
@@ -8,6 +8,7 @@ import { ActivatedRoute } from "@angular/router";
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { Chat } from 'src/app/_models/chat';
+import { ViewProfileComponent } from 'src/app/_components/view-profile/view-profile.component';
  
 @Component({
   selector: 'app-chat',
@@ -28,6 +29,7 @@ export class ChatRoomPage implements OnInit{
     private chatService: ChatService,
     private location: Location,
     private ngZone: NgZone,
+    private modalCtrl: ModalController,
     private route: ActivatedRoute) {
       console.log(authService.currentUser)
       console.log(authService.currentUserValue)
@@ -49,8 +51,20 @@ export class ChatRoomPage implements OnInit{
        })
       }) 
     })
+    
   }
 
+
+  viewProfile(id: string){
+    this.modalCtrl.create({
+      component: ViewProfileComponent,
+      componentProps: {
+        localizedUserId: id
+      }
+    }).then(modal => {
+      modal.present();
+    });
+  }
 
 
   sendMessage(){

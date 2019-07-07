@@ -17,7 +17,10 @@
   <ion-content padding class="container" #messagesContent>
     <div class="vertical-space message right"></div>
     <div *ngFor="let msg of messages" class="message" [class.right]="this.id == msg.user.id" [class.left]="this.id != msg.user.id">
-      <img *ngIf="msg.user.profileImg" class="user-img"  alt="" src="{{msg.user.profileImg}}">
+      <img 
+      (click) = "viewProfile(msg.user.id)"
+      onError="this.src='../../assets/imgs/user.svg';"      
+      class="user-img"  alt="" src="{{msg.user.profileImg}}">
       
       <div class="msg-detail">
         <div class="msg-content">

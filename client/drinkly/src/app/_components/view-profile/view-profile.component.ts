@@ -27,15 +27,16 @@ export class ViewProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const localizedUser = this.navParams.get('localizedUser') as LocalizedUser;
-    this.getFormattedDistance(localizedUser)
-    this.userService.getUserById(localizedUser.user.id).subscribe(response=>{
+
+    const id = this.navParams.get('userId'); 
+    this.userService.getUserById(id).subscribe(response=>{
       this.user = UserMapper.fromJson(response['user'])
+      if(response['distance'])
+        this.getFormattedDistance(response['distance'])
       console.log(this.user)
     })
   }
-  getFormattedDistance(localizedUser: LocalizedUser){
-    const distance = localizedUser.distance
+  getFormattedDistance(distance: number){
     this.translateService.get(OF_DISTANCE_KEY).subscribe(value=>{
       this.distance = distance ? 
                       distance > 1000  ? `${Math.round(distance/10) / 100} km ${value}` : 

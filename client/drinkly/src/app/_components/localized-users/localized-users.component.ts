@@ -38,7 +38,6 @@ export class LocalizedUsersComponent implements OnInit {
         .sendInvitation([user.user.id])
         .subscribe(response=>{
           this.toastService.alert( INVITATION_SENT )
-          this.modalCtrl.dismiss()
         })
   }
 
@@ -55,7 +54,7 @@ export class LocalizedUsersComponent implements OnInit {
     this.modalCtrl.create({
       component: ViewProfileComponent,
       componentProps: {
-        localizedUser: localizedUser
+        localizedUserId: localizedUser.user.id
       }
     }).then(modal => {
       modal.present();

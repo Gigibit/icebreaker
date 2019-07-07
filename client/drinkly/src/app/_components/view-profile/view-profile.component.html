@@ -16,7 +16,9 @@
 <ion-content>
   <div class="userInfo" *ngIf="user">
     <ion-avatar id="profileImage">
-      <img [src]="user.profileImg" />
+      <img 
+      onError="this.src='../../assets/imgs/user.svg';"       
+      [src]="user.profileImg" />
     </ion-avatar>
     <ion-label class="user-name">{{user.name}}</ion-label>
   </div>
@@ -26,7 +28,7 @@
     </ion-avatar>
     <ion-skeleton-text class="user-name skeleton" animated></ion-skeleton-text>
   </div>
-  <ion-label *ngIf="user" class="user-distance">
+  <ion-label [class.maxFontSize]="user && ( !user.images || user.images.length == 0 )" *ngIf="user && distance" class="user-distance">
     <ion-icon name="pin"></ion-icon>{{ distance }}
   </ion-label>
   <ion-slides pager="true" [options]="slideOpts">
@@ -34,5 +36,5 @@
       <img [src]="img">
     </ion-slide>
   </ion-slides>
-  
+  <span class="coffee-stain" *ngIf="user && ( !user.images || user.images.length == 0 )"></span>
 </ion-content>

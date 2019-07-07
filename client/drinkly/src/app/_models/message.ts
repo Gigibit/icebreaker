@@ -1,4 +1,4 @@
-import { DEFAULT_USER_IMG, User } from './user';
+import { User } from './user';
 
 export interface Message{
     id: number,
@@ -15,15 +15,15 @@ export enum Type{
 
 export class MessageMapper{
     public static fromJson(data: any): Message{
+        
         return {
             id: data['id'],
             user: {
                 id : data['user'] && data['user']['id'],
                 name : data['user'] && ( data['user']['firstName'] + ' ' + data['user']['lastName'] ),
-                profileImg: ( data['user'] && 
-                            ( data['user']['imageUrl'] && 
-                            ( data['imageUrl']+'?'+new Date().getTime() ) )  ) 
-                            || DEFAULT_USER_IMG
+                profileImg: data['user'] && 
+                            data['user']['imageUrl'] && 
+                            data['user']['imageUrl']  
             },
             type: data['type'],
             content: data['content'],

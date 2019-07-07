@@ -4,7 +4,9 @@
       <ion-icon name="ios-arrow-back"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end"  (click)="profile()">
-      <img class="profile-img-btn" [src]="userImg">
+      <img 
+      onError="this.src='../../assets/imgs/user.svg';"       
+      class="profile-img-btn" [src]="userImg">
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -38,12 +40,14 @@
             <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
             [style.z-index]="i+1"
             [style.margin-left]="( 31*(i + 1) /localizedUsers.length ) + 'px'">
-            <img class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
+            <img 
+            onError="this.src='../../assets/imgs/user.svg';"             
+            class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
           </ion-avatar>
         </div>
       </div>
     </div>
   </div>
 </label>
-<span class="coffee-stain"></span>
+<!-- <span class="coffee-stain"></span> -->
 </ion-content>
