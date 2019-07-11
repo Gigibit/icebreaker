@@ -13,11 +13,6 @@
 }
 
 
-.user-message-img{
-    border: 2px solid #222;
-    background: #fff ;
-}
-
 .user-name{
     text-align: center;
     font-size: 19px;
@@ -81,16 +76,4 @@
 }
 .image-container {
     background-size: cover;
-}
-.notReadMessage{
-    font-weight: bold;
-    color: #999;
-}
-.not-read-checker{
-    color: #888;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 21px;
-    margin-right: 17px;
 }

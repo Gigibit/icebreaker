@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SERVICE_SERVER } from '../config';
-import { LocalizedUser } from '../_models/user';
+import { LocalizedUser, LocalizedUserMapper } from '../_models/user';
+import { concatMap, map } from 'rxjs/operators';
 
 const FIND_CLOSEST_USERS_URL  = SERVICE_SERVER + '/users/me/users'
 const SEND_COFFEE_INVITATION  = SERVICE_SERVER + '/invitations'
@@ -16,7 +17,7 @@ const SEND_COFFEE_INVITATION  = SERVICE_SERVER + '/invitations'
   providedIn: 'root'
 })
 export class CoffeeService {
-  
+  localizedUsers: LocalizedUser[]
   constructor(
     private http: HttpClient
     ) {   }
@@ -30,8 +31,8 @@ export class CoffeeService {
     
     //   return this.http.post(PROPOSALS_CRUD_SERVICE, proposal)
     // }
-
-
+    
+    
     sendInvitation(userIds:string[], content: string = ''){
       return this.http.post( SEND_COFFEE_INVITATION, {
         userIds : userIds,
@@ -74,8 +75,16 @@ export class CoffeeService {
         '?longitude='+mLong+
         '&latitude='+mLat  +
         ( maxDistance ? '&distance=' + maxDistance : "" ) )
+        .pipe(map(response=> {
+          this.localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
+          return this.localizedUsers
+        }))
       }
-      
+
+
+
+
+
     }
     
     

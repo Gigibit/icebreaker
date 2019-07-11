@@ -80,7 +80,7 @@ export class ViewProfileComponent implements OnInit {
       }
     }).then(modal => {
       modal.present();
-    });
+    })
   }
 
 

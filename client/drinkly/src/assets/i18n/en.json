@@ -28,6 +28,7 @@
     "invitation_sent" : "sent!",
     "of_distance" : "of distance",
     "birthday" : "birthday",
-    "birthday_required" : "birthday required!"
+    "birthday_required" : "birthday required!",
+    "enable_localization": "you should enable localization before found someone!"
     
 }

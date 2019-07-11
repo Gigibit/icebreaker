@@ -22,7 +22,6 @@ const COLUMN_COUNT = 4
   styleUrls: ['./user-profile.page.scss'],
 })
 export class UserProfilePage implements OnInit {
-  section = 'gallery'
   images = []
   uri
   chats : Chat[]

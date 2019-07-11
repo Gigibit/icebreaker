@@ -28,6 +28,7 @@
     "invitation_sent": "dai!",
     "of_distance" : "di distanza",
     "birthday": "data di nascita",
-    "birthday_required" : "data di nascita obbligatoria!"
+    "birthday_required" : "data di nascita obbligatoria!",
+    "enable_localization": "dovresti abilitare prima i permessi di geolocalizzazione!"
 
 }

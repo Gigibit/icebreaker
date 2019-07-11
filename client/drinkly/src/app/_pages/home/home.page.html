@@ -22,7 +22,6 @@
         <div id="container flippable" >
           <div class="coffee-container flippable">
             <!-- <img src="/src/assets/imgs/coffee.svg"> -->
-        
           <div [class]="'coffee-mug' + ' ' + coffeeContainerVisibilitiy" >
             <div class="coffee-container">
               <div [class]="'coffee' + ' ' + loadClass"></div>
@@ -32,7 +31,7 @@
 
         </div>
       </div>
-      <div class="back flippable" (click)="localizedUsers && localizedUsers.length > 0 ? openLocalizedUsersModal() : flipIt()">
+      <div class="back flippable">
         <div class="localized-users flippable">
           <div class="localized-users-wrapper">
             <!-- <h3>{{localizedUsers?.length}} {{'close_to_you' | translate}}</h3>
@@ -43,101 +42,7 @@
             onError="this.src='../../assets/imgs/user.svg';"             
             class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
           </ion-avatar> -->
-          <ion-grid>
-              <ion-row>
-                  <ion-col>
-                      <!-- <h3>{{localizedUsers?.length}} {{'close_to_you' | translate}}</h3> -->
-                      <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                      [style.z-index]="i+1">
-                      <img 
-                      onError="this.src='../../assets/imgs/user.svg';"             
-                      class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-                    </ion-avatar>
-                  </ion-col>
-                  <ion-col>
-                    <div>
-                      <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                      [style.z-index]="i+1">
-                      <img 
-                      onError="this.src='../../assets/imgs/user.svg';"             
-                      class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-                    </ion-avatar>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  
-                  <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                  [style.z-index]="i+1"
-                  [style.margin-left]="'150%'">
-                  <img 
-                  onError="this.src='../../assets/imgs/user.svg';"             
-                  class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-                </ion-avatar>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <!-- <h3>{{localizedUsers?.length}} {{'close_to_you' | translate}}</h3> -->
-                    <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                    [style.z-index]="i+1">
-                    <img 
-                    onError="this.src='../../assets/imgs/user.svg';"             
-                    class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-                  </ion-avatar>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                    [style.z-index]="i+1">
-                    <img 
-                    onError="this.src='../../assets/imgs/user.svg';"             
-                    class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-                  </ion-avatar>
-                </div>
-              </ion-col>
-              <ion-col>
-                
-                <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                [style.z-index]="i+1"
-                [style.margin-left]="'150%'">
-                <img 
-                onError="this.src='../../assets/imgs/user.svg';"             
-                class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-              </ion-avatar>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-              <ion-col>
-                  <!-- <h3>{{localizedUsers?.length}} {{'close_to_you' | translate}}</h3> -->
-                  <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                  [style.z-index]="i+1">
-                  <img 
-                  onError="this.src='../../assets/imgs/user.svg';"             
-                  class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-                </ion-avatar>
-              </ion-col>
-              <ion-col>
-                <div>
-                  <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-                  [style.z-index]="i+1">
-                  <img 
-                  onError="this.src='../../assets/imgs/user.svg';"             
-                  class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-                </ion-avatar>
-              </div>
-            </ion-col>
-            <ion-col>
-              
-              <ion-avatar *ngFor="let localizedUser of localizedUsers; let i = index" class="localized-user-img" 
-              [style.z-index]="i+1"
-              [style.margin-left]="'150%'">
-              <img 
-              onError="this.src='../../assets/imgs/user.svg';"             
-              class="localized-user-img-src" [src]="localizedUser?.user?.profileImg">
-            </ion-avatar>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, NgZone,  Renderer } from '@angular/core';
 import { NativeGeocoderOptions, NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
-import { ModalController, PopoverController, ToastController, LoadingController } from '@ionic/angular';
-import { CoffeeService, CoffeeServiceMock } from '../../_services/coffe.service';
+import { ModalController, PopoverController, LoadingController } from '@ionic/angular';
+import { CoffeeService } from '../../_services/coffe.service';
 import { UserService } from '../../_services/user.service';
 import { AuthService } from '../../_services/auth.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { joinWithCommaOrEmpty } from '../../_utils/functions';
-import { LocalizedUserMapper, LocalizedUser } from '../../_models/user';
 import { ToastService } from '../../_services/toast.service';
 import { Router } from '@angular/router';
 import { Place } from '../../_components/autocomplete/autocomplete-input.component';
@@ -17,7 +16,7 @@ import { from } from 'rxjs';
 
 const USE_OWN_LOCATION = 'useMyPosition'
 const USE_OWN_LANGUAGE = 'useMyLanguage'
-
+const ENABLE_LOCALIZATION_KEY = 'enable_localization'
 
 
 // for integrate maps https://edupala.com/how-to-add-leaflet-map-in-ionic-4/
@@ -48,7 +47,6 @@ export class HomePage implements OnInit {
   watchLocationUpdates:any; 
   loading:any;
   isWatching:boolean;
-  localizedUsers: LocalizedUser[]
   userImg:string
   loadClass: string = ''
   //Geocoder configuration
@@ -77,6 +75,7 @@ export class HomePage implements OnInit {
     
     flipIt() {
       if(!this.flipped){
+        console.log('finding...')
         this.findClosestUsers()
       } 
       else{
@@ -84,10 +83,7 @@ export class HomePage implements OnInit {
         this.coffeeContainerVisibilitiy = 'visibile'
       }
     }
-    
-    profile(){
-      this.router.navigate(['user-profile'])
-    }
+
     
     ngOnInit(){
       this.authService.userInfo().subscribe(data=>{
@@ -172,38 +168,37 @@ export class HomePage implements OnInit {
     async findClosestUsers(){
       if(this.geoLatitude && this.geoLongitude) {
         this.ngZone.run(()=>this.loadClass = 'coffee-load')
+        console.log('fiiiii...')
         
         this.coffeeService.findClosestUsers(this.geoLatitude, this.geoLongitude, this.maxDistance)
         .subscribe(response=>{
+          console.log('found...')
           // loader.dismiss()
           this.coffeeContainerVisibilitiy = 'gone'
           this.ngZone.run(()=>this.loadClass = '')
-          this.localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
           this.flipped = !this.flipped
+          this.openLocalizedUsersModal()
         },error =>{
+          console.log('found (error ahah, nothing to laught)' + error)
+
           this.loadClass = ''
           console.log(error);
           this.toastService.somethingWentWrong()
         })
       }
       else{
+        console.log('else..')
+        this.toastService.alert(ENABLE_LOCALIZATION_KEY)
         this.getGeolocation()
       }
-    }
-    
-    
+    }  
     openLocalizedUsersModal(){
-      console.log(this.localizedUsers)
       this.modalController.create({
         component: LocalizedUsersComponent,
-        componentProps: {
-          localizedUsers: this.localizedUsers
-        }
       }).then(modal => {
         modal.present();
       });
-    }    
-    
+    }  
     
     onRangeChanged(){
       this.getGeolocation()

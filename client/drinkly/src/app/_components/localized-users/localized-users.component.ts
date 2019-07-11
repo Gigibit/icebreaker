@@ -27,8 +27,7 @@ export class LocalizedUsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.localizedUsers = this.navParams.get('localizedUsers');
-    console.log(this.localizedUsers)
+    this.localizedUsers = this.coffeeService.localizedUsers;
   }
   close(){
     this.modalCtrl.dismiss()
