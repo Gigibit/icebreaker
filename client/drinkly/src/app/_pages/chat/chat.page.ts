@@ -59,7 +59,7 @@ export class ChatRoomPage implements OnInit{
     this.modalCtrl.create({
       component: ViewProfileComponent,
       componentProps: {
-        localizedUserId: id
+        userId: id
       }
     }).then(modal => {
       modal.present();

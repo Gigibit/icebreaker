@@ -10,7 +10,7 @@
   <ion-list>
     
     
-    <ion-card *ngFor="let localizedUser of localizedUsers">
+    <ion-card class="white" *ngFor="let localizedUser of localizedUsers">
       <ion-card-header (click)="viewProfile(localizedUser)">
         <img class="localized-user-img" 
         onError="this.src='../../assets/imgs/user.svg';" 

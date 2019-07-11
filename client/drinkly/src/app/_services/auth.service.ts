@@ -9,7 +9,7 @@ const TOKEN_KEY = 'auth-token';
 
 const REGISTER_URL = AUTH_SERVER + '/public/users'
 const LOGIN_URL = AUTH_SERVER + '/oauth/token'
-const LOGOUT_URL = AUTH_SERVER + '/api/logout'
+const LOGOUT_URL = AUTH_SERVER + '/users/me/logout'
 const USER_INFO = AUTH_SERVER + '/users/me'
 
 //TODO: replace localstorage with nativestorage
@@ -95,7 +95,7 @@ export class AuthService {
     localStorage.removeItem(TOKEN_KEY);
     this.authToken = null;
     this.currentUserSubject.next(null);
-    return this.http.get(LOGOUT_URL)
+    return this.http.post(LOGOUT_URL,{})
   }
   
   register(form){

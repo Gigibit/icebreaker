@@ -3,8 +3,14 @@ import { User, UserMapper, LocalizedUser } from 'src/app/_models/user';
 import { ModalController, NavParams } from '@ionic/angular';
 import { UserService } from 'src/app/_services/user.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ChatService } from 'src/app/_services/chat.service';
+import { CoffeeService } from 'src/app/_services/coffe.service';
+import { ToastService } from 'src/app/_services/toast.service';
+import { ChatMapper } from 'src/app/_models/chat';
+import { Router } from '@angular/router';
 
 const OF_DISTANCE_KEY = "of_distance"
+const INVITATION_SENT = 'invitation_sent'
 
 @Component({
   selector: 'app-view-profile',
@@ -21,7 +27,11 @@ export class ViewProfileComponent implements OnInit {
   };
   constructor(
     private modalCtrl:ModalController,
+    private chatService: ChatService,
+    private coffeeService: CoffeeService,
+    private toastService: ToastService,
     private userService: UserService,
+    private router: Router,
     private translateService: TranslateService,
     private navParams: NavParams
   ) { }
@@ -31,8 +41,9 @@ export class ViewProfileComponent implements OnInit {
     const id = this.navParams.get('userId'); 
     this.userService.getUserById(id).subscribe(response=>{
       this.user = UserMapper.fromJson(response['user'])
-      if(response['distance'])
-        this.getFormattedDistance(response['distance'])
+      console.log(response)
+      if(response['user']['distance'])
+        this.getFormattedDistance(response['user']['distance'])
       console.log(this.user)
     })
   }
@@ -44,7 +55,33 @@ export class ViewProfileComponent implements OnInit {
     })
     
   }
+  invite(user: LocalizedUser){
+    this.coffeeService
+        .sendInvitation([user.user.id])
+        .subscribe(response=>{
+          this.toastService.alert( INVITATION_SENT )
+        })
+  }
 
+  chatWith(user:LocalizedUser){
+    this.chatService
+    .findOrCreate([user.user.id])
+    .subscribe(data=>{
+      let chat = ChatMapper.fromJson(data['chat'])
+      this.chatService.setActiveChat(chat)
+      this.router.navigate(['/chat', chat.id]).then( e => this.modalCtrl.dismiss())
+    })
+  }
+  viewProfile(localizedUser: LocalizedUser){
+    this.modalCtrl.create({
+      component: ViewProfileComponent,
+      componentProps: {
+        userId: localizedUser.user.id
+      }
+    }).then(modal => {
+      modal.present();
+    });
+  }
 
 
   dismiss(){

@@ -27,7 +27,7 @@ const USE_OWN_LANGUAGE = 'useMyLanguage'
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  
   filterSelectOptions = {
     header: 'filter',
     // subHeader: 'pllllll',
@@ -171,12 +171,13 @@ export class HomePage implements OnInit {
     }
     async findClosestUsers(){
       if(this.geoLatitude && this.geoLongitude) {
-        this.loadClass = 'coffee-load'
+        this.ngZone.run(()=>this.loadClass = 'coffee-load')
+        
         this.coffeeService.findClosestUsers(this.geoLatitude, this.geoLongitude, this.maxDistance)
         .subscribe(response=>{
           // loader.dismiss()
           this.coffeeContainerVisibilitiy = 'gone'
-          this.loadClass = ''
+          this.ngZone.run(()=>this.loadClass = '')
           this.localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
           this.flipped = !this.flipped
         },error =>{

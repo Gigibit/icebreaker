@@ -1,3 +1,3 @@
-export const AUTH_SERVER                = 'http://10.30.31.245:8080'
-export const SERVICE_SERVER             = 'http://10.30.31.245:8080'
-export const WEBSOCKET_SERVICE_SERVER   = 'http://10.30.31.245:8080/chat-websocket'
+export const AUTH_SERVER                = 'http://192.168.1.2:1234'
+export const SERVICE_SERVER             = 'http://192.168.1.2:1234'
+export const WEBSOCKET_SERVICE_SERVER   = 'http://192.168.1.2:1234/chat-websocket'

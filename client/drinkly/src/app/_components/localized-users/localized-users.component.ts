@@ -54,7 +54,7 @@ export class LocalizedUsersComponent implements OnInit {
     this.modalCtrl.create({
       component: ViewProfileComponent,
       componentProps: {
-        localizedUserId: localizedUser.user.id
+        userId: localizedUser.user.id
       }
     }).then(modal => {
       modal.present();

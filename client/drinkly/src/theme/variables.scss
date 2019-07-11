@@ -88,7 +88,7 @@ $color-coffee: #6e4228;
 
   --ion-font-family: 'Gloria Hallelujah', cursive;
   --ion-text-color: #222;
-  --ion-toolbar-background: #F5ECE1;
+  --ion-toolbar-background: #fff;
   --ion-item-background: transparent;
 }
 ion-segment-button{
@@ -99,17 +99,27 @@ ion-segment-button{
 }
 
 ion-content{
-  --background: #FDF9F1;
+  --background: #f1f1f1;
 }
 .toast-error{
   --background: red;
   color: #fff;
 }
 
+.border-radius-25{
+  border-radius: 25%;
+}
+.border-radius-50{
+  border-radius: 50%;
+  height: 0px!important;
+}
 ion-button{
   text-transform: none;
   --background: #6e4228;
   --color: #fff;
+}
+.white{
+  background: #fff;
 }
 
 ion-toolbar{

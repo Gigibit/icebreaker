@@ -34,13 +34,13 @@ export class UserProfilePage implements OnInit {
     private toastController: ToastController,
     private modalController: ModalController,
     private translateService : TranslateService,
-    private loadingController: LoadingController,
-    private ref: ChangeDetectorRef, 
-    private chatService: ChatService,
+    // private loadingController: LoadingController,
+    // private ref: ChangeDetectorRef, 
+    // private chatService: ChatService,
     private popoverController: PopoverController,
     private userService: UserService,
     private authService : AuthService,
-    private router: Router
+    // private router: Router
 
     ) { 
     }
@@ -65,11 +65,11 @@ export class UserProfilePage implements OnInit {
         })
       }
       
-      getChats(){
-        this.chatService.getChats().subscribe(response=>{
-          this.chats = ChatMapper.fromJsonArray(response['chats'])
-        })
-      }
+      // getChats(){
+      //   this.chatService.getChats().subscribe(response=>{
+      //     this.chats = ChatMapper.fromJsonArray(response['chats'])
+      //   })
+      // }
       
       async presentToast(text) {
         const toast = await this.toastController.create({
@@ -135,8 +135,8 @@ export class UserProfilePage implements OnInit {
           modal.present();
         });
       }
-      goToChat(chat:Chat){
-        this.chatService.setActiveChat(chat)
-        this.router.navigate(['/chat', chat.id])
-      }
+      // goToChat(chat:Chat){
+      //   this.chatService.setActiveChat(chat)
+      //   this.router.navigate(['/chat', chat.id])
+      // }
     }
