@@ -238,7 +238,16 @@ $color-coffee: #6e4228;
         transform: translateY(5%);
     }
 }
-
+ion-button.src-btn{
+    height: 50px;
+    z-index: 9999999999;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    width: 20%;
+    margin: 0 auto;
+}
 @keyframes coffee-wave {
     0% {
         transform: rotate(2deg);

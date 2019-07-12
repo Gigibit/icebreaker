@@ -68,8 +68,23 @@ export class HomePage implements OnInit {
     private toastService: ToastService,
     private loadingCtrl : LoadingController,
     private nativeGeocoder: NativeGeocoder
-    ) {
-      this.getGeolocation()
+    ) { 
+      //todo: remove mock parameters
+      this.geoLongitude = 9.164747499999999
+      this.geoLatitude = 45.480588499999996
+      const _this = this
+      window['ackSetLat'] =function(o){
+        _this.geoLatitude = o
+
+      }    
+      window['ackSetLon'] =function(o){
+        _this.geoLongitude = o
+
+      } 
+      window['ackMaxD'] =function(o){
+        _this.maxDistance = o
+
+      } 
     }
     
     
@@ -86,6 +101,8 @@ export class HomePage implements OnInit {
 
     
     ngOnInit(){
+      this.getGeolocation()
+
       this.authService.userInfo().subscribe(data=>{
         console.log(data)
       })
@@ -111,7 +128,7 @@ export class HomePage implements OnInit {
         this.getGeoencoder(this.geoLatitude,this.geoLongitude);
       }).catch((error) => {
         this.useMyPosition = false;
-        console.log(error)
+        console.log('error while getting position',error)
       });
     }
     
@@ -172,7 +189,6 @@ export class HomePage implements OnInit {
         
         this.coffeeService.findClosestUsers(this.geoLatitude, this.geoLongitude, this.maxDistance)
         .subscribe(response=>{
-          console.log('found...')
           // loader.dismiss()
           this.coffeeContainerVisibilitiy = 'gone'
           this.ngZone.run(()=>this.loadClass = '')
@@ -187,7 +203,6 @@ export class HomePage implements OnInit {
         })
       }
       else{
-        console.log('else..')
         this.toastService.alert(ENABLE_LOCALIZATION_KEY)
         this.getGeolocation()
       }
@@ -197,6 +212,10 @@ export class HomePage implements OnInit {
         component: LocalizedUsersComponent,
       }).then(modal => {
         modal.present();
+        modal.onDidDismiss().then((data)=>{
+          this.coffeeContainerVisibilitiy = 'visible'
+          this.flipped = false;
+        })
       });
     }  
     
