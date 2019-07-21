@@ -32,6 +32,7 @@
     "enable_localization": "dovresti abilitare prima i permessi di geolocalizzazione!",
     "find" : "trova!",
     "edit-profile-info": "modifica informazioni profilo",
-    "about_me" : "su di me"
+    "about_me" : "su di me",
+    "no_localized_users_were_found": "non sono state trovate persone vicino a te, che pllll"
 
 }

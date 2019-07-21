@@ -32,5 +32,6 @@
     "enable_localization": "you should enable localization before search someone!",
     "find" : "find!",
     "edit-profile-info": "edit profile info",
-    "about_me" : "about me"
+    "about_me" : "about me",
+    "no_localized_users_were_found": "no people were found near you, wtbrrr"
 }

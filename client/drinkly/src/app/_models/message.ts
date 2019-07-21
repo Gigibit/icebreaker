@@ -20,6 +20,8 @@ export class MessageMapper{
             id: data['id'],
             user: {
                 id : data['user'] && data['user']['id'],
+                firstName: data['user'] && data['user']['firstName'],
+                lastName: data['user'] && data['user']['lastName'],
                 name : data['user'] && ( data['user']['firstName'] + ' ' + data['user']['lastName'] ),
                 profileImg: data['user'] && 
                             data['user']['imageUrl'] && 

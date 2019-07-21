@@ -13,7 +13,6 @@
 
 
 <ion-content>
-  <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
 
   <ion-slides pager="true" [options]="slideOpts">
     <ion-slide  *ngIf="!userInfo">
@@ -25,7 +24,7 @@
   </ion-slides>
 
   <div class="half-page-wrapper">
-    
+    <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>    
     <div>
       <ion-label class="user-info-text">
        <div class="user-info-text-name">{{ userInfo?.name +  ( userInfo?.age ? ',' : '' )}}<p class="user-info-text-age">{{userInfo?.age}}</p></div> 

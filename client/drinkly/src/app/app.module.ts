@@ -47,7 +47,7 @@ import { ImageModalComponent } from './_components/image-modal/image-modal.compo
 import { OneSignal } from '@ionic-native/onesignal/ngx'
 import { UserProfilePopoverComponent } from './_components/user-profile-popover/user-profile-popover.component';
 import { EditUserProfileComponent } from './_components/edit-user-profile/edit-user-profile.component';
-import { SortablejsModule } from 'ngx-sortablejs'
+import { DragulaModule } from 'ng2-dragula';
 
 
 function createTranslateLoader(http: HttpClient) {
@@ -75,7 +75,7 @@ function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     ChatRoomPageModule,
     HttpModule,
-    SortablejsModule.forRoot({ animation: 150 }),
+    DragulaModule.forRoot(),
     HttpClientModule,
 //    SharedModule,
     FormsModule,

@@ -11,8 +11,8 @@ export function timeSince(date:string) {
     else return ""
 }
 export function isOnline(date: string){
-  const fifteenMinutesAgo = moment().subtract(15, 'minutes')
-  return moment(date).isAfter(fifteenMinutesAgo) ;
+  window['moment'] = moment
+  return date && moment(date).isAfter(moment().subtract(15, 'minutes')) ;
 }
 
 export function age(date: string){

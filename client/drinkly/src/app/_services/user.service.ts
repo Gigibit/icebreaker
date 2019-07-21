@@ -5,7 +5,7 @@ import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/n
 import { AUTH_SERVER, SERVICE_SERVER } from '../config';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx'
 import { Platform } from '@ionic/angular';
-import { User, UserMapper } from '../_models/user';
+import { User, UserMapper, UpdatableUserInfo } from '../_models/user';
 import { concatMap, concat } from 'rxjs/operators';
 import { of } from 'rxjs';
 const ID = "%ID%"
@@ -13,7 +13,7 @@ const ID = "%ID%"
 const CONTEXT = AUTH_SERVER + '/api/get-context'
 const UPLOAD_URL = SERVICE_SERVER + "/users/me/images"
 const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/users/me/image"
-const UPDATE_BIO = SERVICE_SERVER + "/users/me"
+const UPDATE_INFO = SERVICE_SERVER + "/users/me"
 const USER_INFO = SERVICE_SERVER + "/api/get-user-info/"
 const PROPS_HIM = SERVICE_SERVER + "/api/props/"
 const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
@@ -48,14 +48,13 @@ export class UserService {
       return this.http.get( GET_USER_BY_ID.replace(ID, id))
     }
 
-    updateBio(bio:String){
-      return this.http.post(UPDATE_BIO, {
-        bio: bio
+    updateInfo(info:UpdatableUserInfo){
+      return this.http.post(UPDATE_INFO, {
+        bio: info.bio,
+        gender: info.gender,
+        imagesIds: info.imagesSorting
       }).pipe(concatMap( response => {
-        let user = this.auth.currentUserValue
-        let userResponse = UserMapper.fromJson(response)
-        user.bio = userResponse.bio
-        this.auth.contextRefresh(user)
+        this.auth.contextRefresh(UserMapper.fromJson(response))
         return of(response)
       }))
     }

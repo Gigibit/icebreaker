@@ -58,7 +58,6 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
     maxResults: 5
   };
   constructor(
-    private modalController: ModalController,
     private coffeeService: CoffeeService,
     private userService: UserService,
     private geolocation: Geolocation,
@@ -66,10 +65,8 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
     private ngZone: NgZone,
     private oneSignal: OneSignal,
     private router: Router,
-    private renderer: Renderer,
     private authService: AuthService,
     private toastService: ToastService,
-    private loadingCtrl : LoadingController,
     private nativeGeocoder: NativeGeocoder
     ) { 
       //todo: remove mock parameters
@@ -209,7 +206,7 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
         
         this.coffeeService.findClosestUsers(this.geoLatitude, this.geoLongitude, this.maxDistance)
         .subscribe(response=>{
-          // loader.dismiss()
+
           this.coffeeContainerVisibilitiy = 'gone'
           this.ngZone.run(()=>this.loadClass = '')
           this.flipped = true
@@ -229,7 +226,6 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
     }  
     openLocalizedUsersModal(){
       this.router.navigate(['localized-users'])
-      
     }  
     
     
