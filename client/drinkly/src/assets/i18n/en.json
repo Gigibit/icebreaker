@@ -30,5 +30,7 @@
     "birthday" : "birthday",
     "birthday_required" : "birthday required!",
     "enable_localization": "you should enable localization before search someone!",
-    "find" : "find!"
+    "find" : "find!",
+    "edit-profile-info": "edit profile info",
+    "about_me" : "about me"
 }

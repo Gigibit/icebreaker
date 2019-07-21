@@ -1,16 +1,21 @@
+import { age } from '../_utils/functions';
+
 // export const DEFAULT_USER_IMG = '../../assets/imgs/user.svg'
 
 export interface User{
     name: string
-    age?: number
+    age?: string
     id?: string
     profileImg: string
     description?: string
     images? : string[]
+    bio? : string
     props? : string[]
     iLike?:  boolean
     loginType?: LoginType
     token? : string
+    lastSeen? : string
+    createdAt? : string
     address?: string
 }
 export interface LocalizedUser{
@@ -45,16 +50,20 @@ export class LocalizedUserMapper{
 
 export class UserMapper{
     static fromJson(data:any): User{
-        console.log(data['user']['id'])
+        window['user'] = data
+        window['ageFn'] = age
         return data ? {
             name: data['user']['firstName'] + ' ' + data['user']['lastName'],
-            age: data['age'],
+            age: age(data['user']['birthday']),
             id: data['user']['id'],
+            bio: data['user']['bio'],
             profileImg: data['user']['imageUrl'],
             description: data['description'],
             iLike: data['has_propsed'],
             images: data['images'],
             props: data['props'],
+            lastSeen: data['lastSeen'],
+            createdAt: data['createdAt'],
             address: data['address'],
             token: data['token']
         } : null

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone,  Renderer } from '@angular/core';
+import { Component, OnInit, NgZone,  Renderer, OnDestroy } from '@angular/core';
 import { NativeGeocoderOptions, NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { ModalController, PopoverController, LoadingController } from '@ionic/angular';
 import { CoffeeService } from '../../_services/coffe.service';
@@ -7,12 +7,14 @@ import { AuthService } from '../../_services/auth.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { joinWithCommaOrEmpty } from '../../_utils/functions';
 import { ToastService } from '../../_services/toast.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Place } from '../../_components/autocomplete/autocomplete-input.component';
-import { LocalizedUsersComponent } from '../../_components/localized-users/localized-users.component';
+import { LocalizedUsersComponent } from '../localized-users/localized-users.page';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { from } from 'rxjs';
-
+import { from, Subscription } from 'rxjs';
+import { promptEnter } from 'src/app/_animations/promptEnter';
+import { promptExit } from 'src/app/_animations/promptExit';
+import { OnEnter } from '../../_helpers/on-enter.interface'
 
 const USE_OWN_LOCATION = 'useMyPosition'
 const USE_OWN_LANGUAGE = 'useMyLanguage'
@@ -25,7 +27,7 @@ const ENABLE_LOCALIZATION_KEY = 'enable_localization'
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnEnter, OnDestroy {
   
   filterSelectOptions = {
     header: 'filter',
@@ -47,6 +49,7 @@ export class HomePage implements OnInit {
   watchLocationUpdates:any; 
   loading:any;
   isWatching:boolean;
+  private navSubscription: Subscription;
   userImg:string
   loadClass: string = ''
   //Geocoder configuration
@@ -75,34 +78,40 @@ export class HomePage implements OnInit {
       const _this = this
       window['ackSetLat'] =function(o){
         _this.geoLatitude = o
-
+        
       }    
       window['ackSetLon'] =function(o){
         _this.geoLongitude = o
-
+        
       } 
       window['ackMaxD'] =function(o){
         _this.maxDistance = o
-
+        
       } 
     }
     
     
     flipIt() {
-      if(!this.flipped){
+      if(this.flipped == false){
         console.log('finding...')
         this.findClosestUsers()
       } 
       else{
-        this.flipped = !this.flipped;
+        this.flipped = true;
         this.coffeeContainerVisibilitiy = 'visibile'
       }
     }
-
     
-    ngOnInit(){
+    
+    public async ngOnInit(): Promise<void> {
       this.getGeolocation()
-
+      await this.onEnter();
+      
+      this.navSubscription = this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd && event.url === '/tabs/home') {
+          this.onEnter();
+        }
+      });
       this.authService.userInfo().subscribe(data=>{
         console.log(data)
       })
@@ -182,6 +191,17 @@ export class HomePage implements OnInit {
       }
       return address.slice(0, -2);
     }
+    public async onEnter(): Promise<void> {
+      // do your on enter page stuff here
+      setTimeout(()=>{
+        this.coffeeContainerVisibilitiy = 'visible'
+        this.flipped = false;
+      },100)
+    }
+    
+    public ngOnDestroy(): void {
+      this.navSubscription.unsubscribe();
+    }
     async findClosestUsers(){
       if(this.geoLatitude && this.geoLongitude) {
         this.ngZone.run(()=>this.loadClass = 'coffee-load')
@@ -192,11 +212,11 @@ export class HomePage implements OnInit {
           // loader.dismiss()
           this.coffeeContainerVisibilitiy = 'gone'
           this.ngZone.run(()=>this.loadClass = '')
-          this.flipped = !this.flipped
+          this.flipped = true
           this.openLocalizedUsersModal()
         },error =>{
           console.log('found (error ahah, nothing to laught)' + error)
-
+          
           this.loadClass = ''
           console.log(error);
           this.toastService.somethingWentWrong()
@@ -208,16 +228,10 @@ export class HomePage implements OnInit {
       }
     }  
     openLocalizedUsersModal(){
-      this.modalController.create({
-        component: LocalizedUsersComponent,
-      }).then(modal => {
-        modal.present();
-        modal.onDidDismiss().then((data)=>{
-          this.coffeeContainerVisibilitiy = 'visible'
-          this.flipped = false;
-        })
-      });
+      this.router.navigate(['localized-users'])
+      
     }  
+    
     
     onRangeChanged(){
       this.getGeolocation()

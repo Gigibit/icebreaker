@@ -30,6 +30,8 @@
     "birthday": "data di nascita",
     "birthday_required" : "data di nascita obbligatoria!",
     "enable_localization": "dovresti abilitare prima i permessi di geolocalizzazione!",
-    "find" : "trova!"
+    "find" : "trova!",
+    "edit-profile-info": "modifica informazioni profilo",
+    "about_me" : "su di me"
 
 }

@@ -13,52 +13,32 @@
 
 
 <ion-content>
-    <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
+  <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
 
-  <div class="userInfo" *ngIf="userInfo">
-    <ion-avatar class="profileImage" (click)="editProfileImg()">
-      <img 
-      onError="this.src='../../assets/imgs/user.svg';"       
-      [src]="userInfo.profileImg" />
-    </ion-avatar>
-    <ion-label class="user-name">{{userInfo.name}} {{userInfo.surname}}</ion-label>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide  *ngIf="!userInfo">
+      <ion-skeleton-text class="fake-slide" animated></ion-skeleton-text>
+    </ion-slide>
+    <ion-slide  *ngFor="let img of userInfo?.images">
+      <img [src]="img">
+    </ion-slide>
+  </ion-slides>
+
+  <div class="half-page-wrapper">
+    
+    <div>
+      <ion-label class="user-info-text">
+       <div class="user-info-text-name">{{ userInfo?.name +  ( userInfo?.age ? ',' : '' )}}<p class="user-info-text-age">{{userInfo?.age}}</p></div> 
+      </ion-label>
+      <ion-label class="user-info-text">
+          <p>{{userInfo?.bio}}</p>
+      </ion-label>
+      
+    </div>
+    <span class="coffee-stain" *ngIf="userInfo?.images?.length == 0"></span>
   </div>
-  <div class="userInfo" *ngIf="!userInfo">
-    <ion-avatar class="profileImageSkeleton" slot="start">
-      <ion-skeleton-text animated></ion-skeleton-text>
-    </ion-avatar>
-    <ion-skeleton-text class="user-name" animated></ion-skeleton-text>
-  </div>
+  <ion-button class="edit-btn" (click)="editProfile()">
+    {{'edit' | translate}}
+  </ion-button>
   
-  
-  <h3 *ngIf="userInfo?.images?.length == 0" text-center>{{ 'please_add_image' | translate }}</h3>
-  <ion-grid>
-    <!-- <ion-row *ngFor="let rowData of images; index as pos">
-      <ion-col col-6 col-md-4 col-xl-3 *ngFor="let img of rowData; index as pos">
-        <div class="image-container">
-          <img *ngIf="img" [src]="img" (click)="openPreview(img)"/>
-        </div>
-      </ion-col>
-    </ion-row> -->
-    <ion-row>
-      <ion-col class="image-container-wrapper" (click)="editImage(1)" col-6 col-md-4 col-xl-3 >
-        <div class="image-container first-image">
-          <img *ngIf="userInfo?.images && userInfo?.images.length > 0 && userInfo?.images[0]" class="user-image" [src]="userInfo?.images[0]">
-          <ion-icon class="edit-icon" name="create"></ion-icon>
-        </div>
-      </ion-col>
-      <ion-col class="image-container-wrapper" (click)="editImage(2)" col-6 col-md-4 col-xl-3>
-        <div class="image-container second-image">
-          <img *ngIf="userInfo?.images && userInfo?.images.length > 1 && userInfo?.images[1]" class="user-image" [src]="userInfo?.images[1]">
-          <ion-icon class="edit-icon" name="create"></ion-icon>
-        </div>
-      </ion-col>
-      <ion-col class="image-container-wrapper" (click)="editImage(3)" col-6 col-md-4 col-xl-3 >
-        <div class="image-container third-image">
-          <img *ngIf="userInfo?.images && userInfo?.images.length > 2 && userInfo?.images[2]" class="user-image" [src]="userInfo?.images[2]">
-          <ion-icon class="edit-icon" name="create"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </ion-content>

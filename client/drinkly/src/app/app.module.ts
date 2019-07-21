@@ -43,12 +43,12 @@ import { iosTransitionAnimation } from './_utils/transitions';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { ImageModalComponent } from './_components/image-modal/image-modal.component';
-import { LocalizedUsersComponent } from './_components/localized-users/localized-users.component';
 
 import { OneSignal } from '@ionic-native/onesignal/ngx'
 import { UserProfilePopoverComponent } from './_components/user-profile-popover/user-profile-popover.component';
-import { ViewProfileComponent } from './_components/view-profile/view-profile.component';
-import { LandingPipe } from './landing.pipe';
+import { EditUserProfileComponent } from './_components/edit-user-profile/edit-user-profile.component';
+import { SortablejsModule } from 'ngx-sortablejs'
+
 
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -59,18 +59,14 @@ function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     ImageModalComponent, 
-    LocalizedUsersComponent,
     UserProfilePopoverComponent,
-    ViewProfileComponent,
-    LandingPipe
-
-  ],
+    EditUserProfileComponent
+    ],
   entryComponents: [ 
     ImageModalComponent, 
-    LocalizedUsersComponent,
     UserProfilePopoverComponent,
-    ViewProfileComponent
-  ],
+    EditUserProfileComponent
+    ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot({  
@@ -79,6 +75,7 @@ function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     ChatRoomPageModule,
     HttpModule,
+    SortablejsModule.forRoot({ animation: 150 }),
     HttpClientModule,
 //    SharedModule,
     FormsModule,

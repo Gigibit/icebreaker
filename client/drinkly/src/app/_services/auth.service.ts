@@ -85,7 +85,6 @@ export class AuthService {
   
   contextRefresh(user:User){
     localStorage.setItem('currentUser', JSON.stringify(user));
-    console.log('userimage in context refresh',user.profileImg)
     this.currentUserSubject.next(user);
   }
   

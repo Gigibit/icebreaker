@@ -5,12 +5,15 @@ import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/n
 import { AUTH_SERVER, SERVICE_SERVER } from '../config';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx'
 import { Platform } from '@ionic/angular';
-import { User } from '../_models/user';
+import { User, UserMapper } from '../_models/user';
+import { concatMap, concat } from 'rxjs/operators';
+import { of } from 'rxjs';
 const ID = "%ID%"
 
 const CONTEXT = AUTH_SERVER + '/api/get-context'
 const UPLOAD_URL = SERVICE_SERVER + "/users/me/images"
 const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/users/me/image"
+const UPDATE_BIO = SERVICE_SERVER + "/users/me"
 const USER_INFO = SERVICE_SERVER + "/api/get-user-info/"
 const PROPS_HIM = SERVICE_SERVER + "/api/props/"
 const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
@@ -45,9 +48,19 @@ export class UserService {
       return this.http.get( GET_USER_BY_ID.replace(ID, id))
     }
 
+    updateBio(bio:String){
+      return this.http.post(UPDATE_BIO, {
+        bio: bio
+      }).pipe(concatMap( response => {
+        let user = this.auth.currentUserValue
+        let userResponse = UserMapper.fromJson(response)
+        user.bio = userResponse.bio
+        this.auth.contextRefresh(user)
+        return of(response)
+      }))
+    }
 
-
-    uploadImage(index: number, sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null) {
+    uploadImage(index: number, sourceType: PictureSourceType, onError: (error)=>void = null) {
       if(index > 3) return;
       var options: CameraOptions = {
         quality: 100,
@@ -84,9 +97,7 @@ export class UserService {
             return user;
           });
         }
-        if(onUri){
-          // onUri(imageData)
-        }
+
       }, err=>{
         console.log(err)
       });
@@ -126,9 +137,7 @@ export class UserService {
             return user
           });
         }
-        if(onUri){
-          // onUri(imageData)
-        }
+        
       }, err=>{
         console.log(err)
       });

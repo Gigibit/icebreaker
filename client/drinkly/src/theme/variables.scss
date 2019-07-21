@@ -23,7 +23,7 @@ $color-coffee: #6e4228;
   --ion-color-primary-tint: #D2B48C;
 
   /** secondary **/
-  --ion-color-secondary: #F5ECE1;
+  --ion-color-secondary: #FDF9F1;
   --ion-color-secondary-rgb: 12, 209, 232;
   --ion-color-secondary-contrast: #222222;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
@@ -90,6 +90,9 @@ $color-coffee: #6e4228;
   --ion-text-color: #222;
   --ion-toolbar-background: #fff;
   --ion-item-background: transparent;
+  
+  --ion-tab-bar-background:#FDF9F1;
+  --ion-tabs-background-color:var(--ion-tab-bar-background, #FDF9F1);
 }
 ion-segment-button{
   color: #222;
@@ -99,7 +102,7 @@ ion-segment-button{
 }
 
 ion-content{
-  --background: #f1f1f1;
+  --background: #fff;
 }
 .toast-error{
   --background: red;
@@ -111,6 +114,8 @@ ion-content{
 }
 .border-radius-50{
   border-radius: 50%;
+}
+.height-0{
   height: 0px!important;
 }
 ion-button{

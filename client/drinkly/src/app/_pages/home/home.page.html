@@ -17,7 +17,7 @@
     <ion-icon slot="end" name="walk"></ion-icon>
   </ion-range>
   
-    <div id="player" class="player" [ngClass]="flipped ?'border-radius-50':'border-radius-25'" [class.voted]="flipped">
+    <div class="player border-radius-50" [ngClass]="flipped ?'height-0':''" [class.voted]="flipped">
       <div class="front flippable" (click)="flipIt()" >
         <div id="container flippable" >
           <div class="coffee-container flippable">

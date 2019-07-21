@@ -10,6 +10,14 @@ export function timeSince(date:string) {
     if(date) return moment(date).fromNow()
     else return ""
 }
+export function isOnline(date: string){
+  const fifteenMinutesAgo = moment().subtract(15, 'minutes')
+  return moment(date).isAfter(fifteenMinutesAgo) ;
+}
+
+export function age(date: string){
+  return date ? "" + moment().diff(date, 'years') : ""
+}
 export function removeObjectFromArray(array: any[],obj:any){
     const index = array.indexOf(obj, 0);
     if (index > -1) {

@@ -8,7 +8,7 @@ import { ActivatedRoute } from "@angular/router";
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { Chat } from 'src/app/_models/chat';
-import { ViewProfileComponent } from 'src/app/_components/view-profile/view-profile.component';
+import { ViewProfileComponent } from 'src/app/_pages/view-profile/view-profile.page';
  
 @Component({
   selector: 'app-chat',
