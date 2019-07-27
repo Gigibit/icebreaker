@@ -11,7 +11,6 @@ export function timeSince(date:string) {
     else return ""
 }
 export function isOnline(date: string){
-  window['moment'] = moment
   return date && moment(date).isAfter(moment().subtract(15, 'minutes')) ;
 }
 

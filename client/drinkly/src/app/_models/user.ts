@@ -48,7 +48,7 @@ export class LocalizedUserMapper{
                 id : data['user']['id'],
                 firstName :  data['user']['firstName'],
                 lastName:  data['user']['lastName'],
-                name: data['user']['firstName'] + ' ' + data['user']['lastName'],
+                name: data['user']['firstName'] ,
                 profileImg: data['user']['imageUrl'],
                 age: age(data['user']['birthday']),
                 lastSeen : data['user']['lastSeen']
@@ -66,7 +66,7 @@ export class UserMapper{
         return data ? {
             firstName : data['user']['firstName'],
             lastName: data['user']['lastName'],
-            name: data['user']['firstName'] + ' ' + data['user']['lastName'],
+            name: data['user']['firstName'],
             age: age(data['user']['birthday']),
             id: data['user']['id'],
             bio: data['user']['bio'],

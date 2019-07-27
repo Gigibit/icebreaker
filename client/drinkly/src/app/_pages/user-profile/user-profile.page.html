@@ -27,7 +27,9 @@
     <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>    
     <div>
       <ion-label class="user-info-text">
-       <div class="user-info-text-name">{{ userInfo?.name +  ( userInfo?.age ? ',' : '' )}}<p class="user-info-text-age">{{userInfo?.age}}</p></div> 
+       <div *ngIf="userInfo" class="user-info-text-name">{{ userInfo?.name +  ( userInfo?.age ? ',' : '' )}}
+         <p class="user-info-text-age">{{userInfo?.age}}</p>
+        </div> 
       </ion-label>
       <ion-label class="user-info-text">
           <p>{{userInfo?.bio}}</p>

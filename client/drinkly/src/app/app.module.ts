@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -55,6 +55,25 @@ function createTranslateLoader(http: HttpClient) {
 }
 
 
+// import { Injectable } from "@angular/core";
+// import { HammerGestureConfig } from "@angular/platform-browser";
+
+// @Injectable()
+// export class IonicGestureConfig extends HammerGestureConfig {
+//   buildHammer(element: HTMLElement) {
+//     const mc = new (<any>window).Hammer(element);
+
+//     for (const eventName in this.overrides) {
+//       if (eventName) {
+//         mc.get(eventName).set(this.overrides[eventName]);
+//       }
+//     }
+
+//     return mc;
+//   }
+// }
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +90,7 @@ function createTranslateLoader(http: HttpClient) {
     BrowserModule, 
     IonicModule.forRoot({  
       navAnimation: iosTransitionAnimation,
+      mode: 'ios'
     }), 
     AppRoutingModule,
     ChatRoomPageModule,
@@ -107,7 +127,8 @@ function createTranslateLoader(http: HttpClient) {
     FileTransfer,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    // { provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig },
   ],
   bootstrap: [AppComponent]
 })

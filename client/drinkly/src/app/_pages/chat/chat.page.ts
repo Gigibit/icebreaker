@@ -39,21 +39,28 @@ export class ChatRoomPage implements OnInit{
   }
   ngOnInit(){
     this.chat = this.chatService.getActiveChat()
-    window['chat'] = this.chat
     this.route.paramMap.subscribe(params=>{
       this.chatKey = params.get('with')
-      console.log(params)
+      this.chatService.getMessages(this.chatKey).subscribe(data=>{
+        data.forEach(message=>{
+          this.messages.push(message)
+          this.toBottom()
+        })
+      })
+
       this.chatService.connect(this.chatKey,()=>{
-       this.chatService.getMessages()
+       this.chatService.bindToMessages()
        .subscribe(message => {
         this.messages.push(message);
-        setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
+        this.toBottom()
        })
       }) 
     })
     
   }
-
+  toBottom(){
+    setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
+  }
 
   viewProfile(id: string){
     this.modalCtrl.create({

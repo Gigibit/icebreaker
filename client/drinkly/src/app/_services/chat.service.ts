@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SERVICE_SERVER, WEBSOCKET_SERVICE_SERVER } from '../config';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { MessageMapper } from '../_models/message';
+import { MessageMapper, Message } from '../_models/message';
 import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { AuthService } from './auth.service';
 import { Chat } from '../_models/chat';
+import { concat, concatMap } from 'rxjs/operators';
 
 
 const KEY = '%KEY%'
@@ -47,14 +47,14 @@ export class ChatService {
         console.log('Connected: ' + frame);
       });
     }
-   
+    
     setActiveChat(chat: Chat){
       this.activeChat = chat
     }
     getActiveChat(){
       return this.activeChat;
     }
-
+    
     sendMessage(msg : string) {
       if(this.key == null) throw new Error('key must not be null!');
       this.stompClient.send(
@@ -78,35 +78,36 @@ export class ChatService {
         })
       }
       
-      getMessages() {
+      
+      getMessages(key: string): Observable<Message[]>{
+        const _this = this;
+        return this.http.get(MESSAGE_API_URL.replace(KEY, key))
+        .pipe(concatMap(response=>{
+          let messages = MessageMapper.fromJsonArray(response['chatLines'])
+          setTimeout(()=> {
+            let ids = messages
+            .filter(message=> message.readBy.indexOf(this.userId) == -1)
+            .map(message=> message.id)
+            if(ids.length > 0){
+              _this.pingMessageRead(ids);
+            }
+          });
+          return of(messages)
+        }));
+      }
+      
+      bindToMessages() {
         if(this.key == null) throw new Error('key must not be null!');
         const _this = this;
-        
-        let observable = new Observable(observer => {
-          this.http.get(MESSAGE_API_URL.replace(KEY, this.key)).subscribe(response=> {
-            let messages = MessageMapper.fromJsonArray(response['chatLines'])
-            messages.forEach(message => {
-              observer.next(message);    
-            });
-            
-            setTimeout(()=> {
-              let ids = messages
-              .filter(message=> message.readBy.indexOf(this.userId) == -1)
-              .map(message=> message.id)
-              if(ids.length > 0){
-                _this.pingMessageRead(ids);
-              }
-            })
-            
-            _this.stompClient.subscribe( '/user/chat/' + this.key, function (data) {
-              if(data['body']){
-                let message = MessageMapper.fromJson(JSON.parse(data['body']))
-                observer.next(message);
-                setTimeout(()=> {
-                  _this.pingMessageRead([message.id])
-                })
-              }
-            });
+        let observable = new Observable(observer => {  
+          _this.stompClient.subscribe( '/user/chat/' + this.key, function (data) {
+            if(data['body']){
+              let message = MessageMapper.fromJson(JSON.parse(data['body']))
+              observer.next(message);
+              setTimeout(()=> {
+                _this.pingMessageRead([message.id])
+              })
+            }
           });
         });
         return observable;
