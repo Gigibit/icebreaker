@@ -39,8 +39,6 @@ export enum LoginType{
 
 export class LocalizedUserMapper{
     static fromJson(data: any): LocalizedUser{
-        console.log('mapping user',data)
-        console.log('lastSeen', data['user']['lastSeen'])
         return {
             address  : data['address'],
             distance : data['distance'],

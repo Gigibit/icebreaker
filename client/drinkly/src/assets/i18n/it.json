@@ -33,6 +33,11 @@
     "find" : "trova!",
     "edit-profile-info": "modifica informazioni profilo",
     "about_me" : "su di me",
-    "no_localized_users_were_found": "non sono state trovate persone vicino a te, che pllll"
-
+    "no_localized_users_were_found": "non sono state trovate persone vicino a te, che pllll",
+    "no_messages" : "non ci sono ancora messaggi...",
+    "coffee_group" : "crea un coffee group!",
+    "login_disclaimer": "creando un nuovo account o eseguendo il login, confirmi di accettare le nostre",
+    "terms" : "condizioni di utilizzo",
+    "privacy_policy" : "l'informativa sulla Privacy",
+    "and" : "e"
 }

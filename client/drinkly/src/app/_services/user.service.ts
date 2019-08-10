@@ -54,125 +54,143 @@ export class UserService {
         gender: info.gender,
         imagesIds: info.imagesSorting
       }).pipe(concatMap( response => {
-        this.auth.contextRefresh(UserMapper.fromJson(response))
-        return of(response)
+        this.auth.contextRefresh(UserMapper.fromJson(response['context']))
+        return of(response['context'])
       }))
     }
 
-    uploadImage(index: number, sourceType: PictureSourceType, onError: (error)=>void = null) {
-      if(index > 3) return;
-      var options: CameraOptions = {
-        quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
-        sourceType: sourceType,
-        saveToPhotoAlbum: false,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-        targetWidth: 400,
-        targetHeight: 400,
-        correctOrientation: true
-      };
-      this.camera.getPicture(options).then((imageData) => {
-        if (this.platform.is('mobileweb') || this.platform.is('desktop'))
-        {
-          imageData = "data:image/jpeg;base64," + imageData;
-          const formData = new FormData();
-          const imgBlob = this.dataURItoBlob(imageData);
-          formData.append('image', imgBlob, this.createFileName());
-          this.uploadImageData(UPLOAD_URL + `/${index}`, formData, (user, response)=>{
-            if(!user.images){
-              user.images = new Array(3)
-            }
-            user.images[index - 1 ] = response['url']
-            return user;
-          });
-        }
-        else{
-          this.uploadUri(UPLOAD_URL + `/${index}`, imageData, (user, response)=>{
-            if(!user.images){
-              user.images = new Array(3)
-            }
-            user.images[index - 1 ] = response['url']
-            return user;
-          });
-        }
+    uploadImage(index: number, sourceType: PictureSourceType) : Promise<User> {
+      return new Promise<User>((resolve, reject)=>{
+        if(index > 3) return;
+        var options: CameraOptions = {
+          quality: 100,
+          destinationType: this.camera.DestinationType.FILE_URI,
+          sourceType: sourceType,
+          saveToPhotoAlbum: false,
+          encodingType: this.camera.EncodingType.JPEG,
+          mediaType: this.camera.MediaType.PICTURE,
+          allowEdit: true,
+          targetWidth: 1080,
+          targetHeight: 1226,
+          correctOrientation: true
+        };
+        this.camera.getPicture(options).then((imageData) => {
+          if (this.platform.is('mobileweb') || this.platform.is('desktop'))
+          {
+            imageData = "data:image/jpeg;base64," + imageData;
+            const formData = new FormData();
+            const imgBlob = this.dataURItoBlob(imageData);
+            formData.append('image', imgBlob, this.createFileName());
+            this.uploadImageData(UPLOAD_URL + `/${index}`, formData, (user, response)=>{
+              if(!user.images){
+                user.images = new Array(3)
+              }
+              user.images[index - 1 ] = response['url']
+              return user;
+            })
+            .then((user)=>resolve(user))
+            .catch((err)=>reject(err));
+          }
+          else{
+            this.uploadUri(UPLOAD_URL + `/${index}`, imageData, (user, response)=>{
+              if(!user.images){
+                user.images = new Array(3)
+              }
+              user.images[index - 1 ] = response['url']
+              return user;
+            })           
+            .then((user)=>resolve(user))
+            .catch((err)=>reject(err));
+          }
+  
+        }, err=>{
+          reject(err)
+        });
+      })
 
-      }, err=>{
-        console.log(err)
-      });
     }
 
 
     
-    udateProfileImg(sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null) {
-      var options: CameraOptions = {
-        quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
-        sourceType: sourceType,
-        saveToPhotoAlbum: false,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-        targetWidth: 400,
-        targetHeight: 400,
-        correctOrientation: true
-      };
-      this.camera.getPicture(options).then((imageData) => {
-        if (this.platform.is('mobileweb') || this.platform.is('desktop'))
-        {
-          imageData = "data:image/jpeg;base64," + imageData;
-          const formData = new FormData();
-          const imgBlob = this.dataURItoBlob(imageData);
-          formData.append('image', imgBlob, this.createFileName());
-          this.uploadImageData(UPDATE_PROFILE_IMG_URL, formData, (user,response)=>{
-            console.log('image successful updated -->' + response['url'] )
-            user.profileImg = response['url']
-            return user
-          });
-        }
-        else{
-          this.uploadUri(UPDATE_PROFILE_IMG_URL, imageData, (user,response)=>{
-            console.log('image successful updated -->' + response['url'] )
-            user.profileImg = response['url']
-            return user
-          });
-        }
-        
-      }, err=>{
-        console.log(err)
-      });
+    udateProfileImg(sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null):Promise<User> {
+      return new Promise((resolve, reject)=>{
+        var options: CameraOptions = {
+          quality: 100,
+          destinationType: this.camera.DestinationType.FILE_URI,
+          sourceType: sourceType,
+          saveToPhotoAlbum: false,
+          encodingType: this.camera.EncodingType.JPEG,
+          mediaType: this.camera.MediaType.PICTURE,
+          targetWidth: 400,
+          targetHeight: 400,
+          correctOrientation: true
+        };
+        this.camera.getPicture(options).then((imageData) => {
+          if (this.platform.is('mobileweb') || this.platform.is('desktop'))
+          {
+            imageData = "data:image/jpeg;base64," + imageData;
+            const formData = new FormData();
+            const imgBlob = this.dataURItoBlob(imageData);
+            formData.append('image', imgBlob, this.createFileName());
+            this.uploadImageData(UPDATE_PROFILE_IMG_URL, formData, (user,response)=>{
+              console.log('image successful updated -->' + response['url'] )
+              user.profileImg = response['url']
+              return user
+            }) .then((user)=>resolve(user))
+            .catch((err)=>reject(err));
+          }
+          else{
+            this.uploadUri(UPDATE_PROFILE_IMG_URL, imageData, (user,response)=>{
+              console.log('image successful updated -->' + response['url'] )
+              user.profileImg = response['url']
+              return user
+            }).then((user)=>resolve(user))
+            .catch((err)=>reject(err));;
+          }
+          
+        }, err=>{
+          reject(err)
+        });
+      })
+  
     }
 
 
     //todo: check request whether is an profile or  generic image
-    uploadUri(upload_url, uri, getUpdatedUser:(user:User,response: any)=>User){
-      
-      let options: FileUploadOptions = {
-        fileKey: 'image',
-        chunkedMode: false,
-        mimeType: "image/jpeg",
-        headers: {
-          'Authorization' : 'Bearer ' + this.auth.authToken
-        },
-        fileName :  this.createFileName()
-      }
-      this.fileTransfer.upload(encodeURI(uri), upload_url, options)
-      .then(data=>{
-        console.log(data)
-        console.log('image successful updated -->', JSON.parse(data.response) )
-        let user = getUpdatedUser(this.auth.currentUserValue, JSON.parse(data.response))
-        console.log('user in upload image data-->', user)
-        this.auth.contextRefresh(user)
+    uploadUri(upload_url, uri, getUpdatedUser:(user:User,response: any)=>User): Promise<User>{
+      return new Promise((resolve, reject)=>{
+        let options: FileUploadOptions = {
+          fileKey: 'image',
+          chunkedMode: false,
+          mimeType: "image/jpeg",
+          headers: {
+            'Authorization' : 'Bearer ' + this.auth.authToken
+          },
+          fileName :  this.createFileName()
+        }
+        this.fileTransfer.upload(encodeURI(uri), upload_url, options)
+        .then(data=>{
+          console.log(data)
+          console.log('image successful updated -->', JSON.parse(data.response) )
+          let user = getUpdatedUser(this.auth.currentUserValue, JSON.parse(data.response))
+          console.log('user in upload image data-->', user)
+          this.auth.contextRefresh(user)
+          resolve(user)
+        })
+        .catch( (err) => reject(err));
       })
-      .catch( (err) => console.log(err));
+  
     }
-    uploadImageData(upload_url, formData: FormData, getUpdatedUser:(user:User,response: any)=>User) {
-      return this.http.post(upload_url, formData ).subscribe(__response => {
-        alert(__response)
-        console.log('image successful updated -->' + __response['url'] )
-        let user = getUpdatedUser(this.auth.currentUserValue, __response)
-        console.log('user in upload image data-->', user)
-        this.auth.contextRefresh(user)
-      });
+    uploadImageData(upload_url, formData: FormData, getUpdatedUser:(user:User,response: any)=>User) : Promise<User> {
+      return new Promise<User>((resolve, reject)=>{
+        this.http.post(upload_url, formData ).subscribe(__response => {
+          console.log('image successful updated -->' + __response['url'] )
+          let user = getUpdatedUser(this.auth.currentUserValue, __response)
+          console.log('user in upload image data-->', user)
+          this.auth.contextRefresh(user)
+          resolve(user)
+        }, throwable=> reject(throwable));
+      })
     }
     
     subscribeToPushNotifications(id:string, pushToken: string){

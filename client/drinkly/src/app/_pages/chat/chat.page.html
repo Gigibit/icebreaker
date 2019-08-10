@@ -4,13 +4,13 @@
         <ion-buttons slot="start"  (click)="location.back()">
           <ion-icon name="ios-arrow-back"></ion-icon>
         </ion-buttons>
-        <h3>{{chat.name}}</h3>
+        <h3 class="chat-name">{{chat.name}}</h3>
         <!-- <ion-title text-center>
           {{'register_page_title'| translate}}
         </ion-title> -->
-        <!-- <ion-buttons slot="end">
-          <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
-        </ion-buttons> -->
+        <ion-buttons slot="end">
+          <ion-icon class="dots" (click)="sendInvitation()" name="cafe"></ion-icon>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 

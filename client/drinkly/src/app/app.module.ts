@@ -89,8 +89,7 @@ function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule, 
     IonicModule.forRoot({  
-      navAnimation: iosTransitionAnimation,
-      mode: 'ios'
+      navAnimation: iosTransitionAnimation
     }), 
     AppRoutingModule,
     ChatRoomPageModule,

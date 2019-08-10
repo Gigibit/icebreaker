@@ -45,6 +45,8 @@ export class UserProfilePage implements OnInit {
       this.userInfo = this.authService.currentUserValue
       this.authService.currentUser.subscribe(user=>{
           this.userInfo = user
+        console.log('someone pushed',user)
+
       })
     }
     

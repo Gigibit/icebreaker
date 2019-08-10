@@ -9,11 +9,8 @@ import { joinWithCommaOrEmpty } from '../../_utils/functions';
 import { ToastService } from '../../_services/toast.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Place } from '../../_components/autocomplete/autocomplete-input.component';
-import { LocalizedUsersComponent } from '../localized-users/localized-users.page';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { from, Subscription } from 'rxjs';
-import { promptEnter } from 'src/app/_animations/promptEnter';
-import { promptExit } from 'src/app/_animations/promptExit';
 import { OnEnter } from '../../_helpers/on-enter.interface'
 
 const USE_OWN_LOCATION = 'useMyPosition'

@@ -56,8 +56,13 @@ export class ChatRoomPage implements OnInit{
        })
       }) 
     })
-    
   }
+  
+  sendInvitation(){
+    this.chatService.sendInvitation()
+  }
+
+
   toBottom(){
     setTimeout(()=>{ try{ this.ngZone.run(()=> this.messagesContent.scrollToBottom(400) )}catch(ex){}});
   }

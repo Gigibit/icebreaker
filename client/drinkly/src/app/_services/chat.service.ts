@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SERVICE_SERVER, WEBSOCKET_SERVICE_SERVER } from '../config';
-import { MessageMapper, Message } from '../_models/message';
+import { MessageMapper, Message, Type } from '../_models/message';
 import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { AuthService } from './auth.service';
@@ -32,8 +32,9 @@ export class ChatService {
       this.getUserId()
     }
     async getUserId(){
-      let user = this.authService.currentUserValue
-      this.userId = user.id
+      this.authService.currentUser.subscribe(user=>{
+        this.userId = user.id
+      })
     }
     connect(key: string, onConnected : ()=> void){
       this.key = key
@@ -60,10 +61,24 @@ export class ChatService {
       this.stompClient.send(
         '/app/' + this.key,
         {},
-        JSON.stringify({ 'content' : msg  })
+        JSON.stringify({ 
+          'type' : Type.DEFAULT,
+          'content' : msg
+          })
         );
       }
-      
+      sendInvitation(content : string = '') {
+        if(this.key == null) throw new Error('key must not be null!');
+        this.stompClient.send(
+          '/app/' + this.key,
+          {},
+          JSON.stringify({
+            'type' : Type.INVITATION,
+            'content' : content
+            })
+        );
+      }
+        
       pingMessageRead(ids : number[]){
         this.http.post(PING_MESSAGE_READ, {
           lineIds: ids

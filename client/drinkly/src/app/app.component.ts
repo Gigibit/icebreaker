@@ -22,17 +22,13 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private oneSignal: OneSignal,
-    translate: TranslateService,
+    private translate: TranslateService,
     private authenticationService: AuthService,
     private router: Router
     ) {
       
       this.initializeApp();
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-      // this language will be used as a fallback when a translation isn't found in the current language
-      translate.setDefaultLang('en');
-      // the lang to use, if the lang isn't available, it will use the current loader to get them
-      translate.use('en');
+
     }
     
     
@@ -43,6 +39,11 @@ export class AppComponent {
     }
     initializeApp() {
       this.platform.ready().then(() => {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        // this language will be used as a fallback when a translation isn't found in the current language
+        this.translate.setDefaultLang('en');
+        // the lang to use, if the lang isn't available, it will use the current loader to get them
+        this.translate.use('en');
         this.oneSignal.startInit('700f900e-f399-44e4-800d-5fc23f769dbc', '436027625251');
         
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);

@@ -17,14 +17,18 @@ export function isOnline(date: string){
 export function age(date: string){
   return date ? "" + moment().diff(date, 'years') : ""
 }
-export function removeObjectFromArray(array: any[],obj:any){
+
+export function getFormattedDistance(distance: number) : string{
+  return distance ? distance > 1000  ? `${Math.round(distance/10) / 100} km`.replace('.', ",") : `${distance} m` : ''
+}
+export function removeObjectFromArray(array: any[],obj:any): any[]{
     const index = array.indexOf(obj, 0);
     if (index > -1) {
       array.splice(index, 1);
     }
     return array;
   }
-export function withCommaOrEmpty(str: string){
+export function withCommaOrEmpty(str: string): string{
   return str && str.length > 0 ? str + ", " : ""
 }
 

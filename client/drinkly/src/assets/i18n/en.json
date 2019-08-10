@@ -33,5 +33,12 @@
     "find" : "find!",
     "edit-profile-info": "edit profile info",
     "about_me" : "about me",
-    "no_localized_users_were_found": "no people were found near you, wtbrrr"
+    "no_localized_users_were_found": "no people were found near you, wtbrrr",
+    "no_messages" : "no messages...",
+    "coffee_group" : "make a coffee group!",
+    "login_disclaimer": "by creating new account or logging in, you confirm to accept our",
+    "terms" : "terms",
+    "privacy_policy" : "the privacy policy",
+    "and" : "and"
+
 }

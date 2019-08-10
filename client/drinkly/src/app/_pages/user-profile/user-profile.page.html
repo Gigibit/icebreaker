@@ -18,7 +18,7 @@
     <ion-slide  *ngIf="!userInfo">
       <ion-skeleton-text class="fake-slide" animated></ion-skeleton-text>
     </ion-slide>
-    <ion-slide  *ngFor="let img of userInfo?.images">
+    <ion-slide class="user-img"  *ngFor="let img of userInfo?.images">
       <img [src]="img">
     </ion-slide>
   </ion-slides>
