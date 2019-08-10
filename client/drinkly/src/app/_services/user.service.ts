@@ -54,8 +54,13 @@ export class UserService {
         gender: info.gender,
         imagesIds: info.imagesSorting
       }).pipe(concatMap( response => {
-        this.auth.contextRefresh(UserMapper.fromJson(response['context']))
-        return of(response['context'])
+        let user = response && 
+                    response['context'] && 
+                    response['context']['user'] && 
+                    UserMapper.fromJson(response['context']['user'])
+        if(user)
+          this.auth.contextRefresh(user)
+        return of(response)
       }))
     }
 
