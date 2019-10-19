@@ -40,8 +40,8 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "@stomp/stompjs": "^5.4.2",
-    "@swimlane/ngx-dnd": "^4.0.0",
-    "cordova-android": "7.0.0",
+    "@swimlane/ngx-dnd": "^8.0.0",
+    "cordova-android": "^8.1.0",
     "cordova-browser": "5.0.4",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-add-swift-support": "^2.0.2",
@@ -67,6 +67,7 @@
     "leaflet-geosearch": "^2.7.0",
     "moment": "^2.24.0",
     "ng2-dragula": "^2.1.1",
+    "node-sass": "^4.12.0",
     "onesignal-cordova-plugin": "^2.4.7",
     "rxjs": "~6.5.1",
     "rxjs-compat": "^6.5.2",
@@ -132,7 +133,7 @@
     },
     "platforms": [
       "browser",
-      "android"
+      "ios"
     ]
   }
 }

@@ -1,0 +1,38 @@
+.notReadMessage{
+    font-weight: bold;
+    color: #999;
+}
+
+
+.user-message-img{
+    // border: 2px solid #222;
+    background: #fff ;
+    display: block;
+    transition: all linear 0.3s;
+    height: 45px;
+    width: 45px;
+}
+.not-read-checker{
+    color: #888;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 21px;
+    margin-right: 17px;
+}
+.chat-name>h3{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 50px;
+    overflow: hidden;
+}
+
+
+.user-message-img-hide{
+    opacity: 0;
+}
+
+.user-message-img-show {
+    opacity: 1;
+
+}

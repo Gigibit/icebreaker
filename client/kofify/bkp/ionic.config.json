@@ -1,0 +1,7 @@
+{
+  "name": "kofify",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

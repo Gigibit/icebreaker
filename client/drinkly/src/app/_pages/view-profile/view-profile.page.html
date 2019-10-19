@@ -1,0 +1,64 @@
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons slot="start"  (click)="location.back()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title text-center>
+      {{'register_page_title'| translate}}
+    </ion-title> -->
+    <!-- <ion-buttons slot="end">
+      <ion-icon class="dots" (click)="userPopover($event)" name="more"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <!-- <div class="userInfo" *ngIf="user">
+    <ion-avatar id="profileImage">
+      <img 
+      onError="this.src='../../assets/imgs/user.svg';"       
+      [src]="user.profileImg" />
+    </ion-avatar>
+    <ion-label class="user-name">{{user.name}}</ion-label>
+  </div> -->
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide  *ngIf="!user">
+      <ion-skeleton-text class="fake-slide" animated></ion-skeleton-text>
+    </ion-slide>
+    <ion-slide class="user-img" *ngFor="let img of user?.images">
+      <img [src]="img">
+    </ion-slide>
+  </ion-slides>
+  <!-- <div class="userInfo" *ngIf="!user">
+    <ion-avatar class="profileImageSkeleton" slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-skeleton-text class="user-name skeleton" animated></ion-skeleton-text>
+  </div> -->
+  <div class="half-page-wrapper">
+    <div class="localized-user-btn-wrp">
+      <ion-button slot="start" (click)="invite()" class="invite-btn localized-user-btn">
+        <ion-icon name="cafe"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" (click)="chat()" class="send-btn localized-user-btn">
+        <ion-icon name="chatbubbles"></ion-icon>
+      </ion-button>
+    </div>
+    
+    <ion-label *ngIf="user" class="user-info-text">
+        <div class="user-info-text-name">{{user?.name +  ( user?.age ? ',' : '' ) }}<p class="user-info-text-age">{{user?.age}}</p></div> 
+      </ion-label>
+    <ion-label *ngIf="distance" class="user-info-text">
+      <ion-icon name="pin"></ion-icon>{{ distance }}
+    </ion-label>
+    <ion-label class="user-info-text" *ngIf="isOnline">
+      <ion-icon class="online-badge"></ion-icon> Online
+    </ion-label>
+    <ion-label class="user-info-text">
+        <p>{{user?.bio}}</p>
+    </ion-label>
+    
+  </div>
+  <!-- <span class="coffee-stain" *ngIf="user && ( !user.images || user.images.length == 0 )"></span> -->
+</ion-content>

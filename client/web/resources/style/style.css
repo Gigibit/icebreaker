@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Gloria Hallelujah';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/GloriaHallelujah.ttf');
+  }
+
+*{
+    font-family: 'Gloria Hallelujah'
+}
+
+nav{
+    background: #F5ECE1;
+}
+nav a{
+    color: #956f5a;
+}
+.nav-item.active{
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: #D2B48C;
+}
+.home-icon{
+    fill: #956f5a;
+}
+.home-icon:hover{
+    filter: invert(0.5) sepia(1);
+}

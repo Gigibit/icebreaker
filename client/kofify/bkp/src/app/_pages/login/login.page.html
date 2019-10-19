@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons slot="start"  (click)="location.back()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title text-center>
+      {{'register_page_title'| translate}}
+    </ion-title> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <div class="logo"></div>
+  <form #f="ngForm" (ngSubmit)="login(f)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h1>Login</h1>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button size="large"  type="submit" [disabled]="f.invalid" expand="block">login</ion-button>
+          </div>
+          <ion-label class="register-btn" expand="block" routerLink="/register" routerDirection="forward">don't you have an account? <a>register</a></ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </form>
+  <!-- <span class="coffee-stain"></span> -->
+</ion-content>

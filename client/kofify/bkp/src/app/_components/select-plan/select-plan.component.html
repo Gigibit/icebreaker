@@ -1,0 +1,56 @@
+  <ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons slot="end"  (click)="dismiss()">
+      <ion-icon ios="ios-close" md="ios-close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+   <ion-content>
+    <ion-slides class="plans-slides" pager="true" [options]="sliderConfig">
+      <ion-slide>
+        <div>
+          <ion-card class="plan-card">
+            <ion-card-header>
+              <ion-card-title>
+               
+              </ion-card-title>
+              <ion-card-content>
+                <img src="https://via.placeholder.com/300x300">
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div>
+          <ion-card class="plan-card">
+            <ion-card-header>
+              <ion-card-title>
+               
+              </ion-card-title>
+              <ion-card-content>
+                <img src="https://via.placeholder.com/300x300">
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div>
+          <ion-card class="plan-card">
+            <ion-card-header>
+              <ion-card-title>
+               
+              </ion-card-title>
+              <ion-card-content>
+                <img src="https://via.placeholder.com/300x300">
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+    <ion-button expand="full" (click)="addToCart(product)">continue</ion-button>
+
+  </ion-content>
