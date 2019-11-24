@@ -45,7 +45,6 @@ export class ManageCreditsComponent implements OnInit {
     })
     loader.present()
     this.userService.listPlans().subscribe(plans=>{
-      console.log(JSON.stringify(plans))
       this.modalCtrl.create({
         cssClass: 'plans-modal',
         component: SelectPlanComponent

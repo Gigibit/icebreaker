@@ -70,7 +70,7 @@
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
-    "cc.fovea.cordova.purchase": {
+    "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "com.aklc.kofify"
     }
   },

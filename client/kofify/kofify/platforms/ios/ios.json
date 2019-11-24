@@ -20,7 +20,7 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"InAppPurchase\"><param name=\"ios-package\" value=\"InAppPurchase\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<feature name=\"PaymentsPlugin\"><param name=\"ios-package\" value=\"PaymentsPlugin\" /></feature>",
               "count": 1
             }
           ]
@@ -29,22 +29,22 @@
     }
   },
   "installed_plugins": {
-    "cc.fovea.cordova.purchase": {
+    "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
-      "id": "cc.fovea.cordova.purchase.InAppPurchase",
-      "file": "plugins/cc.fovea.cordova.purchase/www/store-ios.js",
-      "pluginId": "cc.fovea.cordova.purchase",
+      "id": "cordova-plugin-inapppurchase.PaymentsPlugin",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-ios.js",
+      "pluginId": "cordova-plugin-inapppurchase",
       "clobbers": [
-        "store"
+        "inAppPurchase"
       ]
     }
   ],
   "plugin_metadata": {
-    "cc.fovea.cordova.purchase": "8.1.1"
+    "cordova-plugin-inapppurchase": "1.1.0"
   }
 }

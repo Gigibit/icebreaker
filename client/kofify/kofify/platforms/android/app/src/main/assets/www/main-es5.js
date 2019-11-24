@@ -1804,8 +1804,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     loader = _context4.sent;
                     loader.present();
                     this.userService.listPlans().subscribe(function (plans) {
-                      console.log(JSON.stringify(plans));
-
                       _this6.modalCtrl.create({
                         cssClass: 'plans-modal',
                         component: _select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_4__["SelectPlanComponent"]
@@ -1992,19 +1990,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @ionic-native/in-app-purchase-2/ngx */
-    "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js");
+    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic-native/in-app-purchase/ngx */
+    "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/_services/toast.service */
+    "./src/app/_services/toast.service.ts");
 
     var SelectPlanComponent =
     /*#__PURE__*/
     function () {
-      function SelectPlanComponent(platform, store, modalCtrl, userService) {
+      function SelectPlanComponent(platform, iap, modalCtrl, toastService, userService) {
         _classCallCheck(this, SelectPlanComponent);
 
         this.platform = platform;
-        this.store = store;
+        this.iap = iap;
         this.modalCtrl = modalCtrl;
+        this.toastService = toastService;
         this.userService = userService;
         this.plans = [];
         this.sliderConfig = {
@@ -2045,52 +2050,52 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     index = _context7.sent;
                     this.plans = this.userService.lastPlans;
                     selectedPlanId = this.plans[index].id;
-                    console.log(this.plans);
-                    console.log(index);
-                    this.platform.ready().then(function () {
-                      _this8.store.register({
-                        id: selectedPlanId,
-                        type: _this8.store.CONSUMABLE
-                      });
+                    this.iap.getProducts(this.plans.map(function (d) {
+                      return d.id;
+                    })).then(function (products) {
+                      _this8.iap.buy(selectedPlanId).then(function (data) {
+                        _this8.iap.consume(data.productType, data.receipt, data.signature);
 
-                      var process = _this8.store.when(selectedPlanId);
-
-                      _this8.store.when("subscription").approved(function (data) {
-                        return console.log(data);
-                      }); // match all subscriptions
-
-
-                      process.approved(function (p) {
-                        var paymentProcess = p.verify();
-                        paymentProcess.success(function (product, transactionDetail, purchaseData) {
-                          console.log('-----', product, '---', transactionDetail, purchaseData, '----');
-
-                          _this8.userService.finalizePayment(transactionDetail).subscribe(function (data) {});
+                        _this8.userService.finalizePayment(data).subscribe(function (data) {
+                          return console.log(data);
                         });
-                        paymentProcess.error(function (err) {
-                          return console.log('---', err, '---');
-                        });
-                        paymentProcess.done(function (done) {
-                          return console.log('---', done, '---');
-                        });
-                      });
-                      process.error(function (p) {
-                        return console.log("Store: error", p);
-                      });
-                      process.verified(function (p) {
-                        p.finish();
-                        console.log('finish');
-                      });
-                      process.cancelled(function (p) {
-                        return console.log('canceled', p);
-                      });
 
-                      _this8.store.refresh();
+                        _this8.modalCtrl.dismiss();
+                      }).catch(function (err) {
+                        _this8.toastService.somethingWentWrong();
 
-                      _this8.store.order(selectedPlanId);
-                    });
+                        console.log(err);
+                      });
+                    }).catch(function (err) {
+                      _this8.toastService.somethingWentWrong();
 
-                  case 8:
+                      console.log(err);
+                    }); // this.platform.ready().then(() => {
+                    //   this.store.register({
+                    //     id: selectedPlanId,
+                    //     type: this.store.CONSUMABLE,
+                    //   });
+                    //   let process = this.store.when(selectedPlanId)
+                    //   process.approved(p => {
+                    //     let paymentProcess = p.verify()
+                    //     paymentProcess.success((product, transactionDetail) => {
+                    //         console.log('success', product, transactionDetail)
+                    //         this.userService.finalizePayment(transactionDetail).subscribe(data=>{
+                    //         })
+                    //     })
+                    //   })
+                    //   process.error(p=> console.log("Store: error", p));
+                    //   process.verified(p =>{ 
+                    //     console.log('--- finishing ', p)
+                    //     p.finish()
+                    //     console.log('--- finish', p)
+                    //   });
+                    //   process.cancelled(p => console.log('canceled', p))
+                    //   this.store.refresh();
+                    //   this.store.order(selectedPlanId);
+                    //  });
+
+                  case 6:
                   case "end":
                     return _context7.stop();
                 }
@@ -2107,9 +2112,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
       }, {
-        type: _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"]
+        type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"]
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+      }, {
+        type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"]
       }, {
         type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]
       }];
@@ -2126,7 +2133,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./select-plan.component.scss */
       "./src/app/_components/select-plan/select-plan.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])], SelectPlanComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"], src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])], SelectPlanComponent);
     /***/
   },
 
@@ -7280,9 +7287,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
-    /*! @ionic-native/in-app-purchase-2/ngx */
-    "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js"); // import { AdMobFree } from '@ionic-native/admob-free/ngx';
+    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
+    /*! @ionic-native/in-app-purchase/ngx */
+    "./node_modules/@ionic-native/in-app-purchase/ngx/index.js"); // import { AdMobFree } from '@ionic-native/admob-free/ngx';
     // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 
@@ -7322,7 +7329,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"]]
         }
       }), _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(), _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"]],
-      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"], _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase2"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__["FileTransfer"], {
+      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__["FileTransfer"], {
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HTTP_INTERCEPTORS"],
         useClass: _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_24__["JwtInterceptor"],
         multi: true

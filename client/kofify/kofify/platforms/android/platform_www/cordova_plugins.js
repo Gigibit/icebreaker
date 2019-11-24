@@ -372,11 +372,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cc.fovea.cordova.purchase.InAppBillingPlugin",
-      "file": "plugins/cc.fovea.cordova.purchase/www/store-android.js",
-      "pluginId": "cc.fovea.cordova.purchase",
-      "clobbers": [
-        "store"
+      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
+      "pluginId": "cordova-plugin-inapppurchase",
+      "merges": [
+        "inAppPurchase"
       ]
     }
   ];
@@ -405,6 +405,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.4",
     "onesignal-cordova-plugin": "2.6.0",
-    "cc.fovea.cordova.purchase": "8.1.1"
+    "cordova-plugin-inapppurchase": "1.1.0"
   };
 });

@@ -1,15 +1,15 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
-      "id": "cc.fovea.cordova.purchase.InAppPurchase",
-      "file": "plugins/cc.fovea.cordova.purchase/www/store-ios.js",
-      "pluginId": "cc.fovea.cordova.purchase",
+      "id": "cordova-plugin-inapppurchase.PaymentsPlugin",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-ios.js",
+      "pluginId": "cordova-plugin-inapppurchase",
       "clobbers": [
-        "store"
+        "inAppPurchase"
       ]
     }
   ];
   module.exports.metadata = {
-    "cc.fovea.cordova.purchase": "8.1.1"
+    "cordova-plugin-inapppurchase": "1.1.0"
   };
 });

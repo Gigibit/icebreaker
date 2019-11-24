@@ -537,7 +537,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "  <ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"end\"  (click)=\"dismiss()\">\n      <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n   <ion-content>\n    <ion-slides class=\"plans-slides\" pager=\"true\" [options]=\"sliderConfig\">\n      \n      <ion-slide *ngFor=\"let plan of plans; let i = index\">\n        <div>\n          <ion-card class=\"plan-card\">\n            <ion-card-header>\n              <ion-card-title>\n               {{name}}\n              </ion-card-title>\n              <ion-card-content>\n                <h1>{{description}}</h1>\n                <ion-icon [style.width]=\"(((i+1)*5)+80)+'px'\" [style.height]=\"150+'px'\"  class=\"cafe-icon\" name=\"cafe\"></ion-icon>\n              </ion-card-content>\n            </ion-card-header>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n    <ion-button expand=\"full\" (click)=\"onProductChoosen(product)\">continue</ion-button>\n\n  </ion-content>";
+    __webpack_exports__["default"] = "  <ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"end\"  (click)=\"dismiss()\">\n      <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n   <ion-content>\n    <ion-slides #slides class=\"plans-slides\" pager=\"true\" [options]=\"sliderConfig\">\n      \n      <ion-slide *ngFor=\"let plan of plans; let i = index\">\n        <div>\n          <ion-card class=\"plan-card\">\n            <ion-card-header>\n              <ion-card-title>\n               {{name}}\n              </ion-card-title>\n              <ion-card-content>\n                <h1>{{description}}</h1>\n                <ion-icon [style.width]=\"(((i+1)*5)+80)+'px'\" [style.height]=\"150+'px'\"  class=\"cafe-icon\" name=\"cafe\"></ion-icon>\n              </ion-card-content>\n            </ion-card-header>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n    <ion-button expand=\"full\" (click)=\"onPlanChoosen()\">continue</ion-button>\n\n  </ion-content>";
     /***/
   },
 
@@ -1804,8 +1804,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     loader = _context4.sent;
                     loader.present();
                     this.userService.listPlans().subscribe(function (plans) {
-                      console.log(JSON.stringify(plans));
-
                       _this6.modalCtrl.create({
                         cssClass: 'plans-modal',
                         component: _select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_4__["SelectPlanComponent"]
@@ -1942,7 +1940,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".plan-card {\n  width: 25%; }\n\n.plans-slides {\n  height: 80%; }\n\n.swiper-zoom-container {\n  transition: padding-bottom 1s ease-in-out; }\n\n.swiper-slide-active {\n  padding-bottom: 25px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fY29tcG9uZW50cy9zZWxlY3QtcGxhbi9zZWxlY3QtcGxhbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFVBQVUsRUFBQTs7QUFFZDtFQUNJLFdBQVcsRUFBQTs7QUFFZjtFQUNJLHlDQUF5QyxFQUFBOztBQUU3QztFQUNJLG9CQUFvQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvX2NvbXBvbmVudHMvc2VsZWN0LXBsYW4vc2VsZWN0LXBsYW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGxhbi1jYXJke1xuICAgIHdpZHRoOiAyNSU7XG59XG4ucGxhbnMtc2xpZGVze1xuICAgIGhlaWdodDogODAlO1xufVxuLnN3aXBlci16b29tLWNvbnRhaW5lcntcbiAgICB0cmFuc2l0aW9uOiBwYWRkaW5nLWJvdHRvbSAxcyBlYXNlLWluLW91dDtcbn1cbi5zd2lwZXItc2xpZGUtYWN0aXZle1xuICAgIHBhZGRpbmctYm90dG9tOiAyNXB4O1xufSJdfQ== */";
+    __webpack_exports__["default"] = ".plans-slides {\n  height: 80%; }\n\n.swiper-zoom-container {\n  transition: padding-bottom 1s ease-in-out; }\n\n.swiper-slide-active {\n  padding-bottom: 25px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fY29tcG9uZW50cy9zZWxlY3QtcGxhbi9zZWxlY3QtcGxhbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLFdBQVcsRUFBQTs7QUFFZjtFQUNJLHlDQUF5QyxFQUFBOztBQUU3QztFQUNJLG9CQUFvQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvX2NvbXBvbmVudHMvc2VsZWN0LXBsYW4vc2VsZWN0LXBsYW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5wbGFucy1zbGlkZXN7XG4gICAgaGVpZ2h0OiA4MCU7XG59XG4uc3dpcGVyLXpvb20tY29udGFpbmVye1xuICAgIHRyYW5zaXRpb246IHBhZGRpbmctYm90dG9tIDFzIGVhc2UtaW4tb3V0O1xufVxuLnN3aXBlci1zbGlkZS1hY3RpdmV7XG4gICAgcGFkZGluZy1ib3R0b206IDI1cHg7XG59Il19 */";
     /***/
   },
 
@@ -1992,17 +1990,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @ionic-native/in-app-purchase/ngx */
-    "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+    var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic-native/in-app-purchase-2/ngx */
+    "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js");
 
     var SelectPlanComponent =
     /*#__PURE__*/
     function () {
-      function SelectPlanComponent(iap, modalCtrl, userService) {
+      function SelectPlanComponent(platform, store, modalCtrl, userService) {
         _classCallCheck(this, SelectPlanComponent);
 
-        this.iap = iap;
+        this.platform = platform;
+        this.store = store;
         this.modalCtrl = modalCtrl;
         this.userService = userService;
         this.plans = [];
@@ -2023,20 +2022,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "ngOnInit",
         value: function ngOnInit() {
           this.plans = this.userService.lastPlans;
-          this.iap.getProducts(['android.tet.purchased']).then(function (products) {
-            var _this8 = this;
-
-            this.iap.buy('android.test.purchased').then(function (data) {
-              console.log(data);
-              console.log('payment complete, finalizing...');
-
-              _this8.userService.finalizePayment(data).subscribe(function (data) {
-                _this8.modalCtrl.dismiss();
-              });
-            }).catch(function (err) {
-              console.log(err);
-            });
-          });
         }
       }, {
         key: "onPlanChoosen",
@@ -2044,7 +2029,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee7() {
-            var index;
+            var _this8 = this;
+
+            var index, selectedPlanId;
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
               while (1) {
                 switch (_context7.prev = _context7.next) {
@@ -2055,22 +2042,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 2:
                     index = _context7.sent;
                     this.plans = this.userService.lastPlans;
-                    this.iap.getProducts([this.productMap[index].id]).then(function (products) {
-                      var _this9 = this;
-
-                      this.iap.buy(this.productMap[index].id).then(function (data) {
-                        console.log(data);
-                        console.log('payment complete, finalizing...');
-
-                        _this9.userService.finalizePayment(data).subscribe(function (data) {
-                          _this9.modalCtrl.dismiss();
-                        });
-                      }).catch(function (err) {
-                        console.log(err);
+                    selectedPlanId = this.plans[index].id;
+                    this.platform.ready().then(function () {
+                      _this8.store.register({
+                        id: selectedPlanId,
+                        type: _this8.store.CONSUMABLE
                       });
+
+                      var process = _this8.store.when(selectedPlanId);
+
+                      process.approved(function (p) {
+                        var paymentProcess = p.verify();
+                        paymentProcess.success(function (product, transactionDetail) {
+                          console.log('success', product, transactionDetail);
+
+                          _this8.userService.finalizePayment(transactionDetail).subscribe(function (data) {});
+                        });
+                      });
+                      process.error(function (p) {
+                        return console.log("Store: error", p);
+                      });
+                      process.verified(function (p) {
+                        console.log('--- finishing ', p);
+                        p.finish();
+                        console.log('--- finish', p);
+                      });
+                      process.cancelled(function (p) {
+                        return console.log('canceled', p);
+                      });
+
+                      _this8.store.refresh();
+
+                      _this8.store.order(selectedPlanId);
                     });
 
-                  case 5:
+                  case 6:
                   case "end":
                     return _context7.stop();
                 }
@@ -2085,7 +2091,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     SelectPlanComponent.ctorParameters = function () {
       return [{
-        type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
+      }, {
+        type: _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"]
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
       }, {
@@ -2104,7 +2112,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./select-plan.component.scss */
       "./src/app/_components/select-plan/select-plan.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])], SelectPlanComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])], SelectPlanComponent);
     /***/
   },
 
@@ -3253,12 +3261,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ErrorInterceptor, [{
         key: "intercept",
         value: function intercept(request, next) {
-          var _this10 = this;
+          var _this9 = this;
 
           return next.handle(request).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (err) {
             if (err.status === UNAUTHORIZED) {
               // auto logout if 401 response returned from api
-              _this10.authenticationService.logout();
+              _this9.authenticationService.logout();
 
               location.reload(true);
             }
@@ -3267,9 +3275,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var plans = err.body;
 
               if (plans && plans['products']) {
-                _this10.userService.setPlans(_models_pricing_plan__WEBPACK_IMPORTED_MODULE_8__["PricingPlanMapper"].fromJsonArray(plans));
+                _this9.userService.setPlans(_models_pricing_plan__WEBPACK_IMPORTED_MODULE_8__["PricingPlanMapper"].fromJsonArray(plans));
 
-                _this10.modalCtrl.create({
+                _this9.modalCtrl.create({
                   cssClass: 'plans-modal',
                   component: _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_6__["SelectPlanComponent"]
                 }).then(function (modal) {
@@ -3542,10 +3550,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "fromJsonArray",
         value: function fromJsonArray(data) {
-          var _this11 = this;
+          var _this10 = this;
 
           return data && data.map(function (message) {
-            return _this11.fromJson(message);
+            return _this10.fromJson(message);
           });
         }
       }]);
@@ -3593,7 +3601,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "fromJson",
         value: function fromJson(data) {
           return {
-            id: data['id'],
+            id: data['productId'],
             name: data['name'],
             description: data['description'],
             price: data['price'],
@@ -3931,7 +3939,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function ChatRoomPage(authService, chatService, location, ngZone, modalCtrl, route) {
-        var _this12 = this;
+        var _this11 = this;
 
         _classCallCheck(this, ChatRoomPage);
 
@@ -3946,32 +3954,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         console.log(authService.currentUser);
         console.log(authService.currentUserValue);
         authService.currentUser.subscribe(function (user) {
-          _this12.id = user.id;
+          _this11.id = user.id;
         });
       }
 
       _createClass(ChatRoomPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this13 = this;
+          var _this12 = this;
 
           this.chat = this.chatService.getActiveChat();
           this.route.paramMap.subscribe(function (params) {
-            _this13.chatKey = params.get('with');
+            _this12.chatKey = params.get('with');
 
-            _this13.chatService.getMessages(_this13.chatKey).subscribe(function (data) {
+            _this12.chatService.getMessages(_this12.chatKey).subscribe(function (data) {
               data.forEach(function (message) {
-                _this13.messages.push(message);
+                _this12.messages.push(message);
 
-                _this13.toBottom();
+                _this12.toBottom();
               });
             });
 
-            _this13.chatService.connect(_this13.chatKey, function () {
-              _this13.chatService.bindToMessages().subscribe(function (message) {
-                _this13.messages.push(message);
+            _this12.chatService.connect(_this12.chatKey, function () {
+              _this12.chatService.bindToMessages().subscribe(function (message) {
+                _this12.messages.push(message);
 
-                _this13.toBottom();
+                _this12.toBottom();
               });
             });
           });
@@ -3984,12 +3992,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "toBottom",
         value: function toBottom() {
-          var _this14 = this;
+          var _this13 = this;
 
           setTimeout(function () {
             try {
-              _this14.ngZone.run(function () {
-                return _this14.messagesContent.scrollToBottom(400);
+              _this13.ngZone.run(function () {
+                return _this13.messagesContent.scrollToBottom(400);
               });
             } catch (ex) {}
           });
@@ -4264,7 +4272,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee9() {
-            var _this15 = this;
+            var _this14 = this;
 
             var loading;
             return regeneratorRuntime.wrap(function _callee9$(_context9) {
@@ -4283,13 +4291,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     .subscribe(function (token) {
                       console.log(token);
 
-                      _this15.router.navigate([_this15.returnUrl]);
+                      _this14.router.navigate([_this14.returnUrl]);
 
                       loading.dismiss();
                     }, function (error) {
                       console.log(error);
 
-                      _this15.toastService.somethingWentWrong();
+                      _this14.toastService.somethingWentWrong();
 
                       loading.dismiss();
                     });
@@ -4543,7 +4551,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function RegisterPage(translateService, authService, toastService, location) {
-        var _this16 = this;
+        var _this15 = this;
 
         _classCallCheck(this, RegisterPage);
 
@@ -4553,7 +4561,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.location = location;
         this.languages = _datasources_languages__WEBPACK_IMPORTED_MODULE_4__["languages"];
         translateService.get(Object(_datasources_languages__WEBPACK_IMPORTED_MODULE_4__["getLanguageByPrefix"])(this.translateService.getBrowserLang())).subscribe(function (result) {
-          return _this16.language = result;
+          return _this15.language = result;
         });
       }
 
@@ -4568,7 +4576,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "register",
         value: function register(form) {
-          var _this17 = this;
+          var _this16 = this;
 
           if (!this.birthday) {
             this.toastService.toastError(BIRTHDAY_REQUIRED_KEY);
@@ -4577,7 +4585,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           form.value['birthday'] = this.birthday;
           this.authService.register(form.value).subscribe(function (data) {
-            _this17.location.back();
+            _this16.location.back();
           });
         }
       }]);
@@ -4762,46 +4770,46 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ViewProfileComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this18 = this;
+          var _this17 = this;
 
           this.route.paramMap.subscribe(function (params) {
-            _this18.id = params.get('id');
+            _this17.id = params.get('id');
 
-            _this18.userService.getUserById(_this18.id).subscribe(function (response) {
-              _this18.user = src_app_models_user__WEBPACK_IMPORTED_MODULE_2__["UserMapper"].fromJson(response['user']);
+            _this17.userService.getUserById(_this17.id).subscribe(function (response) {
+              _this17.user = src_app_models_user__WEBPACK_IMPORTED_MODULE_2__["UserMapper"].fromJson(response['user']);
 
               if (response['user']['distance']) {
                 var distance = Object(src_app_utils_functions__WEBPACK_IMPORTED_MODULE_12__["getFormattedDistance"])(response['user']['distance']);
-                if (distance.length > 0) _this18.translateService.get(OF_DISTANCE_KEY).subscribe(function (value) {
-                  _this18.distance = "".concat(distance, " ").concat(value);
+                if (distance.length > 0) _this17.translateService.get(OF_DISTANCE_KEY).subscribe(function (value) {
+                  _this17.distance = "".concat(distance, " ").concat(value);
                 });
               }
 
-              console.log(_this18.user);
-              _this18.isOnline = Object(src_app_utils_functions__WEBPACK_IMPORTED_MODULE_12__["isOnline"])(_this18.user.lastSeen);
+              console.log(_this17.user);
+              _this17.isOnline = Object(src_app_utils_functions__WEBPACK_IMPORTED_MODULE_12__["isOnline"])(_this17.user.lastSeen);
             });
           });
         }
       }, {
         key: "invite",
         value: function invite() {
-          var _this19 = this;
+          var _this18 = this;
 
           this.coffeeService.sendInvitation([this.id]).subscribe(function (response) {
-            _this19.toastService.alert(INVITATION_SENT);
+            _this18.toastService.alert(INVITATION_SENT);
           });
         }
       }, {
         key: "chat",
         value: function chat() {
-          var _this20 = this;
+          var _this19 = this;
 
           this.chatService.findOrCreate([this.id]).subscribe(function (data) {
             var chat = src_app_models_chat__WEBPACK_IMPORTED_MODULE_9__["ChatMapper"].fromJson(data['chat']);
 
-            _this20.chatService.setActiveChat(chat);
+            _this19.chatService.setActiveChat(chat);
 
-            _this20.router.navigate(['/chat', chat.id]);
+            _this19.router.navigate(['/chat', chat.id]);
           });
         }
       }, {
@@ -4912,7 +4920,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function AdmobFreeService(admobFree, http, platform) {
-        var _this21 = this;
+        var _this20 = this;
 
         _classCallCheck(this, AdmobFreeService);
 
@@ -4940,15 +4948,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           document.addEventListener('admob.rewardvideo.events.COMPLETE', function () {// handle event
           });
           document.addEventListener('admob.rewardvideo.events.LOAD_FAIL', function () {
-            _this21.onRewardVideoListener && _this21.onRewardVideoListener.onFail();
+            _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
           });
           document.addEventListener('admob.rewardvideo.events.CLOSE', function () {
             // handle event
-            _this21.onRewardVideoListener && _this21.onRewardVideoListener.onFail();
+            _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
           });
           document.addEventListener('admob.rewardvideo.events.REWARD', function () {
             // handle event
-            _this21.onRewardVideoListener && _this21.onRewardVideoListener.onReward();
+            _this20.onRewardVideoListener && _this20.onRewardVideoListener.onReward();
           }); // // Load ad configuration
           // this.admobFree.interstitial.config(this.interstitialConfig);
           // //Prepare Ad to Show
@@ -4957,31 +4965,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           //     // alert(1);
           //   }).catch(e => alert(e));
 
-          if (!_this21.RewardVideoConfig.isTesting) _this21.RewardVideoConfig.id = _this21.platform.is('ios') ? 'ca-app-pub-6771007436830318/9397716981' : _this21.platform.is('android') ? 'ca-app-pub-6771007436830318/2995960166' : ''; // Load ad configuration
+          if (!_this20.RewardVideoConfig.isTesting) _this20.RewardVideoConfig.id = _this20.platform.is('ios') ? 'ca-app-pub-6771007436830318/9397716981' : _this20.platform.is('android') ? 'ca-app-pub-6771007436830318/2995960166' : ''; // Load ad configuration
 
-          _this21.admobFree.rewardVideo.config(_this21.RewardVideoConfig);
+          _this20.admobFree.rewardVideo.config(_this20.RewardVideoConfig);
         });
       }
 
       _createClass(AdmobFreeService, [{
         key: "rewardVideo",
         value: function rewardVideo() {
-          var _this22 = this;
+          var _this21 = this;
 
           //Prepare Ad to Show
           this.admobFree.rewardVideo.prepare().then(function () {
             //Check if Ad is loaded
-            _this22.admobFree.rewardVideo.isReady().then(function () {
+            _this21.admobFree.rewardVideo.isReady().then(function () {
               //Will show prepared Ad
-              _this22.admobFree.rewardVideo.show().then(function () {
+              _this21.admobFree.rewardVideo.show().then(function () {
                 return console.log('showing...');
               }).catch(function (e) {
                 console.log(e);
-                _this22.onRewardVideoListener && _this22.onRewardVideoListener.onFail();
+                _this21.onRewardVideoListener && _this21.onRewardVideoListener.onFail();
               });
             }).catch(function (e) {
               console.log(e);
-              _this22.onRewardVideoListener && _this22.onRewardVideoListener.onFail();
+              _this21.onRewardVideoListener && _this21.onRewardVideoListener.onFail();
             });
           }).catch(function (e) {
             return console.log(e);
@@ -5106,7 +5114,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "login",
         value: function login(loginParams) {
-          var _this23 = this;
+          var _this22 = this;
 
           var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -5120,7 +5128,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (token) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem(TOKEN_KEY, token);
-              _this23.authToken = token;
+              _this22.authToken = token;
             }
 
             return token;
@@ -5129,7 +5137,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "userInfo",
         value: function userInfo() {
-          var _this24 = this;
+          var _this23 = this;
 
           return this.http.get(USER_INFO).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
             console.log('userInfo', response);
@@ -5139,7 +5147,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (user) {
               localStorage.setItem('currentUser', JSON.stringify(user));
 
-              _this24.currentUserSubject.next(user);
+              _this23.currentUserSubject.next(user);
             }
 
             return user;
@@ -5154,15 +5162,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "logout",
         value: function logout() {
-          var _this25 = this;
+          var _this24 = this;
 
           // remove user from local storage to log user out
           return this.http.post(LOGOUT_URL, {}).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () {
             localStorage.removeItem('currentUser');
             localStorage.removeItem(TOKEN_KEY);
-            _this25.authToken = null;
+            _this24.authToken = null;
 
-            _this25.currentUserSubject.next(null);
+            _this24.currentUserSubject.next(null);
 
             location.reload(true);
           }));
@@ -5323,14 +5331,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee11() {
-            var _this26 = this;
+            var _this25 = this;
 
             return regeneratorRuntime.wrap(function _callee11$(_context11) {
               while (1) {
                 switch (_context11.prev = _context11.next) {
                   case 0:
                     this.authService.currentUser.subscribe(function (user) {
-                      if (user) _this26.userId = user.id;
+                      if (user) _this25.userId = user.id;
                     });
 
                   case 1:
@@ -5410,7 +5418,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getMessages",
         value: function getMessages(key) {
-          var _this27 = this;
+          var _this26 = this;
 
           var _this = this;
 
@@ -5419,7 +5427,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             setTimeout(function () {
               var ids = messages.filter(function (message) {
-                return message.readBy.indexOf(_this27.userId) == -1;
+                return message.readBy.indexOf(_this26.userId) == -1;
               }).map(function (message) {
                 return message.id;
               });
@@ -5434,14 +5442,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "bindToMessages",
         value: function bindToMessages() {
-          var _this28 = this;
+          var _this27 = this;
 
           if (this.key == null) throw new Error('key must not be null!');
 
           var _this = this;
 
           var observable = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
-            _this.stompClient.subscribe('/user/chat/' + _this28.key, function (data) {
+            _this.stompClient.subscribe('/user/chat/' + _this27.key, function (data) {
               if (data['body']) {
                 var message = _models_message__WEBPACK_IMPORTED_MODULE_5__["MessageMapper"].fromJson(JSON.parse(data['body']));
 
@@ -5621,27 +5629,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "findClosestUsers",
         value: function findClosestUsers(mLat, mLong) {
-          var _this29 = this;
+          var _this28 = this;
 
           var maxDistance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
           return this.http.get(FIND_CLOSEST_USERS_URL + '?longitude=' + mLong + '&latitude=' + mLat + (maxDistance ? '&distance=' + maxDistance : "")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
-            _this29.mLastLat = mLat;
-            _this29.mLastLong = mLong;
-            _this29.mMaxDistance = maxDistance;
-            _this29.localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
-            return _this29.localizedUsers;
+            _this28.mLastLat = mLat;
+            _this28.mLastLong = mLong;
+            _this28.mMaxDistance = maxDistance;
+            _this28.localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
+            return _this28.localizedUsers;
           }));
         }
       }, {
         key: "moreUsersOnLastUsers",
         value: function moreUsersOnLastUsers() {
-          var _this30 = this;
+          var _this29 = this;
 
           return this.http.get(FIND_CLOSEST_USERS_URL + '?longitude=' + this.mLastLong + '&latitude=' + this.mLastLat + '&offset=' + (this.localizedUsers.length + 5).toString() + (this.mMaxDistance ? '&distance=' + this.mMaxDistance : "")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
             var localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
 
             if (localizedUsers) localizedUsers.map(function (it) {
-              return _this30.localizedUsers.push(it);
+              return _this29.localizedUsers.push(it);
             });
             return localizedUsers;
           }));
@@ -6097,7 +6105,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateInfo",
         value: function updateInfo(info) {
-          var _this31 = this;
+          var _this30 = this;
 
           return this.http.post(UPDATE_INFO, {
             bio: info.bio,
@@ -6106,40 +6114,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (response) {
             var user = response && response['context'] && response['context']['user'] && _models_user__WEBPACK_IMPORTED_MODULE_8__["UserMapper"].fromJson(response['context']['user']);
 
-            if (user) _this31.auth.contextRefresh(user);
+            if (user) _this30.auth.contextRefresh(user);
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(response);
           }));
         }
       }, {
         key: "uploadImage",
         value: function uploadImage(index, sourceType) {
-          var _this32 = this;
+          var _this31 = this;
 
           return new Promise(function (resolve, reject) {
             if (index > 3) return;
             var options = {
               quality: 100,
-              destinationType: _this32.camera.DestinationType.FILE_URI,
+              destinationType: _this31.camera.DestinationType.FILE_URI,
               sourceType: sourceType,
               saveToPhotoAlbum: false,
-              encodingType: _this32.camera.EncodingType.JPEG,
-              mediaType: _this32.camera.MediaType.PICTURE,
+              encodingType: _this31.camera.EncodingType.JPEG,
+              mediaType: _this31.camera.MediaType.PICTURE,
               allowEdit: true,
               targetWidth: 1080,
               targetHeight: 1226,
               correctOrientation: true
             };
 
-            _this32.camera.getPicture(options).then(function (imageData) {
-              if (_this32.platform.is('mobileweb') || _this32.platform.is('desktop')) {
+            _this31.camera.getPicture(options).then(function (imageData) {
+              if (_this31.platform.is('mobileweb') || _this31.platform.is('desktop')) {
                 imageData = "data:image/jpeg;base64," + imageData;
                 var formData = new FormData();
 
-                var imgBlob = _this32.dataURItoBlob(imageData);
+                var imgBlob = _this31.dataURItoBlob(imageData);
 
-                formData.append('image', imgBlob, _this32.createFileName());
+                formData.append('image', imgBlob, _this31.createFileName());
 
-                _this32.uploadImageData(UPLOAD_URL + "/".concat(index), formData, function (user, response) {
+                _this31.uploadImageData(UPLOAD_URL + "/".concat(index), formData, function (user, response) {
                   if (!user.images) {
                     user.images = new Array(3);
                   }
@@ -6152,7 +6160,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   return reject(err);
                 });
               } else {
-                _this32.uploadUri(UPLOAD_URL + "/".concat(index), imageData, function (user, response) {
+                _this31.uploadUri(UPLOAD_URL + "/".concat(index), imageData, function (user, response) {
                   if (!user.images) {
                     user.images = new Array(3);
                   }
@@ -6173,33 +6181,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "udateProfileImg",
         value: function udateProfileImg(sourceType) {
-          var _this33 = this;
+          var _this32 = this;
 
           var onUri = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
           var onError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
           return new Promise(function (resolve, reject) {
             var options = {
               quality: 100,
-              destinationType: _this33.camera.DestinationType.FILE_URI,
+              destinationType: _this32.camera.DestinationType.FILE_URI,
               sourceType: sourceType,
               saveToPhotoAlbum: false,
-              encodingType: _this33.camera.EncodingType.JPEG,
-              mediaType: _this33.camera.MediaType.PICTURE,
+              encodingType: _this32.camera.EncodingType.JPEG,
+              mediaType: _this32.camera.MediaType.PICTURE,
               targetWidth: 400,
               targetHeight: 400,
               correctOrientation: true
             };
 
-            _this33.camera.getPicture(options).then(function (imageData) {
-              if (_this33.platform.is('mobileweb') || _this33.platform.is('desktop')) {
+            _this32.camera.getPicture(options).then(function (imageData) {
+              if (_this32.platform.is('mobileweb') || _this32.platform.is('desktop')) {
                 imageData = "data:image/jpeg;base64," + imageData;
                 var formData = new FormData();
 
-                var imgBlob = _this33.dataURItoBlob(imageData);
+                var imgBlob = _this32.dataURItoBlob(imageData);
 
-                formData.append('image', imgBlob, _this33.createFileName());
+                formData.append('image', imgBlob, _this32.createFileName());
 
-                _this33.uploadImageData(UPDATE_PROFILE_IMG_URL, formData, function (user, response) {
+                _this32.uploadImageData(UPDATE_PROFILE_IMG_URL, formData, function (user, response) {
                   console.log('image successful updated -->' + response['url']);
                   user.profileImg = response['url'];
                   return user;
@@ -6209,7 +6217,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   return reject(err);
                 });
               } else {
-                _this33.uploadUri(UPDATE_PROFILE_IMG_URL, imageData, function (user, response) {
+                _this32.uploadUri(UPDATE_PROFILE_IMG_URL, imageData, function (user, response) {
                   console.log('image successful updated -->' + response['url']);
                   user.profileImg = response['url'];
                   return user;
@@ -6230,7 +6238,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "uploadUri",
         value: function uploadUri(upload_url, uri, getUpdatedUser) {
-          var _this34 = this;
+          var _this33 = this;
 
           return new Promise(function (resolve, reject) {
             var options = {
@@ -6238,18 +6246,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               chunkedMode: false,
               mimeType: "image/jpeg",
               headers: {
-                'Authorization': 'Bearer ' + _this34.auth.authToken
+                'Authorization': 'Bearer ' + _this33.auth.authToken
               },
-              fileName: _this34.createFileName()
+              fileName: _this33.createFileName()
             };
 
-            _this34.fileTransfer.upload(encodeURI(uri), upload_url, options).then(function (data) {
+            _this33.fileTransfer.upload(encodeURI(uri), upload_url, options).then(function (data) {
               console.log(data);
               console.log('image successful updated -->', JSON.parse(data.response));
-              var user = getUpdatedUser(_this34.auth.currentUserValue, JSON.parse(data.response));
+              var user = getUpdatedUser(_this33.auth.currentUserValue, JSON.parse(data.response));
               console.log('user in upload image data-->', user);
 
-              _this34.auth.contextRefresh(user);
+              _this33.auth.contextRefresh(user);
 
               resolve(user);
             }).catch(function (err) {
@@ -6260,15 +6268,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "uploadImageData",
         value: function uploadImageData(upload_url, formData, getUpdatedUser) {
-          var _this35 = this;
+          var _this34 = this;
 
           return new Promise(function (resolve, reject) {
-            _this35.http.post(upload_url, formData).subscribe(function (__response) {
+            _this34.http.post(upload_url, formData).subscribe(function (__response) {
               console.log('image successful updated -->' + __response['url']);
-              var user = getUpdatedUser(_this35.auth.currentUserValue, __response);
+              var user = getUpdatedUser(_this34.auth.currentUserValue, __response);
               console.log('user in upload image data-->', user);
 
-              _this35.auth.contextRefresh(user);
+              _this34.auth.contextRefresh(user);
 
               resolve(user);
             }, function (throwable) {
@@ -6349,12 +6357,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "listPlans",
         value: function listPlans() {
-          var _this36 = this;
+          var _this35 = this;
 
           return this.http.get(LIST_PLANS).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (response) {
             if (response && response['products']) {
-              _this36.lastPlans = _models_pricing_plan__WEBPACK_IMPORTED_MODULE_11__["PricingPlanMapper"].fromJsonArray(response['products']);
-              return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(_this36.lastPlans);
+              _this35.lastPlans = _models_pricing_plan__WEBPACK_IMPORTED_MODULE_11__["PricingPlanMapper"].fromJsonArray(response['products']);
+              return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(_this35.lastPlans);
             } else return null;
           }));
         }
@@ -6366,7 +6374,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "deleteAccount",
         value: function deleteAccount(reason) {
-          var _this37 = this;
+          var _this36 = this;
 
           return this.http.request('DELETE', DELETE_ACCOUNT, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -6376,7 +6384,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               reason: reason
             }
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () {
-            return _this37.auth.logout().subscribe();
+            return _this36.auth.logout().subscribe();
           }));
         }
       }]);
@@ -6940,34 +6948,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "initializeApp",
         value: function initializeApp() {
-          var _this38 = this;
+          var _this37 = this;
 
           this.platform.ready().then(function () {
-            _this38.authenticationService.currentUser.subscribe(function (x) {
-              return _this38.currentUser = x;
+            _this37.authenticationService.currentUser.subscribe(function (x) {
+              return _this37.currentUser = x;
             }); // this language will be used as a fallback when a translation isn't found in the current language
 
 
-            _this38.translate.setDefaultLang('en'); // the lang to use, if the lang isn't available, it will use the current loader to get them
+            _this37.translate.setDefaultLang('en'); // the lang to use, if the lang isn't available, it will use the current loader to get them
 
 
-            _this38.translate.use('en');
+            _this37.translate.use('en');
 
-            _this38.oneSignal.startInit('700f900e-f399-44e4-800d-5fc23f769dbc', '436027625251');
+            _this37.oneSignal.startInit('700f900e-f399-44e4-800d-5fc23f769dbc', '436027625251');
 
-            _this38.oneSignal.inFocusDisplaying(_this38.oneSignal.OSInFocusDisplayOption.Notification);
+            _this37.oneSignal.inFocusDisplaying(_this37.oneSignal.OSInFocusDisplayOption.Notification);
 
-            _this38.oneSignal.handleNotificationReceived().subscribe(function () {// do something when notification is received
+            _this37.oneSignal.handleNotificationReceived().subscribe(function () {// do something when notification is received
             });
 
-            _this38.oneSignal.handleNotificationOpened().subscribe(function () {// do something when a notification is opened
+            _this37.oneSignal.handleNotificationOpened().subscribe(function () {// do something when a notification is opened
             });
 
-            _this38.oneSignal.endInit();
+            _this37.oneSignal.endInit();
 
-            _this38.statusBar.styleDefault();
+            _this37.statusBar.styleDefault();
 
-            _this38.splashScreen.hide();
+            _this37.splashScreen.hide();
           });
         }
       }]);
@@ -7258,9 +7266,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
-    /*! @ionic-native/in-app-purchase/ngx */
-    "./node_modules/@ionic-native/in-app-purchase/ngx/index.js"); // import { AdMobFree } from '@ionic-native/admob-free/ngx';
+    var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
+    /*! @ionic-native/in-app-purchase-2/ngx */
+    "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js"); // import { AdMobFree } from '@ionic-native/admob-free/ngx';
     // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 
@@ -7300,7 +7308,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"]]
         }
       }), _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(), _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"]],
-      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__["FileTransfer"], {
+      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"], _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase2"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__["FileTransfer"], {
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HTTP_INTERCEPTORS"],
         useClass: _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_24__["JwtInterceptor"],
         multi: true
@@ -7355,9 +7363,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var AUTH_SERVER = 'http://192.168.1.3:8080';
-    var SERVICE_SERVER = 'http://192.168.1.3:8080';
-    var WEBSOCKET_SERVICE_SERVER = 'http://192.168.1.3:8080/chat-websocket';
+    var AUTH_SERVER = 'http://10.30.31.238:8080';
+    var SERVICE_SERVER = 'http://10.30.31.238:8080';
+    var WEBSOCKET_SERVICE_SERVER = 'http://10.30.31.238:8080/chat-websocket';
     /***/
   },
 

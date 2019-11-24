@@ -817,7 +817,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("  <ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"end\"  (click)=\"dismiss()\">\n      <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n   <ion-content>\n    <ion-slides class=\"plans-slides\" pager=\"true\" [options]=\"sliderConfig\">\n      \n      <ion-slide *ngFor=\"let plan of plans; let i = index\">\n        <div>\n          <ion-card class=\"plan-card\">\n            <ion-card-header>\n              <ion-card-title>\n               {{name}}\n              </ion-card-title>\n              <ion-card-content>\n                <h1>{{description}}</h1>\n                <ion-icon [style.width]=\"(((i+1)*5)+80)+'px'\" [style.height]=\"150+'px'\"  class=\"cafe-icon\" name=\"cafe\"></ion-icon>\n              </ion-card-content>\n            </ion-card-header>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n    <ion-button expand=\"full\" (click)=\"onProductChoosen(product)\">continue</ion-button>\n\n  </ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("  <ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"end\"  (click)=\"dismiss()\">\n      <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n   <ion-content>\n    <ion-slides #slides class=\"plans-slides\" pager=\"true\" [options]=\"sliderConfig\">\n      \n      <ion-slide *ngFor=\"let plan of plans; let i = index\">\n        <div>\n          <ion-card class=\"plan-card\">\n            <ion-card-header>\n              <ion-card-title>\n               {{name}}\n              </ion-card-title>\n              <ion-card-content>\n                <h1>{{description}}</h1>\n                <ion-icon [style.width]=\"(((i+1)*5)+80)+'px'\" [style.height]=\"150+'px'\"  class=\"cafe-icon\" name=\"cafe\"></ion-icon>\n              </ion-card-content>\n            </ion-card-header>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n    <ion-button expand=\"full\" (click)=\"onPlanChoosen()\">continue</ion-button>\n\n  </ion-content>");
 
 /***/ }),
 
@@ -1425,7 +1425,6 @@ let ManageCreditsComponent = class ManageCreditsComponent {
             });
             loader.present();
             this.userService.listPlans().subscribe(plans => {
-                console.log(JSON.stringify(plans));
                 this.modalCtrl.create({
                     cssClass: 'plans-modal',
                     component: _select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_4__["SelectPlanComponent"]
@@ -1502,7 +1501,7 @@ ManageCreditsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".plan-card {\n  width: 25%; }\n\n.plans-slides {\n  height: 80%; }\n\n.swiper-zoom-container {\n  transition: padding-bottom 1s ease-in-out; }\n\n.swiper-slide-active {\n  padding-bottom: 25px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fY29tcG9uZW50cy9zZWxlY3QtcGxhbi9zZWxlY3QtcGxhbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFVBQVUsRUFBQTs7QUFFZDtFQUNJLFdBQVcsRUFBQTs7QUFFZjtFQUNJLHlDQUF5QyxFQUFBOztBQUU3QztFQUNJLG9CQUFvQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvX2NvbXBvbmVudHMvc2VsZWN0LXBsYW4vc2VsZWN0LXBsYW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGxhbi1jYXJke1xuICAgIHdpZHRoOiAyNSU7XG59XG4ucGxhbnMtc2xpZGVze1xuICAgIGhlaWdodDogODAlO1xufVxuLnN3aXBlci16b29tLWNvbnRhaW5lcntcbiAgICB0cmFuc2l0aW9uOiBwYWRkaW5nLWJvdHRvbSAxcyBlYXNlLWluLW91dDtcbn1cbi5zd2lwZXItc2xpZGUtYWN0aXZle1xuICAgIHBhZGRpbmctYm90dG9tOiAyNXB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".plans-slides {\n  height: 80%; }\n\n.swiper-zoom-container {\n  transition: padding-bottom 1s ease-in-out; }\n\n.swiper-slide-active {\n  padding-bottom: 25px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fY29tcG9uZW50cy9zZWxlY3QtcGxhbi9zZWxlY3QtcGxhbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLFdBQVcsRUFBQTs7QUFFZjtFQUNJLHlDQUF5QyxFQUFBOztBQUU3QztFQUNJLG9CQUFvQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvX2NvbXBvbmVudHMvc2VsZWN0LXBsYW4vc2VsZWN0LXBsYW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5wbGFucy1zbGlkZXN7XG4gICAgaGVpZ2h0OiA4MCU7XG59XG4uc3dpcGVyLXpvb20tY29udGFpbmVye1xuICAgIHRyYW5zaXRpb246IHBhZGRpbmctYm90dG9tIDFzIGVhc2UtaW4tb3V0O1xufVxuLnN3aXBlci1zbGlkZS1hY3RpdmV7XG4gICAgcGFkZGluZy1ib3R0b206IDI1cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -1520,15 +1519,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services/user.service */ "./src/app/_services/user.service.ts");
-/* harmony import */ var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/in-app-purchase/ngx */ "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+/* harmony import */ var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/in-app-purchase-2/ngx */ "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js");
 
 
 
 
 
 let SelectPlanComponent = class SelectPlanComponent {
-    constructor(iap, modalCtrl, userService) {
-        this.iap = iap;
+    constructor(platform, store, modalCtrl, userService) {
+        this.platform = platform;
+        this.store = store;
         this.modalCtrl = modalCtrl;
         this.userService = userService;
         this.plans = [];
@@ -1544,44 +1544,42 @@ let SelectPlanComponent = class SelectPlanComponent {
     }
     ngOnInit() {
         this.plans = this.userService.lastPlans;
-        this.iap.getProducts(['android.tet.purchased'])
-            .then(function (products) {
-            this.iap.buy('android.test.purchased')
-                .then((data) => {
-                console.log(data);
-                console.log('payment complete, finalizing...');
-                this.userService.finalizePayment(data).subscribe(data => {
-                    this.modalCtrl.dismiss();
-                });
-            })
-                .catch((err) => {
-                console.log(err);
-            });
-        });
     }
     onPlanChoosen() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             let index = yield this.slides.getActiveIndex();
             this.plans = this.userService.lastPlans;
-            this.iap.getProducts([this.productMap[index].id])
-                .then(function (products) {
-                this.iap.buy(this.productMap[index].id)
-                    .then((data) => {
-                    console.log(data);
-                    console.log('payment complete, finalizing...');
-                    this.userService.finalizePayment(data).subscribe(data => {
-                        this.modalCtrl.dismiss();
-                    });
-                })
-                    .catch((err) => {
-                    console.log(err);
+            let selectedPlanId = this.plans[index].id;
+            this.platform.ready().then(() => {
+                this.store.register({
+                    id: selectedPlanId,
+                    type: this.store.CONSUMABLE,
                 });
+                let process = this.store.when(selectedPlanId);
+                process.approved(p => {
+                    let paymentProcess = p.verify();
+                    paymentProcess.success((product, transactionDetail) => {
+                        console.log('success', product, transactionDetail);
+                        this.userService.finalizePayment(transactionDetail).subscribe(data => {
+                        });
+                    });
+                });
+                process.error(p => console.log("Store: error", p));
+                process.verified(p => {
+                    console.log('--- finishing ', p);
+                    p.finish();
+                    console.log('--- finish', p);
+                });
+                process.cancelled(p => console.log('canceled', p));
+                this.store.refresh();
+                this.store.order(selectedPlanId);
             });
         });
     }
 };
 SelectPlanComponent.ctorParameters = () => [
-    { type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+    { type: _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
     { type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
 ];
@@ -1595,7 +1593,8 @@ SelectPlanComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./select-plan.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/_components/select-plan/select-plan.component.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./select-plan.component.scss */ "./src/app/_components/select-plan/select-plan.component.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"],
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
+        _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
         src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
 ], SelectPlanComponent);
@@ -2754,7 +2753,7 @@ __webpack_require__.r(__webpack_exports__);
 class PricingPlanMapper {
     static fromJson(data) {
         return {
-            id: data['id'],
+            id: data['productId'],
             name: data['name'],
             description: data['description'],
             price: data['price'],
@@ -4892,7 +4891,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./_services/admob-free.service */ "./src/app/_services/admob-free.service.ts");
 /* harmony import */ var _ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @ionic-native/admob-free/ngx */ "./node_modules/@ionic-native/admob-free/ngx/index.js");
 /* harmony import */ var _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./delete-account/delete-account.component */ "./src/app/delete-account/delete-account.component.ts");
-/* harmony import */ var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @ionic-native/in-app-purchase/ngx */ "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+/* harmony import */ var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @ionic-native/in-app-purchase-2/ngx */ "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js");
 
 
 
@@ -5000,7 +4999,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         ],
         providers: [
             _ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"],
-            _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase"],
+            _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase2"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"],
@@ -5039,9 +5038,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WEBSOCKET_SERVICE_SERVER", function() { return WEBSOCKET_SERVICE_SERVER; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
-const AUTH_SERVER = 'http://192.168.1.3:8080';
-const SERVICE_SERVER = 'http://192.168.1.3:8080';
-const WEBSOCKET_SERVICE_SERVER = 'http://192.168.1.3:8080/chat-websocket';
+const AUTH_SERVER = 'http://10.30.31.238:8080';
+const SERVICE_SERVER = 'http://10.30.31.238:8080';
+const WEBSOCKET_SERVICE_SERVER = 'http://10.30.31.238:8080/chat-websocket';
 
 
 /***/ }),

@@ -13,10 +13,9 @@
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		AA1E6C41B9D441BCAAA1AC2F /* InAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB421D38CC945389E46B7C1 /* InAppPurchase.m */; };
-		F0268BD0DDE441C3BA70B048 /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3018D6712D428D8A39C1EA /* SKProduct+LocalizedPrice.m */; };
-		0C1C635E6ADA4ED7AABEC342 /* FileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 50678458139C49A8AEB42AF6 /* FileUtility.m */; };
-		83E4AF44E33A4AFA894A0144 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D00489506D47469524C1A8 /* StoreKit.framework */; };
+		9C539C2BC2B043E6910E867A /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FD794C101FAB4B3D9974A8AA /* RMStore.m */; };
+		B36EF2B7FB5648D695C9222A /* PaymentsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59601247E5874D428DB844E9 /* PaymentsPlugin.m */; };
+		0F077CECEF5B4548A4E1F9DA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6E22B4BAB4C679103283B /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +63,11 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "MyApp/config.xml"; sourceTree = "<group>"; };
-		3BB421D38CC945389E46B7C1 /* InAppPurchase.m */ = {isa = PBXFileReference; name = "InAppPurchase.m"; path = "cc.fovea.cordova.purchase/InAppPurchase.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		4E3018D6712D428D8A39C1EA /* SKProduct+LocalizedPrice.m */ = {isa = PBXFileReference; name = "SKProduct+LocalizedPrice.m"; path = "cc.fovea.cordova.purchase/SKProduct+LocalizedPrice.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		50678458139C49A8AEB42AF6 /* FileUtility.m */ = {isa = PBXFileReference; name = "FileUtility.m"; path = "cc.fovea.cordova.purchase/FileUtility.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		44C1CAD142C14340B2847904 /* InAppPurchase.h */ = {isa = PBXFileReference; name = "InAppPurchase.h"; path = "cc.fovea.cordova.purchase/InAppPurchase.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		F65E3AB9BD0746318FA9C7D4 /* SKProduct+LocalizedPrice.h */ = {isa = PBXFileReference; name = "SKProduct+LocalizedPrice.h"; path = "cc.fovea.cordova.purchase/SKProduct+LocalizedPrice.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		75DE26B45E9C4B6F91EA0DF9 /* FileUtility.h */ = {isa = PBXFileReference; name = "FileUtility.h"; path = "cc.fovea.cordova.purchase/FileUtility.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		C9D00489506D47469524C1A8 /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		FD794C101FAB4B3D9974A8AA /* RMStore.m */ = {isa = PBXFileReference; name = "RMStore.m"; path = "cordova-plugin-inapppurchase/RMStore.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		59601247E5874D428DB844E9 /* PaymentsPlugin.m */ = {isa = PBXFileReference; name = "PaymentsPlugin.m"; path = "cordova-plugin-inapppurchase/PaymentsPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		84FAB30F9FC949ACB55274AC /* RMStore.h */ = {isa = PBXFileReference; name = "RMStore.h"; path = "cordova-plugin-inapppurchase/RMStore.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		5883060AA4C24C1AB42995E8 /* PaymentsPlugin.h */ = {isa = PBXFileReference; name = "PaymentsPlugin.h"; path = "cordova-plugin-inapppurchase/PaymentsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		4DC6E22B4BAB4C679103283B /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				83E4AF44E33A4AFA894A0144 /* StoreKit.framework in Frameworks */,
+				0F077CECEF5B4548A4E1F9DA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +147,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C9D00489506D47469524C1A8 /* StoreKit.framework */,
+				4DC6E22B4BAB4C679103283B /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,12 +174,10 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				3BB421D38CC945389E46B7C1 /* InAppPurchase.m */,
-				4E3018D6712D428D8A39C1EA /* SKProduct+LocalizedPrice.m */,
-				50678458139C49A8AEB42AF6 /* FileUtility.m */,
-				44C1CAD142C14340B2847904 /* InAppPurchase.h */,
-				F65E3AB9BD0746318FA9C7D4 /* SKProduct+LocalizedPrice.h */,
-				75DE26B45E9C4B6F91EA0DF9 /* FileUtility.h */,
+				FD794C101FAB4B3D9974A8AA /* RMStore.m */,
+				59601247E5874D428DB844E9 /* PaymentsPlugin.m */,
+				84FAB30F9FC949ACB55274AC /* RMStore.h */,
+				5883060AA4C24C1AB42995E8 /* PaymentsPlugin.h */,
 			);
 			name = Plugins;
 			path = "MyApp/Plugins";
@@ -307,9 +302,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				AA1E6C41B9D441BCAAA1AC2F /* InAppPurchase.m in Sources */,
-				F0268BD0DDE441C3BA70B048 /* SKProduct+LocalizedPrice.m in Sources */,
-				0C1C635E6ADA4ED7AABEC342 /* FileUtility.m in Sources */,
+				9C539C2BC2B043E6910E867A /* RMStore.m in Sources */,
+				B36EF2B7FB5648D695C9222A /* PaymentsPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

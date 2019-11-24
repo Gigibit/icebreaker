@@ -89,8 +89,10 @@ export class AuthService {
   }
   
   logout() {
+    console.log('logout-->')
     // remove user from local storage to log user out
     return this.http.post(LOGOUT_URL,{}).pipe(finalize(()=>{
+      console.log('finalize called')
       localStorage.removeItem('currentUser');
       localStorage.removeItem(TOKEN_KEY);
       this.authToken = null;

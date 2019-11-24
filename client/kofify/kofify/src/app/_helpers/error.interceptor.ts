@@ -1,6 +1,6 @@
 import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
 
@@ -26,8 +26,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(catchError(err => {
             if (err.status === UNAUTHORIZED) {
                 // auto logout if 401 response returned from api
-                this.authenticationService.logout();
-                location.reload(true);
+                this.authenticationService.logout().pipe(finalize(()=>{
+                    location.reload(true);
+                })).subscribe()
             }
             if (err.status === NOT_ACCETTABLE) {
                 let plans = err.body
@@ -41,7 +42,6 @@ export class ErrorInterceptor implements HttpInterceptor {
                       });
                 }
             }
-            console.log(err)
             const error = (err.error ? err.error.message: '') || err.statusText;
             
             return throwError(error);

@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PricingPlan, PricingPlanMapper } from '../../_models/pricing-plan';
 import { ModalController, IonSlides, Platform } from '@ionic/angular';
 import { UserService } from 'src/app/_services/user.service';
-import { InAppPurchase2 } from '@ionic-native/in-app-purchase-2/ngx';
+import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
+import { ToastService } from 'src/app/_services/toast.service';
 
 interface Product {
   transactionId: string;
@@ -29,8 +30,9 @@ export class SelectPlanComponent implements OnInit {
   }
   constructor(
     public platform: Platform, 
-    private store: InAppPurchase2,
+    private iap: InAppPurchase,
     private modalCtrl: ModalController,
+    private toastService: ToastService,
     private userService: UserService
     ) { }
 
@@ -39,6 +41,7 @@ export class SelectPlanComponent implements OnInit {
   }
   ngOnInit() {
     this.plans = this.userService.lastPlans
+ 
 
   }
   
@@ -46,35 +49,56 @@ export class SelectPlanComponent implements OnInit {
     let index = await this.slides.getActiveIndex()
     this.plans = this.userService.lastPlans
     let selectedPlanId = this.plans[index].id
-    console.log(this.plans)
-    console.log(index)
-    
-    this.platform.ready().then(() => {
-      this.store.register({
-        id: selectedPlanId,
-        type: this.store.CONSUMABLE,
-      });
-      let process = this.store.when(selectedPlanId)
-      this.store.when("subscription").approved((data)=> console.log(data)); // match all subscriptions
 
-      process.approved(p => {
-        let paymentProcess = p.verify()
-        paymentProcess.success((product, transactionDetail, purchaseData) => {
-            console.log('-----',product,'---',transactionDetail, purchaseData, '----')
-            this.userService.finalizePayment(transactionDetail).subscribe(data=>{
-            })
+    this.iap
+    .getProducts(this.plans.map(d=>d.id))
+    .then((products) => {
+        this.iap
+        .buy(selectedPlanId)
+        .then((data)=> {
+          this.iap.consume(data.productType, data.receipt, data.signature)
+          this.userService.finalizePayment(data).subscribe(data=>console.log(data))
+          this.modalCtrl.dismiss()
         })
-        paymentProcess.error((err)=>console.log('---', err, '---'))
-        paymentProcess.done((done)=>console.log('---', done, '---'))
-      })
-      process.error(p=> console.log("Store: error", p));
-      process.verified(p =>{ 
-        p.finish()
-        console.log('finish')
-      });
-      process.cancelled(p => console.log('canceled', p))
-      this.store.refresh();
-      this.store.order(selectedPlanId);
-     });
+        .catch((err)=> {
+          this.toastService.somethingWentWrong()
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      this.toastService.somethingWentWrong()
+      console.log(err);
+    });
+   
+
+
+
+
+
+    // this.platform.ready().then(() => {
+    //   this.store.register({
+    //     id: selectedPlanId,
+    //     type: this.store.CONSUMABLE,
+    //   });
+    //   let process = this.store.when(selectedPlanId)
+
+    //   process.approved(p => {
+    //     let paymentProcess = p.verify()
+    //     paymentProcess.success((product, transactionDetail) => {
+    //         console.log('success', product, transactionDetail)
+    //         this.userService.finalizePayment(transactionDetail).subscribe(data=>{
+    //         })
+    //     })
+    //   })
+    //   process.error(p=> console.log("Store: error", p));
+    //   process.verified(p =>{ 
+    //     console.log('--- finishing ', p)
+    //     p.finish()
+    //     console.log('--- finish', p)
+    //   });
+    //   process.cancelled(p => console.log('canceled', p))
+    //   this.store.refresh();
+    //   this.store.order(selectedPlanId);
+    //  });
   }
 }

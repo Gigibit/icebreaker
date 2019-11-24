@@ -1425,7 +1425,6 @@ let ManageCreditsComponent = class ManageCreditsComponent {
             });
             loader.present();
             this.userService.listPlans().subscribe(plans => {
-                console.log(JSON.stringify(plans));
                 this.modalCtrl.create({
                     cssClass: 'plans-modal',
                     component: _select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_4__["SelectPlanComponent"]
@@ -1520,17 +1519,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services/user.service */ "./src/app/_services/user.service.ts");
-/* harmony import */ var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/in-app-purchase-2/ngx */ "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js");
+/* harmony import */ var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/in-app-purchase/ngx */ "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+/* harmony import */ var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/toast.service */ "./src/app/_services/toast.service.ts");
+
 
 
 
 
 
 let SelectPlanComponent = class SelectPlanComponent {
-    constructor(platform, store, modalCtrl, userService) {
+    constructor(platform, iap, modalCtrl, toastService, userService) {
         this.platform = platform;
-        this.store = store;
+        this.iap = iap;
         this.modalCtrl = modalCtrl;
+        this.toastService = toastService;
         this.userService = userService;
         this.plans = [];
         this.sliderConfig = {
@@ -1551,41 +1553,57 @@ let SelectPlanComponent = class SelectPlanComponent {
             let index = yield this.slides.getActiveIndex();
             this.plans = this.userService.lastPlans;
             let selectedPlanId = this.plans[index].id;
-            console.log(this.plans);
-            console.log(index);
-            this.platform.ready().then(() => {
-                this.store.register({
-                    id: selectedPlanId,
-                    type: this.store.CONSUMABLE,
+            this.iap
+                .getProducts(this.plans.map(d => d.id))
+                .then((products) => {
+                this.iap
+                    .buy(selectedPlanId)
+                    .then((data) => {
+                    this.iap.consume(data.productType, data.receipt, data.signature);
+                    this.userService.finalizePayment(data).subscribe(data => console.log(data));
+                    this.modalCtrl.dismiss();
+                })
+                    .catch((err) => {
+                    this.toastService.somethingWentWrong();
+                    console.log(err);
                 });
-                let process = this.store.when(selectedPlanId);
-                this.store.when("subscription").approved((data) => console.log(data)); // match all subscriptions
-                process.approved(p => {
-                    let paymentProcess = p.verify();
-                    paymentProcess.success((product, transactionDetail, purchaseData) => {
-                        console.log('-----', product, '---', transactionDetail, purchaseData, '----');
-                        this.userService.finalizePayment(transactionDetail).subscribe(data => {
-                        });
-                    });
-                    paymentProcess.error((err) => console.log('---', err, '---'));
-                    paymentProcess.done((done) => console.log('---', done, '---'));
-                });
-                process.error(p => console.log("Store: error", p));
-                process.verified(p => {
-                    p.finish();
-                    console.log('finish');
-                });
-                process.cancelled(p => console.log('canceled', p));
-                this.store.refresh();
-                this.store.order(selectedPlanId);
+            })
+                .catch((err) => {
+                this.toastService.somethingWentWrong();
+                console.log(err);
             });
+            // this.platform.ready().then(() => {
+            //   this.store.register({
+            //     id: selectedPlanId,
+            //     type: this.store.CONSUMABLE,
+            //   });
+            //   let process = this.store.when(selectedPlanId)
+            //   process.approved(p => {
+            //     let paymentProcess = p.verify()
+            //     paymentProcess.success((product, transactionDetail) => {
+            //         console.log('success', product, transactionDetail)
+            //         this.userService.finalizePayment(transactionDetail).subscribe(data=>{
+            //         })
+            //     })
+            //   })
+            //   process.error(p=> console.log("Store: error", p));
+            //   process.verified(p =>{ 
+            //     console.log('--- finishing ', p)
+            //     p.finish()
+            //     console.log('--- finish', p)
+            //   });
+            //   process.cancelled(p => console.log('canceled', p))
+            //   this.store.refresh();
+            //   this.store.order(selectedPlanId);
+            //  });
         });
     }
 };
 SelectPlanComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
-    { type: _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"] },
+    { type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+    { type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"] },
     { type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1599,8 +1617,9 @@ SelectPlanComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./select-plan.component.scss */ "./src/app/_components/select-plan/select-plan.component.scss")).default]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
-        _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"],
+        _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
+        src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"],
         src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
 ], SelectPlanComponent);
 
@@ -4896,7 +4915,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./_services/admob-free.service */ "./src/app/_services/admob-free.service.ts");
 /* harmony import */ var _ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @ionic-native/admob-free/ngx */ "./node_modules/@ionic-native/admob-free/ngx/index.js");
 /* harmony import */ var _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./delete-account/delete-account.component */ "./src/app/delete-account/delete-account.component.ts");
-/* harmony import */ var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @ionic-native/in-app-purchase-2/ngx */ "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js");
+/* harmony import */ var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @ionic-native/in-app-purchase/ngx */ "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
 
 
 
@@ -5004,7 +5023,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         ],
         providers: [
             _ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"],
-            _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase2"],
+            _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"],

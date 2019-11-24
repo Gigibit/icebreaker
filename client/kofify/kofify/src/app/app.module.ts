@@ -47,7 +47,7 @@ import { SelectPlanComponent } from './_components/select-plan/select-plan.compo
 import { AdmobFreeService } from './_services/admob-free.service';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
-import { InAppPurchase2 } from '@ionic-native/in-app-purchase-2/ngx';
+import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 
@@ -120,7 +120,7 @@ function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     AdMobFree,
-    InAppPurchase2,
+    InAppPurchase,
     StatusBar,
     SplashScreen,
     Geolocation,
