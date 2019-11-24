@@ -1,0 +1,13 @@
+<ion-header no-border>
+    <ion-toolbar transparent>
+      <ion-buttons slot="end"  (click)="dismiss()">
+        <ion-icon ios="ios-close" md="ios-close"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content class="ion-padding">
+  <h1 class="ion-text-center">{{'tell_the_reason' | translate}}</h1>
+  <div class="sad" ></div>
+  <ion-textarea class="delete-account-txtarea" [(ngModel)]="reason" placeholder="beh,..."></ion-textarea>
+  <ion-button class="delete-account-btn" (click)="deleteAccount()">{{ 'continue' | translate }}</ion-button>
+</ion-content>

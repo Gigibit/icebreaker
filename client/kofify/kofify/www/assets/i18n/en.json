@@ -39,6 +39,10 @@
     "login_disclaimer": "by creating new account or logging in, you confirm to accept our",
     "terms" : "terms",
     "privacy_policy" : "the privacy policy",
-    "and" : "and"
-
+    "and" : "and",
+    "delete_account": "delete account",
+    "continue": "continue",
+    "confirm": "confirm",
+    "tell_the_reason": "tell us the reason...",
+    "reward_not_available_come_back_tomorrow":"reward video not available, try later."
 }

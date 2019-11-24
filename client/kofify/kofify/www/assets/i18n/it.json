@@ -39,5 +39,10 @@
     "login_disclaimer": "creando un nuovo account o eseguendo il login, confirmi di accettare le nostre",
     "terms" : "condizioni di utilizzo",
     "privacy_policy" : "l'informativa sulla Privacy",
-    "and" : "e"
+    "and" : "e",
+    "delete_account": "elimina account",
+    "continue": "continua",
+    "confirm": "confirma",
+    "tell_the_reason": "dicci la ragione...",
+    "reward_not_available_come_back_tomorrow" : "hai esaurito i crediti guadagnabili dalle pubblicità, riprova fra un po'."
 }

@@ -46,6 +46,7 @@ export class LoginPage implements OnInit {
 				message: 'Please wait...'
 			});
 			this.presentLoading(loading);
+			
 			this.authService
 			.nativeLogin(form.value['email'], form.value['password'])
 			// .pipe(concatMap( _ => this.authService.userInfo()))
@@ -54,6 +55,7 @@ export class LoginPage implements OnInit {
 				this.router.navigate([this.returnUrl]);
 				loading.dismiss();
 			}, error =>{
+				console.log(error);
 				this.toastService.somethingWentWrong()
 				loading.dismiss();
 			})
