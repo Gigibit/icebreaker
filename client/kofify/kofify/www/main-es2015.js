@@ -843,7 +843,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("  \n  <ion-header no-border>\n      <ion-toolbar transparent>\n        <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n          <ion-icon name=\"ios-arrow-back\"></ion-icon>\n        </ion-buttons>\n        <h3 class=\"chat-name\">{{chat.name}}</h3>\n        <!-- <ion-title class=\"ion-text-center\">\n          {{'register_page_title'| translate}}\n        </ion-title> -->\n        <ion-buttons slot=\"end\">\n          <ion-icon class=\"dots\" (click)=\"sendInvitation()\" name=\"cafe\"></ion-icon>\n        </ion-buttons>\n      </ion-toolbar>\n    </ion-header>\n\n  <ion-content padding class=\"container\" #messagesContent>\n    <div class=\"vertical-space message right\"></div>\n    <div *ngFor=\"let msg of messages\" class=\"message\" [class.right]=\"this.id == msg.user.id\" [class.left]=\"this.id != msg.user.id\">\n      <img \n      (click) = \"viewProfile(msg.user.id)\"\n      onError=\"this.src='../../assets/imgs/user.svg';\"      \n      class=\"user-img\"  alt=\"\" src=\"{{msg.user.profileImg}}\">\n      \n      <div class=\"msg-detail\">\n        <div class=\"msg-content\">\n          <span class=\"triangle\"></span>\n          <div class=\"coffee-wrapper\" *ngIf=\"msg.type == 'INVITATION'\">\n            <img class=\"coffee\" src=\"../../../assets/imgs/coffee.svg\">\n            <!-- <p class=\"question-mark\">?</p> -->\n          </div>\n          <p class=\"line-breaker \">{{msg.content}}</p>\n          <div class=\"created-at\">{{ getTime(msg.createdAt) }}</div>\n        </div>\n      </div>\n    </div>\n    <div class=\"vertical-space message right\"></div>\n  </ion-content>\n  <ion-footer no-border>\n    <div class=\"input-wrap\">\n      <textarea #messageInput placeholder=\"Enter your message!\" [(ngModel)]=\"message\" (keyup.enter)=\"sendMessage()\">\n      </textarea>\n      <button class=\"send-btn\" ion-button clear icon-only item-right (click)=\"sendMessage()\">\n        <div class=\"icon-wrapper\">\n          <ion-icon class=\"send-icon\" name=\"md-send\"></ion-icon>\n        </div>\n      </button>\n    </div>\n  </ion-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("  \n  <ion-header no-border>\n      <ion-toolbar transparent>\n        <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n          <ion-icon name=\"ios-arrow-back\"></ion-icon>\n        </ion-buttons>\n        <h3 *ngIf=\"chat\" class=\"chat-name\">{{chat.name}}</h3>\n        <!-- <ion-title class=\"ion-text-center\">\n          {{'register_page_title'| translate}}\n        </ion-title> -->\n        <ion-buttons slot=\"end\">\n          <ion-icon class=\"dots\" (click)=\"sendInvitation()\" name=\"cafe\"></ion-icon>\n        </ion-buttons>\n      </ion-toolbar>\n    </ion-header>\n\n  <ion-content padding class=\"container\" #messagesContent>\n    <div class=\"vertical-space message right\"></div>\n    <div *ngFor=\"let msg of messages\" class=\"message\" [class.right]=\"this.id == msg.user.id\" [class.left]=\"this.id != msg.user.id\">\n      <img \n      (click) = \"viewProfile(msg.user.id)\"\n      onError=\"this.src='../../assets/imgs/user.svg';\"      \n      class=\"user-img\"  alt=\"\" src=\"{{msg.user.profileImg}}\">\n      \n      <div class=\"msg-detail\">\n        <div class=\"msg-content\">\n          <span class=\"triangle\"></span>\n          <div class=\"coffee-wrapper\" *ngIf=\"msg.type == 'INVITATION'\">\n            <img class=\"coffee\" src=\"../../../assets/imgs/coffee.svg\">\n            <!-- <p class=\"question-mark\">?</p> -->\n          </div>\n          <p class=\"line-breaker \">{{msg.content}}</p>\n          <div class=\"created-at\">{{ getTime(msg.createdAt) }}</div>\n        </div>\n      </div>\n    </div>\n    <div class=\"vertical-space message right\"></div>\n  </ion-content>\n  <ion-footer no-border>\n    <div class=\"input-wrap\">\n      <textarea #messageInput placeholder=\"Enter your message!\" [(ngModel)]=\"message\" (keyup.enter)=\"sendMessage()\">\n      </textarea>\n      <button class=\"send-btn\" ion-button clear icon-only item-right (click)=\"sendMessage()\">\n        <div class=\"icon-wrapper\">\n          <ion-icon class=\"send-icon\" name=\"md-send\"></ion-icon>\n        </div>\n      </button>\n    </div>\n  </ion-footer>");
 
 /***/ }),
 
@@ -882,7 +882,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n      <ion-icon name=\"ios-arrow-back\"></ion-icon>\n    </ion-buttons>\n    <!-- <ion-title class=\"ion-text-center\">\n      {{'register_page_title'| translate}}\n    </ion-title> -->\n    <!-- <ion-buttons slot=\"end\">\n      <ion-icon class=\"dots\" (click)=\"userPopover($event)\" name=\"more\"></ion-icon>\n    </ion-buttons> -->\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <!-- <div class=\"userInfo\" *ngIf=\"user\">\n    <ion-avatar id=\"profileImage\">\n      <img \n      onError=\"this.src='../../assets/imgs/user.svg';\"       \n      [src]=\"user.profileImg\" />\n    </ion-avatar>\n    <ion-label class=\"user-name\">{{user.name}}</ion-label>\n  </div> -->\n  <ion-slides pager=\"true\" [options]=\"slideOpts\">\n    <ion-slide  *ngIf=\"!user\">\n      <ion-skeleton-text class=\"fake-slide\" animated></ion-skeleton-text>\n    </ion-slide>\n    <ion-slide class=\"user-img\" *ngFor=\"let img of user?.images\">\n      <img [src]=\"img\">\n    </ion-slide>\n  </ion-slides>\n  <!-- <div class=\"userInfo\" *ngIf=\"!user\">\n    <ion-avatar class=\"profileImageSkeleton\" slot=\"start\">\n      <ion-skeleton-text animated></ion-skeleton-text>\n    </ion-avatar>\n    <ion-skeleton-text class=\"user-name skeleton\" animated></ion-skeleton-text>\n  </div> -->\n  <div class=\"half-page-wrapper\">\n    <div class=\"localized-user-btn-wrp\">\n      <ion-button slot=\"start\" (click)=\"invite()\" class=\"invite-btn localized-user-btn\">\n        <ion-icon name=\"cafe\"></ion-icon>\n      </ion-button>\n      <ion-button slot=\"end\" (click)=\"chat()\" class=\"send-btn localized-user-btn\">\n        <ion-icon name=\"chatbubbles\"></ion-icon>\n      </ion-button>\n    </div>\n    \n    <ion-label *ngIf=\"user\" class=\"user-info-text\">\n        <div class=\"user-info-text-name\">{{user?.name +  ( user?.age ? ',' : '' ) }}<p class=\"user-info-text-age\">{{user?.age}}</p></div> \n      </ion-label>\n    <ion-label *ngIf=\"distance\" class=\"user-info-text\">\n      <ion-icon name=\"pin\"></ion-icon>{{ distance }}\n    </ion-label>\n    <ion-label class=\"user-info-text\" *ngIf=\"isOnline\">\n      <ion-icon class=\"online-badge\"></ion-icon> Online\n    </ion-label>\n    <ion-label class=\"user-info-text\">\n        <p>{{user?.bio}}</p>\n    </ion-label>\n    \n  </div>\n  <!-- <span class=\"coffee-stain\" *ngIf=\"user && ( !user.images || user.images.length == 0 )\"></span> -->\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n      <ion-icon name=\"ios-arrow-back\"></ion-icon>\n    </ion-buttons>\n    <!-- <ion-title class=\"ion-text-center\">\n      {{'register_page_title'| translate}}\n    </ion-title> -->\n    <!-- <ion-buttons slot=\"end\">\n      <ion-icon class=\"dots\" (click)=\"userPopover($event)\" name=\"more\"></ion-icon>\n    </ion-buttons> -->\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <!-- <div class=\"userInfo\" *ngIf=\"user\">\n    <ion-avatar id=\"profileImage\">\n      <img \n      onError=\"this.src='../../assets/imgs/user.svg';\"       \n      [src]=\"user.profileImg\" />\n    </ion-avatar>\n    <ion-label class=\"user-name\">{{user.name}}</ion-label>\n  </div> -->\n  <ion-slides pager=\"true\" [options]=\"slideOpts\">\n    <ion-slide  *ngIf=\"!user\">\n      <ion-skeleton-text class=\"fake-slide\" animated></ion-skeleton-text>\n    </ion-slide>\n    <ion-slide class=\"user-img\" *ngFor=\"let img of user?.images\">\n      <img-loader [src]=\"img\"></img-loader>\n    </ion-slide>\n  </ion-slides>\n  <!-- <div class=\"userInfo\" *ngIf=\"!user\">\n    <ion-avatar class=\"profileImageSkeleton\" slot=\"start\">\n      <ion-skeleton-text animated></ion-skeleton-text>\n    </ion-avatar>\n    <ion-skeleton-text class=\"user-name skeleton\" animated></ion-skeleton-text>\n  </div> -->\n  <div class=\"half-page-wrapper\">\n    <div class=\"localized-user-btn-wrp\">\n      <ion-button slot=\"start\" (click)=\"invite()\" class=\"invite-btn localized-user-btn\">\n        <ion-icon name=\"cafe\"></ion-icon>\n      </ion-button>\n      <ion-button slot=\"end\" (click)=\"chat()\" class=\"send-btn localized-user-btn\">\n        <ion-icon name=\"chatbubbles\"></ion-icon>\n      </ion-button>\n    </div>\n    \n    <ion-label *ngIf=\"user\" class=\"user-info-text\">\n        <div class=\"user-info-text-name\">{{user?.name +  ( user?.age ? ',' : '' ) }}<p class=\"user-info-text-age\">{{user?.age}}</p></div> \n      </ion-label>\n    <ion-label *ngIf=\"distance\" class=\"user-info-text\">\n      <ion-icon name=\"pin\"></ion-icon>{{ distance }}\n    </ion-label>\n    <ion-label class=\"user-info-text\" *ngIf=\"isOnline\">\n      <ion-icon class=\"online-badge\"></ion-icon> Online\n    </ion-label>\n    <ion-label class=\"user-info-text\">\n        <p>{{user?.bio}}</p>\n    </ion-label>\n    \n  </div>\n  <!-- <span class=\"coffee-stain\" *ngIf=\"user && ( !user.images || user.images.length == 0 )\"></span> -->\n</ion-content>\n");
 
 /***/ }),
 
@@ -2579,8 +2579,9 @@ let ErrorInterceptor = class ErrorInterceptor {
         return next.handle(request).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(err => {
             if (err.status === UNAUTHORIZED) {
                 // auto logout if 401 response returned from api
-                this.authenticationService.logout();
-                location.reload(true);
+                this.authenticationService.logout().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["finalize"])(() => {
+                    location.reload(true);
+                })).subscribe();
             }
             if (err.status === NOT_ACCETTABLE) {
                 let plans = err.body;
@@ -2594,7 +2595,6 @@ let ErrorInterceptor = class ErrorInterceptor {
                     });
                 }
             }
-            console.log(err);
             const error = (err.error ? err.error.message : '') || err.statusText;
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error);
         }));
@@ -3713,8 +3713,10 @@ let AuthService = class AuthService {
         this.currentUserSubject.next(user);
     }
     logout() {
+        console.log('logout-->');
         // remove user from local storage to log user out
         return this.http.post(LOGOUT_URL, {}).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(() => {
+            console.log('finalize called');
             localStorage.removeItem('currentUser');
             localStorage.removeItem(TOKEN_KEY);
             this.authToken = null;
@@ -3935,6 +3937,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const PAGINATION_LIMIT = 6;
 const FIND_CLOSEST_USERS_URL = _config__WEBPACK_IMPORTED_MODULE_4__["SERVICE_SERVER"] + '/users/me/users';
 const SEND_COFFEE_INVITATION = _config__WEBPACK_IMPORTED_MODULE_4__["SERVICE_SERVER"] + '/invitations';
 // const SINGLE_PROPOSAL_SERVICE = SERVICE_SERVER + '/api/proposal'
@@ -3945,70 +3948,50 @@ const SEND_COFFEE_INVITATION = _config__WEBPACK_IMPORTED_MODULE_4__["SERVICE_SER
 let CoffeeService = class CoffeeService {
     constructor(http) {
         this.http = http;
+        this.localizedUsers = [];
+        this.userLoading = false;
     }
-    // createProposal(proposal: Proposal): Observable<any>{
-    //   let proposalMap = proposal
-    //   proposalMap['accept_all_request'] = proposal.useOwnerPhoto
-    //   proposalMap['use_owner_photo'] = proposal.autoAcceptRequest
-    //   return this.http.post(PROPOSALS_CRUD_SERVICE, proposal)
-    // }
     sendInvitation(userIds, content = '') {
         return this.http.post(SEND_COFFEE_INVITATION, {
             userIds: userIds,
             content: content
         });
     }
-    // getProposalDetail(id: string){
-    //   // return of({
-    //   //   title: "odnafoina",
-    //   //   description: "oidnaoidncoianc",
-    //   //   users: []
-    //   // })
-    //   return this.http.get( SINGLE_PROPOSAL_SERVICE + '/' + id)
-    // }
-    // join(id : string){
-    //   return this.http.post( JOIN_PROPOSAL_SERVICE + id , {})
-    // }
-    // approveRequest(proposalId: string, userToApproveId: string){
-    //   return this.http.post( APPROVE_REQUEST_SERVICE , {
-    //     'user_to_approve' : userToApproveId,
-    //     'proposal_id' : proposalId
-    //   })
-    // }
-    // denyRequest(proposalId: string, userToApproveId: string){
-    //   return this.http.post( DENY_REQUEST_SERVICE , {
-    //     'user_to_approve' : userToApproveId,
-    //     'proposal_id' : proposalId
-    //   })
-    // }
-    // blockUser(userId: string ){
-    //   return this.http.post( BLOCK_USER_PROPOSAL_SERVICE + userId , { })
-    // }
     findClosestUsers(mLat, mLong, maxDistance = null) {
         return this.http.get(FIND_CLOSEST_USERS_URL +
             '?longitude=' + mLong +
             '&latitude=' + mLat +
+            '&limit=' + PAGINATION_LIMIT +
+            '&offset=0' +
             (maxDistance ? '&distance=' + maxDistance : ""))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(response => {
             this.mLastLat = mLat;
             this.mLastLong = mLong;
             this.mMaxDistance = maxDistance;
-            this.localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
+            let localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
+            if (localizedUsers)
+                localizedUsers.map(it => this.localizedUsers.push(it));
             return this.localizedUsers;
         }));
     }
     moreUsersOnLastUsers() {
+        if (this.userLoading)
+            return;
+        this.userLoading = true;
+        console.log('calling...');
         return this.http.get(FIND_CLOSEST_USERS_URL +
             '?longitude=' + this.mLastLong +
             '&latitude=' + this.mLastLat +
-            '&offset=' + ((this.localizedUsers.length + 5).toString()) +
+            '&limit=' + PAGINATION_LIMIT +
+            '&offset=' + ((this.localizedUsers.length).toString()) +
             (this.mMaxDistance ? '&distance=' + this.mMaxDistance : ""))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(response => {
             let localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
             if (localizedUsers)
                 localizedUsers.map(it => this.localizedUsers.push(it));
             return localizedUsers;
-        }));
+        }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(() => this.userLoading = false));
     }
 };
 CoffeeService.ctorParameters = () => [
@@ -4794,6 +4777,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
 /* harmony import */ var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/onesignal/ngx */ "./node_modules/@ionic-native/onesignal/ngx/index.js");
+/* harmony import */ var ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ionic-image-loader */ "./node_modules/ionic-image-loader/fesm2015/ionic-image-loader.js");
+
 
 
 
@@ -4804,13 +4789,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar, oneSignal, translate, authenticationService, router) {
+    constructor(platform, splashScreen, statusBar, oneSignal, translate, authenticationService, imageLoaderConfig, router) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.oneSignal = oneSignal;
         this.translate = translate;
         this.authenticationService = authenticationService;
+        this.imageLoaderConfig = imageLoaderConfig;
         this.router = router;
         this.initializeApp();
     }
@@ -4820,6 +4806,11 @@ let AppComponent = class AppComponent {
     }
     initializeApp() {
         this.platform.ready().then(() => {
+            this.imageLoaderConfig.setFallbackUrl('assets/imgs/user.svg'); // if images fail to load, display this image instead
+            this.imageLoaderConfig.enableSpinner(false);
+            this.imageLoaderConfig.setMaximumCacheSize(40 * 1024 * 1024); // set max size to 20MB
+            this.imageLoaderConfig.setMaximumCacheAge(7 * 24 * 60 * 60 * 1000); // 7 days
+            this.imageLoaderConfig.useImageTag(true);
             this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
             // this language will be used as a fallback when a translation isn't found in the current language
             this.translate.setDefaultLang('en');
@@ -4846,6 +4837,7 @@ AppComponent.ctorParameters = () => [
     { type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"] },
     { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"] },
     { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
+    { type: ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__["ImageLoaderConfigService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -4859,6 +4851,7 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"],
         _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"],
         _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
+        ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__["ImageLoaderConfigService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
 ], AppComponent);
 
@@ -4916,6 +4909,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @ionic-native/admob-free/ngx */ "./node_modules/@ionic-native/admob-free/ngx/index.js");
 /* harmony import */ var _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./delete-account/delete-account.component */ "./src/app/delete-account/delete-account.component.ts");
 /* harmony import */ var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @ionic-native/in-app-purchase/ngx */ "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+/* harmony import */ var ionic_image_loader__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ionic-image-loader */ "./node_modules/ionic-image-loader/fesm2015/ionic-image-loader.js");
+/* harmony import */ var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @ionic-native/ionic-webview/ngx */ "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
 
 
 
@@ -4958,6 +4953,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
+
+
 function createTranslateLoader(http) {
     return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_8__["TranslateHttpLoader"](http, '../assets/i18n/', '.json');
 }
@@ -5003,6 +5000,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             }),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"],
             _pages_chat_chat_module__WEBPACK_IMPORTED_MODULE_16__["ChatRoomPageModule"],
+            ionic_image_loader__WEBPACK_IMPORTED_MODULE_40__["IonicImageLoader"].forRoot(),
             ng2_dragula__WEBPACK_IMPORTED_MODULE_33__["DragulaModule"].forRoot(),
             _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
             //    SharedModule,
@@ -5032,6 +5030,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"],
             _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"],
             _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"],
+            _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_41__["WebView"],
             _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"],
             _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"],
             _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"],
@@ -5062,9 +5061,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WEBSOCKET_SERVICE_SERVER", function() { return WEBSOCKET_SERVICE_SERVER; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
-const AUTH_SERVER = 'http://10.30.31.238:8080';
-const SERVICE_SERVER = 'http://10.30.31.238:8080';
-const WEBSOCKET_SERVICE_SERVER = 'http://10.30.31.238:8080/chat-websocket';
+const AUTH_SERVER = 'https://kofify.com';
+const SERVICE_SERVER = 'https://kofify.com';
+const WEBSOCKET_SERVICE_SERVER = 'https://kofify.com/chat-websocket';
 
 
 /***/ }),

@@ -425,7 +425,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.4",
     "onesignal-cordova-plugin": "2.6.0",
-    "cordova-plugin-inapppurchase": "1.1.0"
+    "cordova-plugin-inapppurchase": "1.1.0",
+    "cordova-plugin-crosswalk-webview": "2.4.0"
 }
 // BOTTOM OF METADATA
 });

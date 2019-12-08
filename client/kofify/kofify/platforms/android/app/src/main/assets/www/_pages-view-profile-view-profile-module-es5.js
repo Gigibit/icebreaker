@@ -62,6 +62,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _view_profile_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./view-profile.page */
     "./src/app/_pages/view-profile/view-profile.page.ts");
+    /* harmony import */
+
+
+    var ionic_image_loader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ionic-image-loader */
+    "./node_modules/ionic-image-loader/fesm2015/ionic-image-loader.js");
 
     var routes = [{
       path: '',
@@ -73,7 +79,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     ViewProfilePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], ionic_image_loader__WEBPACK_IMPORTED_MODULE_7__["IonicImageLoader"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
       declarations: [_view_profile_page__WEBPACK_IMPORTED_MODULE_6__["ViewProfileComponent"]]
     })], ViewProfilePageModule);
     /***/

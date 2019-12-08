@@ -26,12 +26,13 @@
     "@ionic-native/camera": "^5.15.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/facebook": "^5.15.0",
-    "@ionic-native/file": "^5.15.0",
+    "@ionic-native/file": "^5.17.0",
     "@ionic-native/file-transfer": "^5.15.0",
     "@ionic-native/geolocation": "^5.15.0",
     "@ionic-native/globalization": "^5.15.0",
     "@ionic-native/in-app-browser": "^5.15.0",
     "@ionic-native/in-app-purchase": "^5.17.0",
+    "@ionic-native/ionic-webview": "^5.17.0",
     "@ionic-native/native-geocoder": "^5.15.0",
     "@ionic-native/native-storage": "^5.15.0",
     "@ionic-native/onesignal": "^5.15.0",
@@ -50,6 +51,7 @@
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-admob-free": "^0.27.0",
     "cordova-plugin-camera": "^4.1.0",
+    "cordova-plugin-crosswalk-webview": "^2.4.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-extension": "^1.5.4",
     "cordova-plugin-facebook4": "^6.1.0",
@@ -68,6 +70,7 @@
     "cordova-plugin-whitelist": "^1.3.4",
     "cordova-promise-polyfill": "0.0.2",
     "core-js": "^2.5.4",
+    "ionic-image-loader": "^7.0.0-beta.2",
     "moment": "^2.24.0",
     "ng2-dragula": "^2.1.1",
     "onesignal-cordova-plugin": "^2.6.0",
@@ -139,7 +142,8 @@
       "cordova-plugin-admob-free": {
         "ADMOB_APP_ID": "ca-app-pub-6771007436830318~4967517385"
       },
-      "cordova-plugin-inapppurchase": {}
+      "cordova-plugin-inapppurchase": {},
+      "cordova-plugin-crosswalk-webview": {}
     },
     "platforms": [
       "browser",

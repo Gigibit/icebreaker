@@ -577,7 +577,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "  \n  <ion-header no-border>\n      <ion-toolbar transparent>\n        <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n          <ion-icon name=\"ios-arrow-back\"></ion-icon>\n        </ion-buttons>\n        <h3 class=\"chat-name\">{{chat.name}}</h3>\n        <!-- <ion-title class=\"ion-text-center\">\n          {{'register_page_title'| translate}}\n        </ion-title> -->\n        <ion-buttons slot=\"end\">\n          <ion-icon class=\"dots\" (click)=\"sendInvitation()\" name=\"cafe\"></ion-icon>\n        </ion-buttons>\n      </ion-toolbar>\n    </ion-header>\n\n  <ion-content padding class=\"container\" #messagesContent>\n    <div class=\"vertical-space message right\"></div>\n    <div *ngFor=\"let msg of messages\" class=\"message\" [class.right]=\"this.id == msg.user.id\" [class.left]=\"this.id != msg.user.id\">\n      <img \n      (click) = \"viewProfile(msg.user.id)\"\n      onError=\"this.src='../../assets/imgs/user.svg';\"      \n      class=\"user-img\"  alt=\"\" src=\"{{msg.user.profileImg}}\">\n      \n      <div class=\"msg-detail\">\n        <div class=\"msg-content\">\n          <span class=\"triangle\"></span>\n          <div class=\"coffee-wrapper\" *ngIf=\"msg.type == 'INVITATION'\">\n            <img class=\"coffee\" src=\"../../../assets/imgs/coffee.svg\">\n            <!-- <p class=\"question-mark\">?</p> -->\n          </div>\n          <p class=\"line-breaker \">{{msg.content}}</p>\n          <div class=\"created-at\">{{ getTime(msg.createdAt) }}</div>\n        </div>\n      </div>\n    </div>\n    <div class=\"vertical-space message right\"></div>\n  </ion-content>\n  <ion-footer no-border>\n    <div class=\"input-wrap\">\n      <textarea #messageInput placeholder=\"Enter your message!\" [(ngModel)]=\"message\" (keyup.enter)=\"sendMessage()\">\n      </textarea>\n      <button class=\"send-btn\" ion-button clear icon-only item-right (click)=\"sendMessage()\">\n        <div class=\"icon-wrapper\">\n          <ion-icon class=\"send-icon\" name=\"md-send\"></ion-icon>\n        </div>\n      </button>\n    </div>\n  </ion-footer>";
+    __webpack_exports__["default"] = "  \n  <ion-header no-border>\n      <ion-toolbar transparent>\n        <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n          <ion-icon name=\"ios-arrow-back\"></ion-icon>\n        </ion-buttons>\n        <h3 *ngIf=\"chat\" class=\"chat-name\">{{chat.name}}</h3>\n        <!-- <ion-title class=\"ion-text-center\">\n          {{'register_page_title'| translate}}\n        </ion-title> -->\n        <ion-buttons slot=\"end\">\n          <ion-icon class=\"dots\" (click)=\"sendInvitation()\" name=\"cafe\"></ion-icon>\n        </ion-buttons>\n      </ion-toolbar>\n    </ion-header>\n\n  <ion-content padding class=\"container\" #messagesContent>\n    <div class=\"vertical-space message right\"></div>\n    <div *ngFor=\"let msg of messages\" class=\"message\" [class.right]=\"this.id == msg.user.id\" [class.left]=\"this.id != msg.user.id\">\n      <img \n      (click) = \"viewProfile(msg.user.id)\"\n      onError=\"this.src='../../assets/imgs/user.svg';\"      \n      class=\"user-img\"  alt=\"\" src=\"{{msg.user.profileImg}}\">\n      \n      <div class=\"msg-detail\">\n        <div class=\"msg-content\">\n          <span class=\"triangle\"></span>\n          <div class=\"coffee-wrapper\" *ngIf=\"msg.type == 'INVITATION'\">\n            <img class=\"coffee\" src=\"../../../assets/imgs/coffee.svg\">\n            <!-- <p class=\"question-mark\">?</p> -->\n          </div>\n          <p class=\"line-breaker \">{{msg.content}}</p>\n          <div class=\"created-at\">{{ getTime(msg.createdAt) }}</div>\n        </div>\n      </div>\n    </div>\n    <div class=\"vertical-space message right\"></div>\n  </ion-content>\n  <ion-footer no-border>\n    <div class=\"input-wrap\">\n      <textarea #messageInput placeholder=\"Enter your message!\" [(ngModel)]=\"message\" (keyup.enter)=\"sendMessage()\">\n      </textarea>\n      <button class=\"send-btn\" ion-button clear icon-only item-right (click)=\"sendMessage()\">\n        <div class=\"icon-wrapper\">\n          <ion-icon class=\"send-icon\" name=\"md-send\"></ion-icon>\n        </div>\n      </button>\n    </div>\n  </ion-footer>";
     /***/
   },
 
@@ -637,7 +637,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n      <ion-icon name=\"ios-arrow-back\"></ion-icon>\n    </ion-buttons>\n    <!-- <ion-title class=\"ion-text-center\">\n      {{'register_page_title'| translate}}\n    </ion-title> -->\n    <!-- <ion-buttons slot=\"end\">\n      <ion-icon class=\"dots\" (click)=\"userPopover($event)\" name=\"more\"></ion-icon>\n    </ion-buttons> -->\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <!-- <div class=\"userInfo\" *ngIf=\"user\">\n    <ion-avatar id=\"profileImage\">\n      <img \n      onError=\"this.src='../../assets/imgs/user.svg';\"       \n      [src]=\"user.profileImg\" />\n    </ion-avatar>\n    <ion-label class=\"user-name\">{{user.name}}</ion-label>\n  </div> -->\n  <ion-slides pager=\"true\" [options]=\"slideOpts\">\n    <ion-slide  *ngIf=\"!user\">\n      <ion-skeleton-text class=\"fake-slide\" animated></ion-skeleton-text>\n    </ion-slide>\n    <ion-slide class=\"user-img\" *ngFor=\"let img of user?.images\">\n      <img [src]=\"img\">\n    </ion-slide>\n  </ion-slides>\n  <!-- <div class=\"userInfo\" *ngIf=\"!user\">\n    <ion-avatar class=\"profileImageSkeleton\" slot=\"start\">\n      <ion-skeleton-text animated></ion-skeleton-text>\n    </ion-avatar>\n    <ion-skeleton-text class=\"user-name skeleton\" animated></ion-skeleton-text>\n  </div> -->\n  <div class=\"half-page-wrapper\">\n    <div class=\"localized-user-btn-wrp\">\n      <ion-button slot=\"start\" (click)=\"invite()\" class=\"invite-btn localized-user-btn\">\n        <ion-icon name=\"cafe\"></ion-icon>\n      </ion-button>\n      <ion-button slot=\"end\" (click)=\"chat()\" class=\"send-btn localized-user-btn\">\n        <ion-icon name=\"chatbubbles\"></ion-icon>\n      </ion-button>\n    </div>\n    \n    <ion-label *ngIf=\"user\" class=\"user-info-text\">\n        <div class=\"user-info-text-name\">{{user?.name +  ( user?.age ? ',' : '' ) }}<p class=\"user-info-text-age\">{{user?.age}}</p></div> \n      </ion-label>\n    <ion-label *ngIf=\"distance\" class=\"user-info-text\">\n      <ion-icon name=\"pin\"></ion-icon>{{ distance }}\n    </ion-label>\n    <ion-label class=\"user-info-text\" *ngIf=\"isOnline\">\n      <ion-icon class=\"online-badge\"></ion-icon> Online\n    </ion-label>\n    <ion-label class=\"user-info-text\">\n        <p>{{user?.bio}}</p>\n    </ion-label>\n    \n  </div>\n  <!-- <span class=\"coffee-stain\" *ngIf=\"user && ( !user.images || user.images.length == 0 )\"></span> -->\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n      <ion-icon name=\"ios-arrow-back\"></ion-icon>\n    </ion-buttons>\n    <!-- <ion-title class=\"ion-text-center\">\n      {{'register_page_title'| translate}}\n    </ion-title> -->\n    <!-- <ion-buttons slot=\"end\">\n      <ion-icon class=\"dots\" (click)=\"userPopover($event)\" name=\"more\"></ion-icon>\n    </ion-buttons> -->\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <!-- <div class=\"userInfo\" *ngIf=\"user\">\n    <ion-avatar id=\"profileImage\">\n      <img \n      onError=\"this.src='../../assets/imgs/user.svg';\"       \n      [src]=\"user.profileImg\" />\n    </ion-avatar>\n    <ion-label class=\"user-name\">{{user.name}}</ion-label>\n  </div> -->\n  <ion-slides pager=\"true\" [options]=\"slideOpts\">\n    <ion-slide  *ngIf=\"!user\">\n      <ion-skeleton-text class=\"fake-slide\" animated></ion-skeleton-text>\n    </ion-slide>\n    <ion-slide class=\"user-img\" *ngFor=\"let img of user?.images\">\n      <img-loader [src]=\"img\"></img-loader>\n    </ion-slide>\n  </ion-slides>\n  <!-- <div class=\"userInfo\" *ngIf=\"!user\">\n    <ion-avatar class=\"profileImageSkeleton\" slot=\"start\">\n      <ion-skeleton-text animated></ion-skeleton-text>\n    </ion-avatar>\n    <ion-skeleton-text class=\"user-name skeleton\" animated></ion-skeleton-text>\n  </div> -->\n  <div class=\"half-page-wrapper\">\n    <div class=\"localized-user-btn-wrp\">\n      <ion-button slot=\"start\" (click)=\"invite()\" class=\"invite-btn localized-user-btn\">\n        <ion-icon name=\"cafe\"></ion-icon>\n      </ion-button>\n      <ion-button slot=\"end\" (click)=\"chat()\" class=\"send-btn localized-user-btn\">\n        <ion-icon name=\"chatbubbles\"></ion-icon>\n      </ion-button>\n    </div>\n    \n    <ion-label *ngIf=\"user\" class=\"user-info-text\">\n        <div class=\"user-info-text-name\">{{user?.name +  ( user?.age ? ',' : '' ) }}<p class=\"user-info-text-age\">{{user?.age}}</p></div> \n      </ion-label>\n    <ion-label *ngIf=\"distance\" class=\"user-info-text\">\n      <ion-icon name=\"pin\"></ion-icon>{{ distance }}\n    </ion-label>\n    <ion-label class=\"user-info-text\" *ngIf=\"isOnline\">\n      <ion-icon class=\"online-badge\"></ion-icon> Online\n    </ion-label>\n    <ion-label class=\"user-info-text\">\n        <p>{{user?.bio}}</p>\n    </ion-label>\n    \n  </div>\n  <!-- <span class=\"coffee-stain\" *ngIf=\"user && ( !user.images || user.images.length == 0 )\"></span> -->\n</ion-content>\n";
     /***/
   },
 
@@ -1990,19 +1990,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @ionic-native/in-app-purchase-2/ngx */
-    "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js");
+    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic-native/in-app-purchase/ngx */
+    "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/_services/toast.service */
+    "./src/app/_services/toast.service.ts");
 
     var SelectPlanComponent =
     /*#__PURE__*/
     function () {
-      function SelectPlanComponent(platform, store, modalCtrl, userService) {
+      function SelectPlanComponent(platform, iap, modalCtrl, toastService, userService) {
         _classCallCheck(this, SelectPlanComponent);
 
         this.platform = platform;
-        this.store = store;
+        this.iap = iap;
         this.modalCtrl = modalCtrl;
+        this.toastService = toastService;
         this.userService = userService;
         this.plans = [];
         this.sliderConfig = {
@@ -2043,38 +2050,50 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     index = _context7.sent;
                     this.plans = this.userService.lastPlans;
                     selectedPlanId = this.plans[index].id;
-                    this.platform.ready().then(function () {
-                      _this8.store.register({
-                        id: selectedPlanId,
-                        type: _this8.store.CONSUMABLE
-                      });
+                    this.iap.getProducts(this.plans.map(function (d) {
+                      return d.id;
+                    })).then(function (products) {
+                      _this8.iap.buy(selectedPlanId).then(function (data) {
+                        _this8.iap.consume(data.productType, data.receipt, data.signature);
 
-                      var process = _this8.store.when(selectedPlanId);
-
-                      process.approved(function (p) {
-                        var paymentProcess = p.verify();
-                        paymentProcess.success(function (product, transactionDetail) {
-                          console.log('success', product, transactionDetail);
-
-                          _this8.userService.finalizePayment(transactionDetail).subscribe(function (data) {});
+                        _this8.userService.finalizePayment(data).subscribe(function (data) {
+                          return console.log(data);
                         });
-                      });
-                      process.error(function (p) {
-                        return console.log("Store: error", p);
-                      });
-                      process.verified(function (p) {
-                        console.log('--- finishing ', p);
-                        p.finish();
-                        console.log('--- finish', p);
-                      });
-                      process.cancelled(function (p) {
-                        return console.log('canceled', p);
-                      });
 
-                      _this8.store.refresh();
+                        _this8.modalCtrl.dismiss();
+                      }).catch(function (err) {
+                        _this8.toastService.somethingWentWrong();
 
-                      _this8.store.order(selectedPlanId);
-                    });
+                        console.log(err);
+                      });
+                    }).catch(function (err) {
+                      _this8.toastService.somethingWentWrong();
+
+                      console.log(err);
+                    }); // this.platform.ready().then(() => {
+                    //   this.store.register({
+                    //     id: selectedPlanId,
+                    //     type: this.store.CONSUMABLE,
+                    //   });
+                    //   let process = this.store.when(selectedPlanId)
+                    //   process.approved(p => {
+                    //     let paymentProcess = p.verify()
+                    //     paymentProcess.success((product, transactionDetail) => {
+                    //         console.log('success', product, transactionDetail)
+                    //         this.userService.finalizePayment(transactionDetail).subscribe(data=>{
+                    //         })
+                    //     })
+                    //   })
+                    //   process.error(p=> console.log("Store: error", p));
+                    //   process.verified(p =>{ 
+                    //     console.log('--- finishing ', p)
+                    //     p.finish()
+                    //     console.log('--- finish', p)
+                    //   });
+                    //   process.cancelled(p => console.log('canceled', p))
+                    //   this.store.refresh();
+                    //   this.store.order(selectedPlanId);
+                    //  });
 
                   case 6:
                   case "end":
@@ -2093,9 +2112,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
       }, {
-        type: _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"]
+        type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"]
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+      }, {
+        type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"]
       }, {
         type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]
       }];
@@ -2112,7 +2133,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./select-plan.component.scss */
       "./src/app/_components/select-plan/select-plan.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase2"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])], SelectPlanComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppPurchase"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"], src_app_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])], SelectPlanComponent);
     /***/
   },
 
@@ -3266,9 +3287,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return next.handle(request).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (err) {
             if (err.status === UNAUTHORIZED) {
               // auto logout if 401 response returned from api
-              _this9.authenticationService.logout();
-
-              location.reload(true);
+              _this9.authenticationService.logout().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["finalize"])(function () {
+                location.reload(true);
+              })).subscribe();
             }
 
             if (err.status === NOT_ACCETTABLE) {
@@ -3286,7 +3307,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }
 
-            console.log(err);
             var error = (err.error ? err.error.message : '') || err.statusText;
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error);
           }));
@@ -5164,8 +5184,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function logout() {
           var _this24 = this;
 
-          // remove user from local storage to log user out
+          console.log('logout-->'); // remove user from local storage to log user out
+
           return this.http.post(LOGOUT_URL, {}).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () {
+            console.log('finalize called');
             localStorage.removeItem('currentUser');
             localStorage.removeItem(TOKEN_KEY);
             _this24.authToken = null;
@@ -5569,6 +5591,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! rxjs/operators */
     "./node_modules/rxjs/_esm2015/operators/index.js");
 
+    var PAGINATION_LIMIT = 6;
     var FIND_CLOSEST_USERS_URL = _config__WEBPACK_IMPORTED_MODULE_4__["SERVICE_SERVER"] + '/users/me/users';
     var SEND_COFFEE_INVITATION = _config__WEBPACK_IMPORTED_MODULE_4__["SERVICE_SERVER"] + '/invitations'; // const SINGLE_PROPOSAL_SERVICE = SERVICE_SERVER + '/api/proposal'
     // const JOIN_PROPOSAL_SERVICE   = SERVICE_SERVER + '/api/join-proposal/'
@@ -5583,13 +5606,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, CoffeeService);
 
         this.http = http;
-      } // createProposal(proposal: Proposal): Observable<any>{
-      //   let proposalMap = proposal
-      //   proposalMap['accept_all_request'] = proposal.useOwnerPhoto
-      //   proposalMap['use_owner_photo'] = proposal.autoAcceptRequest
-      //   return this.http.post(PROPOSALS_CRUD_SERVICE, proposal)
-      // }
-
+        this.localizedUsers = [];
+        this.userLoading = false;
+      }
 
       _createClass(CoffeeService, [{
         key: "sendInvitation",
@@ -5599,44 +5618,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             userIds: userIds,
             content: content
           });
-        } // getProposalDetail(id: string){
-        //   // return of({
-        //   //   title: "odnafoina",
-        //   //   description: "oidnaoidncoianc",
-        //   //   users: []
-        //   // })
-        //   return this.http.get( SINGLE_PROPOSAL_SERVICE + '/' + id)
-        // }
-        // join(id : string){
-        //   return this.http.post( JOIN_PROPOSAL_SERVICE + id , {})
-        // }
-        // approveRequest(proposalId: string, userToApproveId: string){
-        //   return this.http.post( APPROVE_REQUEST_SERVICE , {
-        //     'user_to_approve' : userToApproveId,
-        //     'proposal_id' : proposalId
-        //   })
-        // }
-        // denyRequest(proposalId: string, userToApproveId: string){
-        //   return this.http.post( DENY_REQUEST_SERVICE , {
-        //     'user_to_approve' : userToApproveId,
-        //     'proposal_id' : proposalId
-        //   })
-        // }
-        // blockUser(userId: string ){
-        //   return this.http.post( BLOCK_USER_PROPOSAL_SERVICE + userId , { })
-        // }
-
+        }
       }, {
         key: "findClosestUsers",
         value: function findClosestUsers(mLat, mLong) {
           var _this28 = this;
 
           var maxDistance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-          return this.http.get(FIND_CLOSEST_USERS_URL + '?longitude=' + mLong + '&latitude=' + mLat + (maxDistance ? '&distance=' + maxDistance : "")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
+          return this.http.get(FIND_CLOSEST_USERS_URL + '?longitude=' + mLong + '&latitude=' + mLat + '&limit=' + PAGINATION_LIMIT + '&offset=0' + (maxDistance ? '&distance=' + maxDistance : "")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
             _this28.mLastLat = mLat;
             _this28.mLastLong = mLong;
             _this28.mMaxDistance = maxDistance;
-            _this28.localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
+
+            var localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
+
+            if (localizedUsers) localizedUsers.map(function (it) {
+              return _this28.localizedUsers.push(it);
+            });
             return _this28.localizedUsers;
           }));
         }
@@ -5645,13 +5643,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function moreUsersOnLastUsers() {
           var _this29 = this;
 
-          return this.http.get(FIND_CLOSEST_USERS_URL + '?longitude=' + this.mLastLong + '&latitude=' + this.mLastLat + '&offset=' + (this.localizedUsers.length + 5).toString() + (this.mMaxDistance ? '&distance=' + this.mMaxDistance : "")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
+          if (this.userLoading) return;
+          this.userLoading = true;
+          console.log('calling...');
+          return this.http.get(FIND_CLOSEST_USERS_URL + '?longitude=' + this.mLastLong + '&latitude=' + this.mLastLat + '&limit=' + PAGINATION_LIMIT + '&offset=' + this.localizedUsers.length.toString() + (this.mMaxDistance ? '&distance=' + this.mMaxDistance : "")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
             var localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_5__["LocalizedUserMapper"].fromJsonArray(response['users']);
 
             if (localizedUsers) localizedUsers.map(function (it) {
               return _this29.localizedUsers.push(it);
             });
             return localizedUsers;
+          })).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () {
+            return _this29.userLoading = false;
           }));
         }
       }]);
@@ -6922,11 +6925,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @ionic-native/onesignal/ngx */
     "./node_modules/@ionic-native/onesignal/ngx/index.js");
+    /* harmony import */
+
+
+    var ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ionic-image-loader */
+    "./node_modules/ionic-image-loader/fesm2015/ionic-image-loader.js");
 
     var AppComponent =
     /*#__PURE__*/
     function () {
-      function AppComponent(platform, splashScreen, statusBar, oneSignal, translate, authenticationService, router) {
+      function AppComponent(platform, splashScreen, statusBar, oneSignal, translate, authenticationService, imageLoaderConfig, router) {
         _classCallCheck(this, AppComponent);
 
         this.platform = platform;
@@ -6935,6 +6944,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.oneSignal = oneSignal;
         this.translate = translate;
         this.authenticationService = authenticationService;
+        this.imageLoaderConfig = imageLoaderConfig;
         this.router = router;
         this.initializeApp();
       }
@@ -6951,6 +6961,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this37 = this;
 
           this.platform.ready().then(function () {
+            _this37.imageLoaderConfig.setFallbackUrl('assets/imgs/user.svg'); // if images fail to load, display this image instead
+
+
+            _this37.imageLoaderConfig.enableSpinner(false);
+
+            _this37.imageLoaderConfig.setMaximumCacheSize(40 * 1024 * 1024); // set max size to 20MB
+
+
+            _this37.imageLoaderConfig.setMaximumCacheAge(7 * 24 * 60 * 60 * 1000); // 7 days
+
+
+            _this37.imageLoaderConfig.useImageTag(true);
+
             _this37.authenticationService.currentUser.subscribe(function (x) {
               return _this37.currentUser = x;
             }); // this language will be used as a fallback when a translation isn't found in the current language
@@ -6997,6 +7020,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         type: _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]
       }, {
+        type: ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__["ImageLoaderConfigService"]
+      }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
       }];
     };
@@ -7006,7 +7031,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./app.component.html */
       "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__["ImageLoaderConfigService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])], AppComponent);
     /***/
   },
 
@@ -7266,9 +7291,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
-    /*! @ionic-native/in-app-purchase-2/ngx */
-    "./node_modules/@ionic-native/in-app-purchase-2/ngx/index.js"); // import { AdMobFree } from '@ionic-native/admob-free/ngx';
+    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
+    /*! @ionic-native/in-app-purchase/ngx */
+    "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+    /* harmony import */
+
+
+    var ionic_image_loader__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(
+    /*! ionic-image-loader */
+    "./node_modules/ionic-image-loader/fesm2015/ionic-image-loader.js");
+    /* harmony import */
+
+
+    var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(
+    /*! @ionic-native/ionic-webview/ngx */
+    "./node_modules/@ionic-native/ionic-webview/ngx/index.js"); // import { AdMobFree } from '@ionic-native/admob-free/ngx';
     // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 
@@ -7299,7 +7336,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       entryComponents: [_components_image_modal_image_modal_component__WEBPACK_IMPORTED_MODULE_29__["ImageModalComponent"], _components_manage_credits_manage_credits_component__WEBPACK_IMPORTED_MODULE_34__["ManageCreditsComponent"], _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_35__["SelectPlanComponent"], _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_38__["DeleteAccountComponent"], _components_user_profile_popover_user_profile_popover_component__WEBPACK_IMPORTED_MODULE_31__["UserProfilePopoverComponent"], _components_edit_user_profile_edit_user_profile_component__WEBPACK_IMPORTED_MODULE_32__["EditUserProfileComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
         navAnimation: _utils_transitions__WEBPACK_IMPORTED_MODULE_26__["iosTransitionAnimation"]
-      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"], _pages_chat_chat_module__WEBPACK_IMPORTED_MODULE_16__["ChatRoomPageModule"], ng2_dragula__WEBPACK_IMPORTED_MODULE_33__["DragulaModule"].forRoot(), _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"], //    SharedModule,
+      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"], _pages_chat_chat_module__WEBPACK_IMPORTED_MODULE_16__["ChatRoomPageModule"], ionic_image_loader__WEBPACK_IMPORTED_MODULE_40__["IonicImageLoader"].forRoot(), ng2_dragula__WEBPACK_IMPORTED_MODULE_33__["DragulaModule"].forRoot(), _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"], //    SharedModule,
       _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"], _pages_login_login_module__WEBPACK_IMPORTED_MODULE_19__["LoginPageModule"], //    ProfilePageModule,
       _pages_register_register_module__WEBPACK_IMPORTED_MODULE_20__["RegisterPageModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"].forRoot({
         loader: {
@@ -7308,7 +7345,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"]]
         }
       }), _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(), _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"]],
-      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"], _ionic_native_in_app_purchase_2_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase2"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__["FileTransfer"], {
+      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"], _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_41__["WebView"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__["FileTransfer"], {
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HTTP_INTERCEPTORS"],
         useClass: _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_24__["JwtInterceptor"],
         multi: true
@@ -7363,9 +7400,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var AUTH_SERVER = 'http://10.30.31.238:8080';
-    var SERVICE_SERVER = 'http://10.30.31.238:8080';
-    var WEBSOCKET_SERVICE_SERVER = 'http://10.30.31.238:8080/chat-websocket';
+    var AUTH_SERVER = 'https://kofify.com';
+    var SERVICE_SERVER = 'https://kofify.com';
+    var WEBSOCKET_SERVICE_SERVER = 'https://kofify.com/chat-websocket';
     /***/
   },
 

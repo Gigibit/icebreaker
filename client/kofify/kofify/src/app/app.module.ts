@@ -49,7 +49,8 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
-
+import { IonicImageLoader } from 'ionic-image-loader';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -100,6 +101,7 @@ function createTranslateLoader(http: HttpClient) {
     }), 
     AppRoutingModule,
     ChatRoomPageModule,
+    IonicImageLoader.forRoot(),
     DragulaModule.forRoot(),
     HttpClientModule,
 //    SharedModule,
@@ -129,6 +131,7 @@ function createTranslateLoader(http: HttpClient) {
     Globalization,
     NativeStorage,
     Facebook,
+    WebView,
     Camera,
     File,
     OneSignal,

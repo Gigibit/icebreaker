@@ -27,7 +27,7 @@
       <ion-skeleton-text class="fake-slide" animated></ion-skeleton-text>
     </ion-slide>
     <ion-slide class="user-img" *ngFor="let img of user?.images">
-      <img [src]="img">
+      <img-loader [src]="img"></img-loader>
     </ion-slide>
   </ion-slides>
   <!-- <div class="userInfo" *ngIf="!user">

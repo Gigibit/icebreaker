@@ -16,6 +16,9 @@
 		9C539C2BC2B043E6910E867A /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FD794C101FAB4B3D9974A8AA /* RMStore.m */; };
 		B36EF2B7FB5648D695C9222A /* PaymentsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 59601247E5874D428DB844E9 /* PaymentsPlugin.m */; };
 		0F077CECEF5B4548A4E1F9DA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC6E22B4BAB4C679103283B /* StoreKit.framework */; };
+		00BC0590D5454645AAC9E916 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CE259B9C4184ADEB2E3940C /* CDVFile.m */; };
+		5A886898E85C48F1828384A7 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A332EE01E164E338F9D37C6 /* CDVLocalFilesystem.m */; };
+		B5001CA7896441E4996D943D /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F9B65A8804BB1967428EC /* CDVAssetLibraryFilesystem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,12 @@
 		84FAB30F9FC949ACB55274AC /* RMStore.h */ = {isa = PBXFileReference; name = "RMStore.h"; path = "cordova-plugin-inapppurchase/RMStore.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		5883060AA4C24C1AB42995E8 /* PaymentsPlugin.h */ = {isa = PBXFileReference; name = "PaymentsPlugin.h"; path = "cordova-plugin-inapppurchase/PaymentsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		4DC6E22B4BAB4C679103283B /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		6CE259B9C4184ADEB2E3940C /* CDVFile.m */ = {isa = PBXFileReference; name = "CDVFile.m"; path = "cordova-plugin-file/CDVFile.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1A332EE01E164E338F9D37C6 /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; name = "CDVLocalFilesystem.m"; path = "cordova-plugin-file/CDVLocalFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1D7F9B65A8804BB1967428EC /* CDVAssetLibraryFilesystem.m */ = {isa = PBXFileReference; name = "CDVAssetLibraryFilesystem.m"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		572C3C3D26AA4476A569AE1D /* CDVFile.h */ = {isa = PBXFileReference; name = "CDVFile.h"; path = "cordova-plugin-file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		ECB3A8EE90604FF084002E14 /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; name = "CDVLocalFilesystem.h"; path = "cordova-plugin-file/CDVLocalFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		B38CE344E8494A6CA47DEF6D /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; name = "CDVAssetLibraryFilesystem.h"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +187,12 @@
 				59601247E5874D428DB844E9 /* PaymentsPlugin.m */,
 				84FAB30F9FC949ACB55274AC /* RMStore.h */,
 				5883060AA4C24C1AB42995E8 /* PaymentsPlugin.h */,
+				6CE259B9C4184ADEB2E3940C /* CDVFile.m */,
+				1A332EE01E164E338F9D37C6 /* CDVLocalFilesystem.m */,
+				1D7F9B65A8804BB1967428EC /* CDVAssetLibraryFilesystem.m */,
+				572C3C3D26AA4476A569AE1D /* CDVFile.h */,
+				ECB3A8EE90604FF084002E14 /* CDVLocalFilesystem.h */,
+				B38CE344E8494A6CA47DEF6D /* CDVAssetLibraryFilesystem.h */,
 			);
 			name = Plugins;
 			path = "MyApp/Plugins";
@@ -304,6 +319,9 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				9C539C2BC2B043E6910E867A /* RMStore.m in Sources */,
 				B36EF2B7FB5648D695C9222A /* PaymentsPlugin.m in Sources */,
+				00BC0590D5454645AAC9E916 /* CDVFile.m in Sources */,
+				5A886898E85C48F1828384A7 /* CDVLocalFilesystem.m in Sources */,
+				B5001CA7896441E4996D943D /* CDVAssetLibraryFilesystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

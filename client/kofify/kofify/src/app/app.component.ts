@@ -9,6 +9,7 @@ import { User } from './_models/user';
 import { TranslateService } from '@ngx-translate/core';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { UserService } from './_services/user.service';
+import { ImageLoaderConfigService } from 'ionic-image-loader';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ export class AppComponent {
     private oneSignal: OneSignal,
     private translate: TranslateService,
     private authenticationService: AuthService,
+    private imageLoaderConfig: ImageLoaderConfigService,
     private router: Router
     ) {
       
@@ -39,6 +41,11 @@ export class AppComponent {
     }
     initializeApp() {
       this.platform.ready().then(() => {
+        this.imageLoaderConfig.setFallbackUrl('assets/imgs/user.svg'); // if images fail to load, display this image instead
+        this.imageLoaderConfig.enableSpinner(false)
+        this.imageLoaderConfig.setMaximumCacheSize(40 * 1024 * 1024); // set max size to 20MB
+        this.imageLoaderConfig.setMaximumCacheAge(7 * 24 * 60 * 60 * 1000); // 7 days
+        this.imageLoaderConfig.useImageTag(true);
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         // this language will be used as a fallback when a translation isn't found in the current language
         this.translate.setDefaultLang('en');

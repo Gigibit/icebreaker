@@ -4,7 +4,7 @@
         <ion-buttons slot="start"  (click)="location.back()">
           <ion-icon name="ios-arrow-back"></ion-icon>
         </ion-buttons>
-        <h3 class="chat-name">{{chat.name}}</h3>
+        <h3 *ngIf="chat" class="chat-name">{{chat.name}}</h3>
         <!-- <ion-title class="ion-text-center">
           {{'register_page_title'| translate}}
         </ion-title> -->

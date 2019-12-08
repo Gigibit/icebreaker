@@ -72,6 +72,9 @@
     },
     "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "com.aklc.kofify"
+    },
+    "cordova-plugin-crosswalk-webview": {
+      "PACKAGE_NAME": "com.aklc.kofify"
     }
   },
   "dependent_plugins": {

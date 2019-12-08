@@ -4,7 +4,7 @@
   font-family: 'Gloria Hallelujah';
   font-style: normal;
   font-weight: normal;
-  src: url('../assets/fonts/GloriaHallelujah.ttf');
+  src: url('../assets/fonts/SF_Cartoonist_Hand.ttf');
 }
 
 $color-white: #F5ECE1;
@@ -167,4 +167,14 @@ ion-range{
 }
 .delete-modal > .modal-wrapper{
   height: 80%;
+}
+
+ion-spinner{
+  height: 78px;
+  width: 39px;
+  color: #D1B378;
+}
+
+ion-toolbar{
+  --background: #FDF9F1;
 }

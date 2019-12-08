@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController, IonInfiniteScroll } from '@ionic/angular';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { LocalizedUser } from 'src/app/_models/user';
 import { CoffeeService } from 'src/app/_services/coffe.service';
 import { Router } from '@angular/router';
@@ -31,9 +31,8 @@ import { ToastService } from 'src/app/_services/toast.service';
 })
 export class LocalizedUsersComponent implements OnInit {
   localizedUsers : LocalizedUser[]
-  c: IonInfiniteScroll
+
   invitationIds = []
-  loaded = {}
   compose = false
   constructor(
     private location: Location,
@@ -41,28 +40,22 @@ export class LocalizedUsersComponent implements OnInit {
     private modalCtrl: ModalController,
     private toastService: ToastService,
     private router: Router,
+    private zone: NgZone
     ) { }
     
     ngOnInit() {
       this.localizedUsers = this.coffeeService.localizedUsers;
     }
 
-    loadImg(localizedUser){
-      this.loaded[localizedUser.user.id] = true; console.log(this.loaded)
+    loadImg($event){
+      this.zone.run(()=>{
+        $event._element.nativeElement.parentElement.classList.remove('imgInLoading')
+        $event._element.nativeElement.parentElement.classList.add('imgLoaded')
+      })
     }
     loadData(infiniteScroll){
-      console.log('Begin async operation');
-
       setTimeout(() => {
-        console.log('loaddata')
-        this.coffeeService.moreUsersOnLastUsers().subscribe(response=>{
-          console.log(response)
-          response.map(it=>{ 
-            this.localizedUsers.push(it) 
-          })
-        })
-  
-        console.log('Async operation has ended');
+        this.coffeeService.moreUsersOnLastUsers().subscribe()
         infiniteScroll.target.complete();
       }, 1000)
 
@@ -101,7 +94,7 @@ export class LocalizedUsersComponent implements OnInit {
     }
     add($event, localizedUser : LocalizedUser) {
       $event.preventDefault()
-      const element = $event.target.parentElement;
+      const element = $event.target.parentElement.parentElement.parentElement.querySelector('ion-card');
       if (element.classList.contains('localized-user-card')){
         if(element.classList.contains('card-selected')){
           element.classList.remove('card-selected')

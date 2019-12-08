@@ -15,10 +15,10 @@
 <ion-content>
 
   <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide  *ngIf="!userInfo">
+    <ion-slide  *ngIf="!userInfo?.images">
       <ion-skeleton-text class="fake-slide" animated></ion-skeleton-text>
     </ion-slide>
-    <ion-slide class="user-img"  *ngFor="let img of userInfo?.images">
+    <ion-slide class="user-img" *ngFor="let img of userInfo?.images">
       <img [src]="img">
     </ion-slide>
   </ion-slides>

@@ -1,6 +1,6 @@
 {
-    "fake_name": "Tom",
-    "fake_surname": "Catson",
+    "fake_name": "Name",
+    "fake_surname": "Surname",
     "chat_room_title" : "chat room",
     "create_new_proposal_title": "create new proposal",
     "title" : "title",
