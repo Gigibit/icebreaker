@@ -33,27 +33,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
     var Range =
     /*#__PURE__*/
@@ -63,7 +63,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Range);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.noUpdate = false;
         this.hasFocus = false;
         this.ratioA = 0;
@@ -129,7 +129,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.value = 0;
 
         this.clampBounds = function (value) {
-          return Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(_this.min, value, _this.max);
+          return Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(_this.min, value, _this.max);
         };
 
         this.ensureValueInBounds = function (value) {
@@ -153,9 +153,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           if (knob === 'A') {
-            _this.ratioA = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, _this.ratioA + step, 1);
+            _this.ratioA = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, _this.ratioA + step, 1);
           } else {
-            _this.ratioB = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, _this.ratioB + step, 1);
+            _this.ratioB = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, _this.ratioB + step, 1);
           }
 
           _this.updateValue();
@@ -181,16 +181,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         };
 
-        this.ionChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
-        this.ionStyle = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
-        this.ionFocus = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
       }
 
       _createClass(Range, [{
         key: "debounceChanged",
         value: function debounceChanged() {
-          this.ionChange = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this.ionChange, this.debounce);
+          this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
         }
       }, {
         key: "minChanged",
@@ -264,8 +264,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                     _context.next = 4;
                     return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-2c4a5477.js */
-                    "./node_modules/@ionic/core/dist/esm/index-2c4a5477.js"));
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
 
                   case 4:
                     _context.t0 = {
@@ -336,7 +336,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var rect = this.rect = this.rangeSlider.getBoundingClientRect();
           var currentX = detail.currentX; // figure out which knob they started closer to
 
-          var ratio = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, (currentX - rect.left) / rect.width, 1);
+          var ratio = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, (currentX - rect.left) / rect.width, 1);
 
           if (document.dir === 'rtl') {
             ratio = 1 - ratio;
@@ -364,7 +364,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           // figure out where the pointer is currently at
           // update the knob being interacted with
           var rect = this.rect;
-          var ratio = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, (currentX - rect.left) / rect.width, 1);
+          var ratio = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, (currentX - rect.left) / rect.width, 1);
 
           if (document.dir === 'rtl') {
             ratio = 1 - ratio;
@@ -439,7 +439,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               pin = this.pin,
               ratioLower = this.ratioLower,
               ratioUpper = this.ratioUpper;
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var barStart = "".concat(ratioLower * 100, "%");
           var barEnd = "".concat(100 - ratioUpper * 100, "%");
           var doc = document;
@@ -466,20 +466,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
           }
 
-          Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["r"])(true, el, this.name, JSON.stringify(this.getValue()), disabled);
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["a"])(true, el, this.name, JSON.stringify(this.getValue()), disabled);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onFocusin: this.onFocus,
             onFocusout: this.onBlur,
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'range-disabled', disabled), _defineProperty(_Object$assign, 'range-pressed', pressedKnob !== undefined), _defineProperty(_Object$assign, 'range-has-pin', pin), _Object$assign))
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'range-disabled', disabled), _defineProperty(_Object$assign, 'range-pressed', pressedKnob !== undefined), _defineProperty(_Object$assign, 'range-has-pin', pin), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "start"
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "range-slider",
             ref: function ref(rangeEl) {
               return _this3.rangeSlider = rangeEl;
             }
           }, ticks.map(function (tick) {
-            return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               style: tickStyle(tick),
               role: "presentation",
               class: {
@@ -487,10 +487,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 'range-tick-active': tick.active
               }
             });
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "range-bar",
             role: "presentation"
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "range-bar range-bar-active",
             role: "presentation",
             style: barStyle
@@ -514,7 +514,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             handleKeyboard: handleKeyboard,
             min: min,
             max: max
-          })), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+          })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "end"
           }));
         }
@@ -549,7 +549,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",
@@ -590,7 +590,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         return style;
       };
 
-      return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         onKeyDown: function onKeyDown(ev) {
           var key = ev.key;
 
@@ -619,10 +619,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         "aria-valuemax": max,
         "aria-disabled": disabled ? 'true' : null,
         "aria-valuenow": value
-      }, pin && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      }, pin && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         class: "range-pin",
         role: "presentation"
-      }, Math.round(value)), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      }, Math.round(value)), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         class: "range-knob",
         role: "presentation"
       }));
@@ -635,11 +635,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value = Math.round(value / step) * step + min;
       }
 
-      return Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(min, value, max);
+      return Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(min, value, max);
     };
 
     var valueToRatio = function valueToRatio(value, min, max) {
-      return Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, (value - min) / (max - min), 1);
+      return Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, (value - min) / (max - min), 1);
     };
     /***/
 

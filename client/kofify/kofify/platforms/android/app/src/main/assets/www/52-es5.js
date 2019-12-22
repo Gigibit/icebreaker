@@ -39,21 +39,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _haptic_4e92c885_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./haptic-4e92c885.js */
-    "./node_modules/@ionic/core/dist/esm/haptic-4e92c885.js");
+    var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./haptic-c8f1473e.js */
+    "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
 
     var Reorder =
     /*#__PURE__*/
@@ -61,7 +61,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function Reorder(hostRef) {
         _classCallCheck(this, Reorder);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
 
       _createClass(Reorder, [{
@@ -73,9 +73,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "render",
         value: function render() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this)
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this)
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             name: "reorder",
             lazy: false,
             class: "reorder-icon"
@@ -97,7 +97,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function ReorderGroup(hostRef) {
         _classCallCheck(this, ReorderGroup);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.lastToIndex = -1;
         this.cachedHeights = [];
         this.scrollElTop = 0;
@@ -113,7 +113,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
          */
 
         this.disabled = true;
-        this.ionItemReorder = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionItemReorder", 7);
+        this.ionItemReorder = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionItemReorder", 7);
       }
 
       _createClass(ReorderGroup, [{
@@ -152,8 +152,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 5:
                     _context.next = 7;
                     return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-2c4a5477.js */
-                    "./node_modules/@ionic/core/dist/esm/index-2c4a5477.js"));
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
 
                   case 7:
                     _context.t0 = {
@@ -291,7 +291,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           /* Active */
           ;
           item.classList.add(ITEM_REORDER_SELECTED);
-          Object(_haptic_4e92c885_js__WEBPACK_IMPORTED_MODULE_2__["a"])();
+          Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["a"])();
         }
       }, {
         key: "onMove",
@@ -315,7 +315,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (toIndex !== this.lastToIndex) {
             var fromIndex = indexForItem(selectedItem);
             this.lastToIndex = toIndex;
-            Object(_haptic_4e92c885_js__WEBPACK_IMPORTED_MODULE_2__["b"])();
+            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["b"])();
             this.reorderMove(fromIndex, toIndex);
           } // Update selected item position
 
@@ -350,7 +350,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             });
           }
 
-          Object(_haptic_4e92c885_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+          Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
         }
       }, {
         key: "completeSync",
@@ -451,15 +451,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var _class;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'reorder-enabled', !this.disabled), _defineProperty(_class, 'reorder-list-active', this.state !== 0), _class)
           });
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",

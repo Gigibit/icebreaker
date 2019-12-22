@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SERVICE_SERVER } from '../config';
 import { LocalizedUser, LocalizedUserMapper } from '../_models/user';
 import { map, finalize } from 'rxjs/operators';
+import { FILTER_PREFERENCES_KEY, QueryFilter } from '../_models/queryFilter';
 
 
-const PAGINATION_LIMIT = 6
+const PAGINATION_LIMIT = 10
 const FIND_CLOSEST_USERS_URL  = SERVICE_SERVER + '/users/me/users'
 const SEND_COFFEE_INVITATION  = SERVICE_SERVER + '/invitations'
 // const SINGLE_PROPOSAL_SERVICE = SERVICE_SERVER + '/api/proposal'
@@ -23,97 +24,87 @@ export class CoffeeService {
   mLastLong
   mMaxDistance
   localizedUsers: LocalizedUser[] = []
-  constructor(
-    private http: HttpClient
-    ) {   }
+  constructor( private http: HttpClient ) {   
     
+  }
+  
+  clearSearch(){
+    this.localizedUsers.length = 0
+  }
+
+  reload(): Observable<LocalizedUser[]>{
+    this.clearSearch()
+    return this.moreUsersOnLastUsers()
+  }
+  
+  sendInvitation(userIds:string[], content: string = ''){
+    return this.http.post( SEND_COFFEE_INVITATION, {
+      userIds : userIds,
+      content: content
+    })
+  }
+  
+  
+  
+  findClosestUsers(mLat: number, mLong: number,  maxDistance: number = null): Observable<LocalizedUser[]>{
+    this.clearSearch()
+    var queryUrl = FIND_CLOSEST_USERS_URL +
+    '?longitude=' + mLong +
+    '&latitude='  + mLat  +
+    '&limit=' + PAGINATION_LIMIT + 
+    '&offset=0'+ ( maxDistance ? '&distance=' + maxDistance : "" )
     
-    sendInvitation(userIds:string[], content: string = ''){
-      return this.http.post( SEND_COFFEE_INVITATION, {
-        userIds : userIds,
-        content: content
-      })
+    queryUrl = this.appendFilters(queryUrl)
+    
+    return this.http
+    .get<any>(queryUrl)
+    .pipe(map(response=> {
+      this.mLastLat = mLat;
+      this.mLastLong = mLong;
+      this.mMaxDistance = maxDistance
+      let localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
+      if(localizedUsers)
+      localizedUsers.map( it => this.localizedUsers.push(it) )
+      return this.localizedUsers
+    }))
+  }
+  
+  userLoading = false
+  moreUsersOnLastUsers(): Observable<LocalizedUser[]>{
+    console.log(this.userLoading, 'moreUsers')
+    if(this.userLoading) return
+    var queryUrl = FIND_CLOSEST_USERS_URL +
+    '?longitude='+this.mLastLong+
+    '&latitude='+this.mLastLat  +
+    '&limit='+ PAGINATION_LIMIT  +
+    '&offset='+ ((this.localizedUsers.length ).toString() ) + 
+    ( this.mMaxDistance ? '&distance=' + this.mMaxDistance : "" )
+    queryUrl = this.appendFilters(queryUrl)
+    console.log(queryUrl, 'queryUrl')
+
+    this.userLoading = true
+    return this.http.get<LocalizedUser[]>( queryUrl )
+    .pipe(map(response=> {
+      console.log('responseeee')
+      let localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
+      console.log(response)
+      if(localizedUsers)
+      localizedUsers.map( it => this.localizedUsers.push(it))
+      return localizedUsers
+    }))
+    .pipe(finalize(() => this.userLoading = false ))
+  }
+  
+  
+  appendFilters(queryUrl:string){
+    let queryFilter: QueryFilter = JSON.parse(localStorage.getItem(FILTER_PREFERENCES_KEY))
+    if(queryFilter){
+      if(queryFilter.enableMen && !queryFilter.enableWomen) queryUrl += '&gender=MALE'
+      if(!queryFilter.enableMen && queryFilter.enableWomen) queryUrl += '&gender=FEMALE'
+      if(queryFilter.onlyOnline) queryUrl += '&online=true' 
+      queryUrl += `&ageMin=${queryFilter.ageRange.lower}`
+      queryUrl += `&ageMax=${queryFilter.ageRange.upper}`
     }
-    
-    
-    
-    findClosestUsers(mLat: number, mLong: number,  maxDistance: number = null): Observable<LocalizedUser[]>{
-      return this.http.get<any>(FIND_CLOSEST_USERS_URL +
-        '?longitude='+mLong+
-        '&latitude='+mLat  +
-        '&limit=' + PAGINATION_LIMIT + 
-        '&offset=0'+
-        ( maxDistance ? '&distance=' + maxDistance : "" ) )
-        .pipe(map(response=> {
-          this.mLastLat = mLat;
-          this.mLastLong = mLong;
-          this.mMaxDistance = maxDistance
-          let localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
-          if(localizedUsers)
-          localizedUsers.map( it => this.localizedUsers.push(it) )
-          return this.localizedUsers
-        }))
-      }
-      
-      userLoading = false
-      moreUsersOnLastUsers(): Observable<LocalizedUser[]>{
-        if(this.userLoading) return
-        this.userLoading = true
-        console.log('calling...')
-        return this.http.get<LocalizedUser[]>(FIND_CLOSEST_USERS_URL +
-          '?longitude='+this.mLastLong+
-          '&latitude='+this.mLastLat  +
-          '&limit='+ PAGINATION_LIMIT  +
-          '&offset='+ ((this.localizedUsers.length ).toString() ) + 
-          ( this.mMaxDistance ? '&distance=' + this.mMaxDistance : "" ) )
-          .pipe(map(response=> {
-            let localizedUsers = LocalizedUserMapper.fromJsonArray(response['users'])
-            if(localizedUsers)
-            localizedUsers.map( it => this.localizedUsers.push(it))
-            return localizedUsers
-          }))
-          .pipe(finalize(() => this.userLoading = false ))
-        }
-        
-      }
-      
-      
-      @Injectable({
-        providedIn: 'root'
-      })
-      export class CoffeeServiceMock{
-        constructor(
-          private http: HttpClient
-          ) {   }
-          
-          findClosestUsers(mLat: number, mLong: number,  maxDistance: number = null): Observable<any>{
-            return of({
-              'users':[{
-                'distance' : 500,
-                'user': {
-                  'firstName' : 'Johnny',
-                  'lastName' : 'Snow',
-                  'imageUrl' : 'https://cc-media-foxit.fichub.com/image/fox-it-mondofox/4f2eb5b3-2ed8-4ef0-b083-1e37de1b49bb/jon-snow-14-1200x630.jpg'
-                }
-              },
-              {
-                'distance' : 500,
-                'user': {
-                  'firstName' : 'Lindsey',
-                  'lastName' : 'Pelas',
-                  'imageUrl' : 'https://i.ytimg.com/vi/RMjSaQNJqHE/maxresdefault.jpg'
-                }
-              },
-              {
-                'distance' : 500,
-                'user': {
-                  'firstName' : 'Leone',
-                  'lastName' : 'Di Lernia',
-                  'imageUrl' : 'http://res.cloudinary.com/db1veme1i/image/upload/h_320,w_320/v1490204185/Leone_ck4sm4.jpg'
-                }
-              }]
-            })
-          }
-          
-        }
-        
+    return queryUrl
+  }      
+}

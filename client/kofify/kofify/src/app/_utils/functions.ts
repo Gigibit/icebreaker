@@ -7,15 +7,15 @@ export function titleCaseWord(word: string) {
   }
 
 export function timeSince(date:string) {
-    if(date) return moment(date).fromNow()
+    if(date) return moment.utc(date).fromNow()
     else return ""
 }
 export function isOnline(date: string){
-  return date && moment(date).isAfter(moment().subtract(15, 'minutes')) ;
+  return date && moment(date).isAfter(moment.utc().subtract(15, 'minutes')) ;
 }
 
 export function age(date: string){
-  return date ? "" + moment().diff(date, 'years') : ""
+  return date ? "" + moment.utc().diff(date, 'years') : ""
 }
 
 export function getFormattedDistance(distance: number) : string{
@@ -45,7 +45,7 @@ export function joinWithCommaOrEmpty(...str: string[]){
 
 
 export function getAppFormatDate(date){
-  return  moment(date).format('YYYY-MM-DD')
+  return  moment.utc(date).format('YYYY-MM-DD')
 }
 
 export function getErrorForCode(code: string){

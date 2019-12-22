@@ -19,9 +19,9 @@ export class EditUserProfileComponent implements OnInit {
   userInfo : User
   bio: string
   imagesDraggingSubscription = new Subscription();
-
+  
   imagesSorting = [1,2,3]
-
+  
   constructor(
     private authService : AuthService,
     private loadingCtrl: LoadingController,
@@ -30,101 +30,170 @@ export class EditUserProfileComponent implements OnInit {
     private actionSheetController: ActionSheetController, 
     private userService: UserService,
     private dragulaService: DragulaService
-  ) { 
-    this.imagesDraggingSubscription.add(this.dragulaService.dropModel("VAMPIRES")
-    .subscribe(({ sourceModel, targetModel, item }) => {
-      console.log(sourceModel, targetModel, item)
-      this.getOrder()
-    })
-  );
-  }
-  getOrder(){
-    console.log(document.querySelector('.image-container-wrapper'))
+    ) { 
+      try{
+        this.dragulaService.createGroup('VAMPIRES', {
+          revertOnSpill: true,
+          moves: (el, container, handle, sibling):any=> {
+            let value = el.getAttribute('data-position')
+            return value !== 'false';
+          },
+          accepts: (el?: Element, target?: Element, source?: Element, sibling?: Element) => {
+            let position = new Number(el.getAttribute('data-position'))
+            let elementListPositions = Array.prototype.slice.call( target.children )
+            .map((el)=> el.getAttribute('data-position')) 
+            let firstFalse = elementListPositions
+            
+            .findIndex( (el)=> el == 'false')
+            console.log(firstFalse)
+            let valid = true
+            for(var i = firstFalse; i < elementListPositions.length; i++ ) 
+            if(elementListPositions[i] != 'false') 
+            valid= false
+            
+            return this.userInfo && position <= this.userInfo.images.length && valid;
+          },
+        });
+      }catch(ex) {}
+      
+    }
     
-  }
-  deleteAccount(){
-    this.modalCtrl.create({
-      cssClass: 'delete-modal',
-      component: DeleteAccountComponent
-    }).then(modal => {
-      modal.present();
+    deleteAccount(){
+      this.modalCtrl.create({
+        component: DeleteAccountComponent
+      }).then(modal => {
+        modal.present();
+      });
+    }
+    
+    
+    
+    ngOnInit() {
+      this.imagesDraggingSubscription.add(this.dragulaService.dropModel("VAMPIRES")
+      .subscribe(({ sourceModel, targetModel, item }) => {} )
+      );
+      this.userInfo = this.authService.currentUserValue
+      this.bio = this.userInfo.bio
+    }
+    
+    async uploadImage(cameraHandler: ()=> void, libraryHandler: ()=>void ){
+      let selectImageSourceString = await this.translateService.get('select_image_source').toPromise()
+      let loadFromLibrariString = await this.translateService.get('load_from_library').toPromise()
+      let useCameraString = await this.translateService.get('use_camera').toPromise()
+      let cancelString = await this.translateService.get('cancel').toPromise()
+      
+      
+      const actionSheet = await this.actionSheetController.create({
+        header: selectImageSourceString,
+        buttons: [{
+          text: loadFromLibrariString,
+          handler: libraryHandler
+        },
+        {
+          text: useCameraString,
+          handler: cameraHandler
+        },
+        {
+          text: cancelString,
+          role: 'cancel'
+        }
+      ]
     });
+    actionSheet.present();
   }
-
-
-
-  ngOnInit() {
-    this.userInfo = this.authService.currentUserValue
-    this.bio = this.userInfo.bio
-  }
-
-  async uploadImage(cameraHandler: ()=> void, libraryHandler: ()=>void ){
-    let selectImageSourceString = await this.translateService.get('select_image_source').toPromise()
-    let loadFromLibrariString = await this.translateService.get('load_from_library').toPromise()
-    let useCameraString = await this.translateService.get('use_camera').toPromise()
+  
+  async deletePopover(deleteHandler: ()=> void){
+    let deleteImage = await this.translateService.get('delete_image').toPromise()
     let cancelString = await this.translateService.get('cancel').toPromise()
     
     
     const actionSheet = await this.actionSheetController.create({
-      header: selectImageSourceString,
-      buttons: [{
-        text: loadFromLibrariString,
-        handler: libraryHandler
-      },
-      {
-        text: useCameraString,
-        handler: cameraHandler
-      },
-      {
-        text: cancelString,
-        role: 'cancel'
-      }
-    ]
-  });
-  await actionSheet.present();
-}
-
-  async editImage(index: number){
-    const loader = await this.loadingCtrl.create()
-
-    this.uploadImage(
-      () => {
-        loader.present()
-        this.userService.uploadImage(index, PictureSourceType.CAMERA )
-        .then(()=>loader.dismiss())
-        .catch(()=>loader.dismiss());
-      },
-      () => {
-        loader.present()
-
-        this.userService.uploadImage(index, PictureSourceType.PHOTOLIBRARY )
-        .then(()=>loader.dismiss())
-        .catch(()=>loader.dismiss());
-      })
-      
-  }
-  dismiss(){
-    this.modalCtrl.dismiss()
+        buttons: [{
+          text: deleteImage,
+          cssClass: 'danger-icon',
+          handler: deleteHandler,
+          role: 'destructive'
+        },
+        {
+          text: cancelString,
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
-  async done(bio: string){
-    if(bio != this.userInfo.bio)
-    {
+
+  async clickOnBox(index: number){
+    let image = this.userInfo.imageIds[index-1]
+    if(image){
       const loader = await this.loadingCtrl.create()
-      loader.present()
-      this.userService.updateInfo({
-        bio: bio,
-        imagesSorting : this.imagesSorting
-      }).subscribe((response)=>{
-        loader.dismiss()
-        this.dismiss()
-      }, throwable=>{
-        loader.dismiss()
-        this.dismiss()
+      this.deletePopover(()=>{
+        this.userService.deleteImage(image).then(()=>{
+          this.userInfo.images[index-1] = null
+          this.userInfo.imageIds[index-1] = null
+        })
+        .then(()=>loader.dismiss())
+        .catch(()=>loader.dismiss());
       })
     }
     else{
-      this.dismiss()
+      const loader = await this.loadingCtrl.create()
+      this.uploadImage(
+        () => {
+          loader.present()
+          this.userService.uploadImage(index, PictureSourceType.CAMERA )
+          .then(()=>loader.dismiss())
+          .catch(()=>loader.dismiss());
+        },
+        () => {
+          loader.present()
+          
+          this.userService.uploadImage(index, PictureSourceType.PHOTOLIBRARY )
+          .then(()=>loader.dismiss())
+          .catch(()=>loader.dismiss());
+        })
+      }
+      
+      
+    }
+    dismiss(){
+      this.modalCtrl.dismiss()
+    }
+    
+    async done(bio: string){
+      var somethingChanged = false;
+      let sorting = []
+      if(bio != this.userInfo.bio) somethingChanged = true;
+      if(JSON.stringify(this.imagesSorting) != JSON.stringify([1,2,3]))
+      { 
+        somethingChanged = true
+        let elements = document.getElementsByClassName('image-container-wrapper')
+        for (var i = 0; i < elements.length ; i++ ){
+          let element = elements[i]
+          let id = element.getAttribute('data-imageId')
+          if(id != 'false')
+            sorting.push( new Number(id) )
+        }
+      }
+      if(somethingChanged){ 
+        const loader = await this.loadingCtrl.create()
+        loader.present()
+        this.userService.updateInfo({
+          bio: bio,
+          imageIds : sorting
+        }).subscribe((response)=>{
+          loader.dismiss()
+          this.dismiss()
+        }, throwable=>{
+          loader.dismiss()
+          this.dismiss()
+        })
+      }
+      else{
+        this.dismiss()
+      }
+      
     }
   }
-}
+  

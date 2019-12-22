@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SERVICE_SERVER, WEBSOCKET_SERVICE_SERVER } from '../config';
 import { MessageMapper, Message, Type } from '../_models/message';
@@ -17,6 +17,7 @@ const GET_CHATS_API_URL = SERVICE_SERVER + '/users/me/chats'
 const FIND_OR_CREATE_CHAT = SERVICE_SERVER + `/chats`
 const UNLOCK_CHAT = SERVICE_SERVER + `/chats/${KEY}`
 const PING_MESSAGE_READ = SERVICE_SERVER + `/lines` 
+const NOTIFICATION_COUNT      = SERVICE_SERVER + '/users/me/chats/unread/count'
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +27,21 @@ export class ChatService {
   key: string
   socket: SockJS
   userId: string
+  updateChatSubject: BehaviorSubject<Boolean>;
+  notificationCount: BehaviorSubject<number> = new BehaviorSubject(0);
+
+  public chats: Observable<Chat[]>;
+  
+
+
   constructor(
     private http: HttpClient,
     private authService: AuthService
     ){
+      this.updateChatSubject = new BehaviorSubject<Boolean>(false)
       this.getUserId()
     }
+    
     async getUserId(){
       this.authService.currentUser.subscribe(user=>{
         if(user)
@@ -56,8 +66,13 @@ export class ChatService {
       this.activeChat = chat
     }
 
+    getNotificationCount(){
+      this.http.get(NOTIFICATION_COUNT).subscribe((response)=>this.notificationCount.next(response['count']))
+    }
+
     unlock(chat:Chat): Observable<Chat>{
       return this.http.post(UNLOCK_CHAT.replace(KEY, chat.id), {}).pipe(map( response=>{
+        this.authService.refreshCredit(response['credit'])
         return ChatMapper.fromJson(response['chat'])
       }))
     }

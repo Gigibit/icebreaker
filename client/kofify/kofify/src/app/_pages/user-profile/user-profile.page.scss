@@ -115,7 +115,6 @@ ion-content{
     background-size: cover;
 }
 .online-badge{
-    background: greenyellow;
     width: 5px;
     height: 5px;
 }
@@ -124,11 +123,43 @@ ion-content{
     font-size: 50px;
 }
 .edit-btn{
-    width: 30%;
     text-align: center;
     display: block;
     bottom: 15px;
     margin: 50px auto;
+    --border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 0px;
+}
+.edit-button-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 13px;
+    margin: 0 auto;
+}
+.edit-btn-wrapper{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border: 8px solid #FDF9F1;
+    box-shadow: 8px 0 21px rgba(0, 0, 0, 0.08);
+}
+.edit-btn-main{
+    position: absolute;
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+    bottom: -115px;
+    left: 0;
+    right: 0;
 }
 .user-img{
     height: 57vh;

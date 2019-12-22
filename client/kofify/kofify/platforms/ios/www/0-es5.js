@@ -75,27 +75,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./overlays-518a98a4.js */
-    "./node_modules/@ionic/core/dist/esm/overlays-518a98a4.js");
+    var _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./overlays-10640d86.js */
+    "./node_modules/@ionic/core/dist/esm/overlays-10640d86.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
     var ActionSheetController =
     /*#__PURE__*/
@@ -103,7 +103,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function ActionSheetController(hostRef) {
         _classCallCheck(this, ActionSheetController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Create an action sheet overlay with action sheet options.
@@ -115,7 +115,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ActionSheetController, [{
         key: "create",
         value: function create(options) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-action-sheet', options);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-action-sheet', options);
         }
         /**
          * Dismiss the open action sheet overlay.
@@ -131,7 +131,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "dismiss",
         value: function dismiss(data, role, id) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-action-sheet', id);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-action-sheet', id);
         }
         /**
          * Get the most recently opened action sheet overlay.
@@ -147,7 +147,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    return _context.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-action-sheet'));
+                    return _context.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-action-sheet'));
 
                   case 1:
                   case "end":
@@ -174,7 +174,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function AlertController(hostRef) {
         _classCallCheck(this, AlertController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Create an alert overlay with alert options.
@@ -186,7 +186,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AlertController, [{
         key: "create",
         value: function create(options) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-alert', options);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-alert', options);
         }
         /**
          * Dismiss the open alert overlay.
@@ -202,7 +202,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "dismiss",
         value: function dismiss(data, role, id) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-alert', id);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-alert', id);
         }
         /**
          * Get the most recently opened alert overlay.
@@ -218,7 +218,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
-                    return _context2.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-alert'));
+                    return _context2.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-alert'));
 
                   case 1:
                   case "end":
@@ -247,7 +247,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Anchor);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
          * When using a router, it specifies the transition direction when navigating to
          * another page using `href`.
@@ -256,7 +256,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.routerDirection = 'forward';
 
         this.onClick = function (ev) {
-          Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection);
+          Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection);
         };
       }
 
@@ -270,15 +270,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var _Object$assign;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var attrs = {
             href: this.href,
             rel: this.rel
           };
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'ion-activatable', true), _Object$assign))
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("a", Object.assign({}, attrs), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'ion-activatable', true), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("a", Object.assign({}, attrs), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
         }
       }], [{
         key: "style",
@@ -296,7 +296,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function LoadingController(hostRef) {
         _classCallCheck(this, LoadingController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Create a loading overlay with loading options.
@@ -308,7 +308,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(LoadingController, [{
         key: "create",
         value: function create(options) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-loading', options);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-loading', options);
         }
         /**
          * Dismiss the open loading overlay.
@@ -324,7 +324,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "dismiss",
         value: function dismiss(data, role, id) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-loading', id);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-loading', id);
         }
         /**
          * Get the most recently opened loading overlay.
@@ -340,7 +340,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context3.prev = _context3.next) {
                   case 0:
-                    return _context3.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-loading'));
+                    return _context3.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-loading'));
 
                   case 1:
                   case "end":
@@ -367,7 +367,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function ModalController(hostRef) {
         _classCallCheck(this, ModalController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Create a modal overlay with modal options.
@@ -379,7 +379,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ModalController, [{
         key: "create",
         value: function create(options) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-modal', options);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-modal', options);
         }
         /**
          * Dismiss the open modal overlay.
@@ -395,7 +395,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "dismiss",
         value: function dismiss(data, role, id) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-modal', id);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-modal', id);
         }
         /**
          * Get the most recently opened modal overlay.
@@ -411,7 +411,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context4.prev = _context4.next) {
                   case 0:
-                    return _context4.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-modal'));
+                    return _context4.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-modal'));
 
                   case 1:
                   case "end":
@@ -438,7 +438,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function PickerController(hostRef) {
         _classCallCheck(this, PickerController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Create a picker overlay with picker options.
@@ -450,7 +450,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PickerController, [{
         key: "create",
         value: function create(options) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-picker', options);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-picker', options);
         }
         /**
          * Dismiss the open picker overlay.
@@ -466,7 +466,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "dismiss",
         value: function dismiss(data, role, id) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-picker', id);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-picker', id);
         }
         /**
          * Get the most recently opened picker overlay.
@@ -482,7 +482,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
-                    return _context5.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-picker'));
+                    return _context5.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-picker'));
 
                   case 1:
                   case "end":
@@ -509,7 +509,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function PopoverController(hostRef) {
         _classCallCheck(this, PopoverController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Create a popover overlay with popover options.
@@ -521,7 +521,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PopoverController, [{
         key: "create",
         value: function create(options) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-popover', options);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-popover', options);
         }
         /**
          * Dismiss the open popover overlay.
@@ -537,7 +537,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "dismiss",
         value: function dismiss(data, role, id) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-popover', id);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-popover', id);
         }
         /**
          * Get the most recently opened popover overlay.
@@ -553,7 +553,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context6.prev = _context6.next) {
                   case 0:
-                    return _context6.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-popover'));
+                    return _context6.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-popover'));
 
                   case 1:
                   case "end":
@@ -580,7 +580,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function ToastController(hostRef) {
         _classCallCheck(this, ToastController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Create a toast overlay with toast options.
@@ -592,7 +592,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ToastController, [{
         key: "create",
         value: function create(options) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-toast', options);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-toast', options);
         }
         /**
          * Dismiss the open toast overlay.
@@ -605,7 +605,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "dismiss",
         value: function dismiss(data, role, id) {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-toast', id);
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-toast', id);
         }
         /**
          * Get the most recently opened toast overlay.
@@ -621,7 +621,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context7.prev = _context7.next) {
                   case 0:
-                    return _context7.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-toast'));
+                    return _context7.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-toast'));
 
                   case 1:
                   case "end":

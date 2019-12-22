@@ -83,25 +83,28 @@ export class AdmobFreeService {
 
   rewardVideo() {
       //Prepare Ad to Show
-
-    this.admobFree.rewardVideo.prepare()
-    .then(() => {
-      //Check if Ad is loaded
-      this.admobFree.rewardVideo.isReady().then(() => {
-        //Will show prepared Ad
-        this.admobFree.rewardVideo.show()
-          .then(()=> console.log('showing...'))
+      this.platform.ready().then(() => {
+        this.admobFree.rewardVideo.prepare()
+        .then(() => {
+          //Check if Ad is loaded
+          this.admobFree.rewardVideo.isReady().then(() => {
+            //Will show prepared Ad
+            this.admobFree.rewardVideo.show()
+              .then(()=> console.log('showing...'))
+              .catch(e => {
+                console.log(e)
+                this.onRewardVideoListener && this.onRewardVideoListener.onFail()
+              });
+          })
           .catch(e => {
             console.log(e)
             this.onRewardVideoListener && this.onRewardVideoListener.onFail()
           });
+        }).catch(e => {
+          console.log(e)
+          this.onRewardVideoListener && this.onRewardVideoListener.onFail()
+        });
       })
-      .catch(e => {
-        console.log(e)
-        this.onRewardVideoListener && this.onRewardVideoListener.onFail()
-      });
-    }).catch(e => console.log(e));
-
     return this
   }
   with(onRewardVideoListener: OnRewardVideoListener){

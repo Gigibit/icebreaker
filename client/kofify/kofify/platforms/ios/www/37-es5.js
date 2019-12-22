@@ -51,51 +51,51 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./animation-d0becaea.js */
-    "./node_modules/@ionic/core/dist/esm/animation-d0becaea.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _index_2c4a5477_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./index-2c4a5477.js */
-    "./node_modules/@ionic/core/dist/esm/index-2c4a5477.js");
+    var _animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./animation-af478fe9.js */
+    "./node_modules/@ionic/core/dist/esm/animation-af478fe9.js");
     /* harmony import */
 
 
-    var _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./index-824b185a.js */
-    "./node_modules/@ionic/core/dist/esm/index-824b185a.js");
+    var _index_624eea58_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./index-624eea58.js */
+    "./node_modules/@ionic/core/dist/esm/index-624eea58.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./index-1e5940d5.js */
+    "./node_modules/@ionic/core/dist/esm/index-1e5940d5.js");
     /* harmony import */
 
 
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
     /* harmony import */
 
 
-    var _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ./cubic-bezier-90d0df24.js */
-    "./node_modules/@ionic/core/dist/esm/cubic-bezier-90d0df24.js");
+    var _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ./cubic-bezier-2812fda3.js */
+    "./node_modules/@ionic/core/dist/esm/cubic-bezier-2812fda3.js");
 
     var Menu =
     /*#__PURE__*/
@@ -103,12 +103,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function Menu(hostRef) {
         _classCallCheck(this, Menu);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.lastOnEnd = 0;
-        this.blocker = _index_2c4a5477_js__WEBPACK_IMPORTED_MODULE_3__["GESTURE_CONTROLLER"].createBlocker({
+        this.blocker = _index_624eea58_js__WEBPACK_IMPORTED_MODULE_4__["GESTURE_CONTROLLER"].createBlocker({
           disableScroll: true
         });
-        this.mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        this.mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
         this.isAnimating = false;
         this._isOpen = false;
         this.isPaneVisible = false;
@@ -134,11 +134,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
          */
 
         this.maxEdgeStart = 50;
-        this.ionWillOpen = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionWillOpen", 7);
-        this.ionWillClose = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionWillClose", 7);
-        this.ionDidOpen = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDidOpen", 7);
-        this.ionDidClose = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDidClose", 7);
-        this.ionMenuChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionMenuChange", 7);
+        this.ionWillOpen = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionWillOpen", 7);
+        this.ionWillClose = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionWillClose", 7);
+        this.ionDidOpen = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDidOpen", 7);
+        this.ionDidClose = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDidClose", 7);
+        this.ionMenuChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionMenuChange", 7);
       }
 
       _createClass(Menu, [{
@@ -174,7 +174,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sideChanged",
         value: function sideChanged() {
-          this.isEndSide = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["i"])(this.side);
+          this.isEndSide = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.side);
         }
       }, {
         key: "swipeGestureChanged",
@@ -195,15 +195,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 switch (_context.prev = _context.next) {
                   case 0:
                     if (this.type === undefined) {
-                      this.type = _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('menuType', this.mode === 'ios' ? 'reveal' : 'overlay');
+                      this.type = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('menuType', this.mode === 'ios' ? 'reveal' : 'overlay');
                     }
 
                     el = this.el;
                     parent = el.parentNode;
+
+                    if (this.contentId === undefined) {
+                      console.warn("[DEPRECATED][ion-menu] Using the [main] attribute is deprecated, please use the \"contentId\" property instead:\nBEFORE:\n  <ion-menu>...</ion-menu>\n  <div main>...</div>\n\nAFTER:\n  <ion-menu contentId=\"my-content\"></ion-menu>\n  <div id=\"my-content\">...</div>\n");
+                    }
+
                     content = this.contentId !== undefined ? document.getElementById(this.contentId) : parent && parent.querySelector && parent.querySelector('[main]');
 
                     if (!(!content || !content.tagName)) {
-                      _context.next = 7;
+                      _context.next = 8;
                       break;
                     }
 
@@ -211,21 +216,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     console.error('Menu: must have a "content" element to listen for drag events on.');
                     return _context.abrupt("return");
 
-                  case 7:
+                  case 8:
                     this.contentEl = content; // add menu's content classes
 
                     content.classList.add('menu-content');
                     this.typeChanged(this.type, undefined);
                     this.sideChanged(); // register this menu with the app's menu controller
 
-                    _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"]._register(this);
+                    _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._register(this);
 
-                    _context.next = 14;
+                    _context.next = 15;
                     return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-2c4a5477.js */
-                    "./node_modules/@ionic/core/dist/esm/index-2c4a5477.js"));
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
 
-                  case 14:
+                  case 15:
                     _context.t0 = {
                       el: document,
                       gestureName: 'menu-swipe',
@@ -250,7 +255,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     this.gesture = _context.sent.createGesture(_context.t0);
                     this.updateState();
 
-                  case 17:
+                  case 18:
                   case "end":
                     return _context.stop();
                 }
@@ -299,7 +304,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function disconnectedCallback() {
           this.blocker.destroy();
 
-          _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"]._unregister(this);
+          _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._unregister(this);
 
           if (this.animation) {
             this.animation.destroy();
@@ -395,7 +400,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "setOpen",
         value: function setOpen(shouldOpen) {
           var animated = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"]._setOpen(this, shouldOpen, animated);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._setOpen(this, shouldOpen, animated);
         }
       }, {
         key: "_setOpen",
@@ -477,12 +482,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
                     _context4.next = 7;
-                    return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"]._createAnimation(this.type, this);
+                    return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._createAnimation(this.type, this);
 
                   case 7:
                     this.animation = _context4.sent;
 
-                    if (!_config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true)) {
+                    if (!_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true)) {
                       this.animation.duration(0);
                     }
 
@@ -564,7 +569,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (this._isOpen) {
             return true; // TODO error
-          } else if (_index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"]._getOpenSync()) {
+          } else if (_index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._getOpenSync()) {
             return false;
           }
 
@@ -580,7 +585,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "onStart",
         value: function onStart() {
           if (!this.isAnimating || !this.animation) {
-            Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(false, 'isAnimating has to be true');
+            Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(false, 'isAnimating has to be true');
             return;
           } // the cloned animation should not use an easing curve during seek
 
@@ -591,7 +596,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "onMove",
         value: function onMove(detail) {
           if (!this.isAnimating || !this.animation) {
-            Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(false, 'isAnimating has to be true');
+            Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(false, 'isAnimating has to be true');
             return;
           }
 
@@ -605,7 +610,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this2 = this;
 
           if (!this.isAnimating || !this.animation) {
-            Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(false, 'isAnimating has to be true');
+            Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(false, 'isAnimating has to be true');
             return;
           }
 
@@ -645,17 +650,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
            * in terms of a linear curve.
            */
 
-          newStepValue += Object(_cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["g"])(new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 0), new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.4, 0), new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.6, 1), new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 1), adjustedStepValue);
+          newStepValue += Object(_cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["g"])(new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.4, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.6, 1), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 1), Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, adjustedStepValue, 1));
           this.animation.easing('cubic-bezier(0.4, 0.0, 0.6, 1)').onFinish(function () {
             return _this2.afterAnimation(shouldOpen);
           }, {
             oneTimeCallback: true
-          }).progressEnd(shouldComplete, newStepValue, 300);
+          }).progressEnd(shouldComplete ? 1 : 0, newStepValue, 300);
         }
       }, {
         key: "beforeAnimation",
         value: function beforeAnimation(shouldOpen) {
-          Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(!this.isAnimating, '_before() should not be called while animating'); // this places the menu into the correct location before it animates in
+          Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(!this.isAnimating, '_before() should not be called while animating'); // this places the menu into the correct location before it animates in
           // this css class doesn't actually kick off any animations
 
           this.el.classList.add(SHOW_MENU);
@@ -676,7 +681,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "afterAnimation",
         value: function afterAnimation(isOpen) {
-          Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(this.isAnimating, '_before() should be called while animating'); // keep opening/closing the menu disabled for a touch more yet
+          Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this.isAnimating, '_before() should be called while animating'); // keep opening/closing the menu disabled for a touch more yet
           // only add listeners/css if it's enabled and isOpen
           // and only remove listeners/css if it's not open
           // emit opened/closed events
@@ -732,15 +737,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           if (!this.disabled) {
-            _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"]._setActiveMenu(this);
+            _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._setActiveMenu(this);
           }
 
-          Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(!this.isAnimating, 'can not be animating');
+          Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(!this.isAnimating, 'can not be animating');
         }
       }, {
         key: "forceClosing",
         value: function forceClosing() {
-          Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(this._isOpen, 'menu cannot be closed');
+          Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this._isOpen, 'menu cannot be closed');
           this.isAnimating = true;
           var ani = this.animation.direction('reverse');
           ani.playSync();
@@ -757,15 +762,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               disabled = this.disabled,
               mode = this.mode,
               isPaneVisible = this.isPaneVisible;
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "navigation",
             class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "menu-type-".concat(type), true), _defineProperty(_class, 'menu-enabled', !disabled), _defineProperty(_class, 'menu-side-end', isEndSide), _defineProperty(_class, 'menu-side-start', !isEndSide), _defineProperty(_class, 'menu-pane-visible', isPaneVisible), _class)
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "menu-inner",
             ref: function ref(el) {
               return _this3.menuInnerEl = el;
             }
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
             ref: function ref(el) {
               return _this3.backdropEl = el;
             },
@@ -777,7 +782,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",
@@ -827,7 +832,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             switch (_context6.prev = _context6.next) {
               case 0:
                 _context6.next = 2;
-                return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].get(menu);
+                return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu);
 
               case 2:
                 menuEl = _context6.sent;
@@ -868,7 +873,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, MenuButton);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.visible = false;
         /**
          * If `true`, the user cannot interact with the menu button.
@@ -894,7 +899,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             while (1) {
               switch (_context7.prev = _context7.next) {
                 case 0:
-                  return _context7.abrupt("return", _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].toggle(_this4.menu));
+                  return _context7.abrupt("return", _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].toggle(_this4.menu));
 
                 case 1:
                 case "end":
@@ -945,33 +950,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var color = this.color,
               disabled = this.disabled;
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
 
-          var menuIcon = _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('menuIcon', 'menu');
+          var menuIcon = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('menuIcon', 'menu');
 
           var hidden = this.autoHide && !this.visible;
           var attrs = {
             type: this.type
           };
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
             "aria-disabled": disabled ? 'true' : null,
             "aria-hidden": hidden ? 'true' : null,
-            class: Object.assign(_defineProperty({}, mode, true), Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_5__["c"])(color), {
+            class: Object.assign(Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["c"])(color)), {
               'button': true,
               'menu-button-hidden': hidden,
               'menu-button-disabled': disabled,
               'ion-activatable': true,
               'ion-focusable': true
             })
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", Object.assign({}, attrs, {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", Object.assign({}, attrs, {
             disabled: disabled,
             class: "button-native"
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             icon: menuIcon,
             mode: mode,
             lazy: false
-          })), mode === 'md' && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
+          })), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
             type: "unbounded"
           })));
         }
@@ -991,7 +996,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function MenuController(hostRef) {
         _classCallCheck(this, MenuController);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
       /**
        * Open the menu. If a menu is not provided then it will open the first
@@ -1007,7 +1012,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(MenuController, [{
         key: "open",
         value: function open(menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].open(menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].open(menu);
         }
         /**
          * Close the menu. If a menu is specified, it will close that menu.
@@ -1020,7 +1025,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "close",
         value: function close(menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].close(menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].close(menu);
         }
         /**
          * Toggle the menu open or closed. If the menu is already open, it will try to
@@ -1033,7 +1038,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "toggle",
         value: function toggle(menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].toggle(menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].toggle(menu);
         }
         /**
          * Enable or disable a menu. Disabling a menu will not allow gestures
@@ -1049,7 +1054,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "enable",
         value: function enable(_enable, menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].enable(_enable, menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].enable(_enable, menu);
         }
         /**
          * Enable or disable the ability to swipe open the menu.
@@ -1061,7 +1066,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "swipeGesture",
         value: function swipeGesture(enable, menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].swipeGesture(enable, menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].swipeGesture(enable, menu);
         }
         /**
          * Get whether or not the menu is open. Returns `true` if the specified
@@ -1074,7 +1079,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isOpen",
         value: function isOpen(menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].isOpen(menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].isOpen(menu);
         }
         /**
          * Get whether or not the menu is enabled. Returns `true` if the
@@ -1087,7 +1092,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isEnabled",
         value: function isEnabled(menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].isEnabled(menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].isEnabled(menu);
         }
         /**
          * Get a menu instance. If a menu is not provided then it will return the first
@@ -1101,7 +1106,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "get",
         value: function get(menu) {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].get(menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu);
         }
         /**
          * Get the instance of the opened menu. Returns `null` if a menu is not found.
@@ -1110,7 +1115,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getOpen",
         value: function getOpen() {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].getOpen();
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].getOpen();
         }
         /**
          * Get all menu instances.
@@ -1119,7 +1124,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getMenus",
         value: function getMenus() {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].getMenus();
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].getMenus();
         }
         /**
          * Get whether or not a menu is animating. Returns `true` if any
@@ -1129,7 +1134,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isAnimating",
         value: function isAnimating() {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].isAnimating();
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].isAnimating();
         }
         /**
          * Registers a new animation that can be used with any `ion-menu` by
@@ -1149,7 +1154,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context9.prev = _context9.next) {
                   case 0:
-                    return _context9.abrupt("return", _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].registerAnimation(name, animation));
+                    return _context9.abrupt("return", _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].registerAnimation(name, animation));
 
                   case 1:
                   case "end":
@@ -1165,11 +1170,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           return registerAnimation;
         }()
-      }], [{
-        key: "style",
-        get: function get() {
-          return ".menu-content{-webkit-transform:translateZ(0);transform:translateZ(0)}.menu-content-open{cursor:pointer;-ms-touch-action:manipulation;touch-action:manipulation;pointer-events:none}.ios .menu-content-reveal{-webkit-box-shadow:-8px 0 42px rgba(0,0,0,.08);box-shadow:-8px 0 42px rgba(0,0,0,.08)}[dir=rtl].ios .menu-content-reveal{-webkit-box-shadow:8px 0 42px rgba(0,0,0,.08);box-shadow:8px 0 42px rgba(0,0,0,.08)}.md .menu-content-push,.md .menu-content-reveal{-webkit-box-shadow:0 2px 22px 0 rgba(0,0,0,.09),4px 0 16px 0 rgba(0,0,0,.18);box-shadow:0 2px 22px 0 rgba(0,0,0,.09),4px 0 16px 0 rgba(0,0,0,.18)}";
-        }
       }]);
 
       return MenuController;
@@ -1183,7 +1183,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, MenuToggle);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.visible = false;
         /**
          * Automatically hides the content when the corresponding menu is not active.
@@ -1195,7 +1195,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.autoHide = true;
 
         this.onClick = function () {
-          return _index_824b185a_js__WEBPACK_IMPORTED_MODULE_4__["m"].toggle(_this5.menu);
+          return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].toggle(_this5.menu);
         };
       }
 
@@ -1239,13 +1239,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var _class2;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var hidden = this.autoHide && !this.visible;
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
             "aria-hidden": hidden ? 'true' : null,
             class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'menu-toggle-hidden', hidden), _class2)
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }], [{
         key: "style",

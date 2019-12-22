@@ -33,27 +33,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
     var Input =
     /*#__PURE__*/
@@ -63,7 +63,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Input);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.inputId = "ion-input-".concat(inputIds++);
         this.didBlurAfterEdit = false;
         this.hasFocus = false;
@@ -194,19 +194,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         };
 
-        this.ionInput = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
-        this.ionChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
-        this.ionBlur = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
-        this.ionFocus = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
-        this.ionInputDidLoad = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInputDidLoad", 7);
-        this.ionInputDidUnload = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInputDidUnload", 7);
-        this.ionStyle = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionInput = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionInputDidLoad = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInputDidLoad", 7);
+        this.ionInputDidUnload = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInputDidUnload", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
       }
 
       _createClass(Input, [{
         key: "debounceChanged",
         value: function debounceChanged() {
-          this.ionChange = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this.ionChange, this.debounce);
+          this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
         }
       }, {
         key: "disabledChanged",
@@ -330,19 +330,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _Object$assign,
               _this2 = this;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var value = this.getValue();
           var labelId = this.inputId + '-lbl';
-          var label = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el);
+          var label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.el);
 
           if (label) {
             label.id = labelId;
           }
 
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             "aria-disabled": this.disabled ? 'true' : null,
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'has-value', this.hasValue()), _defineProperty(_Object$assign, 'has-focus', this.hasFocus), _Object$assign))
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'has-value', this.hasValue()), _defineProperty(_Object$assign, 'has-focus', this.hasFocus), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
             class: "native-input",
             ref: function ref(input) {
               return _this2.nativeInput = input;
@@ -374,7 +374,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             onBlur: this.onBlur,
             onFocus: this.onFocus,
             onKeyDown: this.onKeydown
-          }), this.clearInput && !this.readonly && !this.disabled && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+          }), this.clearInput && !this.readonly && !this.disabled && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             type: "button",
             class: "input-clear-icon",
             tabindex: "-1",
@@ -385,7 +385,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",

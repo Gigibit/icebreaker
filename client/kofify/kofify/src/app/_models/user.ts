@@ -9,16 +9,15 @@ export interface User{
     profileImg: string
     description?: string
     images? : string[]
+    imageIds? : string[]
     bio? : string
-    props? : string[]
-    iLike?:  boolean
     loginType?: LoginType
     token? : string
     lastSeen? : string
     createdAt? : string
-    address?: string
     credits?: string
     rewardAvailable?: boolean
+    online?: boolean
 }
 export interface LocalizedUser{
     address?: string
@@ -29,7 +28,7 @@ export interface LocalizedUser{
 export interface UpdatableUserInfo{
     bio? : string
     gender? : string
-    imagesSorting : number[]
+    imageIds : number[]
 }
 
 export enum LoginType{
@@ -39,6 +38,8 @@ export enum LoginType{
 
 export class LocalizedUserMapper{
     static fromJson(data: any): LocalizedUser{
+        console.log(data)
+
         return {
             address  : data['address'],
             distance : data['distance'],
@@ -49,7 +50,9 @@ export class LocalizedUserMapper{
                 name: data['user']['firstName'] ,
                 profileImg: data['user']['imageUrl'],
                 age: age(data['user']['birthday']),
-                lastSeen : data['user']['lastSeen']
+                lastSeen : data['user']['lastSeen'],
+                online: data['user']['online'],
+                bio: data['user']['bio'],
             }}
     }
     static fromJsonArray(data:any): LocalizedUser[]{
@@ -60,10 +63,10 @@ export class LocalizedUserMapper{
 
 export class UserMapper{
     static fromJson(data:any): User{
-
-        let admobCredit = data['user']['credit'] && data['user']['credit']['admobCredits']
+        console.log(data)
+        let admobCredit = data['user']['credit'] && data['user']['credit']['admobCredit']
         let admobRewardAvailable = admobCredit && admobCredit['count'] < admobCredit['countMax'];
-         
+        
         return data ? {
             firstName : data['user']['firstName'],
             lastName: data['user']['lastName'],
@@ -75,12 +78,11 @@ export class UserMapper{
             bio: data['user']['bio'],
             profileImg: data['user']['imageUrl'],
             description: data['description'],
-            iLike: data['has_propsed'],
-            images: data['images'],
-            props: data['props'],
-            lastSeen: data['lastSeen'],
-            createdAt: data['createdAt'],
-            address: data['address'],
+            images: data['images'].map(image=>image.url),
+            imageIds: data['images'].map(image=>image.id),
+            lastSeen: data['user']['lastSeen'],
+            createdAt: data['user']['createdAt'],
+            online: data['user']['online'],
             token: data['token']
         } : null
     }

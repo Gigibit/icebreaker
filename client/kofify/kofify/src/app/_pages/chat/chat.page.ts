@@ -4,7 +4,7 @@ import { ChatService } from '../../_services/chat.service';
 import { Proposal } from '../../_models/proposal';
 import { AuthService } from '../../_services/auth.service';
 import { timeSince } from '../../_utils/functions';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { Chat } from 'src/app/_models/chat';
@@ -30,6 +30,7 @@ export class ChatRoomPage implements OnInit{
     private location: Location,
     private ngZone: NgZone,
     private modalCtrl: ModalController,
+    private router: Router,
     private route: ActivatedRoute) {
       console.log(authService.currentUser)
       console.log(authService.currentUserValue)
@@ -68,19 +69,13 @@ export class ChatRoomPage implements OnInit{
   }
 
   viewProfile(id: string){
-    this.modalCtrl.create({
-      component: ViewProfileComponent,
-      componentProps: {
-        userId: id
-      }
-    }).then(modal => {
-      modal.present();
-    });
+    this.router.navigate(['view-profile',id])
+
   }
 
 
   sendMessage(){
-    if(this.message && this.message.length > 0){
+    if(this.message && this.message.trim().length > 0){
       this.chatService.sendMessage(this.message)
       this.message = ''
     }

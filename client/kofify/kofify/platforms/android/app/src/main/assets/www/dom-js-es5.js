@@ -11,7 +11,7 @@
   function node_modulesIonicCoreDistEsmPolyfillsDomJs(module, exports) {
     (function () {
       /*
-         Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+        Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
         This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
         The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
         The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
@@ -970,16 +970,35 @@
     (function (c) {
       function d(a) {
         a = b(a);
-        return 11 === a.nodeType ? d(a.host) : a;
+        return a && 11 === a.nodeType ? d(a.host) : a;
       }
 
       function b(a) {
-        return a.parentNode ? b(a.parentNode) : a;
+        return a && a.parentNode ? b(a.parentNode) : a;
       }
 
       "function" !== typeof c.getRootNode && (c.getRootNode = function (a) {
         return a && a.composed ? d(this) : b(this);
       });
+    })(Element.prototype);
+    /*!
+    Element.isConnected()
+    */
+
+
+    (function (prototype) {
+      if (!("isConnected" in prototype)) {
+        Object.defineProperty(prototype, 'isConnected', {
+          configurable: true,
+          enumerable: true,
+          get: function get() {
+            var root = this.getRootNode({
+              composed: true
+            });
+            return root && root.nodeType === 9;
+          }
+        });
+      }
     })(Element.prototype);
     /*!
     Element.remove()
@@ -1037,7 +1056,32 @@
         }
       });
     }(Element.prototype);
+    /*!
+    DOMTokenList
+    */
+
+    (function (prototype) {
+      try {
+        document.body.classList.add();
+      } catch (e) {
+        var originalAdd = prototype.add;
+        var originalRemove = prototype.remove;
+
+        prototype.add = function () {
+          for (var i = 0; i < arguments.length; i++) {
+            originalAdd.call(this, arguments[i]);
+          }
+        };
+
+        prototype.remove = function () {
+          for (var i = 0; i < arguments.length; i++) {
+            originalRemove.call(this, arguments[i]);
+          }
+        };
+      }
+    })(DOMTokenList.prototype);
     /***/
+
   }
 }]); //# sourceMappingURL=dom-js-es2015.js.map
 //# sourceMappingURL=dom-js-es5.js.map

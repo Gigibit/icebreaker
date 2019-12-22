@@ -29,21 +29,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
     var spinners = {
       'bubbles': {
@@ -160,7 +160,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function Spinner(hostRef) {
         _classCallCheck(this, Spinner);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
          * If `true`, the spinner's animation will be paused.
          */
@@ -171,9 +171,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(Spinner, [{
         key: "getName",
         value: function getName() {
-          var spinnerName = this.name || _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('spinner');
+          var spinnerName = this.name || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('spinner');
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
 
           if (spinnerName) {
             return spinnerName;
@@ -187,7 +187,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _Object$assign;
 
           var self = this;
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(self);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(self);
           var spinnerName = self.getName();
           var spinner = SPINNERS[spinnerName] || SPINNERS['lines'];
           var duration = typeof self.duration === 'number' && self.duration > 10 ? self.duration : spinner.dur;
@@ -203,8 +203,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
           }
 
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(self.color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "spinner-".concat(spinnerName), true), _defineProperty(_Object$assign, 'spinner-paused', !!self.paused || _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('_testing')), _Object$assign)),
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(self.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "spinner-".concat(spinnerName), true), _defineProperty(_Object$assign, 'spinner-paused', !!self.paused || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('_testing')), _Object$assign)),
             role: "progressbar",
             style: spinner.elmDuration ? {
               animationDuration: duration + 'ms'
@@ -224,10 +224,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var buildCircle = function buildCircle(spinner, duration, index, total) {
       var data = spinner.fn(duration, index, total);
       data.style['animation-duration'] = duration + 'ms';
-      return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
+      return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
         viewBox: data.viewBox || '0 0 64 64',
         style: data.style
-      }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("circle", {
+      }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("circle", {
         transform: data.transform || 'translate(32,32)',
         cx: data.cx,
         cy: data.cy,
@@ -241,10 +241,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var buildLine = function buildLine(spinner, duration, index, total) {
       var data = spinner.fn(duration, index, total);
       data.style['animation-duration'] = duration + 'ms';
-      return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
+      return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
         viewBox: data.viewBox || '0 0 64 64',
         style: data.style
-      }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("line", {
+      }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("line", {
         transform: "translate(32,32)",
         y1: data.y1,
         y2: data.y2

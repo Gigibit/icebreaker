@@ -31,15 +31,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
 
     var CELL_TYPE_ITEM = 'item';
     var CELL_TYPE_HEADER = 'header';
@@ -386,7 +386,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, VirtualScroll);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.range = {
           offset: 0,
           length: 0
@@ -624,8 +624,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           } // schedule DOM operations into the stencil queue
 
 
-          Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
-          Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["w"])(this.writeVS.bind(this));
+          Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
+          Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(this.writeVS.bind(this));
         }
       }, {
         key: "readVS",
@@ -812,11 +812,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var _this5 = this;
 
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             style: {
               height: "".concat(this.totalHeight, "px")
             }
-          }, this.renderItem && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, {
+          }, this.renderItem && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, {
             dom: this.virtualDom
           }, this.virtualDom.map(function (node) {
             return _this5.renderVirtualNode(node);
@@ -825,7 +825,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",
@@ -859,10 +859,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           classes += 'virtual-loading';
         }
 
-        return Object.assign({}, child, {
-          vattrs: Object.assign({}, vattrs, {
+        return Object.assign(Object.assign({}, child), {
+          vattrs: Object.assign(Object.assign({}, vattrs), {
             class: classes,
-            style: Object.assign({}, vattrs.style, {
+            style: Object.assign(Object.assign({}, vattrs.style), {
               transform: "translate3d(0,".concat(node.top, "px,0)")
             })
           })

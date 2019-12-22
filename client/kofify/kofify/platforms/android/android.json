@@ -17,9 +17,7 @@
                 "android:hardwareAccelerated": "true",
                 "android:icon": "@mipmap/ic_launcher",
                 "android:label": "@string/app_name",
-                "android:networkSecurityConfig": "@xml/network_security_config",
-                "android:supportsRtl": "true",
-                "android:usesCleartextTraffic": "true"
+                "android:supportsRtl": "true"
               }
             },
             {
@@ -31,7 +29,6 @@
                 "android:hardwareAccelerated": "true",
                 "android:icon": "@mipmap/ic_launcher",
                 "android:label": "@string/app_name",
-                "android:networkSecurityConfig": "@xml/network_security_config",
                 "android:supportsRtl": "true",
                 "android:usesCleartextTraffic": "true"
               }
@@ -55,7 +52,7 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 4
+              "count": 3
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
@@ -72,63 +69,11 @@
             {
               "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
               "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
-              "count": 1
             }
           ],
           "/manifest": [
             {
-              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"com.google.android.gms.permission.ACTIVITY_RECOGNITION\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.READ_CALENDAR\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.WRITE_CALENDAR\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.GET_TASKS\" />",
+              "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
               "count": 1
             },
             {
@@ -141,10 +86,6 @@
             },
             {
               "xml": "<uses-permission android:name=\"com.aklc.kofify.permission.RECEIVE_ADM_MESSAGE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
               "count": 1
             }
           ],
@@ -240,6 +181,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"InAppBillingV3\"><param name=\"android-package\" value=\"com.alexdisler.inapppurchases.InAppBillingV3\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"NativeGeocoder\"><param name=\"android-package\" value=\"cordova.plugin.nativegeocoder.NativeGeocoder\" /></feature>",
               "count": 1
             },
@@ -264,35 +209,7 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"InAppBillingV3\"><param name=\"android-package\" value=\"com.alexdisler.inapppurchases.InAppBillingV3\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkVersion\" value=\"23+\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkLiteVersion\" value=\"xwalk_core_library_canary:17+\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkCommandLine\" value=\"--disable-pull-to-refresh-effect\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkMode\" value=\"embedded\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkMultipleApk\" value=\"true\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"android-minSdkVersion\" value=\"16\" />",
+              "xml": "<feature name=\"CDVOrientation\"><param name=\"android-package\" value=\"cordova.plugins.screenorientation.CDVOrientation\" /></feature>",
               "count": 1
             }
           ]
@@ -363,11 +280,6 @@
             }
           ]
         }
-      },
-      "*/billing_key_param.xml": {
-        "parents": {
-          "/*": []
-        }
       }
     }
   },
@@ -387,9 +299,6 @@
     },
     "cordova-plugin-admob-free": {
       "ADMOB_APP_ID": "ca-app-pub-6771007436830318~4967517385",
-      "PACKAGE_NAME": "com.aklc.kofify"
-    },
-    "cordova-plugin-admob-mediation-inmobi": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
     "cordova-plugin-extension": {
@@ -429,6 +338,9 @@
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
+    "cordova-plugin-inapppurchase": {
+      "PACKAGE_NAME": "com.aklc.kofify"
+    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
@@ -454,15 +366,10 @@
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
-    "cordova-plugin-inapppurchase": {
+    "es6-promise-plugin": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
-    "cordova-plugin-crosswalk-webview": {
-      "XWALK_VERSION": "23+",
-      "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-      "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-      "XWALK_MODE": "embedded",
-      "XWALK_MULTIPLEAPK": "true",
+    "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "com.aklc.kofify"
     }
   },
@@ -774,6 +681,14 @@
       ]
     },
     {
+      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
+      "pluginId": "cordova-plugin-inapppurchase",
+      "merges": [
+        "inAppPurchase"
+      ]
+    },
+    {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
       "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
@@ -840,11 +755,17 @@
       ]
     },
     {
-      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
-      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
-      "pluginId": "cordova-plugin-inapppurchase",
-      "merges": [
-        "inAppPurchase"
+      "id": "es6-promise-plugin.Promise",
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-screen-orientation.screenorientation",
+      "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+      "pluginId": "cordova-plugin-screen-orientation",
+      "clobbers": [
+        "cordova.plugins.screenorientation"
       ]
     }
   ],
@@ -854,7 +775,6 @@
     "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-promise-polyfill": "0.0.2",
     "cordova-plugin-admob-free": "0.27.0",
-    "cordova-plugin-admob-mediation-inmobi": "1.0.0",
     "cordova-plugin-extension": "1.5.4",
     "cordova-plugin-admobpro": "2.49.0",
     "cordova-plugin-camera": "4.1.0",
@@ -865,6 +785,7 @@
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-globalization": "1.11.0",
     "cordova-plugin-inappbrowser": "3.1.0",
+    "cordova-plugin-inapppurchase": "1.1.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "4.1.2",
     "cordova-plugin-nativegeocoder": "3.2.2",
@@ -873,7 +794,7 @@
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.4",
     "onesignal-cordova-plugin": "2.6.0",
-    "cordova-plugin-inapppurchase": "1.1.0",
-    "cordova-plugin-crosswalk-webview": "2.4.0"
+    "es6-promise-plugin": "4.2.2",
+    "cordova-plugin-screen-orientation": "3.0.2"
   }
 }

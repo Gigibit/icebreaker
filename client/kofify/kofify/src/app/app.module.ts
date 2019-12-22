@@ -24,6 +24,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { LoginPageModule } from './_pages/login/login.module';
 import { RegisterPageModule } from './_pages/register/register.module';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+
 
  
 import { Camera } from '@ionic-native/Camera/ngx';
@@ -51,6 +53,7 @@ import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilterComponent } from './_components/filter/filter.component';
 
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -84,6 +87,7 @@ function createTranslateLoader(http: HttpClient) {
     SelectPlanComponent,
     DeleteAccountComponent,
     UserProfilePopoverComponent,
+    FilterComponent,
     EditUserProfileComponent
     ],
   entryComponents: [ 
@@ -91,6 +95,7 @@ function createTranslateLoader(http: HttpClient) {
     ManageCreditsComponent,
     SelectPlanComponent,
     DeleteAccountComponent,
+    FilterComponent,
     UserProfilePopoverComponent,
     EditUserProfileComponent
     ],
@@ -122,6 +127,7 @@ function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     AdMobFree,
+    ScreenOrientation,
     InAppPurchase,
     StatusBar,
     SplashScreen,

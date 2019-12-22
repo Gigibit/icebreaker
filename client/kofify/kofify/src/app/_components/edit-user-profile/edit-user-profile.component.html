@@ -11,7 +11,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content class="no-scroll">
   
   <h3 *ngIf="userInfo?.images?.length == 0" class="ion-text-center">{{ 'please_add_image' | translate }}</h3>
   <ion-grid>
@@ -24,20 +24,21 @@
     </ion-row> -->
     <ion-row dragula="VAMPIRES" [(dragulaModel)]="imagesSorting">
       
-      <ion-col *ngFor="let i of imagesSorting" class="image-container-wrapper" (click)="editImage(i)" col-6 col-md-4 col-xl-3 >
+      <ion-col *ngFor="let i of imagesSorting" 
+            [attr.data-imageId]="userInfo?.imageIds && userInfo?.imageIds.length > i-1 && userInfo?.imageIds[i-1]" 
+            [attr.data-position]="userInfo?.images && userInfo?.images.length > i-1 && userInfo?.images[i-1] && i" 
+            class="image-container-wrapper" (click)="clickOnBox(i)" >
         <div class="image-container">
           <img *ngIf="userInfo?.images && userInfo?.images.length > i-1 && userInfo?.images[i-1]" class="user-image" [src]="userInfo?.images[i-1]">
-          <ion-icon class="edit-icon" name="create"></ion-icon>
+          <ion-icon *ngIf="!userInfo?.images[i-1]" class="edit-icon" name="create"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-title>{{'about_me' | translate}}</ion-title>
+  <ion-title>{{'about_me' | translate }}</ion-title>
   <ion-item>
-    <ion-input class="about-me-txtarea" [(ngModel)]="bio"></ion-input>
+    <ion-textarea class="bio-textarea" placeholder="{{'about_me_placeholder' | translate }}" [(ngModel)]="bio"></ion-textarea>
   </ion-item>
 
-  <ion-item>
-    <ion-button (click)="deleteAccount()" class="delete-account-btn">{{'delete_account' | translate}}</ion-button>
-  </ion-item>
+  <ion-button (click)="deleteAccount()" class="delete-account-btn">{{'delete_account' | translate}}</ion-button>
 </ion-content>

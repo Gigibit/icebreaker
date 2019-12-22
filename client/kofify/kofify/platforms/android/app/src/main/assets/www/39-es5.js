@@ -33,60 +33,66 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./animation-d0becaea.js */
-    "./node_modules/@ionic/core/dist/esm/animation-d0becaea.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./constants-94c4865f.js */
-    "./node_modules/@ionic/core/dist/esm/constants-94c4865f.js");
+    var _animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./animation-af478fe9.js */
+    "./node_modules/@ionic/core/dist/esm/animation-af478fe9.js");
     /* harmony import */
 
 
-    var _overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./overlays-518a98a4.js */
-    "./node_modules/@ionic/core/dist/esm/overlays-518a98a4.js");
+    var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./constants-3c3e1099.js */
+    "./node_modules/@ionic/core/dist/esm/constants-3c3e1099.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./overlays-10640d86.js */
+    "./node_modules/@ionic/core/dist/esm/overlays-10640d86.js");
     /* harmony import */
 
 
-    var _framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./framework-delegate-00265c49.js */
-    "./node_modules/@ionic/core/dist/esm/framework-delegate-00265c49.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
     /* harmony import */
 
 
-    var _index_a15151df_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ./index-a15151df.js */
-    "./node_modules/@ionic/core/dist/esm/index-a15151df.js");
+    var _framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ./framework-delegate-c2e2e1f4.js */
+    "./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js");
+    /* harmony import */
+
+
+    var _index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ./index-6826f2f6.js */
+    "./node_modules/@ionic/core/dist/esm/index-6826f2f6.js");
     /**
      * iOS Modal Enter Animation
      */
 
 
     var iosEnterAnimation = function iosEnterAnimation(baseEl) {
-      var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
       backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.01, 0.4);
       wrapperAnimation.addElement(baseEl.querySelector('.modal-wrapper')).beforeStyles({
         'opacity': 1
@@ -152,9 +158,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     var iosLeaveAnimation = function iosLeaveAnimation(baseEl) {
-      var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
       var wrapperEl = baseEl.querySelector('.modal-wrapper');
       var wrapperElRect = wrapperEl.getBoundingClientRect();
       backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.4, 0.0);
@@ -169,9 +175,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     var mdEnterAnimation = function mdEnterAnimation(baseEl) {
-      var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
       backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.01, 0.32);
       wrapperAnimation.addElement(baseEl.querySelector('.modal-wrapper')).keyframes([{
         offset: 0,
@@ -190,9 +196,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     var mdLeaveAnimation = function mdLeaveAnimation(baseEl) {
-      var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-      var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
       var wrapperEl = baseEl.querySelector('.modal-wrapper');
       backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.32, 0.0);
       wrapperAnimation.addElement(wrapperEl).keyframes([{
@@ -215,9 +221,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Modal);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.presented = false;
-        this.mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        this.mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
         /**
          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
          */
@@ -240,7 +246,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.animated = true;
 
         this.onBackdropTap = function () {
-          _this.dismiss(undefined, _overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_4__["B"]);
+          _this.dismiss(undefined, _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["B"]);
         };
 
         this.onDismiss = function (ev) {
@@ -264,11 +270,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         };
 
-        Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_4__["d"])(this.el);
-        this.didPresent = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalDidPresent", 7);
-        this.willPresent = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalWillPresent", 7);
-        this.willDismiss = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalWillDismiss", 7);
-        this.didDismiss = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalDidDismiss", 7);
+        Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["d"])(this.el);
+        this.didPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalDidPresent", 7);
+        this.willPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalWillPresent", 7);
+        this.willDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalWillDismiss", 7);
+        this.didDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionModalDidDismiss", 7);
       }
       /**
        * Present the modal overlay after it has been created.
@@ -304,19 +310,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     throw new Error('container is undefined');
 
                   case 5:
-                    componentProps = Object.assign({}, this.componentProps, {
+                    componentProps = Object.assign(Object.assign({}, this.componentProps), {
                       modal: this.el
                     });
                     _context.next = 8;
-                    return Object(_framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_6__["a"])(this.delegate, container, this.component, ['ion-page'], componentProps);
+                    return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_7__["a"])(this.delegate, container, this.component, ['ion-page'], componentProps);
 
                   case 8:
                     this.usersElement = _context.sent;
                     _context.next = 11;
-                    return Object(_index_a15151df_js__WEBPACK_IMPORTED_MODULE_7__["d"])(this.usersElement);
+                    return Object(_index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this.usersElement);
 
                   case 11:
-                    return _context.abrupt("return", Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'modalEnter', iosEnterAnimation, mdEnterAnimation));
+                    return _context.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["e"])(this, 'modalEnter', iosEnterAnimation, mdEnterAnimation));
 
                   case 12:
                   case "end":
@@ -351,7 +357,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 switch (_context2.prev = _context2.next) {
                   case 0:
                     _context2.next = 2;
-                    return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_4__["f"])(this, data, role, 'modalLeave', iosLeaveAnimation, mdLeaveAnimation);
+                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["f"])(this, data, role, 'modalLeave', iosLeaveAnimation, mdLeaveAnimation);
 
                   case 2:
                     dismissed = _context2.sent;
@@ -362,7 +368,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                     _context2.next = 6;
-                    return Object(_framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_6__["d"])(this.delegate, this.usersElement);
+                    return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_7__["d"])(this.delegate, this.usersElement);
 
                   case 6:
                     return _context2.abrupt("return", dismissed);
@@ -388,7 +394,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onDidDismiss",
         value: function onDidDismiss() {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_4__["g"])(this.el, 'ionModalDidDismiss');
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.el, 'ionModalDidDismiss');
         }
         /**
          * Returns a promise that resolves when the modal will dismiss.
@@ -397,18 +403,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onWillDismiss",
         value: function onWillDismiss() {
-          return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_4__["g"])(this.el, 'ionModalWillDismiss');
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.el, 'ionModalWillDismiss');
         }
       }, {
         key: "render",
         value: function render() {
           var _class;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             "no-router": true,
             "aria-modal": "true",
-            class: Object.assign(_defineProperty({}, mode, true), Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)),
+            class: Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.cssClass)),
             style: {
               zIndex: "".concat(20000 + this.overlayIndex)
             },
@@ -418,10 +424,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             onIonModalWillPresent: this.onLifecycle,
             onIonModalWillDismiss: this.onLifecycle,
             onIonModalDidDismiss: this.onLifecycle
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
             visible: this.showBackdrop,
             tappable: this.backdropDismiss
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             role: "dialog",
             class: (_class = {}, _defineProperty(_class, "modal-wrapper", true), _defineProperty(_class, mode, true), _class)
           }));
@@ -429,7 +435,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "style",

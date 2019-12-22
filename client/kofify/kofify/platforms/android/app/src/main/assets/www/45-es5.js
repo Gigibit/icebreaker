@@ -29,27 +29,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
     var ProgressBar =
     /*#__PURE__*/
@@ -57,7 +57,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function ProgressBar(hostRef) {
         _classCallCheck(this, ProgressBar);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
          * The state of the progress bar, based on if the time the process takes is known or not.
          * Default options are: `"determinate"` (no animation), `"indeterminate"` (animate from left to right).
@@ -95,15 +95,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               value = this.value,
               buffer = this.buffer;
 
-          var paused = _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('_testing');
+          var paused = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('_testing');
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "progressbar",
             "aria-valuenow": type === 'determinate' ? value : null,
             "aria-valuemin": "0",
             "aria-valuemax": "1",
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "progress-bar-".concat(type), true), _defineProperty(_Object$assign, 'progress-paused', paused), _defineProperty(_Object$assign, 'progress-bar-reversed', document.dir === 'rtl' ? !reversed : reversed), _Object$assign))
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "progress-bar-".concat(type), true), _defineProperty(_Object$assign, 'progress-paused', paused), _defineProperty(_Object$assign, 'progress-bar-reversed', document.dir === 'rtl' ? !reversed : reversed), _Object$assign))
           }, type === 'indeterminate' ? renderIndeterminate() : renderProgress(value, buffer));
         }
       }], [{
@@ -117,28 +117,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     var renderIndeterminate = function renderIndeterminate() {
-      return [Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      return [Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         class: "indeterminate-bar-primary"
-      }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+      }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
         class: "progress-indeterminate"
-      })), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         class: "indeterminate-bar-secondary"
-      }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+      }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
         class: "progress-indeterminate"
       }))];
     };
 
     var renderProgress = function renderProgress(value, buffer) {
-      var finalValue = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, value, 1);
-      var finalBuffer = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, buffer, 1);
-      return [Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      var finalValue = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, value, 1);
+      var finalBuffer = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, buffer, 1);
+      return [Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         class: "progress",
         style: {
           transform: "scaleX(".concat(finalValue, ")")
         }
-      }), finalBuffer !== 1 && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      }), finalBuffer !== 1 && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         class: "buffer-circles"
-      }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+      }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
         class: "progress-buffer-bar",
         style: {
           transform: "scaleX(".concat(finalBuffer, ")")

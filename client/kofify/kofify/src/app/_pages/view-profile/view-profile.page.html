@@ -22,13 +22,17 @@
     </ion-avatar>
     <ion-label class="user-name">{{user.name}}</ion-label>
   </div> -->
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides #slides pager="true" [options]="slideOpts">
     <ion-slide  *ngIf="!user">
       <ion-skeleton-text class="fake-slide" animated></ion-skeleton-text>
     </ion-slide>
-    <ion-slide class="user-img" *ngFor="let img of user?.images">
-      <img-loader [src]="img"></img-loader>
-    </ion-slide>
+    <div class="user-img">
+      <div *ngIf="user" class="slide-container">
+        <ion-slide *ngFor="let img of user.images">
+          <img-loader [src]="img"></img-loader>
+        </ion-slide>
+      </div>
+    </div>
   </ion-slides>
   <!-- <div class="userInfo" *ngIf="!user">
     <ion-avatar class="profileImageSkeleton" slot="start">

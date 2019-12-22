@@ -5,8 +5,10 @@ import { CoffeeService } from 'src/app/_services/coffe.service';
 import { Router } from '@angular/router';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { Location } from '@angular/common';
-import { isOnline, removeObjectFromArray, getFormattedDistance } from 'src/app/_utils/functions';
+import { removeObjectFromArray, getFormattedDistance } from 'src/app/_utils/functions';
 import { ToastService } from 'src/app/_services/toast.service';
+import { FilterComponent } from 'src/app/_components/filter/filter.component';
+// import { FilterComponent } from 'src/app/_components/filter/filter.component';
 
 
 @Component({
@@ -40,6 +42,7 @@ export class LocalizedUsersComponent implements OnInit {
     private modalCtrl: ModalController,
     private toastService: ToastService,
     private router: Router,
+    private modalController: ModalController,
     private zone: NgZone
     ) { }
     
@@ -60,11 +63,19 @@ export class LocalizedUsersComponent implements OnInit {
       }, 1000)
 
     }
+
+    filter(){
+      this.modalCtrl.create({
+        component: FilterComponent
+      }).then(modal => {
+        modal.present();
+      });
+    }
     close(){
       this.modalCtrl.dismiss()
     }
     isOnline(localizedUser: LocalizedUser){
-      return isOnline(localizedUser.user.lastSeen)
+      return localizedUser.user.online
     }
     onLocalizedUserTap($event, localizedUser: LocalizedUser){
       if(this.compose){

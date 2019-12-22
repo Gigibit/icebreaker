@@ -39,33 +39,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
     /* harmony import */
 
 
-    var _watch_options_56e2e31f_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./watch-options-56e2e31f.js */
-    "./node_modules/@ionic/core/dist/esm/watch-options-56e2e31f.js");
+    var _watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./watch-options-2af96011.js */
+    "./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js");
 
     var Radio =
     /*#__PURE__*/
@@ -75,7 +75,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Radio);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.inputId = "ion-rb-".concat(radioButtonIds++);
         /**
          * The name of the control, which is submitted with the form data.
@@ -109,11 +109,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         };
 
-        this.ionStyle = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
-        this.ionSelect = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSelect", 7);
-        this.ionDeselect = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDeselect", 7);
-        this.ionFocus = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionSelect = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSelect", 7);
+        this.ionDeselect = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDeselect", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
       }
 
       _createClass(Radio, [{
@@ -165,26 +165,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               checked = this.checked,
               color = this.color,
               el = this.el;
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var labelId = inputId + '-lbl';
-          var label = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["f"])(el);
+          var label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(el);
 
           if (label) {
             label.id = labelId;
           }
 
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
             role: "radio",
             "aria-disabled": disabled ? 'true' : null,
             "aria-checked": "".concat(checked),
             "aria-labelledby": labelId,
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'interactive', true), _defineProperty(_Object$assign, 'radio-checked', checked), _defineProperty(_Object$assign, 'radio-disabled', disabled), _Object$assign))
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'interactive', true), _defineProperty(_Object$assign, 'radio-checked', checked), _defineProperty(_Object$assign, 'radio-disabled', disabled), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "radio-icon"
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "radio-inner"
-          })), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+          })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             type: "button",
             onFocus: this.onFocus,
             onBlur: this.onBlur,
@@ -194,7 +194,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",
@@ -225,7 +225,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, RadioGroup);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.inputId = "ion-rg-".concat(radioGroupIds++);
         this.labelId = "".concat(this.inputId, "-lbl");
         /**
@@ -256,7 +256,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         };
 
-        this.ionChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
       }
 
       _createClass(RadioGroup, [{
@@ -298,7 +298,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       break;
                     }
 
-                    radio = Object(_watch_options_56e2e31f_js__WEBPACK_IMPORTED_MODULE_4__["f"])(el, 'ion-radio');
+                    radio = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["f"])(el, 'ion-radio');
 
                     if (!(radio !== undefined)) {
                       _context.next = 9;
@@ -314,7 +314,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                   case 9:
-                    this.mutationO = Object(_watch_options_56e2e31f_js__WEBPACK_IMPORTED_MODULE_4__["w"])(el, 'ion-radio', function (newOption) {
+                    this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["w"])(el, 'ion-radio', function (newOption) {
                       if (newOption !== undefined) {
                         newOption.componentOnReady().then(function () {
                           _this3.value = newOption.value;
@@ -353,18 +353,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _updateRadios = _asyncToGenerator(
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee2() {
-            var value, radios, hasChecked, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, radio;
+            var radios, value, hasChecked, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, radio;
 
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
-                    value = this.value;
-                    _context2.next = 3;
+                    _context2.next = 2;
                     return this.getRadios();
 
-                  case 3:
+                  case 2:
                     radios = _context2.sent;
+                    value = this.value;
                     hasChecked = false; // Walk the DOM in reverse order, since the last selected one wins!
 
                     _iteratorNormalCompletion = true;
@@ -451,18 +451,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "render",
         value: function render() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "radiogroup",
             "aria-labelledby": this.labelId,
             onIonSelect: this.onSelect,
             onIonDeselect: this.allowEmptySelection ? this.onDeselect : undefined,
-            class: Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this)
+            class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this)
           });
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",

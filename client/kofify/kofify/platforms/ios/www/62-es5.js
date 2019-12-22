@@ -47,21 +47,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
-    /* harmony import */
-
-
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
 
     var Slide =
     /*#__PURE__*/
@@ -69,7 +63,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function Slide(hostRef) {
         _classCallCheck(this, Slide);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
       }
 
       _createClass(Slide, [{
@@ -77,8 +71,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var _class;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'swiper-slide', true), _defineProperty(_class, 'swiper-zoom-container', true), _class)
           });
         }
@@ -100,7 +94,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Slides);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.swiperReady = false;
         this.swiper = new Promise(function (resolve) {
           _this.readySwiper = resolve;
@@ -122,22 +116,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
          */
 
         this.scrollbar = false;
-        this.ionSlidesDidLoad = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlidesDidLoad", 7);
-        this.ionSlideTap = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTap", 7);
-        this.ionSlideDoubleTap = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideDoubleTap", 7);
-        this.ionSlideWillChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideWillChange", 7);
-        this.ionSlideDidChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideDidChange", 7);
-        this.ionSlideNextStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideNextStart", 7);
-        this.ionSlidePrevStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlidePrevStart", 7);
-        this.ionSlideNextEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideNextEnd", 7);
-        this.ionSlidePrevEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlidePrevEnd", 7);
-        this.ionSlideTransitionStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTransitionStart", 7);
-        this.ionSlideTransitionEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTransitionEnd", 7);
-        this.ionSlideDrag = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideDrag", 7);
-        this.ionSlideReachStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideReachStart", 7);
-        this.ionSlideReachEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideReachEnd", 7);
-        this.ionSlideTouchStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTouchStart", 7);
-        this.ionSlideTouchEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTouchEnd", 7);
+        this.ionSlidesDidLoad = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlidesDidLoad", 7);
+        this.ionSlideTap = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTap", 7);
+        this.ionSlideDoubleTap = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideDoubleTap", 7);
+        this.ionSlideWillChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideWillChange", 7);
+        this.ionSlideDidChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideDidChange", 7);
+        this.ionSlideNextStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideNextStart", 7);
+        this.ionSlidePrevStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlidePrevStart", 7);
+        this.ionSlideNextEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideNextEnd", 7);
+        this.ionSlidePrevEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlidePrevEnd", 7);
+        this.ionSlideTransitionStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTransitionStart", 7);
+        this.ionSlideTransitionEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTransitionEnd", 7);
+        this.ionSlideDrag = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideDrag", 7);
+        this.ionSlideReachStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideReachStart", 7);
+        this.ionSlideReachEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideReachEnd", 7);
+        this.ionSlideTouchStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTouchStart", 7);
+        this.ionSlideTouchEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSlideTouchEnd", 7);
       }
 
       _createClass(Slides, [{
@@ -193,7 +187,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             childList: true,
             subtree: true
           });
-          Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_2__["a"])(function () {
+          this.el.componentOnReady().then(function () {
             return _this2.initSwiper();
           });
         }
@@ -860,10 +854,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                     _context19.next = 3;
                     return __webpack_require__.e(
-                    /*! import() | swiper-bundle-8d61f7c5-js */
-                    "swiper-bundle-8d61f7c5-js").then(__webpack_require__.bind(null,
-                    /*! ./swiper.bundle-8d61f7c5.js */
-                    "./node_modules/@ionic/core/dist/esm/swiper.bundle-8d61f7c5.js"));
+                    /*! import() | swiper-bundle-ccdaac54-js */
+                    "swiper-bundle-ccdaac54-js").then(__webpack_require__.bind(null,
+                    /*! ./swiper.bundle-ccdaac54.js */
+                    "./node_modules/@ionic/core/dist/esm/swiper.bundle-ccdaac54.js"));
 
                   case 3:
                     _ref3 = _context19.sent;
@@ -1026,10 +1020,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var customEvents = !!this.options && !!this.options.on ? this.options.on : {}; // merge "on" event listeners, while giving our event listeners priority
 
           var mergedEventOptions = {
-            on: Object.assign({}, customEvents, eventOptions.on)
+            on: Object.assign(Object.assign({}, customEvents), eventOptions.on)
           }; // Merge the base, user options, and events together then pas to swiper
 
-          return Object.assign({}, swiperOptions, this.options, mergedEventOptions);
+          return Object.assign(Object.assign(Object.assign({}, swiperOptions), this.options), mergedEventOptions);
         }
       }, {
         key: "render",
@@ -1037,17 +1031,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _class2,
               _this5 = this;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             class: (_class2 = {}, _defineProperty(_class2, "".concat(mode), true), _defineProperty(_class2, "slides-".concat(mode), true), _defineProperty(_class2, 'swiper-container', true), _class2)
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "swiper-wrapper"
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), this.pager && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), this.pager && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "swiper-pagination",
             ref: function ref(el) {
               return _this5.paginationEl = el;
             }
-          }), this.scrollbar && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }), this.scrollbar && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "swiper-scrollbar",
             ref: function ref(el) {
               return _this5.scrollbarEl = el;
@@ -1057,7 +1051,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "assetsDirs",

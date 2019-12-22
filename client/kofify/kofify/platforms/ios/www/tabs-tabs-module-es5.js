@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhYnMvdGFicy5jb21wb25lbnQuc2NzcyJ9 */";
+    __webpack_exports__["default"] = ".notification-tab-badge {\n  color: #fff;\n  font-weight: bold;\n  background: red; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC90YWJzL3RhYnMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFXO0VBQ1gsaUJBQWlCO0VBQ2pCLGVBQWUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3RhYnMvdGFicy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5ub3RpZmljYXRpb24tdGFiLWJhZGdle1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGJhY2tncm91bmQ6IHJlZDtcbiAgfSJdfQ== */";
     /***/
   },
 
@@ -56,12 +56,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _services_chat_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../_services/chat.service */
+    "./src/app/_services/chat.service.ts");
 
     var TabsComponent =
     /*#__PURE__*/
     function () {
-      function TabsComponent() {
+      function TabsComponent(chatService) {
+        var _this = this;
+
         _classCallCheck(this, TabsComponent);
+
+        this.notificationCount = 0;
+        chatService.notificationCount.subscribe(function (count) {
+          return _this.notificationCount = count;
+        });
+        chatService.getNotificationCount();
       }
 
       _createClass(TabsComponent, [{
@@ -72,13 +86,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return TabsComponent;
     }();
 
+    TabsComponent.ctorParameters = function () {
+      return [{
+        type: _services_chat_service__WEBPACK_IMPORTED_MODULE_2__["ChatService"]
+      }];
+    };
+
     TabsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-tabs',
-      template: "\n  <ion-tabs >\n    <ion-tab-bar slot=\"top\">\n    <ion-tab-button tab=\"user-profile\">\n      <ion-icon ios=\"md-contact\" md=\"md-contact\"></ion-icon>\n    </ion-tab-button>\n      <ion-tab-button tab=\"home\">\n        <ion-icon md=\"ios-cafe\" ios=\"ios-cafe\"></ion-icon>\n      </ion-tab-button>\n      <ion-tab-button tab=\"messages\">\n      <ion-icon ios=\"ios-chatbubbles\" md=\"ios-chatbubbles\"></ion-icon>\n    </ion-tab-button>\n    </ion-tab-bar>\n  </ion-tabs>",
+      template: "\n  <ion-tabs >\n    <ion-tab-bar slot=\"bottom\">\n      <ion-tab-button tab=\"user-profile\">\n        <ion-icon ios=\"md-contact\" md=\"md-contact\"></ion-icon>\n      </ion-tab-button>\n        <ion-tab-button tab=\"home\">\n          <ion-icon md=\"ios-cafe\" ios=\"ios-cafe\"></ion-icon>\n        </ion-tab-button>\n        <ion-tab-button tab=\"messages\">\n        <ion-badge *ngIf=\"notificationCount>0\" class=\"notification-tab-badge\">{{notificationCount}}</ion-badge>\n        <ion-icon ios=\"ios-chatbubbles\" md=\"ios-chatbubbles\"></ion-icon>\n      </ion-tab-button>\n    </ion-tab-bar>\n  </ion-tabs>",
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./tabs.component.scss */
       "./src/app/tabs/tabs.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], TabsComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_chat_service__WEBPACK_IMPORTED_MODULE_2__["ChatService"]])], TabsComponent);
     /***/
   },
 

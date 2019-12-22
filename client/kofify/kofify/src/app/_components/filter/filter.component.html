@@ -1,0 +1,46 @@
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons slot="start"  (click)="dismiss()">
+      <ion-icon ios="ios-close" md="ios-close"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      {{'edit_filter_configuration'| translate}}
+    </ion-title>
+    <ion-buttons slot="end"  (click)="done()">
+      <ion-icon class="done-btn" ios="ios-checkmark" md="ios-checkmark"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <div class="gender-box">
+        <h3>{{ 'men' | translate}}</h3>
+        <ion-checkbox [(ngModel)]="queryFilter.enableMen"></ion-checkbox>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="gender-box">
+        <h3>{{ 'women' | translate}}</h3>
+        <ion-checkbox [(ngModel)]="queryFilter.enableWomen"></ion-checkbox>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="gender-box">
+        <h3>{{ 'age_between' | translate }} {{ queryFilter.ageRange.lower }} - {{ queryFilter.ageRange.upper }}</h3>
+        <ion-range pin="true" min="19" [max]="122" dualKnobs="true" step="1" snaps="true" [(ngModel)]="queryFilter.ageRange"></ion-range>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="gender-box">
+        <h3>{{ 'only_online_people' | translate}}</h3>
+        <ion-checkbox [(ngModel)]="queryFilter.onlyOnline"></ion-checkbox>
+      </div>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>

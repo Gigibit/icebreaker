@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../../_services/user.service';
 import { User } from '../../_models/user';
 import { ToastController, ActionSheetController, ModalController, PopoverController } from '@ionic/angular';
@@ -7,7 +7,6 @@ import { Location } from '@angular/common';
 import { ImageModalComponent } from '../../_components/image-modal/image-modal.component';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../_services/auth.service';
-import { Chat } from 'src/app/_models/chat';
 import { UserProfilePopoverComponent } from 'src/app/_components/user-profile-popover/user-profile-popover.component';
 import { EditUserProfileComponent } from 'src/app/_components/edit-user-profile/edit-user-profile.component';
 
@@ -21,7 +20,6 @@ const COLUMN_COUNT = 4
 })
 export class UserProfilePage implements OnInit {
   uri
-  chats : Chat[]
   //requestedProposals: Proposal[]
   userInfo: User 
   constructor(
@@ -31,7 +29,6 @@ export class UserProfilePage implements OnInit {
 
     // private loadingController: LoadingController,
     // private ref: ChangeDetectorRef, 
-    // private chatService: ChatService,
     private popoverController: PopoverController,
     private userService: UserService,
     private authService : AuthService,
@@ -44,7 +41,7 @@ export class UserProfilePage implements OnInit {
       
       this.userInfo = this.authService.currentUserValue
       this.authService.currentUser.subscribe(user=>{
-          this.userInfo = user
+         this.userInfo = user
       })
     }
     

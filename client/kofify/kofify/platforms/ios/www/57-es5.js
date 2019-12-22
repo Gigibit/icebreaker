@@ -33,33 +33,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
     /* harmony import */
 
 
-    var _index_064a03a9_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./index-064a03a9.js */
-    "./node_modules/@ionic/core/dist/esm/index-064a03a9.js");
+    var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./index-3476b023.js */
+    "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
 
     var Searchbar =
     /*#__PURE__*/
@@ -69,7 +69,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Searchbar);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.isCancelVisible = false;
         this.shouldAlignLeft = true;
         this.focused = false;
@@ -241,18 +241,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _this.positionElements();
         };
 
-        this.ionInput = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
-        this.ionChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
-        this.ionCancel = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionCancel", 7);
-        this.ionClear = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionClear", 7);
-        this.ionBlur = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
-        this.ionFocus = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionInput = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionCancel = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionCancel", 7);
+        this.ionClear = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionClear", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
       }
 
       _createClass(Searchbar, [{
         key: "debounceChanged",
         value: function debounceChanged() {
-          this.ionChange = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this.ionChange, this.debounce);
+          this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
         }
       }, {
         key: "valueChanged",
@@ -280,6 +281,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
+        key: "connectedCallback",
+        value: function connectedCallback() {
+          this.emitStyle();
+        }
+      }, {
         key: "componentDidLoad",
         value: function componentDidLoad() {
           var _this3 = this;
@@ -297,6 +303,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           setTimeout(function () {
             _this3.noAnimate = false;
           }, 300);
+        }
+      }, {
+        key: "emitStyle",
+        value: function emitStyle() {
+          this.ionStyle.emit({
+            'searchbar': true
+          });
         }
         /**
          * Sets focus on the specified `ion-searchbar`. Use this method instead of the global
@@ -350,7 +363,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function positionElements() {
           var value = this.getValue();
           var prevAlignLeft = this.shouldAlignLeft;
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var shouldAlignLeft = !this.animated || value.trim() !== '' || !!this.focused;
           this.shouldAlignLeft = shouldAlignLeft;
 
@@ -389,7 +402,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             // Create a dummy span to get the placeholder width
             var doc = document;
             var tempSpan = doc.createElement('span');
-            tempSpan.innerHTML = Object(_index_064a03a9_js__WEBPACK_IMPORTED_MODULE_4__["s"])(this.placeholder) || '';
+            tempSpan.innerHTML = Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_4__["s"])(this.placeholder) || '';
             doc.body.appendChild(tempSpan); // Get the width of the span then remove it
 
             var textWidth = tempSpan.offsetWidth;
@@ -474,31 +487,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _Object$assign,
               _this4 = this;
 
-          var animated = this.animated && _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true);
+          var animated = this.animated && _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true);
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var clearIcon = this.clearIcon || (mode === 'ios' ? 'ios-close-circle' : 'md-close');
           var searchIcon = this.searchIcon;
-          var cancelButton = !isCancelButtonSetToNever(this.showCancelButton) && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+          var cancelButton = !isCancelButtonSetToNever(this.showCancelButton) && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             "aria-label": "cancel",
             type: "button",
             tabIndex: mode === 'ios' && !this.shouldShowCancelButton() ? -1 : undefined,
             onMouseDown: this.onCancelSearchbar,
             onTouchStart: this.onCancelSearchbar,
             class: "searchbar-cancel-button"
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", null, mode === 'md' ? Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", null, mode === 'md' ? Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             "aria-hidden": "true",
             mode: mode,
             icon: this.cancelButtonIcon,
             lazy: false
           }) : this.cancelButtonText));
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "search",
             "aria-disabled": this.disabled ? 'true' : null,
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'searchbar-animated', animated), _defineProperty(_Object$assign, 'searchbar-disabled', this.disabled), _defineProperty(_Object$assign, 'searchbar-no-animate', animated && this.noAnimate), _defineProperty(_Object$assign, 'searchbar-has-value', this.hasValue()), _defineProperty(_Object$assign, 'searchbar-left-aligned', this.shouldAlignLeft), _defineProperty(_Object$assign, 'searchbar-has-focus', this.focused), _defineProperty(_Object$assign, 'searchbar-should-show-cancel', this.shouldShowCancelButton()), _Object$assign))
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'searchbar-animated', animated), _defineProperty(_Object$assign, 'searchbar-disabled', this.disabled), _defineProperty(_Object$assign, 'searchbar-no-animate', animated && this.noAnimate), _defineProperty(_Object$assign, 'searchbar-has-value', this.hasValue()), _defineProperty(_Object$assign, 'searchbar-left-aligned', this.shouldAlignLeft), _defineProperty(_Object$assign, 'searchbar-has-focus', this.focused), _defineProperty(_Object$assign, 'searchbar-should-show-cancel', this.shouldShowCancelButton()), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "searchbar-input-container"
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
             "aria-label": "search text",
             disabled: this.disabled,
             ref: function ref(el) {
@@ -515,19 +528,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             autoComplete: this.autocomplete,
             autoCorrect: this.autocorrect,
             spellCheck: this.spellcheck
-          }), mode === 'md' && cancelButton, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
+          }), mode === 'md' && cancelButton, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             mode: mode,
             icon: searchIcon,
             lazy: false,
             class: "searchbar-search-icon"
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             "aria-label": "reset",
             type: "button",
             "no-blur": true,
             class: "searchbar-clear-button",
             onMouseDown: this.onClearInput,
             onTouchStart: this.onClearInput
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             "aria-hidden": "true",
             mode: mode,
             icon: clearIcon,
@@ -538,7 +551,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",

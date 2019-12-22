@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, UserMapper, LocalizedUser } from 'src/app/_models/user';
-import { ModalController, NavParams } from '@ionic/angular';
+import { ModalController, NavParams, LoadingController } from '@ionic/angular';
 import { UserService } from 'src/app/_services/user.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ChatService } from 'src/app/_services/chat.service';
@@ -10,6 +10,7 @@ import { ChatMapper } from 'src/app/_models/chat';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { timeSince, isOnline, getFormattedDistance } from 'src/app/_utils/functions';
+import { finalize } from 'rxjs/operators';
 
 const INVITATION_SENT = 'invitation_sent'
 const OF_DISTANCE_KEY = "of_distance"
@@ -33,6 +34,7 @@ export class ViewProfileComponent implements OnInit {
     private modalCtrl:ModalController,
     private chatService: ChatService,
     private coffeeService: CoffeeService,
+    private loaderCtrl: LoadingController,
     private toastService: ToastService,
     private location: Location,
     private userService: UserService,
@@ -53,9 +55,7 @@ export class ViewProfileComponent implements OnInit {
               this.distance =  `${distance} ${value}`
             })
         }
-        console.log(this.user)
-        this.isOnline = isOnline(this.user.lastSeen)
-
+        this.isOnline = this.user.online
       })
     })
   }
@@ -63,17 +63,23 @@ export class ViewProfileComponent implements OnInit {
 
 
 
-  invite(){
+  async invite(){
+    let loader = await this.loaderCtrl.create()
+    loader.present()
     this.coffeeService
         .sendInvitation([this.id])
+        .pipe(finalize(()=>loader.dismiss()))
         .subscribe(response=>{
-          this.toastService.alert( INVITATION_SENT )
+          this.toastService.toastSuccess( INVITATION_SENT )
         })
   }
 
-  chat(){
+  async chat(){
+    let loader = await this.loaderCtrl.create()
+    loader.present()
     this.chatService
     .findOrCreate([this.id])
+    .pipe(finalize(()=>loader.dismiss()))
     .subscribe(data=>{
       let chat = ChatMapper.fromJson(data['chat'])
       this.chatService.setActiveChat(chat)

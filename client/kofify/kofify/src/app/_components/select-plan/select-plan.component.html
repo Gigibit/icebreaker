@@ -1,30 +1,26 @@
   <ion-header no-border>
-  <ion-toolbar transparent>
-    <ion-buttons slot="end"  (click)="dismiss()">
-      <ion-icon ios="ios-close" md="ios-close"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-   <ion-content>
-    <ion-slides #slides class="plans-slides" pager="true" [options]="sliderConfig">
-      
-      <ion-slide *ngFor="let plan of plans; let i = index">
-        <div>
-          <ion-card class="plan-card">
-            <ion-card-header>
-              <ion-card-title>
-               {{name}}
-              </ion-card-title>
-              <ion-card-content>
-                <h1>{{description}}</h1>
-                <ion-icon [style.width]="(((i+1)*5)+80)+'px'" [style.height]="150+'px'"  class="cafe-icon" name="cafe"></ion-icon>
-              </ion-card-content>
-            </ion-card-header>
-          </ion-card>
-        </div>
-      </ion-slide>
-    </ion-slides>
-    <ion-button expand="full" (click)="onPlanChoosen()">continue</ion-button>
-
+    <ion-toolbar transparent>
+      <ion-buttons slot="end"  (click)="dismiss()">
+        <ion-icon ios="ios-close" md="ios-close"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let plan of plans; let i = index" centeredSlides="true">
+        <ion-card class="plan-card" (click)="onPlanChoosen(i)">
+          <ion-card-header>
+            <ion-card-title class="plan-name">
+              {{plan.name}}
+            </ion-card-title>
+            <ion-card-content>
+              <p>{{plan.description}}</p>
+            </ion-card-content>
+            <h4 class="plan-price">{{plan.price}}</h4>
+          </ion-card-header>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+    
   </ion-content>

@@ -43,6 +43,8 @@ export class ToastService {
     toast.present();
   }
 
+
+
   async toastError(key : string){
     let messageObservable = this.getStringObservableFromKey(key)
     let message = await messageObservable.toPromise()

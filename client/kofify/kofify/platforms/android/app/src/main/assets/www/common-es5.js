@@ -8,15 +8,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/cubic-bezier-90d0df24.js":
+  "./node_modules/@ionic/core/dist/esm/cubic-bezier-2812fda3.js":
   /*!********************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/cubic-bezier-90d0df24.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/cubic-bezier-2812fda3.js ***!
     \********************************************************************/
 
   /*! exports provided: P, g */
 
   /***/
-  function node_modulesIonicCoreDistEsmCubicBezier90d0df24Js(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmCubicBezier2812fda3Js(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -54,6 +54,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * P1: (0.32, 0.72)
      * P2: (0, 1)
      * P3: (1, 1)
+     *
+     * If you give a cubic bezier curve that never reaches the
+     * provided progression, this function will return NaN.
      */
 
 
@@ -133,15 +136,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/framework-delegate-00265c49.js":
+  "./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js":
   /*!**************************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-00265c49.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js ***!
     \**************************************************************************/
 
   /*! exports provided: a, d */
 
   /***/
-  function node_modulesIonicCoreDistEsmFrameworkDelegate00265c49Js(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmFrameworkDelegateC2e2e1f4Js(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -240,15 +243,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/haptic-4e92c885.js":
+  "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js":
   /*!**************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/haptic-4e92c885.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js ***!
     \**************************************************************/
 
   /*! exports provided: a, b, c, h */
 
   /***/
-  function node_modulesIonicCoreDistEsmHaptic4e92c885Js(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmHapticC8f1473eJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -336,228 +339,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js":
-  /*!***************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js ***!
-    \***************************************************************/
-
-  /*! exports provided: a, b, c, d, e, f, h, i, n, p, r */
-
-  /***/
-  function node_modulesIonicCoreDistEsmHelpersC90aaa66Js(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "a", function () {
-      return rIC;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "b", function () {
-      return assert;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "c", function () {
-      return clamp;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "d", function () {
-      return debounceEvent;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "e", function () {
-      return debounce;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "f", function () {
-      return findItemLabel;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "h", function () {
-      return hasShadowDom;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "i", function () {
-      return isEndSide;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "n", function () {
-      return now;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "p", function () {
-      return pointerCoord;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "r", function () {
-      return renderHiddenInput;
-    });
-
-    var rIC = function rIC(callback) {
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(callback);
-      } else {
-        setTimeout(callback, 32);
-      }
-    };
-
-    var hasShadowDom = function hasShadowDom(el) {
-      return !!el.shadowRoot && !!el.attachShadow;
-    };
-
-    var findItemLabel = function findItemLabel(componentEl) {
-      var itemEl = componentEl.closest('ion-item');
-
-      if (itemEl) {
-        return itemEl.querySelector('ion-label');
-      }
-
-      return null;
-    };
-
-    var renderHiddenInput = function renderHiddenInput(always, container, name, value, disabled) {
-      if (always || hasShadowDom(container)) {
-        var input = container.querySelector('input.aux-input');
-
-        if (!input) {
-          input = container.ownerDocument.createElement('input');
-          input.type = 'hidden';
-          input.classList.add('aux-input');
-          container.appendChild(input);
-        }
-
-        input.disabled = disabled;
-        input.name = name;
-        input.value = value || '';
-      }
-    };
-
-    var clamp = function clamp(min, n, max) {
-      return Math.max(min, Math.min(n, max));
-    };
-
-    var assert = function assert(actual, reason) {
-      if (!actual) {
-        var message = 'ASSERT: ' + reason;
-        console.error(message);
-        debugger; // tslint:disable-line
-
-        throw new Error(message);
-      }
-    };
-
-    var now = function now(ev) {
-      return ev.timeStamp || Date.now();
-    };
-
-    var pointerCoord = function pointerCoord(ev) {
-      // get X coordinates for either a mouse click
-      // or a touch depending on the given event
-      if (ev) {
-        var changedTouches = ev.changedTouches;
-
-        if (changedTouches && changedTouches.length > 0) {
-          var touch = changedTouches[0];
-          return {
-            x: touch.clientX,
-            y: touch.clientY
-          };
-        }
-
-        if (ev.pageX !== undefined) {
-          return {
-            x: ev.pageX,
-            y: ev.pageY
-          };
-        }
-      }
-
-      return {
-        x: 0,
-        y: 0
-      };
-    };
-    /**
-     * @hidden
-     * Given a side, return if it should be on the end
-     * based on the value of dir
-     * @param side the side
-     * @param isRTL whether the application dir is rtl
-     */
-
-
-    var isEndSide = function isEndSide(side) {
-      var isRTL = document.dir === 'rtl';
-
-      switch (side) {
-        case 'start':
-          return isRTL;
-
-        case 'end':
-          return !isRTL;
-
-        default:
-          throw new Error("\"".concat(side, "\" is not a valid value for [side]. Use \"start\" or \"end\" instead."));
-      }
-    };
-
-    var debounceEvent = function debounceEvent(event, wait) {
-      var original = event._original || event;
-      return {
-        _original: event,
-        emit: debounce(original.emit.bind(original), wait)
-      };
-    };
-
-    var debounce = function debounce(func) {
-      var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var timer;
-      return function () {
-        clearTimeout(timer);
-
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
-        }
-
-        timer = setTimeout.apply(void 0, [func, wait].concat(args));
-      };
-    };
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/@ionic/core/dist/esm/index-064a03a9.js":
+  "./node_modules/@ionic/core/dist/esm/index-3476b023.js":
   /*!*************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/index-064a03a9.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/index-3476b023.js ***!
     \*************************************************************/
 
   /*! exports provided: s */
 
   /***/
-  function node_modulesIonicCoreDistEsmIndex064a03a9Js(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIndex3476b023Js(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -626,11 +416,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          */
         // IE does not support .children on document fragments, only .childNodes
 
-        var documentFragmentChildren = getElementChildren(documentFragment);
+        var dfChildren = getElementChildren(documentFragment);
         /* tslint:disable-next-line */
 
-        for (var childIndex = 0; childIndex < documentFragmentChildren.length; childIndex++) {
-          sanitizeElement(documentFragmentChildren[childIndex]);
+        for (var childIndex = 0; childIndex < dfChildren.length; childIndex++) {
+          sanitizeElement(dfChildren[childIndex]);
         } // Append document fragment to div
 
 
@@ -693,8 +483,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var getElementChildren = function getElementChildren(element) {
-      return element.children != null ? element.children : element.childNodes;
+    var getElementChildren = function getElementChildren(el) {
+      return el.children != null ? el.children : el.childNodes;
     };
 
     var allowedAttributes = ['class', 'id', 'href', 'src', 'name', 'slot'];
@@ -703,15 +493,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/index-a15151df.js":
+  "./node_modules/@ionic/core/dist/esm/index-6826f2f6.js":
   /*!*************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/index-a15151df.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/index-6826f2f6.js ***!
     \*************************************************************/
 
-  /*! exports provided: d, l, s, t */
+  /*! exports provided: d, g, l, s, t */
 
   /***/
-  function node_modulesIonicCoreDistEsmIndexA15151dfJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIndex6826f2f6Js(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -720,6 +510,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "d", function () {
       return deepReady;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "g", function () {
+      return getIonPageElement;
     });
     /* harmony export (binding) */
 
@@ -742,35 +538,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./constants-94c4865f.js */
-    "./node_modules/@ionic/core/dist/esm/constants-94c4865f.js");
+    var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./constants-3c3e1099.js */
+    "./node_modules/@ionic/core/dist/esm/constants-3c3e1099.js");
 
     var iosTransitionAnimation = function iosTransitionAnimation() {
       return __webpack_require__.e(
-      /*! import() | ios-transition-96fe915f-js */
-      "ios-transition-96fe915f-js").then(__webpack_require__.bind(null,
-      /*! ./ios.transition-96fe915f.js */
-      "./node_modules/@ionic/core/dist/esm/ios.transition-96fe915f.js"));
+      /*! import() | ios-transition-071bd421-js */
+      "ios-transition-071bd421-js").then(__webpack_require__.bind(null,
+      /*! ./ios.transition-071bd421.js */
+      "./node_modules/@ionic/core/dist/esm/ios.transition-071bd421.js"));
     };
 
     var mdTransitionAnimation = function mdTransitionAnimation() {
       return __webpack_require__.e(
-      /*! import() | md-transition-bf76a31e-js */
-      "md-transition-bf76a31e-js").then(__webpack_require__.bind(null,
-      /*! ./md.transition-bf76a31e.js */
-      "./node_modules/@ionic/core/dist/esm/md.transition-bf76a31e.js"));
+      /*! import() | md-transition-15a81b08-js */
+      "md-transition-15a81b08-js").then(__webpack_require__.bind(null,
+      /*! ./md.transition-15a81b08.js */
+      "./node_modules/@ionic/core/dist/esm/md.transition-15a81b08.js"));
     };
 
     var transition = function transition(opts) {
       return new Promise(function (resolve, reject) {
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
           beforeTransition(opts);
           runTransition(opts).then(function (result) {
             if (result.animation) {
@@ -930,10 +726,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _context4.prev = 2;
                 _context4.next = 5;
                 return __webpack_require__.e(
-                /*! import() | index-ae28cb4b-js */
-                "index-ae28cb4b-js").then(__webpack_require__.bind(null,
-                /*! ./index-ae28cb4b.js */
-                "./node_modules/@ionic/core/dist/esm/index-ae28cb4b.js"));
+                /*! import() | index-69c37885-js */
+                "index-69c37885-js").then(__webpack_require__.bind(null,
+                /*! ./index-69c37885.js */
+                "./node_modules/@ionic/core/dist/esm/index-69c37885.js"));
 
               case 5:
                 mod = _context4.sent;
@@ -957,23 +753,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               case 17:
                 didComplete = _context4.sent;
-                // TODO: Remove AnimationBuilder
-                trans.hasCompleted = didComplete;
 
                 if (opts.progressCallback) {
                   opts.progressCallback(undefined);
                 }
 
-                if (trans.hasCompleted) {
+                if (didComplete) {
                   fireDidEvents(opts.enteringEl, opts.leavingEl);
                 }
 
                 return _context4.abrupt("return", {
-                  hasCompleted: trans.hasCompleted,
+                  hasCompleted: didComplete,
                   animation: trans
                 });
 
-              case 22:
+              case 21:
               case "end":
                 return _context4.stop();
             }
@@ -1090,7 +884,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var progressCallback = opts.progressCallback; // TODO: Remove AnimationBuilder
 
       var promise = new Promise(function (resolve) {
-        return trans.onFinish(resolve);
+        trans.onFinish(function (currentStep) {
+          if (typeof currentStep === 'number') {
+            resolve(currentStep === 1);
+          } else if (trans.hasCompleted !== undefined) {
+            resolve(trans.hasCompleted);
+          }
+        });
       }); // cool, let's do this, start the transition
 
       if (progressCallback) {
@@ -1110,13 +910,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     var fireWillEvents = function fireWillEvents(enteringEl, leavingEl) {
-      lifecycle(leavingEl, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_1__["b"]);
-      lifecycle(enteringEl, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_1__["L"]);
+      lifecycle(leavingEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["b"]);
+      lifecycle(enteringEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["L"]);
     };
 
     var fireDidEvents = function fireDidEvents(enteringEl, leavingEl) {
-      lifecycle(enteringEl, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_1__["a"]);
-      lifecycle(leavingEl, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_1__["c"]);
+      lifecycle(enteringEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["a"]);
+      lifecycle(leavingEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["c"]);
     };
 
     var lifecycle = function lifecycle(el, eventName) {
@@ -1210,20 +1010,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         leavingEl.style.zIndex = '100';
       }
     };
+
+    var getIonPageElement = function getIonPageElement(element) {
+      if (element.classList.contains('ion-page')) {
+        return element;
+      }
+
+      var ionPage = element.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs');
+
+      if (ionPage) {
+        return ionPage;
+      } // idk, return the original element so at least something animates and we don't have a null pointer
+
+
+      return element;
+    };
     /***/
 
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/theme-353a032e.js":
+  "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js":
   /*!*************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/theme-353a032e.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js ***!
     \*************************************************************/
 
   /*! exports provided: c, g, h, o */
 
   /***/
-  function node_modulesIonicCoreDistEsmTheme353a032eJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmTheme18cbe2ccJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -1340,15 +1155,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/watch-options-56e2e31f.js":
+  "./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js":
   /*!*********************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/watch-options-56e2e31f.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js ***!
     \*********************************************************************/
 
   /*! exports provided: f, w */
 
   /***/
-  function node_modulesIonicCoreDistEsmWatchOptions56e2e31fJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmWatchOptions2af96011Js(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

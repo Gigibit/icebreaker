@@ -35,27 +35,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-353a032e.js */
-    "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
     /* harmony import */
 
 
-    var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./helpers-c90aaa66.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
     var Button =
     /*#__PURE__*/
@@ -65,7 +65,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Button);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.inToolbar = false;
         this.inItem = false;
         /**
@@ -97,8 +97,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.handleClick = function (ev) {
           if (_this.type === 'button') {
-            Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["o"])(_this.href, ev, _this.routerDirection);
-          } else if (Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["h"])(_this.el)) {
+            Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection);
+          } else if (Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["h"])(_this.el)) {
             // this button wants to specifically submit a form
             // climb up the dom to see if we're in a <form>
             // and if so, then use JS to submit it
@@ -124,8 +124,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _this.ionBlur.emit();
         };
 
-        this.ionFocus = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
       }
 
       _createClass(Button, [{
@@ -139,7 +139,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var _Object$assign;
 
-          var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
           var buttonType = this.buttonType,
               type = this.type,
               disabled = this.disabled,
@@ -168,24 +168,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             fill = this.inToolbar ? 'clear' : 'solid';
           }
 
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.handleClick,
             "aria-disabled": disabled ? 'true' : null,
-            class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, buttonType, true), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(expand), expand !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(finalSize), finalSize !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(shape), shape !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(fill), true), _defineProperty(_Object$assign, "".concat(buttonType, "-strong"), strong), _defineProperty(_Object$assign, 'button-has-icon-only', hasIconOnly), _defineProperty(_Object$assign, 'button-disabled', disabled), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _Object$assign))
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, buttonType, true), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(expand), expand !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(finalSize), finalSize !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(shape), shape !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(fill), true), _defineProperty(_Object$assign, "".concat(buttonType, "-strong"), strong), _defineProperty(_Object$assign, 'button-has-icon-only', hasIconOnly), _defineProperty(_Object$assign, 'button-disabled', disabled), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
             class: "button-native",
             disabled: disabled,
             onFocus: this.onFocus,
             onBlur: this.onBlur
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
             class: "button-inner"
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "icon-only"
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "start"
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "end"
-          })), mode === 'md' && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
+          })), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
             type: this.rippleType
           })));
         }
@@ -209,7 +209,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "style",
@@ -270,7 +270,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         return url;
       }
 
-      return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["i"])("svg/".concat(name, ".svg"));
+      return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["i"])("svg/".concat(name, ".svg"));
     };
 
     var getName = function getName(name, icon, mode, ios, md) {
@@ -414,7 +414,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function Icon(hostRef) {
         _classCallCheck(this, Icon);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.mode = getIonMode(this);
         this.isVisible = false;
         /**
@@ -500,20 +500,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = this.mode || 'md';
           var flipRtl = this.flipRtl || this.ariaLabel && this.ariaLabel.indexOf('arrow') > -1 && this.flipRtl !== false;
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "img",
             class: Object.assign(_defineProperty({}, mode, true), createColorClasses(this.color), (_Object$assign3 = {}, _defineProperty(_Object$assign3, "icon-".concat(this.size), !!this.size), _defineProperty(_Object$assign3, 'flip-rtl', !!flipRtl && this.el.ownerDocument.dir === 'rtl'), _Object$assign3))
-          }, this.svgContent ? Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }, this.svgContent ? Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "icon-inner",
             innerHTML: this.svgContent
-          }) : Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }) : Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "icon-inner"
           }));
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "assetsDirs",
@@ -540,7 +540,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     var getIonMode = function getIonMode(ref) {
-      return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["j"])(ref) || document.documentElement.getAttribute('mode') || 'md';
+      return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["j"])(ref) || document.documentElement.getAttribute('mode') || 'md';
     };
 
     var createColorClasses = function createColorClasses(color) {

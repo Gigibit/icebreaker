@@ -62,6 +62,13 @@ export class AuthService {
       return token;
     }));
   }
+  refreshCredit(creditResponse:string){
+    let admobCredit = creditResponse && creditResponse['admobCredit']
+    let admobRewardAvailable = admobCredit && creditResponse['count'] < creditResponse['countMax'];
+    this.currentUserValue.credits = creditResponse && creditResponse['credits']
+    this.currentUserValue.rewardAvailable = admobRewardAvailable
+    this.currentUserSubject.next(this.currentUserValue)
+  }
   
   userInfo(): Observable<User>{
     return this.http.get<User>(USER_INFO)

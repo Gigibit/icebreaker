@@ -26,7 +26,18 @@
     margin-right: 50px;
     overflow: hidden;
 }
+.imgLoaded {
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 3s; /* Firefox < 16 */
+     -ms-animation: fadein 3s; /* Internet Explorer */
+      -o-animation: fadein 3s; /* Opera < 12.1 */
+         animation: fadein 3s;
+}
 
+
+.imgInLoading{
+    opacity: 0;
+}
 
 .user-message-img-hide{
     opacity: 0;

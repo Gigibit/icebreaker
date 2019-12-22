@@ -306,6 +306,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
+      "pluginId": "cordova-plugin-inapppurchase",
+      "merges": [
+        "inAppPurchase"
+      ]
+    },
+    {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
       "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
@@ -372,11 +380,17 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
-      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
-      "pluginId": "cordova-plugin-inapppurchase",
-      "merges": [
-        "inAppPurchase"
+      "id": "es6-promise-plugin.Promise",
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-screen-orientation.screenorientation",
+      "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+      "pluginId": "cordova-plugin-screen-orientation",
+      "clobbers": [
+        "cordova.plugins.screenorientation"
       ]
     }
   ];
@@ -386,7 +400,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-promise-polyfill": "0.0.2",
     "cordova-plugin-admob-free": "0.27.0",
-    "cordova-plugin-admob-mediation-inmobi": "1.0.0",
     "cordova-plugin-extension": "1.5.4",
     "cordova-plugin-admobpro": "2.49.0",
     "cordova-plugin-camera": "4.1.0",
@@ -397,6 +410,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-globalization": "1.11.0",
     "cordova-plugin-inappbrowser": "3.1.0",
+    "cordova-plugin-inapppurchase": "1.1.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "4.1.2",
     "cordova-plugin-nativegeocoder": "3.2.2",
@@ -405,7 +419,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.4",
     "onesignal-cordova-plugin": "2.6.0",
-    "cordova-plugin-inapppurchase": "1.1.0",
-    "cordova-plugin-crosswalk-webview": "2.4.0"
+    "es6-promise-plugin": "4.2.2",
+    "cordova-plugin-screen-orientation": "3.0.2"
   };
 });

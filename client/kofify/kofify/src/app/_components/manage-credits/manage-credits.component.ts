@@ -29,6 +29,7 @@ export class ManageCreditsComponent implements OnInit {
     authService: AuthService
   ) { 
     authService.currentUser.subscribe(user=>{
+      console.log(user)
       this.credits = user.credits
       this.rewardAvailable = user.rewardAvailable
     })
@@ -78,7 +79,10 @@ export class ManageCreditsComponent implements OnInit {
           this.rewardAvailable = admobRewardAvailable
         })
       },
-      onFail: ()=>{ loader.dismiss() }
+      onFail: ()=>{ 
+        this.toastService.somethingWentWrong()
+        loader.dismiss() 
+      }
     })
   }
 }

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhYnMvdGFicy5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".notification-tab-badge {\n  color: #fff;\n  font-weight: bold;\n  background: red; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC90YWJzL3RhYnMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFXO0VBQ1gsaUJBQWlCO0VBQ2pCLGVBQWUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3RhYnMvdGFicy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5ub3RpZmljYXRpb24tdGFiLWJhZGdle1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGJhY2tncm91bmQ6IHJlZDtcbiAgfSJdfQ== */");
 
 /***/ }),
 
@@ -25,32 +25,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsComponent", function() { return TabsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_chat_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services/chat.service */ "./src/app/_services/chat.service.ts");
+
 
 
 let TabsComponent = class TabsComponent {
-    constructor() { }
-    ngOnInit() { }
+    constructor(chatService) {
+        this.notificationCount = 0;
+        chatService.notificationCount.subscribe(count => this.notificationCount = count);
+        chatService.getNotificationCount();
+    }
+    ngOnInit() {
+    }
 };
+TabsComponent.ctorParameters = () => [
+    { type: _services_chat_service__WEBPACK_IMPORTED_MODULE_2__["ChatService"] }
+];
 TabsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabs',
         template: `
   <ion-tabs >
-    <ion-tab-bar slot="top">
-    <ion-tab-button tab="user-profile">
-      <ion-icon ios="md-contact" md="md-contact"></ion-icon>
-    </ion-tab-button>
-      <ion-tab-button tab="home">
-        <ion-icon md="ios-cafe" ios="ios-cafe"></ion-icon>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="user-profile">
+        <ion-icon ios="md-contact" md="md-contact"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button tab="messages">
-      <ion-icon ios="ios-chatbubbles" md="ios-chatbubbles"></ion-icon>
-    </ion-tab-button>
+        <ion-tab-button tab="home">
+          <ion-icon md="ios-cafe" ios="ios-cafe"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button tab="messages">
+        <ion-badge *ngIf="notificationCount>0" class="notification-tab-badge">{{notificationCount}}</ion-badge>
+        <ion-icon ios="ios-chatbubbles" md="ios-chatbubbles"></ion-icon>
+      </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>`,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tabs.component.scss */ "./src/app/tabs/tabs.component.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_chat_service__WEBPACK_IMPORTED_MODULE_2__["ChatService"]])
 ], TabsComponent);
 
 

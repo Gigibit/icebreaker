@@ -37,21 +37,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-c02a05e9.js */
-    "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
-    var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-503c2549.js */
-    "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
+    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./config-3c7f3790.js */
+    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
     /* harmony import */
 
 
-    var _framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./framework-delegate-00265c49.js */
-    "./node_modules/@ionic/core/dist/esm/framework-delegate-00265c49.js");
+    var _framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./framework-delegate-c2e2e1f4.js */
+    "./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js");
 
     var Tab =
     /*#__PURE__*/
@@ -59,7 +59,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function Tab(hostRef) {
         _classCallCheck(this, Tab);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.loaded = false;
         /** @internal */
 
@@ -103,52 +103,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }()
       }, {
         key: "prepareLazyLoaded",
-        value: function () {
-          var _prepareLazyLoaded = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    if (!(!this.loaded && this.component != null)) {
-                      _context2.next = 9;
-                      break;
-                    }
+        value: function prepareLazyLoaded() {
+          if (!this.loaded && this.component != null) {
+            this.loaded = true;
 
-                    this.loaded = true;
-                    _context2.prev = 2;
-                    return _context2.abrupt("return", Object(_framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_2__["a"])(this.delegate, this.el, this.component, ['ion-page']));
-
-                  case 6:
-                    _context2.prev = 6;
-                    _context2.t0 = _context2["catch"](2);
-                    console.error(_context2.t0);
-
-                  case 9:
-                    return _context2.abrupt("return", undefined);
-
-                  case 10:
-                  case "end":
-                    return _context2.stop();
-                }
-              }
-            }, _callee2, this, [[2, 6]]);
-          }));
-
-          function prepareLazyLoaded() {
-            return _prepareLazyLoaded.apply(this, arguments);
+            try {
+              return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_2__["a"])(this.delegate, this.el, this.component, ['ion-page']);
+            } catch (e) {
+              console.error(e);
+            }
           }
 
-          return prepareLazyLoaded;
-        }()
+          return Promise.resolve(undefined);
+        }
       }, {
         key: "render",
         value: function render() {
           var tab = this.tab,
               active = this.active,
               component = this.component;
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "tabpanel",
             "aria-hidden": !active ? 'true' : null,
             "aria-labelledby": "tab-button-".concat(tab),
@@ -156,12 +130,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'ion-page': component === undefined,
               'tab-hidden': !active
             }
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "style",
@@ -181,7 +155,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _classCallCheck(this, Tabs);
 
-        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.transitioning = false;
         /** @internal */
 
@@ -203,9 +177,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         };
 
-        this.ionNavWillLoad = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionNavWillLoad", 7);
-        this.ionTabsWillChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionTabsWillChange", 3);
-        this.ionTabsDidChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionTabsDidChange", 3);
+        this.ionNavWillLoad = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionNavWillLoad", 7);
+        this.ionTabsWillChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionTabsWillChange", 3);
+        this.ionTabsDidChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionTabsDidChange", 3);
       }
 
       _createClass(Tabs, [{
@@ -213,23 +187,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function () {
           var _componentWillLoad = _asyncToGenerator(
           /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
+          regeneratorRuntime.mark(function _callee2() {
             var tabs;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
-                switch (_context3.prev = _context3.next) {
+                switch (_context2.prev = _context2.next) {
                   case 0:
                     if (!this.useRouter) {
                       this.useRouter = !!document.querySelector('ion-router') && !this.el.closest('[no-router]');
                     }
 
                     if (this.useRouter) {
-                      _context3.next = 5;
+                      _context2.next = 5;
                       break;
                     }
 
                     tabs = this.tabs;
-                    _context3.next = 5;
+                    _context2.next = 5;
                     return this.select(tabs[0]);
 
                   case 5:
@@ -237,10 +211,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 6:
                   case "end":
-                    return _context3.stop();
+                    return _context2.stop();
                 }
               }
-            }, _callee3, this);
+            }, _callee2, this);
           }));
 
           function componentWillLoad() {
@@ -270,43 +244,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function () {
           var _select = _asyncToGenerator(
           /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4(tab) {
+          regeneratorRuntime.mark(function _callee3(tab) {
             var selectedTab;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
-                switch (_context4.prev = _context4.next) {
+                switch (_context3.prev = _context3.next) {
                   case 0:
-                    _context4.next = 2;
-                    return this.getTab(tab);
-
-                  case 2:
-                    selectedTab = _context4.sent;
+                    selectedTab = _getTab(this.tabs, tab);
 
                     if (this.shouldSwitch(selectedTab)) {
-                      _context4.next = 5;
+                      _context3.next = 3;
                       break;
                     }
 
-                    return _context4.abrupt("return", false);
+                    return _context3.abrupt("return", false);
 
-                  case 5:
-                    _context4.next = 7;
+                  case 3:
+                    _context3.next = 5;
                     return this.setActive(selectedTab);
 
-                  case 7:
-                    _context4.next = 9;
+                  case 5:
+                    _context3.next = 7;
                     return this.notifyRouter();
 
-                  case 9:
+                  case 7:
                     this.tabSwitch();
-                    return _context4.abrupt("return", true);
+                    return _context3.abrupt("return", true);
 
-                  case 11:
+                  case 9:
                   case "end":
-                    return _context4.stop();
+                    return _context3.stop();
                 }
               }
-            }, _callee4, this);
+            }, _callee3, this);
           }));
 
           function select(_x) {
@@ -324,34 +294,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getTab",
         value: function () {
-          var _getTab = _asyncToGenerator(
+          var _getTab2 = _asyncToGenerator(
           /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5(tab) {
-            var tabEl;
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          regeneratorRuntime.mark(function _callee4(tab) {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
-                switch (_context5.prev = _context5.next) {
+                switch (_context4.prev = _context4.next) {
                   case 0:
-                    tabEl = typeof tab === 'string' ? this.tabs.find(function (t) {
-                      return t.tab === tab;
-                    }) : tab;
+                    return _context4.abrupt("return", _getTab(this.tabs, tab));
 
-                    if (!tabEl) {
-                      console.error("tab with id: \"".concat(tabEl, "\" does not exist"));
-                    }
-
-                    return _context5.abrupt("return", tabEl);
-
-                  case 3:
+                  case 1:
                   case "end":
-                    return _context5.stop();
+                    return _context4.stop();
                 }
               }
-            }, _callee5, this);
+            }, _callee4, this);
           }));
 
           function getTab(_x2) {
-            return _getTab.apply(this, arguments);
+            return _getTab2.apply(this, arguments);
           }
 
           return getTab;
@@ -372,36 +333,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function () {
           var _setRouteId = _asyncToGenerator(
           /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee6(id) {
+          regeneratorRuntime.mark(function _callee5(id) {
             var _this2 = this;
 
             var selectedTab;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
-                switch (_context6.prev = _context6.next) {
+                switch (_context5.prev = _context5.next) {
                   case 0:
-                    _context6.next = 2;
-                    return this.getTab(id);
-
-                  case 2:
-                    selectedTab = _context6.sent;
+                    selectedTab = _getTab(this.tabs, id);
 
                     if (this.shouldSwitch(selectedTab)) {
-                      _context6.next = 5;
+                      _context5.next = 3;
                       break;
                     }
 
-                    return _context6.abrupt("return", {
+                    return _context5.abrupt("return", {
                       changed: false,
                       element: this.selectedTab
                     });
 
-                  case 5:
-                    _context6.next = 7;
+                  case 3:
+                    _context5.next = 5;
                     return this.setActive(selectedTab);
 
-                  case 7:
-                    return _context6.abrupt("return", {
+                  case 5:
+                    return _context5.abrupt("return", {
                       changed: true,
                       element: this.selectedTab,
                       markVisible: function markVisible() {
@@ -409,12 +366,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }
                     });
 
-                  case 8:
+                  case 6:
                   case "end":
-                    return _context6.stop();
+                    return _context5.stop();
                 }
               }
-            }, _callee6, this);
+            }, _callee5, this);
           }));
 
           function setRouteId(_x3) {
@@ -430,24 +387,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function () {
           var _getRouteId = _asyncToGenerator(
           /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee7() {
+          regeneratorRuntime.mark(function _callee6() {
             var tabId;
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
-                switch (_context7.prev = _context7.next) {
+                switch (_context6.prev = _context6.next) {
                   case 0:
                     tabId = this.selectedTab && this.selectedTab.tab;
-                    return _context7.abrupt("return", tabId !== undefined ? {
+                    return _context6.abrupt("return", tabId !== undefined ? {
                       id: tabId,
                       element: this.selectedTab
                     } : undefined);
 
                   case 2:
                   case "end":
-                    return _context7.stop();
+                    return _context6.stop();
                 }
               }
-            }, _callee7, this);
+            }, _callee6, this);
           }));
 
           function getRouteId() {
@@ -515,13 +472,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "render",
         value: function render() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onIonTabButtonClick: this.onTabClicked
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "top"
-          }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             class: "tabs-inner"
-          }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "bottom"
           }));
         }
@@ -533,7 +490,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "style",
@@ -544,6 +501,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return Tabs;
     }();
+
+    var _getTab = function _getTab(tabs, tab) {
+      var tabEl = typeof tab === 'string' ? tabs.find(function (t) {
+        return t.tab === tab;
+      }) : tab;
+
+      if (!tabEl) {
+        console.error("tab with id: \"".concat(tabEl, "\" does not exist"));
+      }
+
+      return tabEl;
+    };
     /***/
 
   }

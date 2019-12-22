@@ -9,7 +9,7 @@ export interface Message{
     readBy: string[]
 }
 export enum Type{
-    INVITATION, DEFAULT
+    DEFAULT, INVITATION
 }
 
 
