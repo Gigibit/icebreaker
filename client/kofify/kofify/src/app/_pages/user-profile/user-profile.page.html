@@ -13,7 +13,6 @@
 
 
 <ion-content class="no-scroll">
-  
   <ion-slides #slides pager="true" [options]="slideOpts">
     <ion-slide  *ngIf="!userInfo?.images">
       <ion-skeleton-text class="fake-slide" animated></ion-skeleton-text>
@@ -22,7 +21,7 @@
     <div class="user-img">
       <div *ngIf="userInfo" class="slide-container">
         <ion-slide *ngFor="let img of userInfo.images">
-          <img-loader [src]="img"></img-loader>
+          <img src="{{img}}"/>
         </ion-slide>
       </div>
     </div>

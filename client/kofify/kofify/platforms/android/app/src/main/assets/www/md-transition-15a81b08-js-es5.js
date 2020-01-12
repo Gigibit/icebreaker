@@ -95,5 +95,5 @@
     /***/
 
   }
-}]); //# sourceMappingURL=md-transition-15a81b08-js-es2015.js.map
+}]);
 //# sourceMappingURL=md-transition-15a81b08-js-es5.js.map

@@ -8,10 +8,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -802,89 +798,69 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "open",
-        value: function () {
-          var _open = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
-            var _this2 = this;
+        value: function open() {
+          var _this2 = this;
 
-            var pickerOptions, picker;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    if (!(this.disabled || this.isExpanded)) {
-                      _context2.next = 2;
-                      break;
-                    }
+          var pickerOptions, picker;
+          return regeneratorRuntime.async(function open$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (!(this.disabled || this.isExpanded)) {
+                    _context2.next = 2;
+                    break;
+                  }
 
-                    return _context2.abrupt("return");
+                  return _context2.abrupt("return");
 
-                  case 2:
-                    pickerOptions = this.generatePickerOptions();
-                    _context2.next = 5;
-                    return _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["p"].create(pickerOptions);
+                case 2:
+                  pickerOptions = this.generatePickerOptions();
+                  _context2.next = 5;
+                  return regeneratorRuntime.awrap(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["p"].create(pickerOptions));
 
-                  case 5:
-                    picker = _context2.sent;
-                    this.isExpanded = true;
-                    picker.onDidDismiss().then(function () {
-                      _this2.isExpanded = false;
+                case 5:
+                  picker = _context2.sent;
+                  this.isExpanded = true;
+                  picker.onDidDismiss().then(function () {
+                    _this2.isExpanded = false;
 
-                      _this2.setFocus();
+                    _this2.setFocus();
+                  });
+                  picker.addEventListener('ionPickerColChange', function _callee(event) {
+                    var data, colSelectedIndex, colOptions, changeData;
+                    return regeneratorRuntime.async(function _callee$(_context) {
+                      while (1) {
+                        switch (_context.prev = _context.next) {
+                          case 0:
+                            data = event.detail;
+                            colSelectedIndex = data.selectedIndex;
+                            colOptions = data.options;
+                            changeData = {};
+                            changeData[data.name] = {
+                              value: colOptions[colSelectedIndex].value
+                            };
+
+                            _this2.updateDatetimeValue(changeData);
+
+                            picker.columns = _this2.generateColumns();
+
+                          case 7:
+                          case "end":
+                            return _context.stop();
+                        }
+                      }
                     });
-                    picker.addEventListener('ionPickerColChange',
-                    /*#__PURE__*/
-                    function () {
-                      var _ref = _asyncToGenerator(
-                      /*#__PURE__*/
-                      regeneratorRuntime.mark(function _callee(event) {
-                        var data, colSelectedIndex, colOptions, changeData;
-                        return regeneratorRuntime.wrap(function _callee$(_context) {
-                          while (1) {
-                            switch (_context.prev = _context.next) {
-                              case 0:
-                                data = event.detail;
-                                colSelectedIndex = data.selectedIndex;
-                                colOptions = data.options;
-                                changeData = {};
-                                changeData[data.name] = {
-                                  value: colOptions[colSelectedIndex].value
-                                };
+                  });
+                  _context2.next = 11;
+                  return regeneratorRuntime.awrap(picker.present());
 
-                                _this2.updateDatetimeValue(changeData);
-
-                                picker.columns = _this2.generateColumns();
-
-                              case 7:
-                              case "end":
-                                return _context.stop();
-                            }
-                          }
-                        }, _callee);
-                      }));
-
-                      return function (_x) {
-                        return _ref.apply(this, arguments);
-                      };
-                    }());
-                    _context2.next = 11;
-                    return picker.present();
-
-                  case 11:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 11:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2, this);
-          }));
-
-          function open() {
-            return _open.apply(this, arguments);
-          }
-
-          return open;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "emitStyle",
         value: function emitStyle() {
@@ -1395,40 +1371,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(Picker, [{
         key: "present",
-        value: function () {
-          var _present = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
-            var _this7 = this;
+        value: function present() {
+          var _this7 = this;
 
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    _context3.next = 2;
-                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'pickerEnter', iosEnterAnimation, iosEnterAnimation, undefined);
+          return regeneratorRuntime.async(function present$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return regeneratorRuntime.awrap(Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'pickerEnter', iosEnterAnimation, iosEnterAnimation, undefined));
 
-                  case 2:
-                    if (this.duration > 0) {
-                      this.durationTimeout = setTimeout(function () {
-                        return _this7.dismiss();
-                      }, this.duration);
-                    }
+                case 2:
+                  if (this.duration > 0) {
+                    this.durationTimeout = setTimeout(function () {
+                      return _this7.dismiss();
+                    }, this.duration);
+                  }
 
-                  case 3:
-                  case "end":
-                    return _context3.stop();
-                }
+                case 3:
+                case "end":
+                  return _context3.stop();
               }
-            }, _callee3, this);
-          }));
-
-          function present() {
-            return _present.apply(this, arguments);
-          }
-
-          return present;
-        }()
+            }
+          }, null, this);
+        }
         /**
          * Dismiss the picker overlay after it has been presented.
          *
@@ -1570,9 +1536,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     var buttonWrapperClass = function buttonWrapperClass(button) {
-      var _ref2;
+      var _ref;
 
-      return _ref2 = {}, _defineProperty(_ref2, "picker-toolbar-".concat(button.role), button.role !== undefined), _defineProperty(_ref2, 'picker-toolbar-button', true), _ref2;
+      return _ref = {}, _defineProperty(_ref, "picker-toolbar-".concat(button.role), button.role !== undefined), _defineProperty(_ref, 'picker-toolbar-button', true), _ref;
     };
 
     var buttonClass = function buttonClass(button) {
@@ -1605,71 +1571,61 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4() {
-            var _this9 = this;
+        value: function connectedCallback() {
+          var _this9 = this;
 
-            var pickerRotateFactor, pickerScaleFactor, mode;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    pickerRotateFactor = 0;
-                    pickerScaleFactor = 0.81;
-                    mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var pickerRotateFactor, pickerScaleFactor, mode;
+          return regeneratorRuntime.async(function connectedCallback$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  pickerRotateFactor = 0;
+                  pickerScaleFactor = 0.81;
+                  mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
 
-                    if (mode === 'ios') {
-                      pickerRotateFactor = -0.46;
-                      pickerScaleFactor = 1;
+                  if (mode === 'ios') {
+                    pickerRotateFactor = -0.46;
+                    pickerScaleFactor = 1;
+                  }
+
+                  this.rotateFactor = pickerRotateFactor;
+                  this.scaleFactor = pickerScaleFactor;
+                  _context4.next = 8;
+                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
+                  /*! ./index-624eea58.js */
+                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
+
+                case 8:
+                  _context4.t0 = {
+                    el: this.el,
+                    gestureName: 'picker-swipe',
+                    gesturePriority: 100,
+                    threshold: 0,
+                    onStart: function onStart(ev) {
+                      return _this9.onStart(ev);
+                    },
+                    onMove: function onMove(ev) {
+                      return _this9.onMove(ev);
+                    },
+                    onEnd: function onEnd(ev) {
+                      return _this9.onEnd(ev);
                     }
+                  };
+                  this.gesture = _context4.sent.createGesture(_context4.t0);
+                  this.gesture.setDisabled(false);
+                  this.tmrId = setTimeout(function () {
+                    _this9.noAnimate = false;
 
-                    this.rotateFactor = pickerRotateFactor;
-                    this.scaleFactor = pickerScaleFactor;
-                    _context4.next = 8;
-                    return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-624eea58.js */
-                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
+                    _this9.refresh(true);
+                  }, 250);
 
-                  case 8:
-                    _context4.t0 = {
-                      el: this.el,
-                      gestureName: 'picker-swipe',
-                      gesturePriority: 100,
-                      threshold: 0,
-                      onStart: function onStart(ev) {
-                        return _this9.onStart(ev);
-                      },
-                      onMove: function onMove(ev) {
-                        return _this9.onMove(ev);
-                      },
-                      onEnd: function onEnd(ev) {
-                        return _this9.onEnd(ev);
-                      }
-                    };
-                    this.gesture = _context4.sent.createGesture(_context4.t0);
-                    this.gesture.setDisabled(false);
-                    this.tmrId = setTimeout(function () {
-                      _this9.noAnimate = false;
-
-                      _this9.refresh(true);
-                    }, 250);
-
-                  case 12:
-                  case "end":
-                    return _context4.stop();
-                }
+                case 12:
+                case "end":
+                  return _context4.stop();
               }
-            }, _callee4, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "componentDidLoad",
         value: function componentDidLoad() {
@@ -2022,5 +1978,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var TRANSITION_DURATION = 150;
     /***/
   }
-}]); //# sourceMappingURL=23-es2015.js.map
+}]);
 //# sourceMappingURL=23-es5.js.map

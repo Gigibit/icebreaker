@@ -120,14 +120,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-geolocation": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-geolocation@4.0.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-promise-polyfill": {
     "source": {
       "type": "registry",
@@ -223,6 +215,14 @@
       "id": "es6-promise-plugin@^4.1.0"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@latest"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }

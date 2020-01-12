@@ -14,7 +14,6 @@
 		065957FAAA7D4C968C4038F2 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4FFFDFB11946719A84DDD2 /* CDVJpegHeaderWriter.m */; };
 		07E7F7B5C61E49638DFFCFED /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C88F3688741CBB3CF860D /* CDVWKWebViewUIDelegate.m */; };
 		08C9882F7D194637B6337957 /* UIImage+CropScaleOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A810F9049E74702A461AAC6 /* UIImage+CropScaleOrientation.m */; };
-		0902EC545BDD48CC86183B54 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4065252B68004B8C8B825CD4 /* CDVLocation.m */; };
 		0CF4C4A8F19A414F8B3692F7 /* CDVWKInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55024A91EF904DAF99C10E6E /* CDVWKInAppBrowser.m */; };
 		0D1F7105828C47BDBE487D7D /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 62401434303C401BA0F6DDE1 /* CDVWKProcessPoolFactory.m */; };
 		0D66C99E70784CC083198B9C /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958CF89580494113A69E79F8 /* CDVLocalFilesystem.m */; };
@@ -78,6 +77,7 @@
 		F741A7CC3CD94F50A0F4988D /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230A0D1FB32F4E1F8AA4A70E /* GoogleAppMeasurement.framework */; };
 		F9BEBDE8CAA54ECB915812C6 /* AdMobMediation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419365F47BA4C0B81C25EF4 /* AdMobMediation.m */; };
 		982C9ABFE4EB469684B7DB1E /* CDVOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C72E74307E4F1F9F72CA6C /* CDVOrientation.m */; };
+		AF836818BD2E48F380BC03DE /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C94E059E6C4EA98F9ECED8 /* CDVLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,6 @@
 		095E98262B2A46DDADEB7FC0 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowser.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; };
 		0B0A8E8EA148481484C717BA /* NativeStorage.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = NativeStorage.m; path = "cordova-plugin-nativestorage/NativeStorage.m"; sourceTree = "<group>"; };
 		0B39469D25F846A882A5BF70 /* MediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		0D1E203356A84261AFD8B9B6 /* CDVLocation.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVLocation.h; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; };
 		16FFDF3851AC43108864E369 /* CFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		191E891F331F48ABBCABE565 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1ADCA849A22C498D81C3FCF4 /* CDVAdMobPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVAdMobPlugin.m; path = "cordova-plugin-admobpro/CDVAdMobPlugin.m"; sourceTree = "<group>"; };
@@ -140,7 +139,6 @@
 		3A43C50AA6DD4BDE8D7457BF /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = "Kofify/Plugins/cordova-admobsdk/nanopb.framework"; sourceTree = "<group>"; };
 		3A810F9049E74702A461AAC6 /* UIImage+CropScaleOrientation.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CropScaleOrientation.m"; path = "cordova-plugin-camera/UIImage+CropScaleOrientation.m"; sourceTree = "<group>"; };
 		3F177DD9C78742689EEA3A5A /* AdSupport.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		4065252B68004B8C8B825CD4 /* CDVLocation.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVLocation.m; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; };
 		492677A33040491DBE498FA1 /* OpenGLES.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		49894CE169D440BAAA922143 /* CDVWKWebViewEngine.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKWebViewEngine.h; path = "cordova-plugin-ionic-webview/CDVWKWebViewEngine.h"; sourceTree = "<group>"; };
 		4B5A5D54548E4775BA09A26D /* CDVWKInAppBrowser.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKInAppBrowser.h; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowser.h"; sourceTree = "<group>"; };
@@ -230,6 +228,8 @@
 		FCFCBA968749C1501BB29871 /* Pods-Kofify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kofify.release.xcconfig"; path = "Target Support Files/Pods-Kofify/Pods-Kofify.release.xcconfig"; sourceTree = "<group>"; };
 		A2C72E74307E4F1F9F72CA6C /* CDVOrientation.m */ = {isa = PBXFileReference; name = "CDVOrientation.m"; path = "cordova-plugin-screen-orientation/CDVOrientation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		508D762143CE4FBE8687FC09 /* CDVOrientation.h */ = {isa = PBXFileReference; name = "CDVOrientation.h"; path = "cordova-plugin-screen-orientation/CDVOrientation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		85C94E059E6C4EA98F9ECED8 /* CDVLocation.m */ = {isa = PBXFileReference; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		0065B1519D274CB3A62C7D7D /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,8 +434,6 @@
 				E19E01EFC3164831B11B5C42 /* CDVAssetLibraryFilesystem.h */,
 				6B18211CC53846A593BFB898 /* CDVFileTransfer.m */,
 				BC953BFA8A39443F9A5F73B8 /* CDVFileTransfer.h */,
-				4065252B68004B8C8B825CD4 /* CDVLocation.m */,
-				0D1E203356A84261AFD8B9B6 /* CDVLocation.h */,
 				A1EDC41AF5E44E2C8C5B0C1A /* CDVGlobalization.m */,
 				BC75B2A839E0496EBF9A1548 /* CDVGlobalization.h */,
 				EF814468ACB64F88A5FFC7BB /* CDVInAppBrowser.m */,
@@ -478,6 +476,8 @@
 				F3EADCBA3C8D4C74BE2670C9 /* OneSignalPush.h */,
 				A2C72E74307E4F1F9F72CA6C /* CDVOrientation.m */,
 				508D762143CE4FBE8687FC09 /* CDVOrientation.h */,
+				85C94E059E6C4EA98F9ECED8 /* CDVLocation.m */,
+				0065B1519D274CB3A62C7D7D /* CDVLocation.h */,
 			);
 			name = Plugins;
 			path = Kofify/Plugins;
@@ -666,7 +666,6 @@
 				0D66C99E70784CC083198B9C /* CDVLocalFilesystem.m in Sources */,
 				C4E22F7594294394AB1835BC /* CDVAssetLibraryFilesystem.m in Sources */,
 				93768189E7C342A59A074C43 /* CDVFileTransfer.m in Sources */,
-				0902EC545BDD48CC86183B54 /* CDVLocation.m in Sources */,
 				72233C098D0D4497AA8F67F1 /* CDVGlobalization.m in Sources */,
 				339348C2D6074D07B9C99B0D /* CDVInAppBrowser.m in Sources */,
 				8BB88ECF805D49A2976A1A64 /* CDVInAppBrowserOptions.m in Sources */,
@@ -688,6 +687,7 @@
 				7424CC1862F342698C3074D7 /* CDVStatusBar.m in Sources */,
 				7DA5A61C96CE4BEB9862F6A5 /* OneSignalPush.m in Sources */,
 				982C9ABFE4EB469684B7DB1E /* CDVOrientation.m in Sources */,
+				AF836818BD2E48F380BC03DE /* CDVLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@
     <div class="user-img">
       <div *ngIf="user" class="slide-container">
         <ion-slide *ngFor="let img of user.images">
-          <img-loader [src]="img"></img-loader>
+          <img [src]="img"/>
         </ion-slide>
       </div>
     </div>

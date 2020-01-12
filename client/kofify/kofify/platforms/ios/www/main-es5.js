@@ -497,7 +497,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"dismiss()\">\n      <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"ion-text-center\">\n      {{'edit_filter_configuration'| translate}}\n    </ion-title>\n    <ion-buttons slot=\"end\"  (click)=\"done()\">\n      <ion-icon class=\"done-btn\" ios=\"ios-checkmark\" md=\"ios-checkmark\"></ion-icon>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-row>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'men' | translate}}</h3>\n        <ion-checkbox [(ngModel)]=\"queryFilter.enableMen\"></ion-checkbox>\n      </div>\n    </ion-col>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'women' | translate}}</h3>\n        <ion-checkbox [(ngModel)]=\"queryFilter.enableWomen\"></ion-checkbox>\n      </div>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'age_range' | translate}}</h3>\n        <ion-range pin=\"true\" min=\"19\" [max]=\"122\" dualKnobs=\"true\" step=\"1\" snaps=\"true\" [(ngModel)]=\"queryFilter.ageRange\"></ion-range>\n      </div>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'only_online_people' | translate}}</h3>\n        <ion-checkbox [(ngModel)]=\"queryFilter.onlyOnline\"></ion-checkbox>\n      </div>\n    </ion-col>\n  </ion-row>\n  \n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"dismiss()\">\n      <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"ion-text-center\">\n      {{'edit_filter_configuration'| translate}}\n    </ion-title>\n    <ion-buttons slot=\"end\"  (click)=\"done()\">\n      <ion-icon class=\"done-btn\" ios=\"ios-checkmark\" md=\"ios-checkmark\"></ion-icon>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-row>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'men' | translate}}</h3>\n        <ion-checkbox [(ngModel)]=\"queryFilter.enableMen\"></ion-checkbox>\n      </div>\n    </ion-col>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'women' | translate}}</h3>\n        <ion-checkbox [(ngModel)]=\"queryFilter.enableWomen\"></ion-checkbox>\n      </div>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'age_between' | translate }} {{ queryFilter.ageRange.lower }} - {{ queryFilter.ageRange.upper }}</h3>\n        <ion-range pin=\"true\" min=\"19\" [max]=\"122\" dualKnobs=\"true\" step=\"1\" snaps=\"true\" [(ngModel)]=\"queryFilter.ageRange\"></ion-range>\n      </div>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <div class=\"gender-box\">\n        <h3>{{ 'only_online_people' | translate}}</h3>\n        <ion-checkbox [(ngModel)]=\"queryFilter.onlyOnline\"></ion-checkbox>\n      </div>\n    </ion-col>\n  </ion-row>\n  \n</ion-content>";
     /***/
   },
 
@@ -557,7 +557,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "  <ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"end\"  (click)=\"dismiss()\">\n      <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n   <ion-content>\n    <ion-slides #slides class=\"plans-slides\" pager=\"true\" [options]=\"sliderConfig\">\n      \n      <ion-slide *ngFor=\"let plan of plans; let i = index\">\n        <div>\n          <ion-card class=\"plan-card\">\n            <ion-card-header>\n              <ion-card-title>\n               {{name}}\n              </ion-card-title>\n              <ion-card-content>\n                <h1>{{description}}</h1>\n                <ion-icon [style.width]=\"(((i+1)*5)+80)+'px'\" [style.height]=\"150+'px'\"  class=\"cafe-icon\" name=\"cafe\"></ion-icon>\n              </ion-card-content>\n            </ion-card-header>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n    <ion-button expand=\"full\" (click)=\"onPlanChoosen()\">continue</ion-button>\n\n  </ion-content>";
+    __webpack_exports__["default"] = "  <ion-header no-border>\n    <ion-toolbar transparent>\n      <ion-buttons slot=\"end\"  (click)=\"dismiss()\">\n        <ion-icon ios=\"ios-close\" md=\"ios-close\"></ion-icon>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content>\n    <ion-list>\n      <ion-item *ngFor=\"let plan of plans; let i = index\" centeredSlides=\"true\">\n        <ion-card class=\"plan-card\" (click)=\"onPlanChoosen(i)\">\n          <ion-card-header>\n            <ion-card-title class=\"plan-name\">\n              {{plan.name}}\n            </ion-card-title>\n            <ion-card-content>\n              <p>{{plan.description}}</p>\n            </ion-card-content>\n            <h4 class=\"plan-price\">{{plan.price}}</h4>\n          </ion-card-header>\n        </ion-card>\n      </ion-item>\n    </ion-list>\n    \n  </ion-content>";
     /***/
   },
 
@@ -637,7 +637,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n      <ion-icon name=\"ios-arrow-back\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"ion-text-center\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <form #f=\"ngForm\" (ngSubmit)=\"register(f)\">\n    <ion-grid>\n      <ion-row justify-content-center>\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          \n          <div padding>\n            <ion-item lines=\"none\">\n              <ion-select slot=\"end\" interface=\"popover\" #languageSelect placeholder=\"{{ 'language' | translate}}\" name=\"language\" [(ngModel)]=\"language\">\n                <ion-select-option *ngFor=\"let language of languages | keyvalue\" [value]=\"language.value.name\">{{language.value.name}}</ion-select-option>\n              </ion-select>\n            </ion-item>\n          <ion-item>\n            <ion-input name=\"firstName\" type=\"text\" placeholder=\"{{ 'insert_name' | translate }}\" ngModel required></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input name=\"lastName\" type=\"text\" placeholder=\"{{ 'insert_surname' | translate }}\" ngModel required></ion-input>\n          </ion-item>\n          <ion-item>\n              <ion-label class=\"ion-dt-1-lbl birthday-label\">{{'birthday' | translate }}</ion-label>\n              <ion-datetime \n              value=\"1992-07-25\" \n              role=\"combobox\" \n              aria-expanded=\"false\" \n              aria-haspopup=\"true\" \n              #bdayPicker\n              (ionChange)=\"updateBirtday()\"\n              aria-labelledby=\"ion-dt-1-lbl\"\n              class=\"ios in-item hydrated\">\n            </ion-datetime>\n          </ion-item>\n          <ion-item>\n            <ion-input name=\"email\" type=\"email\" placeholder=\"your@email.com\" ngModel required></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input name=\"password\" type=\"password\" placeholder=\"Password\" ngModel required></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input name=\"confirm_password\" type=\"password\" placeholder=\"{{ 'confirm_password' | translate }}\" ngModel required></ion-input>\n          </ion-item>\n          \n        </div>\n        <div padding>\n          <ion-button size=\"large\" type=\"submit\" [disabled]=\"f.invalid\" expand=\"block\">{{ 'register' | translate }}</ion-button>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</form>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header no-border>\n  <ion-toolbar transparent>\n    <ion-buttons slot=\"start\"  (click)=\"location.back()\">\n      <ion-icon name=\"ios-arrow-back\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"ion-text-center\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <form #f=\"ngForm\" (ngSubmit)=\"register(f)\">\n    <ion-grid>\n      <ion-row justify-content-center>\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          \n          <div padding>\n            <ion-item lines=\"none\">\n              <ion-select slot=\"end\" interface=\"popover\" #languageSelect placeholder=\"{{ 'language' | translate}}\" name=\"language\" [(ngModel)]=\"language\">\n                <ion-select-option *ngFor=\"let language of languages | keyvalue\" [value]=\"language.value.name\">{{language.value.name}}</ion-select-option>\n              </ion-select>\n            </ion-item>\n          <ion-item>\n            <ion-input name=\"firstName\" type=\"text\" placeholder=\"{{ 'insert_name' | translate }}\" ngModel required></ion-input>\n          </ion-item>\n          <ion-item>\n              <ion-label class=\"ion-dt-1-lbl birthday-label\">{{'birthday' | translate }}</ion-label>\n              <ion-datetime \n              value=\"1992-07-25\" \n              role=\"combobox\" \n              aria-expanded=\"false\" \n              aria-haspopup=\"true\" \n              #bdayPicker\n              (ionChange)=\"updateBirtday()\"\n              aria-labelledby=\"ion-dt-1-lbl\"\n              class=\"ios in-item hydrated\">\n            </ion-datetime>\n          </ion-item>\n          <ion-item>\n            <ion-input name=\"email\" type=\"email\" placeholder=\"your@email.com\" ngModel required></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input name=\"password\" type=\"password\" placeholder=\"Password\" ngModel required></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input name=\"confirm_password\" type=\"password\" placeholder=\"{{ 'confirm_password' | translate }}\" ngModel required></ion-input>\n          </ion-item>\n          \n        </div>\n        <div padding>\n          <ion-button size=\"large\" type=\"submit\" [disabled]=\"f.invalid\" expand=\"block\">{{ 'register' | translate }}</ion-button>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</form>\n</ion-content>";
     /***/
   },
 
@@ -1389,7 +1389,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "deleteAccount",
         value: function deleteAccount() {
           this.modalCtrl.create({
-            cssClass: 'delete-modal',
             component: src_app_delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_9__["DeleteAccountComponent"]
           }).then(function (modal) {
             modal.present();
@@ -2028,6 +2027,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.rewardButtonEnabled = true;
         this.rewardAvailable = false;
         authService.currentUser.subscribe(function (user) {
+          console.log(user);
           _this6.credits = user.credits;
           _this6.rewardAvailable = user.rewardAvailable;
         });
@@ -2138,6 +2138,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         });
                       },
                       onFail: function onFail() {
+                        _this8.toastService.somethingWentWrong();
+
                         loader.dismiss();
                       }
                     });
@@ -2199,7 +2201,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".plans-slides {\n  height: 80%; }\n\n.swiper-zoom-container {\n  transition: padding-bottom 1s ease-in-out; }\n\n.swiper-slide-active {\n  padding-bottom: 25px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fY29tcG9uZW50cy9zZWxlY3QtcGxhbi9zZWxlY3QtcGxhbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLFdBQVcsRUFBQTs7QUFFZjtFQUNJLHlDQUF5QyxFQUFBOztBQUU3QztFQUNJLG9CQUFvQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvX2NvbXBvbmVudHMvc2VsZWN0LXBsYW4vc2VsZWN0LXBsYW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5wbGFucy1zbGlkZXN7XG4gICAgaGVpZ2h0OiA4MCU7XG59XG4uc3dpcGVyLXpvb20tY29udGFpbmVye1xuICAgIHRyYW5zaXRpb246IHBhZGRpbmctYm90dG9tIDFzIGVhc2UtaW4tb3V0O1xufVxuLnN3aXBlci1zbGlkZS1hY3RpdmV7XG4gICAgcGFkZGluZy1ib3R0b206IDI1cHg7XG59Il19 */";
+    __webpack_exports__["default"] = ".plan-card {\n  width: 100%; }\n\n.swiper-zoom-container {\n  -webkit-transition: padding-bottom 1s ease-in-out;\n  transition: padding-bottom 1s ease-in-out; }\n\n.swiper-slide-active {\n  padding-bottom: 25px; }\n\n.plan-name {\n  text-align: center; }\n\n.plan-price {\n  font-size: 20px;\n  text-align: center;\n  width: 40%;\n  margin: 0 auto;\n  border: 1px solid #cccccc;\n  border-radius: 25px;\n  background: #D1B378;\n  color: white; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fY29tcG9uZW50cy9zZWxlY3QtcGxhbi9zZWxlY3QtcGxhbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQVcsRUFBQTs7QUFJZjtFQUNJLGlEQUF5QztFQUF6Qyx5Q0FBeUMsRUFBQTs7QUFFN0M7RUFDSSxvQkFBb0IsRUFBQTs7QUFFeEI7RUFDSSxrQkFBa0IsRUFBQTs7QUFFdEI7RUFDSSxlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLFVBQVU7RUFDVixjQUFjO0VBQ2QseUJBQXlCO0VBQ3pCLG1CQUFtQjtFQUNuQixtQkFBbUI7RUFDbkIsWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvX2NvbXBvbmVudHMvc2VsZWN0LXBsYW4vc2VsZWN0LXBsYW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGxhbi1jYXJke1xuICAgIHdpZHRoOiAxMDAlO1xufVxuXG5cbi5zd2lwZXItem9vbS1jb250YWluZXJ7XG4gICAgdHJhbnNpdGlvbjogcGFkZGluZy1ib3R0b20gMXMgZWFzZS1pbi1vdXQ7XG59XG4uc3dpcGVyLXNsaWRlLWFjdGl2ZXtcbiAgICBwYWRkaW5nLWJvdHRvbTogMjVweDtcbn1cbi5wbGFuLW5hbWV7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLnBsYW4tcHJpY2V7XG4gICAgZm9udC1zaXplOiAyMHB4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB3aWR0aDogNDAlO1xuICAgIG1hcmdpbjogMCBhdXRvO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNjY2NjY2M7XG4gICAgYm9yZGVyLXJhZGl1czogMjVweDtcbiAgICBiYWNrZ3JvdW5kOiAjRDFCMzc4O1xuICAgIGNvbG9yOiB3aGl0ZTtcbn0iXX0= */";
     /***/
   },
 
@@ -2271,12 +2273,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.toastService = toastService;
         this.userService = userService;
         this.plans = [];
-        this.sliderConfig = {
-          slidesPerView: 2,
-          spaceBetween: 45,
-          centeredSlides: true,
-          initialSlide: 1
-        };
       }
 
       _createClass(SelectPlanComponent, [{
@@ -2287,74 +2283,57 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
+          var _this9 = this;
+
           this.plans = this.userService.lastPlans;
+          this.iap.getProducts(this.plans.map(function (d) {
+            return d.id;
+          })).then(function (products) {
+            console.log(products);
+            _this9.storeProducts = products;
+            products.forEach(function (el, value) {
+              var plan = _this9.plans.filter(function (d) {
+                return d.id == el.productId;
+              })[0];
+
+              plan.price = el.price;
+              plan.description = el.description;
+              plan.name = el.title;
+            });
+          }).catch(function (err) {
+            _this9.toastService.somethingWentWrong();
+
+            console.log(err);
+          });
         }
       }, {
         key: "onPlanChoosen",
-        value: function onPlanChoosen() {
+        value: function onPlanChoosen(index) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee9() {
-            var _this9 = this;
+            var _this10 = this;
 
-            var index, selectedPlanId;
+            var selectedPlanId;
             return regeneratorRuntime.wrap(function _callee9$(_context9) {
               while (1) {
                 switch (_context9.prev = _context9.next) {
                   case 0:
-                    _context9.next = 2;
-                    return this.slides.getActiveIndex();
-
-                  case 2:
-                    index = _context9.sent;
                     this.plans = this.userService.lastPlans;
+                    console.log(index);
                     selectedPlanId = this.plans[index].id;
-                    this.iap.getProducts(this.plans.map(function (d) {
-                      return d.id;
-                    })).then(function (products) {
-                      _this9.iap.buy(selectedPlanId).then(function (data) {
-                        _this9.iap.consume(data.productType, data.receipt, data.signature);
+                    console.log(selectedPlanId);
+                    this.iap.buy(selectedPlanId).then(function (data) {
+                      _this10.iap.consume(data.productType, data.receipt, data.signature);
 
-                        _this9.userService.finalizePayment(data).subscribe(function (data) {
-                          return console.log(data);
-                        });
-
-                        _this9.modalCtrl.dismiss();
-                      }).catch(function (err) {
-                        _this9.toastService.somethingWentWrong();
-
-                        console.log(err);
+                      _this10.userService.finalizePayment(data).subscribe(function (data) {
+                        return console.log(data);
                       });
-                    }).catch(function (err) {
-                      _this9.toastService.somethingWentWrong();
 
-                      console.log(err);
-                    }); // this.platform.ready().then(() => {
-                    //   this.store.register({
-                    //     id: selectedPlanId,
-                    //     type: this.store.CONSUMABLE,
-                    //   });
-                    //   let process = this.store.when(selectedPlanId)
-                    //   process.approved(p => {
-                    //     let paymentProcess = p.verify()
-                    //     paymentProcess.success((product, transactionDetail) => {
-                    //         console.log('success', product, transactionDetail)
-                    //         this.userService.finalizePayment(transactionDetail).subscribe(data=>{
-                    //         })
-                    //     })
-                    //   })
-                    //   process.error(p=> console.log("Store: error", p));
-                    //   process.verified(p =>{ 
-                    //     console.log('--- finishing ', p)
-                    //     p.finish()
-                    //     console.log('--- finish', p)
-                    //   });
-                    //   process.cancelled(p => console.log('canceled', p))
-                    //   this.store.refresh();
-                    //   this.store.order(selectedPlanId);
-                    //  });
+                      _this10.modalCtrl.dismiss();
+                    });
 
-                  case 6:
+                  case 5:
                   case "end":
                     return _context9.stop();
                 }
@@ -2381,9 +2360,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }];
     };
 
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('slides', {
-      static: true
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["IonSlides"])], SelectPlanComponent.prototype, "slides", void 0);
     SelectPlanComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-select-plan',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -3541,12 +3517,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ErrorInterceptor, [{
         key: "intercept",
         value: function intercept(request, next) {
-          var _this10 = this;
+          var _this11 = this;
 
           return next.handle(request).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (err) {
             if (err.status === UNAUTHORIZED) {
               // auto logout if 401 response returned from api
-              _this10.authenticationService.logout().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["finalize"])(function () {
+              _this11.authenticationService.logout().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["finalize"])(function () {
                 location.reload(true);
               })).subscribe();
             }
@@ -3555,9 +3531,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var plans = err.body;
 
               if (plans && plans['products']) {
-                _this10.userService.setPlans(_models_pricing_plan__WEBPACK_IMPORTED_MODULE_8__["PricingPlanMapper"].fromJsonArray(plans));
+                _this11.userService.setPlans(_models_pricing_plan__WEBPACK_IMPORTED_MODULE_8__["PricingPlanMapper"].fromJsonArray(plans));
 
-                _this10.modalCtrl.create({
+                _this11.modalCtrl.create({
                   cssClass: 'plans-modal',
                   component: _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_6__["SelectPlanComponent"]
                 }).then(function (modal) {
@@ -3829,10 +3805,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "fromJsonArray",
         value: function fromJsonArray(data) {
-          var _this11 = this;
+          var _this12 = this;
 
           return data && data.map(function (message) {
-            return _this11.fromJson(message);
+            return _this12.fromJson(message);
           });
         }
       }]);
@@ -4064,7 +4040,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(UserMapper, null, [{
         key: "fromJson",
         value: function fromJson(data) {
-          var admobCredit = data['user']['credit'] && data['user']['credit']['admobCredits'];
+          console.log(data);
+          var admobCredit = data['user']['credit'] && data['user']['credit']['admobCredit'];
           var admobRewardAvailable = admobCredit && admobCredit['count'] < admobCredit['countMax'];
           return data ? {
             firstName: data['user']['firstName'],
@@ -4204,7 +4181,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".input-wrap {\n  display: flex; }\n  .input-wrap textarea {\n    flex: 4;\n    border: 0;\n    padding: 17px;\n    resize: none;\n    background: #f1f1f1;\n    margin-right: 5px;\n    margin-bottom: 5px;\n    margin-left: 25px;\n    border-radius: 35px;\n    border-top-right-radius: 0;\n    border: 1px solid #222;\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }\n  .input-wrap .send-btn {\n    flex: 0;\n    height: 60px;\n    background: none;\n    border-radius: 50px;\n    margin-right: 20px; }\n  .input-wrap .send-icon {\n    color: #f1f1f1; }\n  .input-wrap .icon-wrapper {\n    height: 100%;\n    border-radius: 35px;\n    padding: 15px;\n    padding-top: 13px;\n    background: #999;\n    border-radius: 35px;\n    height: 50px;\n    width: 50px;\n    font-size: 25px;\n    border: 1px solid #222; }\n  ion-footer {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0; }\n  ion-content .scroll-content {\n  background-color: #f5f5f5; }\n  .line-breaker {\n  white-space: pre-line; }\n  .vertical-space {\n  height: 120px; }\n  .container {\n  position: absolute;\n  right: 0;\n  left: 0; }\n  .container .message {\n    max-width: 100%;\n    clear: both;\n    display: inline-flex;\n    position: relative;\n    padding: 7px 0; }\n  .container .message .msg-content {\n      width: auto;\n      color: #343434;\n      background-color: #F5ECE1;\n      float: left;\n      padding: 15px;\n      border: 1px solid #222;\n      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }\n  .container .message .user-img {\n      position: absolute;\n      border-radius: 45px;\n      width: 25px;\n      height: 25px;\n      box-shadow: 0 0 2px rgba(0, 0, 0, 0.36);\n      border: 1px solid #222;\n      background: #fff; }\n  .container .message .created-at {\n      color: #777;\n      font-size: 10px;\n      margin-top: 7px; }\n  .container .message .msg-detail {\n      width: auto;\n      width: 100%;\n      display: inline-block; }\n  .container .message .msg-detail p {\n        margin: 0; }\n  .container .message .msg-detail .msg-info p {\n        font-size: .8em;\n        color: #222; }\n  .container .left {\n    float: left; }\n  .container .left .user-img {\n      left: 0; }\n  .container .left .msg-detail {\n      padding-left: 30px;\n      padding-right: 0; }\n  .container .left .msg-info {\n      text-align: left; }\n  .container .left .msg-content {\n      float: left;\n      border-bottom-left-radius: 33px;\n      border-top-right-radius: 33px; }\n  .container .right {\n    float: right; }\n  .container .right .user-img {\n      right: 0; }\n  .container .right .msg-detail {\n      padding-right: 30px;\n      padding-left: 0; }\n  .container .right .msg-info {\n      text-align: right; }\n  .container .right .msg-content {\n      float: right;\n      border-bottom-right-radius: 33px;\n      border-top-left-radius: 33px; }\n  .container .question-mark {\n    font-size: 95px; }\n  .container .coffee {\n    width: 110px;\n    height: 110px; }\n  .container .coffee-wrapper {\n    display: flex;\n    width: 107px; }\n  .chat-name {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  margin-right: 50px;\n  overflow: hidden; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fcGFnZXMvY2hhdC9jaGF0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDRTtFQUNFLGFBQWEsRUFBQTtFQURmO0lBR0ksT0FBTztJQUNQLFNBQVM7SUFDVCxhQUFhO0lBQ2IsWUFBWTtJQUNaLG1CQUFvQjtJQUNwQixpQkFBaUI7SUFDakIsa0JBQWtCO0lBQ2xCLGlCQUFpQjtJQUNqQixtQkFBbUI7SUFDbkIsMEJBQTBCO0lBQzFCLHNCQUFzQjtJQUN0QiwyRUFBMkUsRUFBQTtFQWQvRTtJQWtCSSxPQUFPO0lBQ1AsWUFBWTtJQUNaLGdCQUFlO0lBQ2YsbUJBQW1CO0lBQ25CLGtCQUFrQixFQUFBO0VBdEJ0QjtJQXlCSSxjQUFjLEVBQUE7RUF6QmxCO0lBNkJJLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsYUFBYTtJQUNiLGlCQUFpQjtJQUNqQixnQkFBZ0I7SUFDaEIsbUJBQW1CO0lBQ25CLFlBQVk7SUFDWixXQUFXO0lBQ1gsZUFBZTtJQUNmLHNCQUFzQixFQUFBO0VBSTFCO0VBQ0Usd0JBQWdCO0VBQWhCLGdCQUFnQjtFQUNoQixTQUFTLEVBQUE7RUFHWDtFQUNFLHlCQUF5QixFQUFBO0VBRTNCO0VBQ0UscUJBQXFCLEVBQUE7RUFFdkI7RUFDRSxhQUFhLEVBQUE7RUFFZjtFQUNFLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsT0FBTyxFQUFBO0VBSFQ7SUFLSSxlQUFlO0lBQ2YsV0FBVztJQUNYLG9CQUFvQjtJQUNwQixrQkFBa0I7SUFDbEIsY0FBYyxFQUFBO0VBVGxCO01BV00sV0FBVztNQUNYLGNBQWM7TUFDZCx5QkFBeUI7TUFDekIsV0FBVztNQUNYLGFBQWE7TUFDYixzQkFBc0I7TUFDdEIsMkVBQTJFLEVBQUE7RUFqQmpGO01BcUJNLGtCQUFrQjtNQUNsQixtQkFBbUI7TUFDbkIsV0FBVztNQUNYLFlBQVk7TUFDWix1Q0FBdUM7TUFDdkMsc0JBQXNCO01BQ3RCLGdCQUFnQixFQUFBO0VBM0J0QjtNQThCTSxXQUFXO01BQ1gsZUFBZTtNQUNmLGVBQWUsRUFBQTtFQWhDckI7TUFvQ00sV0FBVztNQUNYLFdBQVc7TUFDWCxxQkFBcUIsRUFBQTtFQXRDM0I7UUF3Q1EsU0FBUyxFQUFBO0VBeENqQjtRQTRDVSxlQUFlO1FBQ2YsV0FBVyxFQUFBO0VBN0NyQjtJQW1ESSxXQUFXLEVBQUE7RUFuRGY7TUFxRE0sT0FBTyxFQUFBO0VBckRiO01Bd0RNLGtCQUFrQjtNQUNsQixnQkFBZ0IsRUFBQTtFQXpEdEI7TUE0RE0sZ0JBQWdCLEVBQUE7RUE1RHRCO01BK0RNLFdBQVc7TUFDWCwrQkFBK0I7TUFDL0IsNkJBQTZCLEVBQUE7RUFqRW5DO0lBcUVJLFlBQVksRUFBQTtFQXJFaEI7TUF1RU0sUUFBUSxFQUFBO0VBdkVkO01BMEVNLG1CQUFtQjtNQUNuQixlQUFlLEVBQUE7RUEzRXJCO01BOEVNLGlCQUFpQixFQUFBO0VBOUV2QjtNQWlGTSxZQUFZO01BQ1osZ0NBQWdDO01BQ2hDLDRCQUE0QixFQUFBO0VBbkZsQztJQXVGSSxlQUFjLEVBQUE7RUF2RmxCO0lBMEZJLFlBQVk7SUFDWixhQUFhLEVBQUE7RUEzRmpCO0lBOEZJLGFBQWE7SUFDYixZQUFZLEVBQUE7RUFHbEI7RUFDRSx1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL19wYWdlcy9jaGF0L2NoYXQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gIC5pbnB1dC13cmFwIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIHRleHRhcmVhIHtcbiAgICAgIGZsZXg6IDQ7XG4gICAgICBib3JkZXI6IDA7XG4gICAgICBwYWRkaW5nOiAxN3B4O1xuICAgICAgcmVzaXplOiBub25lO1xuICAgICAgYmFja2dyb3VuZCA6ICNmMWYxZjE7XG4gICAgICBtYXJnaW4tcmlnaHQ6IDVweDtcbiAgICAgIG1hcmdpbi1ib3R0b206IDVweDtcbiAgICAgIG1hcmdpbi1sZWZ0OiAyNXB4O1xuICAgICAgYm9yZGVyLXJhZGl1czogMzVweDtcbiAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAwO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgIzIyMjtcbiAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4xKSwgMCAxcHggMnB4IDAgcmdiYSgwLCAwLCAwLCAwLjA2KTtcbiAgXG4gICAgfVxuICAgIC5zZW5kLWJ0biB7XG4gICAgICBmbGV4OiAwO1xuICAgICAgaGVpZ2h0OiA2MHB4O1xuICAgICAgYmFja2dyb3VuZDpub25lO1xuICAgICAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcbiAgICB9XG4gICAgLnNlbmQtaWNvbntcbiAgICAgIGNvbG9yOiAjZjFmMWYxO1xuICAgIH1cbiAgXG4gICAgLmljb24td3JhcHBlcntcbiAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDM1cHg7XG4gICAgICBwYWRkaW5nOiAxNXB4O1xuICAgICAgcGFkZGluZy10b3A6IDEzcHg7XG4gICAgICBiYWNrZ3JvdW5kOiAjOTk5O1xuICAgICAgYm9yZGVyLXJhZGl1czogMzVweDtcbiAgICAgIGhlaWdodDogNTBweDtcbiAgICAgIHdpZHRoOiA1MHB4O1xuICAgICAgZm9udC1zaXplOiAyNXB4O1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgIzIyMjtcbiAgICAgIFxuICAgIH1cbiAgfVxuICBpb24tZm9vdGVyIHtcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xuICAgIGJvdHRvbTogMDtcbiAgXG4gIH1cbiAgaW9uLWNvbnRlbnQgLnNjcm9sbC1jb250ZW50IHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjVmNWY1O1xuICB9XG4gIC5saW5lLWJyZWFrZXIge1xuICAgIHdoaXRlLXNwYWNlOiBwcmUtbGluZTtcbiAgfVxuICAudmVydGljYWwtc3BhY2V7XG4gICAgaGVpZ2h0OiAxMjBweDtcbiAgfVxuICAuY29udGFpbmVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgcmlnaHQ6IDA7XG4gICAgbGVmdDogMDtcbiAgICAubWVzc2FnZSB7XG4gICAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgICBjbGVhcjogYm90aDtcbiAgICAgIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgcGFkZGluZzogN3B4IDA7XG4gICAgICAubXNnLWNvbnRlbnQge1xuICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgY29sb3I6ICMzNDM0MzQ7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNGNUVDRTE7XG4gICAgICAgIGZsb2F0OiBsZWZ0OyAgICAgICAgXG4gICAgICAgIHBhZGRpbmc6IDE1cHg7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMyMjI7XG4gICAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4xKSwgMCAxcHggMnB4IDAgcmdiYSgwLCAwLCAwLCAwLjA2KTtcbiAgXG4gICAgICB9XG4gICAgICAudXNlci1pbWcge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDQ1cHg7XG4gICAgICAgIHdpZHRoOiAyNXB4O1xuICAgICAgICBoZWlnaHQ6IDI1cHg7XG4gICAgICAgIGJveC1zaGFkb3c6IDAgMCAycHggcmdiYSgwLCAwLCAwLCAwLjM2KTtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzIyMjtcbiAgICAgICAgYmFja2dyb3VuZDogI2ZmZjtcbiAgICAgIH1cbiAgICAgIC5jcmVhdGVkLWF0e1xuICAgICAgICBjb2xvcjogIzc3NztcbiAgICAgICAgZm9udC1zaXplOiAxMHB4O1xuICAgICAgICBtYXJnaW4tdG9wOiA3cHg7XG4gICAgICB9XG4gICAgICBcbiAgICAgIC5tc2ctZGV0YWlsIHtcbiAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgICAgIHAge1xuICAgICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgfVxuICAgICAgICAubXNnLWluZm8ge1xuICAgICAgICAgIHAge1xuICAgICAgICAgICAgZm9udC1zaXplOiAuOGVtO1xuICAgICAgICAgICAgY29sb3I6ICMyMjI7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICAgIC5sZWZ0e1xuICAgICAgZmxvYXQ6IGxlZnQ7XG4gICAgICAudXNlci1pbWd7XG4gICAgICAgIGxlZnQ6IDA7XG4gICAgICB9XG4gICAgICAubXNnLWRldGFpbHtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAzMHB4O1xuICAgICAgICBwYWRkaW5nLXJpZ2h0OiAwO1xuICAgICAgfVxuICAgICAgLm1zZy1pbmZve1xuICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgICAgfVxuICAgICAgLm1zZy1jb250ZW50e1xuICAgICAgICBmbG9hdDogbGVmdDtcbiAgICAgICAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMzNweDtcbiAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDMzcHg7XG4gICAgICB9XG4gICAgfVxuICAgIC5yaWdodHtcbiAgICAgIGZsb2F0OiByaWdodDtcbiAgICAgIC51c2VyLWltZ3tcbiAgICAgICAgcmlnaHQ6IDA7XG4gICAgICB9XG4gICAgICAubXNnLWRldGFpbHtcbiAgICAgICAgcGFkZGluZy1yaWdodDogMzBweDtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAwO1xuICAgICAgfVxuICAgICAgLm1zZy1pbmZve1xuICAgICAgICB0ZXh0LWFsaWduOiByaWdodDtcbiAgICAgIH1cbiAgICAgIC5tc2ctY29udGVudHtcbiAgICAgICAgZmxvYXQ6IHJpZ2h0O1xuICAgICAgICBib3JkZXItYm90dG9tLXJpZ2h0LXJhZGl1czogMzNweDtcbiAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMzNweDtcbiAgICAgIH1cbiAgICB9XG4gICAgLnF1ZXN0aW9uLW1hcmt7XG4gICAgICBmb250LXNpemU6OTVweDtcbiAgICB9XG4gICAgLmNvZmZlZXtcbiAgICAgIHdpZHRoOiAxMTBweDtcbiAgICAgIGhlaWdodDogMTEwcHg7XG4gICAgfVxuICAgIC5jb2ZmZWUtd3JhcHBlcntcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICB3aWR0aDogMTA3cHg7XG4gICAgfVxuICB9ICBcbi5jaGF0LW5hbWV7XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBtYXJnaW4tcmlnaHQ6IDUwcHg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59Il19 */";
+    __webpack_exports__["default"] = ".input-wrap {\n  display: -webkit-box;\n  display: flex; }\n  .input-wrap textarea {\n    -webkit-box-flex: 4;\n            flex: 4;\n    border: 0;\n    padding: 17px;\n    resize: none;\n    background: #f1f1f1;\n    margin-right: 5px;\n    margin-bottom: 5px;\n    margin-left: 25px;\n    border-radius: 35px;\n    border-top-right-radius: 0;\n    border: 1px solid #222;\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }\n  .input-wrap .send-btn {\n    -webkit-box-flex: 0;\n            flex: 0;\n    height: 60px;\n    background: none;\n    border-radius: 50px;\n    margin-right: 20px; }\n  .input-wrap .send-icon {\n    color: #f1f1f1; }\n  .input-wrap .icon-wrapper {\n    height: 100%;\n    border-radius: 35px;\n    padding: 15px;\n    padding-top: 13px;\n    background: #999;\n    border-radius: 35px;\n    height: 50px;\n    width: 50px;\n    font-size: 25px;\n    border: 1px solid #222; }\n  ion-footer {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0; }\n  ion-content .scroll-content {\n  background-color: #f5f5f5; }\n  .line-breaker {\n  white-space: pre-line; }\n  .vertical-space {\n  height: 120px; }\n  .container {\n  position: absolute;\n  right: 0;\n  left: 0; }\n  .container .message {\n    max-width: 100%;\n    clear: both;\n    display: -webkit-inline-box;\n    display: inline-flex;\n    position: relative;\n    padding: 7px 0; }\n  .container .message .msg-content {\n      width: auto;\n      color: #343434;\n      background-color: #F5ECE1;\n      float: left;\n      padding: 15px;\n      border: 1px solid #222;\n      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }\n  .container .message .user-img {\n      position: absolute;\n      border-radius: 45px;\n      width: 25px;\n      height: 25px;\n      box-shadow: 0 0 2px rgba(0, 0, 0, 0.36);\n      border: 1px solid #222;\n      background: #fff; }\n  .container .message .created-at {\n      color: #777;\n      font-size: 10px;\n      margin-top: 7px; }\n  .container .message .msg-detail {\n      width: auto;\n      width: 100%;\n      display: inline-block; }\n  .container .message .msg-detail p {\n        margin: 0; }\n  .container .message .msg-detail .msg-info p {\n        font-size: .8em;\n        color: #222; }\n  .container .left {\n    float: left; }\n  .container .left .user-img {\n      left: 0; }\n  .container .left .msg-detail {\n      padding-left: 30px;\n      padding-right: 0; }\n  .container .left .msg-info {\n      text-align: left; }\n  .container .left .msg-content {\n      float: left;\n      border-bottom-left-radius: 33px;\n      border-top-right-radius: 33px; }\n  .container .right {\n    float: right; }\n  .container .right .user-img {\n      right: 0; }\n  .container .right .msg-detail {\n      padding-right: 30px;\n      padding-left: 0; }\n  .container .right .msg-info {\n      text-align: right; }\n  .container .right .msg-content {\n      float: right;\n      border-bottom-right-radius: 33px;\n      border-top-left-radius: 33px; }\n  .container .question-mark {\n    font-size: 95px; }\n  .container .coffee {\n    width: 110px;\n    height: 110px; }\n  .container .coffee-wrapper {\n    display: -webkit-box;\n    display: flex;\n    width: 107px; }\n  .chat-name {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  margin-right: 50px;\n  overflow: hidden; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fcGFnZXMvY2hhdC9jaGF0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDRTtFQUNFLG9CQUFhO0VBQWIsYUFBYSxFQUFBO0VBRGY7SUFHSSxtQkFBTztZQUFQLE9BQU87SUFDUCxTQUFTO0lBQ1QsYUFBYTtJQUNiLFlBQVk7SUFDWixtQkFBb0I7SUFDcEIsaUJBQWlCO0lBQ2pCLGtCQUFrQjtJQUNsQixpQkFBaUI7SUFDakIsbUJBQW1CO0lBQ25CLDBCQUEwQjtJQUMxQixzQkFBc0I7SUFDdEIsMkVBQTJFLEVBQUE7RUFkL0U7SUFrQkksbUJBQU87WUFBUCxPQUFPO0lBQ1AsWUFBWTtJQUNaLGdCQUFlO0lBQ2YsbUJBQW1CO0lBQ25CLGtCQUFrQixFQUFBO0VBdEJ0QjtJQXlCSSxjQUFjLEVBQUE7RUF6QmxCO0lBNkJJLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsYUFBYTtJQUNiLGlCQUFpQjtJQUNqQixnQkFBZ0I7SUFDaEIsbUJBQW1CO0lBQ25CLFlBQVk7SUFDWixXQUFXO0lBQ1gsZUFBZTtJQUNmLHNCQUFzQixFQUFBO0VBSTFCO0VBQ0Usd0JBQWdCO0VBQWhCLGdCQUFnQjtFQUNoQixTQUFTLEVBQUE7RUFHWDtFQUNFLHlCQUF5QixFQUFBO0VBRTNCO0VBQ0UscUJBQXFCLEVBQUE7RUFFdkI7RUFDRSxhQUFhLEVBQUE7RUFFZjtFQUNFLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsT0FBTyxFQUFBO0VBSFQ7SUFLSSxlQUFlO0lBQ2YsV0FBVztJQUNYLDJCQUFvQjtJQUFwQixvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLGNBQWMsRUFBQTtFQVRsQjtNQVdNLFdBQVc7TUFDWCxjQUFjO01BQ2QseUJBQXlCO01BQ3pCLFdBQVc7TUFDWCxhQUFhO01BQ2Isc0JBQXNCO01BQ3RCLDJFQUEyRSxFQUFBO0VBakJqRjtNQXFCTSxrQkFBa0I7TUFDbEIsbUJBQW1CO01BQ25CLFdBQVc7TUFDWCxZQUFZO01BQ1osdUNBQXVDO01BQ3ZDLHNCQUFzQjtNQUN0QixnQkFBZ0IsRUFBQTtFQTNCdEI7TUE4Qk0sV0FBVztNQUNYLGVBQWU7TUFDZixlQUFlLEVBQUE7RUFoQ3JCO01Bb0NNLFdBQVc7TUFDWCxXQUFXO01BQ1gscUJBQXFCLEVBQUE7RUF0QzNCO1FBd0NRLFNBQVMsRUFBQTtFQXhDakI7UUE0Q1UsZUFBZTtRQUNmLFdBQVcsRUFBQTtFQTdDckI7SUFtREksV0FBVyxFQUFBO0VBbkRmO01BcURNLE9BQU8sRUFBQTtFQXJEYjtNQXdETSxrQkFBa0I7TUFDbEIsZ0JBQWdCLEVBQUE7RUF6RHRCO01BNERNLGdCQUFnQixFQUFBO0VBNUR0QjtNQStETSxXQUFXO01BQ1gsK0JBQStCO01BQy9CLDZCQUE2QixFQUFBO0VBakVuQztJQXFFSSxZQUFZLEVBQUE7RUFyRWhCO01BdUVNLFFBQVEsRUFBQTtFQXZFZDtNQTBFTSxtQkFBbUI7TUFDbkIsZUFBZSxFQUFBO0VBM0VyQjtNQThFTSxpQkFBaUIsRUFBQTtFQTlFdkI7TUFpRk0sWUFBWTtNQUNaLGdDQUFnQztNQUNoQyw0QkFBNEIsRUFBQTtFQW5GbEM7SUF1RkksZUFBYyxFQUFBO0VBdkZsQjtJQTBGSSxZQUFZO0lBQ1osYUFBYSxFQUFBO0VBM0ZqQjtJQThGSSxvQkFBYTtJQUFiLGFBQWE7SUFDYixZQUFZLEVBQUE7RUFHbEI7RUFDRSx1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL19wYWdlcy9jaGF0L2NoYXQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gIC5pbnB1dC13cmFwIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIHRleHRhcmVhIHtcbiAgICAgIGZsZXg6IDQ7XG4gICAgICBib3JkZXI6IDA7XG4gICAgICBwYWRkaW5nOiAxN3B4O1xuICAgICAgcmVzaXplOiBub25lO1xuICAgICAgYmFja2dyb3VuZCA6ICNmMWYxZjE7XG4gICAgICBtYXJnaW4tcmlnaHQ6IDVweDtcbiAgICAgIG1hcmdpbi1ib3R0b206IDVweDtcbiAgICAgIG1hcmdpbi1sZWZ0OiAyNXB4O1xuICAgICAgYm9yZGVyLXJhZGl1czogMzVweDtcbiAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAwO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgIzIyMjtcbiAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4xKSwgMCAxcHggMnB4IDAgcmdiYSgwLCAwLCAwLCAwLjA2KTtcbiAgXG4gICAgfVxuICAgIC5zZW5kLWJ0biB7XG4gICAgICBmbGV4OiAwO1xuICAgICAgaGVpZ2h0OiA2MHB4O1xuICAgICAgYmFja2dyb3VuZDpub25lO1xuICAgICAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcbiAgICB9XG4gICAgLnNlbmQtaWNvbntcbiAgICAgIGNvbG9yOiAjZjFmMWYxO1xuICAgIH1cbiAgXG4gICAgLmljb24td3JhcHBlcntcbiAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDM1cHg7XG4gICAgICBwYWRkaW5nOiAxNXB4O1xuICAgICAgcGFkZGluZy10b3A6IDEzcHg7XG4gICAgICBiYWNrZ3JvdW5kOiAjOTk5O1xuICAgICAgYm9yZGVyLXJhZGl1czogMzVweDtcbiAgICAgIGhlaWdodDogNTBweDtcbiAgICAgIHdpZHRoOiA1MHB4O1xuICAgICAgZm9udC1zaXplOiAyNXB4O1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgIzIyMjtcbiAgICAgIFxuICAgIH1cbiAgfVxuICBpb24tZm9vdGVyIHtcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xuICAgIGJvdHRvbTogMDtcbiAgXG4gIH1cbiAgaW9uLWNvbnRlbnQgLnNjcm9sbC1jb250ZW50IHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjVmNWY1O1xuICB9XG4gIC5saW5lLWJyZWFrZXIge1xuICAgIHdoaXRlLXNwYWNlOiBwcmUtbGluZTtcbiAgfVxuICAudmVydGljYWwtc3BhY2V7XG4gICAgaGVpZ2h0OiAxMjBweDtcbiAgfVxuICAuY29udGFpbmVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgcmlnaHQ6IDA7XG4gICAgbGVmdDogMDtcbiAgICAubWVzc2FnZSB7XG4gICAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgICBjbGVhcjogYm90aDtcbiAgICAgIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgcGFkZGluZzogN3B4IDA7XG4gICAgICAubXNnLWNvbnRlbnQge1xuICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgY29sb3I6ICMzNDM0MzQ7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNGNUVDRTE7XG4gICAgICAgIGZsb2F0OiBsZWZ0OyAgICAgICAgXG4gICAgICAgIHBhZGRpbmc6IDE1cHg7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMyMjI7XG4gICAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4xKSwgMCAxcHggMnB4IDAgcmdiYSgwLCAwLCAwLCAwLjA2KTtcbiAgXG4gICAgICB9XG4gICAgICAudXNlci1pbWcge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDQ1cHg7XG4gICAgICAgIHdpZHRoOiAyNXB4O1xuICAgICAgICBoZWlnaHQ6IDI1cHg7XG4gICAgICAgIGJveC1zaGFkb3c6IDAgMCAycHggcmdiYSgwLCAwLCAwLCAwLjM2KTtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzIyMjtcbiAgICAgICAgYmFja2dyb3VuZDogI2ZmZjtcbiAgICAgIH1cbiAgICAgIC5jcmVhdGVkLWF0e1xuICAgICAgICBjb2xvcjogIzc3NztcbiAgICAgICAgZm9udC1zaXplOiAxMHB4O1xuICAgICAgICBtYXJnaW4tdG9wOiA3cHg7XG4gICAgICB9XG4gICAgICBcbiAgICAgIC5tc2ctZGV0YWlsIHtcbiAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgICAgIHAge1xuICAgICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgfVxuICAgICAgICAubXNnLWluZm8ge1xuICAgICAgICAgIHAge1xuICAgICAgICAgICAgZm9udC1zaXplOiAuOGVtO1xuICAgICAgICAgICAgY29sb3I6ICMyMjI7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICAgIC5sZWZ0e1xuICAgICAgZmxvYXQ6IGxlZnQ7XG4gICAgICAudXNlci1pbWd7XG4gICAgICAgIGxlZnQ6IDA7XG4gICAgICB9XG4gICAgICAubXNnLWRldGFpbHtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAzMHB4O1xuICAgICAgICBwYWRkaW5nLXJpZ2h0OiAwO1xuICAgICAgfVxuICAgICAgLm1zZy1pbmZve1xuICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgICAgfVxuICAgICAgLm1zZy1jb250ZW50e1xuICAgICAgICBmbG9hdDogbGVmdDtcbiAgICAgICAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMzNweDtcbiAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDMzcHg7XG4gICAgICB9XG4gICAgfVxuICAgIC5yaWdodHtcbiAgICAgIGZsb2F0OiByaWdodDtcbiAgICAgIC51c2VyLWltZ3tcbiAgICAgICAgcmlnaHQ6IDA7XG4gICAgICB9XG4gICAgICAubXNnLWRldGFpbHtcbiAgICAgICAgcGFkZGluZy1yaWdodDogMzBweDtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAwO1xuICAgICAgfVxuICAgICAgLm1zZy1pbmZve1xuICAgICAgICB0ZXh0LWFsaWduOiByaWdodDtcbiAgICAgIH1cbiAgICAgIC5tc2ctY29udGVudHtcbiAgICAgICAgZmxvYXQ6IHJpZ2h0O1xuICAgICAgICBib3JkZXItYm90dG9tLXJpZ2h0LXJhZGl1czogMzNweDtcbiAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMzNweDtcbiAgICAgIH1cbiAgICB9XG4gICAgLnF1ZXN0aW9uLW1hcmt7XG4gICAgICBmb250LXNpemU6OTVweDtcbiAgICB9XG4gICAgLmNvZmZlZXtcbiAgICAgIHdpZHRoOiAxMTBweDtcbiAgICAgIGhlaWdodDogMTEwcHg7XG4gICAgfVxuICAgIC5jb2ZmZWUtd3JhcHBlcntcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICB3aWR0aDogMTA3cHg7XG4gICAgfVxuICB9ICBcbi5jaGF0LW5hbWV7XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBtYXJnaW4tcmlnaHQ6IDUwcHg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59Il19 */";
     /***/
   },
 
@@ -4280,7 +4257,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function ChatRoomPage(authService, chatService, location, ngZone, modalCtrl, router, route) {
-        var _this12 = this;
+        var _this13 = this;
 
         _classCallCheck(this, ChatRoomPage);
 
@@ -4296,32 +4273,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         console.log(authService.currentUser);
         console.log(authService.currentUserValue);
         authService.currentUser.subscribe(function (user) {
-          _this12.id = user.id;
+          _this13.id = user.id;
         });
       }
 
       _createClass(ChatRoomPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this13 = this;
+          var _this14 = this;
 
           this.chat = this.chatService.getActiveChat();
           this.route.paramMap.subscribe(function (params) {
-            _this13.chatKey = params.get('with');
+            _this14.chatKey = params.get('with');
 
-            _this13.chatService.getMessages(_this13.chatKey).subscribe(function (data) {
+            _this14.chatService.getMessages(_this14.chatKey).subscribe(function (data) {
               data.forEach(function (message) {
-                _this13.messages.push(message);
+                _this14.messages.push(message);
 
-                _this13.toBottom();
+                _this14.toBottom();
               });
             });
 
-            _this13.chatService.connect(_this13.chatKey, function () {
-              _this13.chatService.bindToMessages().subscribe(function (message) {
-                _this13.messages.push(message);
+            _this14.chatService.connect(_this14.chatKey, function () {
+              _this14.chatService.bindToMessages().subscribe(function (message) {
+                _this14.messages.push(message);
 
-                _this13.toBottom();
+                _this14.toBottom();
               });
             });
           });
@@ -4334,12 +4311,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "toBottom",
         value: function toBottom() {
-          var _this14 = this;
+          var _this15 = this;
 
           setTimeout(function () {
             try {
-              _this14.ngZone.run(function () {
-                return _this14.messagesContent.scrollToBottom(400);
+              _this15.ngZone.run(function () {
+                return _this15.messagesContent.scrollToBottom(400);
               });
             } catch (ex) {}
           });
@@ -4609,7 +4586,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee11() {
-            var _this15 = this;
+            var _this16 = this;
 
             var loading;
             return regeneratorRuntime.wrap(function _callee11$(_context11) {
@@ -4628,13 +4605,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     .subscribe(function (token) {
                       console.log(token);
 
-                      _this15.router.navigate([_this15.returnUrl]);
+                      _this16.router.navigate([_this16.returnUrl]);
 
                       loading.dismiss();
                     }, function (error) {
                       console.log(error);
 
-                      _this15.toastService.somethingWentWrong();
+                      _this16.toastService.somethingWentWrong();
 
                       loading.dismiss();
                     });
@@ -4888,7 +4865,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function RegisterPage(translateService, authService, toastService, location) {
-        var _this16 = this;
+        var _this17 = this;
 
         _classCallCheck(this, RegisterPage);
 
@@ -4898,7 +4875,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.location = location;
         this.languages = _datasources_languages__WEBPACK_IMPORTED_MODULE_4__["languages"];
         translateService.get(Object(_datasources_languages__WEBPACK_IMPORTED_MODULE_4__["getLanguageByPrefix"])(this.translateService.getBrowserLang())).subscribe(function (result) {
-          return _this16.language = result;
+          return _this17.language = result;
         });
       }
 
@@ -4913,7 +4890,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "register",
         value: function register(form) {
-          var _this17 = this;
+          var _this18 = this;
 
           if (!this.birthday) {
             this.toastService.toastError(BIRTHDAY_REQUIRED_KEY);
@@ -4922,7 +4899,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           form.value['birthday'] = this.birthday;
           this.authService.register(form.value).subscribe(function (data) {
-            _this17.location.back();
+            _this18.location.back();
           });
         }
       }]);
@@ -5024,7 +5001,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function AdmobFreeService(admobFree, http, platform) {
-        var _this18 = this;
+        var _this19 = this;
 
         _classCallCheck(this, AdmobFreeService);
 
@@ -5052,15 +5029,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           document.addEventListener('admob.rewardvideo.events.COMPLETE', function () {// handle event
           });
           document.addEventListener('admob.rewardvideo.events.LOAD_FAIL', function () {
-            _this18.onRewardVideoListener && _this18.onRewardVideoListener.onFail();
+            _this19.onRewardVideoListener && _this19.onRewardVideoListener.onFail();
           });
           document.addEventListener('admob.rewardvideo.events.CLOSE', function () {
             // handle event
-            _this18.onRewardVideoListener && _this18.onRewardVideoListener.onFail();
+            _this19.onRewardVideoListener && _this19.onRewardVideoListener.onFail();
           });
           document.addEventListener('admob.rewardvideo.events.REWARD', function () {
             // handle event
-            _this18.onRewardVideoListener && _this18.onRewardVideoListener.onReward();
+            _this19.onRewardVideoListener && _this19.onRewardVideoListener.onReward();
           }); // // Load ad configuration
           // this.admobFree.interstitial.config(this.interstitialConfig);
           // //Prepare Ad to Show
@@ -5069,34 +5046,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           //     // alert(1);
           //   }).catch(e => alert(e));
 
-          if (!_this18.RewardVideoConfig.isTesting) _this18.RewardVideoConfig.id = _this18.platform.is('ios') ? 'ca-app-pub-6771007436830318/9397716981' : _this18.platform.is('android') ? 'ca-app-pub-6771007436830318/2995960166' : ''; // Load ad configuration
+          if (!_this19.RewardVideoConfig.isTesting) _this19.RewardVideoConfig.id = _this19.platform.is('ios') ? 'ca-app-pub-6771007436830318/9397716981' : _this19.platform.is('android') ? 'ca-app-pub-6771007436830318/2995960166' : ''; // Load ad configuration
 
-          _this18.admobFree.rewardVideo.config(_this18.RewardVideoConfig);
+          _this19.admobFree.rewardVideo.config(_this19.RewardVideoConfig);
         });
       }
 
       _createClass(AdmobFreeService, [{
         key: "rewardVideo",
         value: function rewardVideo() {
-          var _this19 = this;
+          var _this20 = this;
 
           //Prepare Ad to Show
-          this.admobFree.rewardVideo.prepare().then(function () {
-            //Check if Ad is loaded
-            _this19.admobFree.rewardVideo.isReady().then(function () {
-              //Will show prepared Ad
-              _this19.admobFree.rewardVideo.show().then(function () {
-                return console.log('showing...');
+          this.platform.ready().then(function () {
+            _this20.admobFree.rewardVideo.prepare().then(function () {
+              //Check if Ad is loaded
+              _this20.admobFree.rewardVideo.isReady().then(function () {
+                //Will show prepared Ad
+                _this20.admobFree.rewardVideo.show().then(function () {
+                  return console.log('showing...');
+                }).catch(function (e) {
+                  console.log(e);
+                  _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
+                });
               }).catch(function (e) {
                 console.log(e);
-                _this19.onRewardVideoListener && _this19.onRewardVideoListener.onFail();
+                _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
               });
             }).catch(function (e) {
               console.log(e);
-              _this19.onRewardVideoListener && _this19.onRewardVideoListener.onFail();
+              _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
             });
-          }).catch(function (e) {
-            return console.log(e);
           });
           return this;
         }
@@ -5218,7 +5198,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "login",
         value: function login(loginParams) {
-          var _this20 = this;
+          var _this21 = this;
 
           var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -5232,16 +5212,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (token) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem(TOKEN_KEY, token);
-              _this20.authToken = token;
+              _this21.authToken = token;
             }
 
             return token;
           }));
         }
       }, {
+        key: "refreshCredit",
+        value: function refreshCredit(creditResponse) {
+          var admobCredit = creditResponse && creditResponse['admobCredit'];
+          var admobRewardAvailable = admobCredit && creditResponse['count'] < creditResponse['countMax'];
+          this.currentUserValue.credits = creditResponse && creditResponse['credits'];
+          this.currentUserValue.rewardAvailable = admobRewardAvailable;
+          this.currentUserSubject.next(this.currentUserValue);
+        }
+      }, {
         key: "userInfo",
         value: function userInfo() {
-          var _this21 = this;
+          var _this22 = this;
 
           return this.http.get(USER_INFO).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (response) {
             console.log('userInfo', response);
@@ -5251,7 +5240,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (user) {
               localStorage.setItem('currentUser', JSON.stringify(user));
 
-              _this21.currentUserSubject.next(user);
+              _this22.currentUserSubject.next(user);
             }
 
             return user;
@@ -5266,7 +5255,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "logout",
         value: function logout() {
-          var _this22 = this;
+          var _this23 = this;
 
           console.log('logout-->'); // remove user from local storage to log user out
 
@@ -5274,9 +5263,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             console.log('finalize called');
             localStorage.removeItem('currentUser');
             localStorage.removeItem(TOKEN_KEY);
-            _this22.authToken = null;
+            _this23.authToken = null;
 
-            _this22.currentUserSubject.next(null);
+            _this23.currentUserSubject.next(null);
 
             location.reload(true);
           }));
@@ -5440,14 +5429,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee13() {
-            var _this23 = this;
+            var _this24 = this;
 
             return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
                 switch (_context13.prev = _context13.next) {
                   case 0:
                     this.authService.currentUser.subscribe(function (user) {
-                      if (user) _this23.userId = user.id;
+                      if (user) _this24.userId = user.id;
                     });
 
                   case 1:
@@ -5482,16 +5471,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getNotificationCount",
         value: function getNotificationCount() {
-          var _this24 = this;
+          var _this25 = this;
 
           this.http.get(NOTIFICATION_COUNT).subscribe(function (response) {
-            return _this24.notificationCount.next(response['count']);
+            return _this25.notificationCount.next(response['count']);
           });
         }
       }, {
         key: "unlock",
         value: function unlock(chat) {
+          var _this26 = this;
+
           return this.http.post(UNLOCK_CHAT.replace(KEY, chat.id), {}).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function (response) {
+            _this26.authService.refreshCredit(response['credit']);
+
             return _models_chat__WEBPACK_IMPORTED_MODULE_9__["ChatMapper"].fromJson(response['chat']);
           }));
         }
@@ -5536,7 +5529,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getMessages",
         value: function getMessages(key) {
-          var _this25 = this;
+          var _this27 = this;
 
           var _this = this;
 
@@ -5545,7 +5538,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             setTimeout(function () {
               var ids = messages.filter(function (message) {
-                return message.readBy.indexOf(_this25.userId) == -1;
+                return message.readBy.indexOf(_this27.userId) == -1;
               }).map(function (message) {
                 return message.id;
               });
@@ -5560,14 +5553,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "bindToMessages",
         value: function bindToMessages() {
-          var _this26 = this;
+          var _this28 = this;
 
           if (this.key == null) throw new Error('key must not be null!');
 
           var _this = this;
 
           var observable = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
-            _this.stompClient.subscribe('/user/chat/' + _this26.key, function (data) {
+            _this.stompClient.subscribe('/user/chat/' + _this28.key, function (data) {
               if (data['body']) {
                 var message = _models_message__WEBPACK_IMPORTED_MODULE_5__["MessageMapper"].fromJson(JSON.parse(data['body']));
 
@@ -5723,29 +5716,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "findClosestUsers",
         value: function findClosestUsers(mLat, mLong) {
-          var _this27 = this;
+          var _this29 = this;
 
           var maxDistance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
           this.clearSearch();
           var queryUrl = FIND_CLOSEST_USERS_URL + '?longitude=' + mLong + '&latitude=' + mLat + '&limit=' + PAGINATION_LIMIT + '&offset=0' + (maxDistance ? '&distance=' + maxDistance : "");
           queryUrl = this.appendFilters(queryUrl);
           return this.http.get(queryUrl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) {
-            _this27.mLastLat = mLat;
-            _this27.mLastLong = mLong;
-            _this27.mMaxDistance = maxDistance;
+            _this29.mLastLat = mLat;
+            _this29.mLastLong = mLong;
+            _this29.mMaxDistance = maxDistance;
 
             var localizedUsers = _models_user__WEBPACK_IMPORTED_MODULE_4__["LocalizedUserMapper"].fromJsonArray(response['users']);
 
             if (localizedUsers) localizedUsers.map(function (it) {
-              return _this27.localizedUsers.push(it);
+              return _this29.localizedUsers.push(it);
             });
-            return _this27.localizedUsers;
+            return _this29.localizedUsers;
           }));
         }
       }, {
         key: "moreUsersOnLastUsers",
         value: function moreUsersOnLastUsers() {
-          var _this28 = this;
+          var _this30 = this;
 
           console.log(this.userLoading, 'moreUsers');
           if (this.userLoading) return;
@@ -5760,11 +5753,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             console.log(response);
             if (localizedUsers) localizedUsers.map(function (it) {
-              return _this28.localizedUsers.push(it);
+              return _this30.localizedUsers.push(it);
             });
             return localizedUsers;
           })).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () {
-            return _this28.userLoading = false;
+            return _this30.userLoading = false;
           }));
         }
       }, {
@@ -6181,7 +6174,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateInfo",
         value: function updateInfo(info) {
-          var _this29 = this;
+          var _this31 = this;
 
           return this.http.post(UPDATE_INFO, {
             bio: info.bio,
@@ -6190,14 +6183,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (response) {
             var user = response && response['context'] && response['context']['user'] && _models_user__WEBPACK_IMPORTED_MODULE_8__["UserMapper"].fromJson(response['context']['user']);
 
-            if (user) _this29.auth.contextRefresh(user);
+            if (user) _this31.auth.contextRefresh(user);
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(response);
           }));
         }
       }, {
         key: "deleteImage",
         value: function deleteImage(imageId) {
-          var _this30 = this;
+          var _this32 = this;
 
           return this.http.request('DELETE', DELETE_IMAGE.replace(ID, imageId), {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -6206,40 +6199,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (response) {
             var user = response && response['context'] && response['context']['user'] && _models_user__WEBPACK_IMPORTED_MODULE_8__["UserMapper"].fromJson(response['context']['user']);
 
-            if (user) _this30.auth.contextRefresh(user);
+            if (user) _this32.auth.contextRefresh(user);
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(response);
           })).toPromise();
         }
       }, {
         key: "uploadImage",
         value: function uploadImage(index, sourceType) {
-          var _this31 = this;
+          var _this33 = this;
 
           return new Promise(function (resolve, reject) {
             if (index > 3) return;
             var options = {
               quality: 100,
-              destinationType: _this31.camera.DestinationType.FILE_URI,
+              destinationType: _this33.camera.DestinationType.FILE_URI,
               sourceType: sourceType,
               saveToPhotoAlbum: false,
-              encodingType: _this31.camera.EncodingType.JPEG,
-              mediaType: _this31.camera.MediaType.PICTURE,
+              encodingType: _this33.camera.EncodingType.JPEG,
+              mediaType: _this33.camera.MediaType.PICTURE,
               allowEdit: true,
               targetWidth: 1080,
               targetHeight: 1226,
               correctOrientation: true
             };
 
-            _this31.camera.getPicture(options).then(function (imageData) {
-              if (_this31.platform.is('mobileweb') || _this31.platform.is('desktop')) {
+            _this33.camera.getPicture(options).then(function (imageData) {
+              if (_this33.platform.is('mobileweb') || _this33.platform.is('desktop')) {
                 imageData = "data:image/jpeg;base64," + imageData;
                 var formData = new FormData();
 
-                var imgBlob = _this31.dataURItoBlob(imageData);
+                var imgBlob = _this33.dataURItoBlob(imageData);
 
-                formData.append('image', imgBlob, _this31.createFileName());
+                formData.append('image', imgBlob, _this33.createFileName());
 
-                _this31.uploadImageData(UPLOAD_URL + "/".concat(index), formData, function (user, response) {
+                _this33.uploadImageData(UPLOAD_URL + "/".concat(index), formData, function (user, response) {
                   if (!user.images) {
                     user.images = new Array(3);
                   }
@@ -6253,7 +6246,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   return reject(err);
                 });
               } else {
-                _this31.uploadUri(UPLOAD_URL + "/".concat(index), imageData, function (user, response) {
+                _this33.uploadUri(UPLOAD_URL + "/".concat(index), imageData, function (user, response) {
                   if (!user.images) {
                     user.images = new Array(3);
                   }
@@ -6275,33 +6268,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "udateProfileImg",
         value: function udateProfileImg(sourceType) {
-          var _this32 = this;
+          var _this34 = this;
 
           var onUri = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
           var onError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
           return new Promise(function (resolve, reject) {
             var options = {
               quality: 100,
-              destinationType: _this32.camera.DestinationType.FILE_URI,
+              destinationType: _this34.camera.DestinationType.FILE_URI,
               sourceType: sourceType,
               saveToPhotoAlbum: false,
-              encodingType: _this32.camera.EncodingType.JPEG,
-              mediaType: _this32.camera.MediaType.PICTURE,
+              encodingType: _this34.camera.EncodingType.JPEG,
+              mediaType: _this34.camera.MediaType.PICTURE,
               targetWidth: 400,
               targetHeight: 400,
               correctOrientation: true
             };
 
-            _this32.camera.getPicture(options).then(function (imageData) {
-              if (_this32.platform.is('mobileweb') || _this32.platform.is('desktop')) {
+            _this34.camera.getPicture(options).then(function (imageData) {
+              if (_this34.platform.is('mobileweb') || _this34.platform.is('desktop')) {
                 imageData = "data:image/jpeg;base64," + imageData;
                 var formData = new FormData();
 
-                var imgBlob = _this32.dataURItoBlob(imageData);
+                var imgBlob = _this34.dataURItoBlob(imageData);
 
-                formData.append('image', imgBlob, _this32.createFileName());
+                formData.append('image', imgBlob, _this34.createFileName());
 
-                _this32.uploadImageData(UPDATE_PROFILE_IMG_URL, formData, function (user, response) {
+                _this34.uploadImageData(UPDATE_PROFILE_IMG_URL, formData, function (user, response) {
                   console.log('image successful updated -->' + response['url']);
                   user.profileImg = response['url'];
                   return user;
@@ -6311,7 +6304,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   return reject(err);
                 });
               } else {
-                _this32.uploadUri(UPDATE_PROFILE_IMG_URL, imageData, function (user, response) {
+                _this34.uploadUri(UPDATE_PROFILE_IMG_URL, imageData, function (user, response) {
                   console.log('image successful updated -->' + response['url']);
                   user.profileImg = response['url'];
                   return user;
@@ -6332,7 +6325,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "uploadUri",
         value: function uploadUri(upload_url, uri, getUpdatedUser) {
-          var _this33 = this;
+          var _this35 = this;
 
           return new Promise(function (resolve, reject) {
             var options = {
@@ -6340,18 +6333,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               chunkedMode: false,
               mimeType: "image/jpeg",
               headers: {
-                'Authorization': 'Bearer ' + _this33.auth.authToken
+                'Authorization': 'Bearer ' + _this35.auth.authToken
               },
-              fileName: _this33.createFileName()
+              fileName: _this35.createFileName()
             };
 
-            _this33.fileTransfer.upload(encodeURI(uri), upload_url, options).then(function (data) {
+            _this35.fileTransfer.upload(encodeURI(uri), upload_url, options).then(function (data) {
               console.log(data);
               console.log('image successful updated -->', JSON.parse(data.response));
-              var user = getUpdatedUser(_this33.auth.currentUserValue, JSON.parse(data.response));
+              var user = getUpdatedUser(_this35.auth.currentUserValue, JSON.parse(data.response));
               console.log('user in upload image data-->', user);
 
-              _this33.auth.contextRefresh(user);
+              _this35.auth.contextRefresh(user);
 
               resolve(user);
             }).catch(function (err) {
@@ -6362,15 +6355,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "uploadImageData",
         value: function uploadImageData(upload_url, formData, getUpdatedUser) {
-          var _this34 = this;
+          var _this36 = this;
 
           return new Promise(function (resolve, reject) {
-            _this34.http.post(upload_url, formData).subscribe(function (__response) {
+            _this36.http.post(upload_url, formData).subscribe(function (__response) {
               console.log('image successful updated -->' + __response['url']);
-              var user = getUpdatedUser(_this34.auth.currentUserValue, __response);
+              var user = getUpdatedUser(_this36.auth.currentUserValue, __response);
               console.log('user in upload image data-->', user);
 
-              _this34.auth.contextRefresh(user);
+              _this36.auth.contextRefresh(user);
 
               resolve(user);
             }, function (throwable) {
@@ -6451,12 +6444,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "listPlans",
         value: function listPlans() {
-          var _this35 = this;
+          var _this37 = this;
 
           return this.http.get(LIST_PLANS).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["concatMap"])(function (response) {
             if (response && response['products']) {
-              _this35.lastPlans = _models_pricing_plan__WEBPACK_IMPORTED_MODULE_11__["PricingPlanMapper"].fromJsonArray(response['products']);
-              return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(_this35.lastPlans);
+              _this37.lastPlans = _models_pricing_plan__WEBPACK_IMPORTED_MODULE_11__["PricingPlanMapper"].fromJsonArray(response['products']);
+              return Object(rxjs__WEBPACK_IMPORTED_MODULE_10__["of"])(_this37.lastPlans);
             } else return null;
           }));
         }
@@ -6468,7 +6461,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "deleteAccount",
         value: function deleteAccount(reason) {
-          var _this36 = this;
+          var _this38 = this;
 
           return this.http.request('DELETE', DELETE_ACCOUNT, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -6478,7 +6471,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               reason: reason
             }
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () {
-            return _this36.auth.logout().subscribe();
+            return _this38.auth.logout().subscribe();
           }));
         }
       }]);
@@ -6616,7 +6609,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function getFormattedDistance(distance) {
-      return distance ? distance > 1000 ? "".concat(Math.round(distance / 10) / 100, " km").replace('.', ",") : "".concat(distance, " m") : '';
+      return distance ? distance >= 1000 ? "".concat(Math.round(distance / 10) / 100, " km").replace('.', ",") : "".concat(distance, " m") : '';
     }
 
     function removeObjectFromArray(array, obj) {
@@ -6977,51 +6970,51 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic-native/screen-orientation/ngx */
+    "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
-    var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic-native/splash-screen/ngx */
     "./node_modules/@ionic-native/splash-screen/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @ionic-native/status-bar/ngx */
     "./node_modules/@ionic-native/status-bar/ngx/index.js");
     /* harmony import */
 
 
-    var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _services_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./_services/auth.service */
     "./src/app/_services/auth.service.ts");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
-    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @ngx-translate/core */
     "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
     /* harmony import */
 
 
-    var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @ionic-native/onesignal/ngx */
     "./node_modules/@ionic-native/onesignal/ngx/index.js");
-    /* harmony import */
-
-
-    var ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! ionic-image-loader */
-    "./node_modules/ionic-image-loader/fesm2015/ionic-image-loader.js");
     /* harmony import */
 
 
@@ -7038,7 +7031,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var AppComponent =
     /*#__PURE__*/
     function () {
-      function AppComponent(platform, splashScreen, statusBar, oneSignal, translate, authenticationService, chatService, imageLoaderConfig, router) {
+      function AppComponent(platform, splashScreen, statusBar, oneSignal, translate, authenticationService, chatService, screenOrientation, router) {
         _classCallCheck(this, AppComponent);
 
         this.platform = platform;
@@ -7048,7 +7041,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.translate = translate;
         this.authenticationService = authenticationService;
         this.chatService = chatService;
-        this.imageLoaderConfig = imageLoaderConfig;
+        this.screenOrientation = screenOrientation;
         this.router = router;
         this.showSplash = true;
         this.initializeApp();
@@ -7063,60 +7056,48 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "initializeApp",
         value: function initializeApp() {
-          var _this37 = this;
+          var _this39 = this;
 
+          this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
           this.platform.ready().then(function () {
-            _this37.splashScreen.hide();
+            _this39.splashScreen.hide();
 
             Object(rxjs__WEBPACK_IMPORTED_MODULE_11__["timer"])(3000).subscribe(function () {
               document.getElementById('ion-app').style.opacity = '1';
-              _this37.showSplash = false;
+              _this39.showSplash = false;
             }); // <-- hide animation after 3s
 
-            _this37.imageLoaderConfig.setFallbackUrl('assets/imgs/user.svg'); // if images fail to load, display this image instead
-
-
-            _this37.imageLoaderConfig.enableSpinner(false);
-
-            _this37.imageLoaderConfig.setMaximumCacheSize(40 * 1024 * 1024); // set max size to 20MB
-
-
-            _this37.imageLoaderConfig.setMaximumCacheAge(7 * 24 * 60 * 60 * 1000); // 7 days
-
-
-            _this37.imageLoaderConfig.useImageTag(true);
-
-            _this37.authenticationService.currentUser.subscribe(function (x) {
-              return _this37.currentUser = x;
+            _this39.authenticationService.currentUser.subscribe(function (x) {
+              return _this39.currentUser = x;
             }); // this language will be used as a fallback when a translation isn't found in the current language
 
 
-            _this37.translate.setDefaultLang('en'); // the lang to use, if the lang isn't available, it will use the current loader to get them
+            _this39.translate.setDefaultLang('en'); // the lang to use, if the lang isn't available, it will use the current loader to get them
 
 
-            _this37.translate.use('en');
+            _this39.translate.use('en');
 
-            _this37.oneSignal.startInit('700f900e-f399-44e4-800d-5fc23f769dbc', '436027625251');
+            _this39.oneSignal.startInit('700f900e-f399-44e4-800d-5fc23f769dbc', '436027625251');
 
-            _this37.oneSignal.inFocusDisplaying(_this37.oneSignal.OSInFocusDisplayOption.Notification);
+            _this39.oneSignal.inFocusDisplaying(_this39.oneSignal.OSInFocusDisplayOption.Notification);
 
-            _this37.oneSignal.handleNotificationReceived().subscribe(function () {
+            _this39.oneSignal.handleNotificationReceived().subscribe(function () {
               // do something when notification is received
-              _this37.chatService.updateChatSubject.next(true);
+              _this39.chatService.updateChatSubject.next(true);
 
-              var notificationCount = _this37.chatService.notificationCount.getValue();
+              var notificationCount = _this39.chatService.notificationCount.getValue();
 
-              _this37.chatService.notificationCount.next(notificationCount + 1);
+              _this39.chatService.notificationCount.next(notificationCount + 1);
             });
 
-            _this37.oneSignal.handleNotificationOpened().subscribe(function () {// do something when a notification is opened
+            _this39.oneSignal.handleNotificationOpened().subscribe(function () {// do something when a notification is opened
             });
 
-            _this37.oneSignal.endInit();
+            _this39.oneSignal.endInit();
 
-            _this37.statusBar.styleDefault();
+            _this39.statusBar.styleDefault();
 
-            _this37.enableDarkMode();
+            _this39.enableDarkMode();
           });
         }
       }, {
@@ -7140,23 +7121,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     AppComponent.ctorParameters = function () {
       return [{
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]
       }, {
-        type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"]
+        type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__["SplashScreen"]
       }, {
-        type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]
+        type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"]
       }, {
-        type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"]
+        type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"]
       }, {
-        type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"]
+        type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_8__["TranslateService"]
       }, {
-        type: _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]
+        type: _services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]
       }, {
         type: _services_chat_service__WEBPACK_IMPORTED_MODULE_10__["ChatService"]
       }, {
-        type: ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__["ImageLoaderConfigService"]
+        type: _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_2__["ScreenOrientation"]
       }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
       }];
     };
 
@@ -7165,7 +7146,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./app.component.html */
       "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _services_chat_service__WEBPACK_IMPORTED_MODULE_10__["ChatService"], ionic_image_loader__WEBPACK_IMPORTED_MODULE_9__["ImageLoaderConfigService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_8__["TranslateService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"], _services_chat_service__WEBPACK_IMPORTED_MODULE_10__["ChatService"], _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_2__["ScreenOrientation"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]])], AppComponent);
     /***/
   },
 
@@ -7317,123 +7298,123 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    /*! @ionic-native/screen-orientation/ngx */
+    "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
     /*! @ionic-native/Camera/ngx */
     "./node_modules/@ionic-native/Camera/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
     /*! @ionic-native/file-transfer/ngx */
     "./node_modules/@ionic-native/file-transfer/ngx/index.js");
     /* harmony import */
 
 
-    var _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
+    var _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
     /*! ./_helpers/error.interceptor */
     "./src/app/_helpers/error.interceptor.ts");
     /* harmony import */
 
 
-    var _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
+    var _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
     /*! ./_helpers/jwt.interceptor */
     "./src/app/_helpers/jwt.interceptor.ts");
     /* harmony import */
 
 
-    var _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
+    var _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
     /*! @ionic-native/globalization/ngx */
     "./node_modules/@ionic-native/globalization/ngx/index.js");
     /* harmony import */
 
 
-    var _utils_transitions__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+    var _utils_transitions__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
     /*! ./_utils/transitions */
     "./src/app/_utils/transitions.ts");
     /* harmony import */
 
 
-    var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
+    var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
     /*! @ionic-native/native-storage/ngx */
     "./node_modules/@ionic-native/native-storage/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
+    var _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(
     /*! @ionic-native/facebook/ngx */
     "./node_modules/@ionic-native/facebook/ngx/index.js");
     /* harmony import */
 
 
-    var _components_image_modal_image_modal_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(
+    var _components_image_modal_image_modal_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
     /*! ./_components/image-modal/image-modal.component */
     "./src/app/_components/image-modal/image-modal.component.ts");
     /* harmony import */
 
 
-    var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
+    var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(
     /*! @ionic-native/onesignal/ngx */
     "./node_modules/@ionic-native/onesignal/ngx/index.js");
     /* harmony import */
 
 
-    var _components_user_profile_popover_user_profile_popover_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(
+    var _components_user_profile_popover_user_profile_popover_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
     /*! ./_components/user-profile-popover/user-profile-popover.component */
     "./src/app/_components/user-profile-popover/user-profile-popover.component.ts");
     /* harmony import */
 
 
-    var _components_edit_user_profile_edit_user_profile_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
+    var _components_edit_user_profile_edit_user_profile_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
     /*! ./_components/edit-user-profile/edit-user-profile.component */
     "./src/app/_components/edit-user-profile/edit-user-profile.component.ts");
     /* harmony import */
 
 
-    var ng2_dragula__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
+    var ng2_dragula__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
     /*! ng2-dragula */
     "./node_modules/ng2-dragula/dist/fesm2015/ng2-dragula.js");
     /* harmony import */
 
 
-    var _components_manage_credits_manage_credits_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
+    var _components_manage_credits_manage_credits_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(
     /*! ./_components/manage-credits/manage-credits.component */
     "./src/app/_components/manage-credits/manage-credits.component.ts");
     /* harmony import */
 
 
-    var _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(
+    var _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(
     /*! ./_components/select-plan/select-plan.component */
     "./src/app/_components/select-plan/select-plan.component.ts");
     /* harmony import */
 
 
-    var _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(
+    var _services_admob_free_service__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(
     /*! ./_services/admob-free.service */
     "./src/app/_services/admob-free.service.ts");
     /* harmony import */
 
 
-    var _ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(
+    var _ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(
     /*! @ionic-native/admob-free/ngx */
     "./node_modules/@ionic-native/admob-free/ngx/index.js");
     /* harmony import */
 
 
-    var _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(
+    var _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
     /*! ./delete-account/delete-account.component */
     "./src/app/delete-account/delete-account.component.ts");
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
+    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(
     /*! @ionic-native/in-app-purchase/ngx */
     "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
-    /* harmony import */
-
-
-    var ionic_image_loader__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(
-    /*! ionic-image-loader */
-    "./node_modules/ionic-image-loader/fesm2015/ionic-image-loader.js");
     /* harmony import */
 
 
@@ -7472,11 +7453,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _components_image_modal_image_modal_component__WEBPACK_IMPORTED_MODULE_29__["ImageModalComponent"], _components_manage_credits_manage_credits_component__WEBPACK_IMPORTED_MODULE_34__["ManageCreditsComponent"], _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_35__["SelectPlanComponent"], _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_38__["DeleteAccountComponent"], _components_user_profile_popover_user_profile_popover_component__WEBPACK_IMPORTED_MODULE_31__["UserProfilePopoverComponent"], _components_filter_filter_component__WEBPACK_IMPORTED_MODULE_42__["FilterComponent"], _components_edit_user_profile_edit_user_profile_component__WEBPACK_IMPORTED_MODULE_32__["EditUserProfileComponent"]],
-      entryComponents: [_components_image_modal_image_modal_component__WEBPACK_IMPORTED_MODULE_29__["ImageModalComponent"], _components_manage_credits_manage_credits_component__WEBPACK_IMPORTED_MODULE_34__["ManageCreditsComponent"], _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_35__["SelectPlanComponent"], _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_38__["DeleteAccountComponent"], _components_filter_filter_component__WEBPACK_IMPORTED_MODULE_42__["FilterComponent"], _components_user_profile_popover_user_profile_popover_component__WEBPACK_IMPORTED_MODULE_31__["UserProfilePopoverComponent"], _components_edit_user_profile_edit_user_profile_component__WEBPACK_IMPORTED_MODULE_32__["EditUserProfileComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _components_image_modal_image_modal_component__WEBPACK_IMPORTED_MODULE_30__["ImageModalComponent"], _components_manage_credits_manage_credits_component__WEBPACK_IMPORTED_MODULE_35__["ManageCreditsComponent"], _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_36__["SelectPlanComponent"], _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_39__["DeleteAccountComponent"], _components_user_profile_popover_user_profile_popover_component__WEBPACK_IMPORTED_MODULE_32__["UserProfilePopoverComponent"], _components_filter_filter_component__WEBPACK_IMPORTED_MODULE_42__["FilterComponent"], _components_edit_user_profile_edit_user_profile_component__WEBPACK_IMPORTED_MODULE_33__["EditUserProfileComponent"]],
+      entryComponents: [_components_image_modal_image_modal_component__WEBPACK_IMPORTED_MODULE_30__["ImageModalComponent"], _components_manage_credits_manage_credits_component__WEBPACK_IMPORTED_MODULE_35__["ManageCreditsComponent"], _components_select_plan_select_plan_component__WEBPACK_IMPORTED_MODULE_36__["SelectPlanComponent"], _delete_account_delete_account_component__WEBPACK_IMPORTED_MODULE_39__["DeleteAccountComponent"], _components_filter_filter_component__WEBPACK_IMPORTED_MODULE_42__["FilterComponent"], _components_user_profile_popover_user_profile_popover_component__WEBPACK_IMPORTED_MODULE_32__["UserProfilePopoverComponent"], _components_edit_user_profile_edit_user_profile_component__WEBPACK_IMPORTED_MODULE_33__["EditUserProfileComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
-        navAnimation: _utils_transitions__WEBPACK_IMPORTED_MODULE_26__["iosTransitionAnimation"]
-      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"], _pages_chat_chat_module__WEBPACK_IMPORTED_MODULE_16__["ChatRoomPageModule"], ionic_image_loader__WEBPACK_IMPORTED_MODULE_40__["IonicImageLoader"].forRoot(), ng2_dragula__WEBPACK_IMPORTED_MODULE_33__["DragulaModule"].forRoot(), _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"], //    SharedModule,
+        navAnimation: _utils_transitions__WEBPACK_IMPORTED_MODULE_27__["iosTransitionAnimation"]
+      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"], _pages_chat_chat_module__WEBPACK_IMPORTED_MODULE_16__["ChatRoomPageModule"], ng2_dragula__WEBPACK_IMPORTED_MODULE_34__["DragulaModule"].forRoot(), _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"], //    SharedModule,
       _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"], _pages_login_login_module__WEBPACK_IMPORTED_MODULE_19__["LoginPageModule"], //    ProfilePageModule,
       _pages_register_register_module__WEBPACK_IMPORTED_MODULE_20__["RegisterPageModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"].forRoot({
         loader: {
@@ -7485,13 +7466,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"]]
         }
       }), _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(), _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"]],
-      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_37__["AdMobFree"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_39__["InAppPurchase"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_36__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_25__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_27__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_28__["Facebook"], _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_41__["WebView"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_21__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_30__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_22__["FileTransfer"], {
+      providers: [_ionic_native_admob_free_ngx__WEBPACK_IMPORTED_MODULE_38__["AdMobFree"], _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_21__["ScreenOrientation"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_40__["InAppPurchase"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_17__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_18__["NativeGeocoder"], _services_admob_free_service__WEBPACK_IMPORTED_MODULE_37__["AdmobFreeService"], _ionic_native_globalization_ngx__WEBPACK_IMPORTED_MODULE_26__["Globalization"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_28__["NativeStorage"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_29__["Facebook"], _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_41__["WebView"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_22__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_31__["OneSignal"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_23__["FileTransfer"], {
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HTTP_INTERCEPTORS"],
-        useClass: _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_24__["JwtInterceptor"],
+        useClass: _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_25__["JwtInterceptor"],
         multi: true
       }, {
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HTTP_INTERCEPTORS"],
-        useClass: _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_23__["ErrorInterceptor"],
+        useClass: _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_24__["ErrorInterceptor"],
         multi: true
       }, {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
@@ -7772,5 +7753,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/main.ts");
     /***/
   }
-}, [[0, "runtime", "vendor"]]]); //# sourceMappingURL=main-es2015.js.map
+}, [[0, "runtime", "vendor"]]]);
 //# sourceMappingURL=main-es5.js.map

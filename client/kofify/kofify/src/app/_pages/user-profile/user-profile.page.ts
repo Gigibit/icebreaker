@@ -21,6 +21,11 @@ const COLUMN_COUNT = 4
 export class UserProfilePage implements OnInit {
   uri
   //requestedProposals: Proposal[]
+     // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
   userInfo: User 
   constructor(
     private location: Location,
@@ -39,9 +44,10 @@ export class UserProfilePage implements OnInit {
     
     ngOnInit() {
       
-      this.userInfo = this.authService.currentUserValue
       this.authService.currentUser.subscribe(user=>{
          this.userInfo = user
+         console.log(this.userInfo)
+
       })
     }
     

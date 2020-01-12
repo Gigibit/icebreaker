@@ -420,5 +420,5 @@
     /***/
 
   }
-}]); //# sourceMappingURL=input-shims-a4fc53ac-js-es2015.js.map
+}]);
 //# sourceMappingURL=input-shims-a4fc53ac-js-es5.js.map

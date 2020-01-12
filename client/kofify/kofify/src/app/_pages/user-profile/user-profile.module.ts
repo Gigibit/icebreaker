@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { UserProfilePage } from './user-profile.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { IonicImageLoader } from 'ionic-image-loader';
 
 const routes: Routes = [
   {
@@ -21,7 +20,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    IonicImageLoader,
     TranslateModule.forChild(),
     RouterModule.forChild(routes)
   ],

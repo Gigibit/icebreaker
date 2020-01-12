@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
   
   <div class="none-found-lbl" *ngIf="!localizedUsers || localizedUsers.length <= 0">
     {{ 'no_localized_users_were_found' | translate }}
@@ -27,11 +27,11 @@
       <ion-grid>
         <ion-row>
           <ion-col [class.compose]="compose" class="localized-user-col" size="6" *ngFor="let localizedUser of localizedUsers">
-            <ion-card style="--background: black" class="white localized-user-card imgInLoading" (click)="onLocalizedUserTap($event, localizedUser)">
+            <ion-card style="--background: black" class="white localized-user-card" (click)="onLocalizedUserTap($event, localizedUser)">
               <span *ngIf="isOnline(localizedUser)" class="online-badge"></span>
-              <img-loader 
+              <img 
               (load)="loadImg($event)" 
-              [src]="localizedUser.user.profileImg"></img-loader>
+              src="{{localizedUser.user.profileImg}}" />
               <div class="localized-user-img-shadow-layer"></div>
               <div class="card-title localized-user-info localized-user-name">
                 <p class="name-lbl">{{localizedUser.user.name}}, {{localizedUser.user.age}}</p>

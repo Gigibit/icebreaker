@@ -49,9 +49,6 @@
     <feature name="FileTransfer">
         <param name="ios-package" value="CDVFileTransfer" />
     </feature>
-    <feature name="Geolocation">
-        <param name="ios-package" value="CDVLocation" />
-    </feature>
     <feature name="Globalization">
         <param name="ios-package" value="CDVGlobalization" />
     </feature>
@@ -93,6 +90,12 @@
     </feature>
     <feature name="OneSignalPush">
         <param name="ios-package" value="OneSignalPush" />
+    </feature>
+    <feature name="CDVOrientation">
+        <param name="ios-package" value="CDVOrientation" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
     </feature>
     <name>Kofify</name>
     <description>Share a coffee with kofify is better.</description>
@@ -190,7 +193,4 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
-    <feature name="CDVOrientation">
-        <param name="ios-package" value="CDVOrientation" />
-    </feature>
 </widget>

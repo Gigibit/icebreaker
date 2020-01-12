@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -237,40 +233,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(Toast, [{
         key: "present",
-        value: function () {
-          var _present = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
-            var _this = this;
+        value: function present() {
+          var _this = this;
 
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'toastEnter', iosEnterAnimation, mdEnterAnimation, this.position);
+          return regeneratorRuntime.async(function present$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return regeneratorRuntime.awrap(Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'toastEnter', iosEnterAnimation, mdEnterAnimation, this.position));
 
-                  case 2:
-                    if (this.duration > 0) {
-                      this.durationTimeout = setTimeout(function () {
-                        return _this.dismiss(undefined, 'timeout');
-                      }, this.duration);
-                    }
+                case 2:
+                  if (this.duration > 0) {
+                    this.durationTimeout = setTimeout(function () {
+                      return _this.dismiss(undefined, 'timeout');
+                    }, this.duration);
+                  }
 
-                  case 3:
-                  case "end":
-                    return _context.stop();
-                }
+                case 3:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, this);
-          }));
-
-          function present() {
-            return _present.apply(this, arguments);
-          }
-
-          return present;
-        }()
+            }
+          }, null, this);
+        }
         /**
          * Dismiss the toast overlay after it has been presented.
          *
@@ -333,111 +319,91 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "buttonClick",
-        value: function () {
-          var _buttonClick = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2(button) {
-            var role, shouldDismiss;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    role = button.role;
+        value: function buttonClick(button) {
+          var role, shouldDismiss;
+          return regeneratorRuntime.async(function buttonClick$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  role = button.role;
 
-                    if (!Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["i"])(role)) {
-                      _context2.next = 3;
-                      break;
-                    }
+                  if (!Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["i"])(role)) {
+                    _context2.next = 3;
+                    break;
+                  }
 
-                    return _context2.abrupt("return", this.dismiss(undefined, role));
+                  return _context2.abrupt("return", this.dismiss(undefined, role));
 
-                  case 3:
-                    _context2.next = 5;
-                    return this.callButtonHandler(button);
+                case 3:
+                  _context2.next = 5;
+                  return regeneratorRuntime.awrap(this.callButtonHandler(button));
 
-                  case 5:
-                    shouldDismiss = _context2.sent;
+                case 5:
+                  shouldDismiss = _context2.sent;
 
-                    if (!shouldDismiss) {
-                      _context2.next = 8;
-                      break;
-                    }
+                  if (!shouldDismiss) {
+                    _context2.next = 8;
+                    break;
+                  }
 
-                    return _context2.abrupt("return", this.dismiss(undefined, button.role));
+                  return _context2.abrupt("return", this.dismiss(undefined, button.role));
 
-                  case 8:
-                    return _context2.abrupt("return", Promise.resolve());
+                case 8:
+                  return _context2.abrupt("return", Promise.resolve());
 
-                  case 9:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 9:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2, this);
-          }));
-
-          function buttonClick(_x) {
-            return _buttonClick.apply(this, arguments);
-          }
-
-          return buttonClick;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "callButtonHandler",
-        value: function () {
-          var _callButtonHandler = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3(button) {
-            var rtn;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    if (!(button && button.handler)) {
-                      _context3.next = 12;
-                      break;
-                    }
-
-                    _context3.prev = 1;
-                    _context3.next = 4;
-                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["s"])(button.handler);
-
-                  case 4:
-                    rtn = _context3.sent;
-
-                    if (!(rtn === false)) {
-                      _context3.next = 7;
-                      break;
-                    }
-
-                    return _context3.abrupt("return", false);
-
-                  case 7:
+        value: function callButtonHandler(button) {
+          var rtn;
+          return regeneratorRuntime.async(function callButtonHandler$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  if (!(button && button.handler)) {
                     _context3.next = 12;
                     break;
+                  }
 
-                  case 9:
-                    _context3.prev = 9;
-                    _context3.t0 = _context3["catch"](1);
-                    console.error(_context3.t0);
+                  _context3.prev = 1;
+                  _context3.next = 4;
+                  return regeneratorRuntime.awrap(Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["s"])(button.handler));
 
-                  case 12:
-                    return _context3.abrupt("return", true);
+                case 4:
+                  rtn = _context3.sent;
 
-                  case 13:
-                  case "end":
-                    return _context3.stop();
-                }
+                  if (!(rtn === false)) {
+                    _context3.next = 7;
+                    break;
+                  }
+
+                  return _context3.abrupt("return", false);
+
+                case 7:
+                  _context3.next = 12;
+                  break;
+
+                case 9:
+                  _context3.prev = 9;
+                  _context3.t0 = _context3["catch"](1);
+                  console.error(_context3.t0);
+
+                case 12:
+                  return _context3.abrupt("return", true);
+
+                case 13:
+                case "end":
+                  return _context3.stop();
               }
-            }, _callee3, null, [[1, 9]]);
-          }));
-
-          function callButtonHandler(_x2) {
-            return _callButtonHandler.apply(this, arguments);
-          }
-
-          return callButtonHandler;
-        }()
+            }
+          }, null, null, [[1, 9]]);
+        }
       }, {
         key: "renderButtons",
         value: function renderButtons(buttons, side) {
@@ -536,5 +502,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=73-es2015.js.map
+}]);
 //# sourceMappingURL=73-es5.js.map

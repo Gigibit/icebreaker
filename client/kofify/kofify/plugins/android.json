@@ -36,9 +36,6 @@
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.aklc.kofify"
-    },
     "cordova-plugin-globalization": {
       "PACKAGE_NAME": "com.aklc.kofify"
     },
@@ -74,6 +71,9 @@
       "PACKAGE_NAME": "com.aklc.kofify"
     },
     "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.aklc.kofify"
+    },
+    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.aklc.kofify"
     }
   },

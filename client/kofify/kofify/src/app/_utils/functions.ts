@@ -19,7 +19,7 @@ export function age(date: string){
 }
 
 export function getFormattedDistance(distance: number) : string{
-  return distance ? distance > 1000  ? `${Math.round(distance/10) / 100} km`.replace('.', ",") : `${distance} m` : ''
+  return distance ? distance >= 1000  ? `${Math.round(distance/10) / 100} km`.replace('.', ",") : `${distance} m` : ''
 }
 export function removeObjectFromArray(array: any[],obj:any): any[]{
     const index = array.indexOf(obj, 0);

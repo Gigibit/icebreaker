@@ -1056,5 +1056,5 @@
     /***/
 
   }
-}]); //# sourceMappingURL=dom-96781eef-a2fb04dd-js-es2015.js.map
+}]);
 //# sourceMappingURL=dom-96781eef-a2fb04dd-js-es5.js.map

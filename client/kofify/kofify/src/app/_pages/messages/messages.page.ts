@@ -31,12 +31,12 @@ export class MessagesPage implements OnInit{
   }
 
   ngOnInit(){
-    let imgs = document.getElementsByClassName('user-img')
-    for(var index = 0; index < imgs.length; index++) {
-      const element = imgs[index];
-      element.classList.remove('imgLoaded')
-      element.classList.add('imgInLoading')
-    }
+    // let imgs = document.getElementsByClassName('user-img')
+    // for(var index = 0; index < imgs.length; index++) {
+    //   const element = imgs[index];
+    //   element.classList.remove('imgLoaded')
+    //   element.classList.add('imgInLoading')
+    // }
     this.getChats()
     this.router.events.pipe(
       filter(event => event instanceof NavigationStart)
@@ -78,10 +78,10 @@ export class MessagesPage implements OnInit{
 
   }
   loadImg($event){
-    this.zone.run(()=>{
-      $event.target.classList.remove('imgInLoading')
-      $event.target.classList.add('imgLoaded')
-    })
+    // this.zone.run(()=>{
+    //   $event.target.classList.remove('imgInLoading')
+    //   $event.target.classList.add('imgLoaded')
+    // })
   }
 
 

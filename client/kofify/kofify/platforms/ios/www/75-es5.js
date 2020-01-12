@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -137,55 +133,45 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
-            var _this2 = this;
+        value: function connectedCallback() {
+          var _this2 = this;
 
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-624eea58.js */
-                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
+          return regeneratorRuntime.async(function connectedCallback$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
+                  /*! ./index-624eea58.js */
+                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
 
-                  case 2:
-                    _context.t0 = {
-                      el: this.el,
-                      gestureName: 'toggle',
-                      gesturePriority: 100,
-                      threshold: 5,
-                      passive: false,
-                      onStart: function onStart() {
-                        return _this2.onStart();
-                      },
-                      onMove: function onMove(ev) {
-                        return _this2.onMove(ev);
-                      },
-                      onEnd: function onEnd(ev) {
-                        return _this2.onEnd(ev);
-                      }
-                    };
-                    this.gesture = _context.sent.createGesture(_context.t0);
-                    this.disabledChanged();
+                case 2:
+                  _context.t0 = {
+                    el: this.el,
+                    gestureName: 'toggle',
+                    gesturePriority: 100,
+                    threshold: 5,
+                    passive: false,
+                    onStart: function onStart() {
+                      return _this2.onStart();
+                    },
+                    onMove: function onMove(ev) {
+                      return _this2.onMove(ev);
+                    },
+                    onEnd: function onEnd(ev) {
+                      return _this2.onEnd(ev);
+                    }
+                  };
+                  this.gesture = _context.sent.createGesture(_context.t0);
+                  this.disabledChanged();
 
-                  case 5:
-                  case "end":
-                    return _context.stop();
-                }
+                case 5:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -320,5 +306,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var toggleIds = 0;
     /***/
   }
-}]); //# sourceMappingURL=75-es2015.js.map
+}]);
 //# sourceMappingURL=75-es5.js.map

@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 import { ViewProfileComponent } from './view-profile.page';
-import { IonicImageLoader } from 'ionic-image-loader';
 
 
 const routes: Routes = [
@@ -20,7 +19,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    IonicImageLoader,
     RouterModule.forChild(routes)
   ],
   declarations: [ViewProfileComponent]

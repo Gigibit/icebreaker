@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -411,165 +407,145 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       console.groupEnd();
     };
 
-    var _writeNavState =
-    /*#__PURE__*/
-    function () {
-      var _ref = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee(root, chain, direction, index) {
-        var changed,
-            outlet,
-            route,
-            result,
-            _args = arguments;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                changed = _args.length > 4 && _args[4] !== undefined ? _args[4] : false;
-                _context.prev = 1;
-                // find next navigation outlet in the DOM
-                outlet = searchNavNode(root); // make sure we can continue interacting the DOM, otherwise abort
+    var _writeNavState = function writeNavState(root, chain, direction, index) {
+      var changed,
+          outlet,
+          route,
+          result,
+          _args = arguments;
+      return regeneratorRuntime.async(function writeNavState$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              changed = _args.length > 4 && _args[4] !== undefined ? _args[4] : false;
+              _context.prev = 1;
+              // find next navigation outlet in the DOM
+              outlet = searchNavNode(root); // make sure we can continue interacting the DOM, otherwise abort
 
-                if (!(index >= chain.length || !outlet)) {
-                  _context.next = 5;
-                  break;
-                }
+              if (!(index >= chain.length || !outlet)) {
+                _context.next = 5;
+                break;
+              }
 
-                return _context.abrupt("return", changed);
+              return _context.abrupt("return", changed);
 
-              case 5:
-                _context.next = 7;
-                return outlet.componentOnReady();
+            case 5:
+              _context.next = 7;
+              return regeneratorRuntime.awrap(outlet.componentOnReady());
 
-              case 7:
-                route = chain[index];
-                _context.next = 10;
-                return outlet.setRouteId(route.id, route.params, direction);
+            case 7:
+              route = chain[index];
+              _context.next = 10;
+              return regeneratorRuntime.awrap(outlet.setRouteId(route.id, route.params, direction));
 
-              case 10:
-                result = _context.sent;
+            case 10:
+              result = _context.sent;
 
-                // if the outlet changed the page, reset navigation to neutral (no direction)
-                // this means nested outlets will not animate
-                if (result.changed) {
-                  direction = ROUTER_INTENT_NONE;
-                  changed = true;
-                } // recursively set nested outlets
+              // if the outlet changed the page, reset navigation to neutral (no direction)
+              // this means nested outlets will not animate
+              if (result.changed) {
+                direction = ROUTER_INTENT_NONE;
+                changed = true;
+              } // recursively set nested outlets
 
 
-                _context.next = 14;
-                return _writeNavState(result.element, chain, direction, index + 1, changed);
+              _context.next = 14;
+              return regeneratorRuntime.awrap(_writeNavState(result.element, chain, direction, index + 1, changed));
 
-              case 14:
-                changed = _context.sent;
+            case 14:
+              changed = _context.sent;
 
-                if (!result.markVisible) {
-                  _context.next = 18;
-                  break;
-                }
-
+              if (!result.markVisible) {
                 _context.next = 18;
-                return result.markVisible();
+                break;
+              }
 
-              case 18:
-                return _context.abrupt("return", changed);
+              _context.next = 18;
+              return regeneratorRuntime.awrap(result.markVisible());
 
-              case 21:
-                _context.prev = 21;
-                _context.t0 = _context["catch"](1);
-                console.error(_context.t0);
-                return _context.abrupt("return", false);
+            case 18:
+              return _context.abrupt("return", changed);
 
-              case 25:
-              case "end":
-                return _context.stop();
-            }
+            case 21:
+              _context.prev = 21;
+              _context.t0 = _context["catch"](1);
+              console.error(_context.t0);
+              return _context.abrupt("return", false);
+
+            case 25:
+            case "end":
+              return _context.stop();
           }
-        }, _callee, null, [[1, 21]]);
-      }));
+        }
+      }, null, null, [[1, 21]]);
+    };
 
-      return function writeNavState(_x, _x2, _x3, _x4) {
-        return _ref.apply(this, arguments);
-      };
-    }();
+    var readNavState = function readNavState(root) {
+      var ids, outlet, node, id;
+      return regeneratorRuntime.async(function readNavState$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              ids = [];
+              node = root; // tslint:disable-next-line:no-constant-condition
 
-    var readNavState =
-    /*#__PURE__*/
-    function () {
-      var _ref2 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2(root) {
-        var ids, outlet, node, id;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                ids = [];
-                node = root; // tslint:disable-next-line:no-constant-condition
-
-              case 2:
-                if (!true) {
-                  _context2.next = 20;
-                  break;
-                }
-
-                outlet = searchNavNode(node);
-
-                if (!outlet) {
-                  _context2.next = 17;
-                  break;
-                }
-
-                _context2.next = 7;
-                return outlet.getRouteId();
-
-              case 7:
-                id = _context2.sent;
-
-                if (!id) {
-                  _context2.next = 14;
-                  break;
-                }
-
-                node = id.element;
-                id.element = undefined;
-                ids.push(id);
-                _context2.next = 15;
+            case 2:
+              if (!true) {
+                _context2.next = 20;
                 break;
+              }
 
-              case 14:
-                return _context2.abrupt("break", 20);
+              outlet = searchNavNode(node);
 
-              case 15:
-                _context2.next = 18;
+              if (!outlet) {
+                _context2.next = 17;
                 break;
+              }
 
-              case 17:
-                return _context2.abrupt("break", 20);
+              _context2.next = 7;
+              return regeneratorRuntime.awrap(outlet.getRouteId());
 
-              case 18:
-                _context2.next = 2;
+            case 7:
+              id = _context2.sent;
+
+              if (!id) {
+                _context2.next = 14;
                 break;
+              }
 
-              case 20:
-                return _context2.abrupt("return", {
-                  ids: ids,
-                  outlet: outlet
-                });
+              node = id.element;
+              id.element = undefined;
+              ids.push(id);
+              _context2.next = 15;
+              break;
 
-              case 21:
-              case "end":
-                return _context2.stop();
-            }
+            case 14:
+              return _context2.abrupt("break", 20);
+
+            case 15:
+              _context2.next = 18;
+              break;
+
+            case 17:
+              return _context2.abrupt("break", 20);
+
+            case 18:
+              _context2.next = 2;
+              break;
+
+            case 20:
+              return _context2.abrupt("return", {
+                ids: ids,
+                outlet: outlet
+              });
+
+            case 21:
+            case "end":
+              return _context2.stop();
           }
-        }, _callee2);
-      }));
-
-      return function readNavState(_x5) {
-        return _ref2.apply(this, arguments);
-      };
-    }();
+        }
+      });
+    };
 
     var waitUntilNavNode = function waitUntilNavNode() {
       if (searchNavNode(document.body)) {
@@ -1050,37 +1026,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(Router, [{
         key: "componentWillLoad",
-        value: function () {
-          var _componentWillLoad = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    console.debug('[ion-router] router will load');
-                    _context3.next = 3;
-                    return waitUntilNavNode();
+        value: function componentWillLoad() {
+          return regeneratorRuntime.async(function componentWillLoad$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  console.debug('[ion-router] router will load');
+                  _context3.next = 3;
+                  return regeneratorRuntime.awrap(waitUntilNavNode());
 
-                  case 3:
-                    console.debug('[ion-router] found nav');
-                    _context3.next = 6;
-                    return this.onRoutesChanged();
+                case 3:
+                  console.debug('[ion-router] found nav');
+                  _context3.next = 6;
+                  return regeneratorRuntime.awrap(this.onRoutesChanged());
 
-                  case 6:
-                  case "end":
-                    return _context3.stop();
-                }
+                case 6:
+                case "end":
+                  return _context3.stop();
               }
-            }, _callee3, this);
-          }));
-
-          function componentWillLoad() {
-            return _componentWillLoad.apply(this, arguments);
-          }
-
-          return componentWillLoad;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "componentDidLoad",
         value: function componentDidLoad() {
@@ -1139,110 +1105,90 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "printDebug",
-        value: function () {
-          var _printDebug = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4() {
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    console.debug('CURRENT PATH', this.getPath());
-                    console.debug('PREVIOUS PATH', this.previousPath);
-                    printRoutes(readRoutes(this.el));
-                    printRedirects(readRedirects(this.el));
+        value: function printDebug() {
+          return regeneratorRuntime.async(function printDebug$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  console.debug('CURRENT PATH', this.getPath());
+                  console.debug('PREVIOUS PATH', this.previousPath);
+                  printRoutes(readRoutes(this.el));
+                  printRedirects(readRedirects(this.el));
 
-                  case 4:
-                  case "end":
-                    return _context4.stop();
-                }
+                case 4:
+                case "end":
+                  return _context4.stop();
               }
-            }, _callee4, this);
-          }));
-
-          function printDebug() {
-            return _printDebug.apply(this, arguments);
-          }
-
-          return printDebug;
-        }()
+            }
+          }, null, this);
+        }
         /** @internal */
 
       }, {
         key: "navChanged",
-        value: function () {
-          var _navChanged = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5(direction) {
-            var _ref3, ids, outlet, routes, chain, path;
+        value: function navChanged(direction) {
+          var _ref, ids, outlet, routes, chain, path;
 
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
-              while (1) {
-                switch (_context5.prev = _context5.next) {
-                  case 0:
-                    if (!this.busy) {
-                      _context5.next = 3;
-                      break;
-                    }
+          return regeneratorRuntime.async(function navChanged$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  if (!this.busy) {
+                    _context5.next = 3;
+                    break;
+                  }
 
-                    console.warn('[ion-router] router is busy, navChanged was cancelled');
-                    return _context5.abrupt("return", false);
+                  console.warn('[ion-router] router is busy, navChanged was cancelled');
+                  return _context5.abrupt("return", false);
 
-                  case 3:
-                    _context5.next = 5;
-                    return readNavState(window.document.body);
+                case 3:
+                  _context5.next = 5;
+                  return regeneratorRuntime.awrap(readNavState(window.document.body));
 
-                  case 5:
-                    _ref3 = _context5.sent;
-                    ids = _ref3.ids;
-                    outlet = _ref3.outlet;
-                    routes = readRoutes(this.el);
-                    chain = routerIDsToChain(ids, routes);
+                case 5:
+                  _ref = _context5.sent;
+                  ids = _ref.ids;
+                  outlet = _ref.outlet;
+                  routes = readRoutes(this.el);
+                  chain = routerIDsToChain(ids, routes);
 
-                    if (chain) {
-                      _context5.next = 13;
-                      break;
-                    }
+                  if (chain) {
+                    _context5.next = 13;
+                    break;
+                  }
 
-                    console.warn('[ion-router] no matching URL for ', ids.map(function (i) {
-                      return i.id;
-                    }));
-                    return _context5.abrupt("return", false);
+                  console.warn('[ion-router] no matching URL for ', ids.map(function (i) {
+                    return i.id;
+                  }));
+                  return _context5.abrupt("return", false);
 
-                  case 13:
-                    path = chainToPath(chain);
+                case 13:
+                  path = chainToPath(chain);
 
-                    if (path) {
-                      _context5.next = 17;
-                      break;
-                    }
+                  if (path) {
+                    _context5.next = 17;
+                    break;
+                  }
 
-                    console.warn('[ion-router] router could not match path because some required param is missing');
-                    return _context5.abrupt("return", false);
+                  console.warn('[ion-router] router could not match path because some required param is missing');
+                  return _context5.abrupt("return", false);
 
-                  case 17:
-                    console.debug('[ion-router] nav changed -> update URL', ids, path);
-                    this.setPath(path, direction);
-                    _context5.next = 21;
-                    return this.safeWriteNavState(outlet, chain, ROUTER_INTENT_NONE, path, null, ids.length);
+                case 17:
+                  console.debug('[ion-router] nav changed -> update URL', ids, path);
+                  this.setPath(path, direction);
+                  _context5.next = 21;
+                  return regeneratorRuntime.awrap(this.safeWriteNavState(outlet, chain, ROUTER_INTENT_NONE, path, null, ids.length));
 
-                  case 21:
-                    return _context5.abrupt("return", true);
+                case 21:
+                  return _context5.abrupt("return", true);
 
-                  case 22:
-                  case "end":
-                    return _context5.stop();
-                }
+                case 22:
+                case "end":
+                  return _context5.stop();
               }
-            }, _callee5, this);
-          }));
-
-          function navChanged(_x6) {
-            return _navChanged.apply(this, arguments);
-          }
-
-          return navChanged;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "onRedirectChanged",
         value: function onRedirectChanged() {
@@ -1281,223 +1227,183 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "writeNavStateRoot",
-        value: function () {
-          var _writeNavStateRoot = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee6(path, direction) {
-            var redirects, redirect, redirectFrom, routes, chain;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    if (path) {
-                      _context6.next = 3;
-                      break;
-                    }
+        value: function writeNavStateRoot(path, direction) {
+          var redirects, redirect, redirectFrom, routes, chain;
+          return regeneratorRuntime.async(function writeNavStateRoot$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  if (path) {
+                    _context6.next = 3;
+                    break;
+                  }
 
-                    console.error('[ion-router] URL is not part of the routing set');
-                    return _context6.abrupt("return", false);
+                  console.error('[ion-router] URL is not part of the routing set');
+                  return _context6.abrupt("return", false);
 
-                  case 3:
-                    // lookup redirect rule
-                    redirects = readRedirects(this.el);
-                    redirect = routeRedirect(path, redirects);
-                    redirectFrom = null;
+                case 3:
+                  // lookup redirect rule
+                  redirects = readRedirects(this.el);
+                  redirect = routeRedirect(path, redirects);
+                  redirectFrom = null;
 
-                    if (redirect) {
-                      this.setPath(redirect.to, direction);
-                      redirectFrom = redirect.from;
-                      path = redirect.to;
-                    } // lookup route chain
+                  if (redirect) {
+                    this.setPath(redirect.to, direction);
+                    redirectFrom = redirect.from;
+                    path = redirect.to;
+                  } // lookup route chain
 
 
-                    routes = readRoutes(this.el);
-                    chain = routerPathToChain(path, routes);
+                  routes = readRoutes(this.el);
+                  chain = routerPathToChain(path, routes);
 
-                    if (chain) {
-                      _context6.next = 12;
-                      break;
-                    }
+                  if (chain) {
+                    _context6.next = 12;
+                    break;
+                  }
 
-                    console.error('[ion-router] the path does not match any route');
-                    return _context6.abrupt("return", false);
+                  console.error('[ion-router] the path does not match any route');
+                  return _context6.abrupt("return", false);
 
-                  case 12:
-                    return _context6.abrupt("return", this.safeWriteNavState(document.body, chain, direction, path, redirectFrom));
+                case 12:
+                  return _context6.abrupt("return", this.safeWriteNavState(document.body, chain, direction, path, redirectFrom));
 
-                  case 13:
-                  case "end":
-                    return _context6.stop();
-                }
+                case 13:
+                case "end":
+                  return _context6.stop();
               }
-            }, _callee6, this);
-          }));
-
-          function writeNavStateRoot(_x7, _x8) {
-            return _writeNavStateRoot.apply(this, arguments);
-          }
-
-          return writeNavStateRoot;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "safeWriteNavState",
-        value: function () {
-          var _safeWriteNavState = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee7(node, chain, direction, path, redirectFrom) {
-            var index,
-                unlock,
-                changed,
-                _args7 = arguments;
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
-              while (1) {
-                switch (_context7.prev = _context7.next) {
-                  case 0:
-                    index = _args7.length > 5 && _args7[5] !== undefined ? _args7[5] : 0;
-                    _context7.next = 3;
-                    return this.lock();
+        value: function safeWriteNavState(node, chain, direction, path, redirectFrom) {
+          var index,
+              unlock,
+              changed,
+              _args7 = arguments;
+          return regeneratorRuntime.async(function safeWriteNavState$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  index = _args7.length > 5 && _args7[5] !== undefined ? _args7[5] : 0;
+                  _context7.next = 3;
+                  return regeneratorRuntime.awrap(this.lock());
 
-                  case 3:
-                    unlock = _context7.sent;
-                    changed = false;
-                    _context7.prev = 5;
-                    _context7.next = 8;
-                    return this.writeNavState(node, chain, direction, path, redirectFrom, index);
+                case 3:
+                  unlock = _context7.sent;
+                  changed = false;
+                  _context7.prev = 5;
+                  _context7.next = 8;
+                  return regeneratorRuntime.awrap(this.writeNavState(node, chain, direction, path, redirectFrom, index));
 
-                  case 8:
-                    changed = _context7.sent;
-                    _context7.next = 14;
-                    break;
+                case 8:
+                  changed = _context7.sent;
+                  _context7.next = 14;
+                  break;
 
-                  case 11:
-                    _context7.prev = 11;
-                    _context7.t0 = _context7["catch"](5);
-                    console.error(_context7.t0);
+                case 11:
+                  _context7.prev = 11;
+                  _context7.t0 = _context7["catch"](5);
+                  console.error(_context7.t0);
 
-                  case 14:
-                    unlock();
-                    return _context7.abrupt("return", changed);
+                case 14:
+                  unlock();
+                  return _context7.abrupt("return", changed);
 
-                  case 16:
-                  case "end":
-                    return _context7.stop();
-                }
+                case 16:
+                case "end":
+                  return _context7.stop();
               }
-            }, _callee7, this, [[5, 11]]);
-          }));
-
-          function safeWriteNavState(_x9, _x10, _x11, _x12, _x13) {
-            return _safeWriteNavState.apply(this, arguments);
-          }
-
-          return safeWriteNavState;
-        }()
+            }
+          }, null, this, [[5, 11]]);
+        }
       }, {
         key: "lock",
-        value: function () {
-          var _lock = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee8() {
-            var p, resolve;
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
-              while (1) {
-                switch (_context8.prev = _context8.next) {
-                  case 0:
-                    p = this.waitPromise;
-                    this.waitPromise = new Promise(function (r) {
-                      return resolve = r;
-                    });
+        value: function lock() {
+          var p, resolve;
+          return regeneratorRuntime.async(function lock$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  p = this.waitPromise;
+                  this.waitPromise = new Promise(function (r) {
+                    return resolve = r;
+                  });
 
-                    if (!(p !== undefined)) {
-                      _context8.next = 5;
-                      break;
-                    }
-
+                  if (!(p !== undefined)) {
                     _context8.next = 5;
-                    return p;
+                    break;
+                  }
 
-                  case 5:
-                    return _context8.abrupt("return", resolve);
+                  _context8.next = 5;
+                  return regeneratorRuntime.awrap(p);
 
-                  case 6:
-                  case "end":
-                    return _context8.stop();
-                }
+                case 5:
+                  return _context8.abrupt("return", resolve);
+
+                case 6:
+                case "end":
+                  return _context8.stop();
               }
-            }, _callee8, this);
-          }));
-
-          function lock() {
-            return _lock.apply(this, arguments);
-          }
-
-          return lock;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "writeNavState",
-        value: function () {
-          var _writeNavState2 = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee9(node, chain, direction, path, redirectFrom) {
-            var index,
-                routeEvent,
-                changed,
-                _args9 = arguments;
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
-              while (1) {
-                switch (_context9.prev = _context9.next) {
-                  case 0:
-                    index = _args9.length > 5 && _args9[5] !== undefined ? _args9[5] : 0;
+        value: function writeNavState(node, chain, direction, path, redirectFrom) {
+          var index,
+              routeEvent,
+              changed,
+              _args9 = arguments;
+          return regeneratorRuntime.async(function writeNavState$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  index = _args9.length > 5 && _args9[5] !== undefined ? _args9[5] : 0;
 
-                    if (!this.busy) {
-                      _context9.next = 4;
-                      break;
-                    }
+                  if (!this.busy) {
+                    _context9.next = 4;
+                    break;
+                  }
 
-                    console.warn('[ion-router] router is busy, transition was cancelled');
-                    return _context9.abrupt("return", false);
+                  console.warn('[ion-router] router is busy, transition was cancelled');
+                  return _context9.abrupt("return", false);
 
-                  case 4:
-                    this.busy = true; // generate route event and emit will change
+                case 4:
+                  this.busy = true; // generate route event and emit will change
 
-                    routeEvent = this.routeChangeEvent(path, redirectFrom);
+                  routeEvent = this.routeChangeEvent(path, redirectFrom);
 
-                    if (routeEvent) {
-                      this.ionRouteWillChange.emit(routeEvent);
-                    }
+                  if (routeEvent) {
+                    this.ionRouteWillChange.emit(routeEvent);
+                  }
 
-                    _context9.next = 9;
-                    return _writeNavState(node, chain, direction, index);
+                  _context9.next = 9;
+                  return regeneratorRuntime.awrap(_writeNavState(node, chain, direction, index));
 
-                  case 9:
-                    changed = _context9.sent;
-                    this.busy = false;
+                case 9:
+                  changed = _context9.sent;
+                  this.busy = false;
 
-                    if (changed) {
-                      console.debug('[ion-router] route changed', path);
-                    } // emit did change
+                  if (changed) {
+                    console.debug('[ion-router] route changed', path);
+                  } // emit did change
 
 
-                    if (routeEvent) {
-                      this.ionRouteDidChange.emit(routeEvent);
-                    }
+                  if (routeEvent) {
+                    this.ionRouteDidChange.emit(routeEvent);
+                  }
 
-                    return _context9.abrupt("return", changed);
+                  return _context9.abrupt("return", changed);
 
-                  case 14:
-                  case "end":
-                    return _context9.stop();
-                }
+                case 14:
+                case "end":
+                  return _context9.stop();
               }
-            }, _callee9, this);
-          }));
-
-          function writeNavState(_x14, _x15, _x16, _x17, _x18) {
-            return _writeNavState2.apply(this, arguments);
-          }
-
-          return writeNavState;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "setPath",
         value: function setPath(path, direction) {
@@ -1586,5 +1492,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=55-es2015.js.map
+}]);
 //# sourceMappingURL=55-es5.js.map

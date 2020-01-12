@@ -51,10 +51,11 @@ export class LocalizedUsersComponent implements OnInit {
     }
 
     loadImg($event){
-      this.zone.run(()=>{
-        $event._element.nativeElement.parentElement.classList.remove('imgInLoading')
-        $event._element.nativeElement.parentElement.classList.add('imgLoaded')
-      })
+      console.log($event)
+      // this.zone.run(()=>{
+      //   $event.target.classList.remove('imgInLoading')
+      //   $event.target.classList.add('imgLoaded')
+      // })
     }
     loadData(infiniteScroll){
       setTimeout(() => {

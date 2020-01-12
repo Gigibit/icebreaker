@@ -559,5 +559,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_3__["Facebook"], src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"], src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"], _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_6__["InAppBrowser"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_8__["TranslateService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], LandingPage);
     /***/
   }
-}]); //# sourceMappingURL=_pages-landing-landing-module-es2015.js.map
+}]);
 //# sourceMappingURL=_pages-landing-landing-module-es5.js.map

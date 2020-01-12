@@ -6258,5 +6258,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     Swiper.use([pagination, scrollbar, autoplay, zoom]);
     /***/
   }
-}]); //# sourceMappingURL=swiper-bundle-ccdaac54-js-es2015.js.map
+}]);
 //# sourceMappingURL=swiper-bundle-ccdaac54-js-es5.js.map

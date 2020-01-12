@@ -1,7 +1,3 @@
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -269,76 +265,66 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
-            var _this3 = this;
+        value: function connectedCallback() {
+          var _this3 = this;
 
-            var el, header, label, radio;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    // Get the list header if it exists and set the id
-                    // this is used to set aria-labelledby
-                    el = this.el;
-                    header = el.querySelector('ion-list-header') || el.querySelector('ion-item-divider');
+          var el, header, label, radio;
+          return regeneratorRuntime.async(function connectedCallback$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  // Get the list header if it exists and set the id
+                  // this is used to set aria-labelledby
+                  el = this.el;
+                  header = el.querySelector('ion-list-header') || el.querySelector('ion-item-divider');
 
-                    if (header) {
-                      label = header.querySelector('ion-label');
+                  if (header) {
+                    label = header.querySelector('ion-label');
 
-                      if (label) {
-                        this.labelId = label.id = this.name + '-lbl';
-                      }
+                    if (label) {
+                      this.labelId = label.id = this.name + '-lbl';
                     }
+                  }
 
-                    if (!(this.value === undefined)) {
-                      _context.next = 9;
-                      break;
+                  if (!(this.value === undefined)) {
+                    _context.next = 9;
+                    break;
+                  }
+
+                  radio = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["f"])(el, 'ion-radio');
+
+                  if (!(radio !== undefined)) {
+                    _context.next = 9;
+                    break;
+                  }
+
+                  _context.next = 8;
+                  return regeneratorRuntime.awrap(radio.componentOnReady());
+
+                case 8:
+                  if (this.value === undefined) {
+                    this.value = radio.value;
+                  }
+
+                case 9:
+                  this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["w"])(el, 'ion-radio', function (newOption) {
+                    if (newOption !== undefined) {
+                      newOption.componentOnReady().then(function () {
+                        _this3.value = newOption.value;
+                      });
+                    } else {
+                      _this3.updateRadios();
                     }
+                  });
+                  this.updateRadios();
 
-                    radio = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["f"])(el, 'ion-radio');
-
-                    if (!(radio !== undefined)) {
-                      _context.next = 9;
-                      break;
-                    }
-
-                    _context.next = 8;
-                    return radio.componentOnReady();
-
-                  case 8:
-                    if (this.value === undefined) {
-                      this.value = radio.value;
-                    }
-
-                  case 9:
-                    this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["w"])(el, 'ion-radio', function (newOption) {
-                      if (newOption !== undefined) {
-                        newOption.componentOnReady().then(function () {
-                          _this3.value = newOption.value;
-                        });
-                      } else {
-                        _this3.updateRadios();
-                      }
-                    });
-                    this.updateRadios();
-
-                  case 11:
-                  case "end":
-                    return _context.stop();
-                }
+                case 11:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -349,98 +335,88 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "updateRadios",
-        value: function () {
-          var _updateRadios = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
-            var radios, value, hasChecked, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, radio;
+        value: function updateRadios() {
+          var radios, value, hasChecked, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, radio;
 
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    _context2.next = 2;
-                    return this.getRadios();
+          return regeneratorRuntime.async(function updateRadios$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return regeneratorRuntime.awrap(this.getRadios());
 
-                  case 2:
-                    radios = _context2.sent;
-                    value = this.value;
-                    hasChecked = false; // Walk the DOM in reverse order, since the last selected one wins!
+                case 2:
+                  radios = _context2.sent;
+                  value = this.value;
+                  hasChecked = false; // Walk the DOM in reverse order, since the last selected one wins!
 
-                    _iteratorNormalCompletion = true;
-                    _didIteratorError = false;
-                    _iteratorError = undefined;
-                    _context2.prev = 8;
+                  _iteratorNormalCompletion = true;
+                  _didIteratorError = false;
+                  _iteratorError = undefined;
+                  _context2.prev = 8;
 
-                    for (_iterator = radios[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                      radio = _step.value;
+                  for (_iterator = radios[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    radio = _step.value;
 
-                      if (!hasChecked && radio.value === value) {
-                        // correct value for this radio
-                        // but this radio isn't checked yet
-                        // and we haven't found a checked yet
-                        hasChecked = true;
-                        radio.checked = true;
-                      } else {
-                        // this radio doesn't have the correct value
-                        // or the radio group has been already checked
-                        radio.checked = false;
-                      }
-                    } // Reset value if
+                    if (!hasChecked && radio.value === value) {
+                      // correct value for this radio
+                      // but this radio isn't checked yet
+                      // and we haven't found a checked yet
+                      hasChecked = true;
+                      radio.checked = true;
+                    } else {
+                      // this radio doesn't have the correct value
+                      // or the radio group has been already checked
+                      radio.checked = false;
+                    }
+                  } // Reset value if
 
 
-                    _context2.next = 16;
+                  _context2.next = 16;
+                  break;
+
+                case 12:
+                  _context2.prev = 12;
+                  _context2.t0 = _context2["catch"](8);
+                  _didIteratorError = true;
+                  _iteratorError = _context2.t0;
+
+                case 16:
+                  _context2.prev = 16;
+                  _context2.prev = 17;
+
+                  if (!_iteratorNormalCompletion && _iterator.return != null) {
+                    _iterator.return();
+                  }
+
+                case 19:
+                  _context2.prev = 19;
+
+                  if (!_didIteratorError) {
+                    _context2.next = 22;
                     break;
+                  }
 
-                  case 12:
-                    _context2.prev = 12;
-                    _context2.t0 = _context2["catch"](8);
-                    _didIteratorError = true;
-                    _iteratorError = _context2.t0;
+                  throw _iteratorError;
 
-                  case 16:
-                    _context2.prev = 16;
-                    _context2.prev = 17;
+                case 22:
+                  return _context2.finish(19);
 
-                    if (!_iteratorNormalCompletion && _iterator.return != null) {
-                      _iterator.return();
-                    }
+                case 23:
+                  return _context2.finish(16);
 
-                  case 19:
-                    _context2.prev = 19;
+                case 24:
+                  if (!hasChecked) {
+                    this.value = undefined;
+                  }
 
-                    if (!_didIteratorError) {
-                      _context2.next = 22;
-                      break;
-                    }
-
-                    throw _iteratorError;
-
-                  case 22:
-                    return _context2.finish(19);
-
-                  case 23:
-                    return _context2.finish(16);
-
-                  case 24:
-                    if (!hasChecked) {
-                      this.value = undefined;
-                    }
-
-                  case 25:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 25:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2, this, [[8, 12, 16, 24], [17,, 19, 23]]);
-          }));
-
-          function updateRadios() {
-            return _updateRadios.apply(this, arguments);
-          }
-
-          return updateRadios;
-        }()
+            }
+          }, null, this, [[8, 12, 16, 24], [17,, 19, 23]]);
+        }
       }, {
         key: "getRadios",
         value: function getRadios() {
@@ -479,5 +455,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var radioGroupIds = 0;
     /***/
   }
-}]); //# sourceMappingURL=46-es2015.js.map
+}]);
 //# sourceMappingURL=46-es5.js.map

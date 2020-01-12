@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -125,74 +121,64 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
-            var _this = this;
+        value: function connectedCallback() {
+          var _this = this;
 
-            var contentEl;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    contentEl = this.el.closest('ion-content');
+          var contentEl;
+          return regeneratorRuntime.async(function connectedCallback$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  contentEl = this.el.closest('ion-content');
 
-                    if (!contentEl) {
-                      _context.next = 5;
-                      break;
+                  if (!contentEl) {
+                    _context.next = 5;
+                    break;
+                  }
+
+                  _context.next = 4;
+                  return regeneratorRuntime.awrap(contentEl.getScrollElement());
+
+                case 4:
+                  this.scrollEl = _context.sent;
+
+                case 5:
+                  _context.next = 7;
+                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
+                  /*! ./index-624eea58.js */
+                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
+
+                case 7:
+                  _context.t0 = {
+                    el: this.el,
+                    gestureName: 'reorder',
+                    gesturePriority: 110,
+                    threshold: 0,
+                    direction: 'y',
+                    passive: false,
+                    canStart: function canStart(detail) {
+                      return _this.canStart(detail);
+                    },
+                    onStart: function onStart(ev) {
+                      return _this.onStart(ev);
+                    },
+                    onMove: function onMove(ev) {
+                      return _this.onMove(ev);
+                    },
+                    onEnd: function onEnd() {
+                      return _this.onEnd();
                     }
+                  };
+                  this.gesture = _context.sent.createGesture(_context.t0);
+                  this.disabledChanged();
 
-                    _context.next = 4;
-                    return contentEl.getScrollElement();
-
-                  case 4:
-                    this.scrollEl = _context.sent;
-
-                  case 5:
-                    _context.next = 7;
-                    return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-624eea58.js */
-                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
-
-                  case 7:
-                    _context.t0 = {
-                      el: this.el,
-                      gestureName: 'reorder',
-                      gesturePriority: 110,
-                      threshold: 0,
-                      direction: 'y',
-                      passive: false,
-                      canStart: function canStart(detail) {
-                        return _this.canStart(detail);
-                      },
-                      onStart: function onStart(ev) {
-                        return _this.onStart(ev);
-                      },
-                      onMove: function onMove(ev) {
-                        return _this.onMove(ev);
-                      },
-                      onEnd: function onEnd() {
-                        return _this.onEnd();
-                      }
-                    };
-                    this.gesture = _context.sent.createGesture(_context.t0);
-                    this.disabledChanged();
-
-                  case 10:
-                  case "end":
-                    return _context.stop();
-                }
+                case 10:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -511,5 +497,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=52-es2015.js.map
+}]);
 //# sourceMappingURL=52-es5.js.map

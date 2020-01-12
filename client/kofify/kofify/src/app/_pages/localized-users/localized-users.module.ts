@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { LocalizedUsersComponent } from 'src/app/_pages/localized-users/localized-users.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { IonicImageLoader } from 'ionic-image-loader';
 
 
 const routes: Routes = [
@@ -21,7 +20,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    IonicImageLoader,
     TranslateModule.forChild(),
     RouterModule.forChild(routes)
   ],

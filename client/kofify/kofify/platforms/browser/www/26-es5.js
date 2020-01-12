@@ -151,5 +151,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=26-es2015.js.map
+}]);
 //# sourceMappingURL=26-es5.js.map

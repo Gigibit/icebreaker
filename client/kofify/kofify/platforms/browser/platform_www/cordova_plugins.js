@@ -427,7 +427,6 @@ module.exports.metadata =
     "cordova-plugin-facebook4": "6.1.0",
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
-    "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-globalization": "1.11.0",
     "cordova-plugin-inappbrowser": "3.1.0",
     "cordova-plugin-inapppurchase": "1.1.0",
@@ -440,7 +439,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.4",
     "es6-promise-plugin": "4.2.2",
-    "onesignal-cordova-plugin": "2.6.0"
+    "onesignal-cordova-plugin": "2.6.0",
+    "cordova-plugin-geolocation": "4.0.2"
 }
 // BOTTOM OF METADATA
 });

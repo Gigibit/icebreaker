@@ -1083,5 +1083,5 @@
     /***/
 
   }
-}]); //# sourceMappingURL=dom-js-es2015.js.map
+}]);
 //# sourceMappingURL=dom-js-es5.js.map

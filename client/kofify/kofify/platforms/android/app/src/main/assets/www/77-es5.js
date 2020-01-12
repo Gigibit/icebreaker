@@ -1,7 +1,3 @@
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -449,49 +445,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
-            var contentEl;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    contentEl = this.el.closest('ion-content');
+        value: function connectedCallback() {
+          var contentEl;
+          return regeneratorRuntime.async(function connectedCallback$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  contentEl = this.el.closest('ion-content');
 
-                    if (contentEl) {
-                      _context.next = 4;
-                      break;
-                    }
+                  if (contentEl) {
+                    _context.next = 4;
+                    break;
+                  }
 
-                    console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
-                    return _context.abrupt("return");
+                  console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
+                  return _context.abrupt("return");
 
-                  case 4:
-                    _context.next = 6;
-                    return contentEl.getScrollElement();
+                case 4:
+                  _context.next = 6;
+                  return regeneratorRuntime.awrap(contentEl.getScrollElement());
 
-                  case 6:
-                    this.scrollEl = _context.sent;
-                    this.contentEl = contentEl;
-                    this.calcCells();
-                    this.updateState();
+                case 6:
+                  this.scrollEl = _context.sent;
+                  this.contentEl = contentEl;
+                  this.calcCells();
+                  this.updateState();
 
-                  case 10:
-                  case "end":
-                    return _context.stop();
-                }
+                case 10:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
@@ -526,51 +512,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "checkRange",
-        value: function () {
-          var _checkRange = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2(offset) {
-            var len,
-                length,
-                cellIndex,
-                cells,
-                _args2 = arguments;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    len = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : -1;
+        value: function checkRange(offset) {
+          var len,
+              length,
+              cellIndex,
+              cells,
+              _args2 = arguments;
+          return regeneratorRuntime.async(function checkRange$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  len = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : -1;
 
-                    if (this.items) {
-                      _context2.next = 3;
-                      break;
-                    }
+                  if (this.items) {
+                    _context2.next = 3;
+                    break;
+                  }
 
-                    return _context2.abrupt("return");
+                  return _context2.abrupt("return");
 
-                  case 3:
-                    length = len === -1 ? this.items.length - offset : len;
-                    cellIndex = findCellIndex(this.cells, offset);
-                    cells = _calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, cellIndex, offset, length);
-                    this.cells = inplaceUpdate(this.cells, cells, cellIndex);
-                    this.lastItemLen = this.items.length;
-                    this.indexDirty = Math.max(offset - 1, 0);
-                    this.scheduleUpdate();
+                case 3:
+                  length = len === -1 ? this.items.length - offset : len;
+                  cellIndex = findCellIndex(this.cells, offset);
+                  cells = _calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, cellIndex, offset, length);
+                  this.cells = inplaceUpdate(this.cells, cells, cellIndex);
+                  this.lastItemLen = this.items.length;
+                  this.indexDirty = Math.max(offset - 1, 0);
+                  this.scheduleUpdate();
 
-                  case 10:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 10:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2, this);
-          }));
-
-          function checkRange(_x) {
-            return _checkRange.apply(this, arguments);
-          }
-
-          return checkRange;
-        }()
+            }
+          }, null, this);
+        }
         /**
          * This method marks the tail the items array as dirty, so they can be re-rendered.
          *
@@ -583,32 +559,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "checkEnd",
-        value: function () {
-          var _checkEnd = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    if (this.items) {
-                      this.checkRange(this.lastItemLen);
-                    }
+        value: function checkEnd() {
+          return regeneratorRuntime.async(function checkEnd$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  if (this.items) {
+                    this.checkRange(this.lastItemLen);
+                  }
 
-                  case 1:
-                  case "end":
-                    return _context3.stop();
-                }
+                case 1:
+                case "end":
+                  return _context3.stop();
               }
-            }, _callee3, this);
-          }));
-
-          function checkEnd() {
-            return _checkEnd.apply(this, arguments);
-          }
-
-          return checkEnd;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "updateVirtualScroll",
         value: function updateVirtualScroll() {
@@ -872,5 +838,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=77-es2015.js.map
+}]);
 //# sourceMappingURL=77-es5.js.map

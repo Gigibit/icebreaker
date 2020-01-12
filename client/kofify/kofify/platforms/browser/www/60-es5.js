@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -171,77 +167,63 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
-            var _this2 = this;
+        value: function connectedCallback() {
+          var _this2 = this;
 
-            var checked, _checked;
+          var checked, _checked;
 
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    if (this.value === undefined) {
-                      if (this.multiple) {
-                        // there are no values set at this point
-                        // so check to see who should be selected
-                        checked = this.childOpts.filter(function (o) {
-                          return o.selected;
-                        });
-                        this.value = checked.map(function (o) {
-                          return getOptionValue(o);
-                        });
-                      } else {
-                        _checked = this.childOpts.find(function (o) {
-                          return o.selected;
-                        });
+          return regeneratorRuntime.async(function connectedCallback$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (this.value === undefined) {
+                    if (this.multiple) {
+                      // there are no values set at this point
+                      // so check to see who should be selected
+                      checked = this.childOpts.filter(function (o) {
+                        return o.selected;
+                      });
+                      this.value = checked.map(function (o) {
+                        return getOptionValue(o);
+                      });
+                    } else {
+                      _checked = this.childOpts.find(function (o) {
+                        return o.selected;
+                      });
 
-                        if (_checked) {
-                          this.value = getOptionValue(_checked);
-                        }
+                      if (_checked) {
+                        this.value = getOptionValue(_checked);
                       }
                     }
+                  }
 
-                    this.updateOptions();
-                    this.updateOverlayOptions();
-                    this.emitStyle();
-                    this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_5__["w"])(this.el, 'ion-select-option',
-                    /*#__PURE__*/
-                    _asyncToGenerator(
-                    /*#__PURE__*/
-                    regeneratorRuntime.mark(function _callee() {
-                      return regeneratorRuntime.wrap(function _callee$(_context) {
-                        while (1) {
-                          switch (_context.prev = _context.next) {
-                            case 0:
-                              _this2.updateOptions();
+                  this.updateOptions();
+                  this.updateOverlayOptions();
+                  this.emitStyle();
+                  this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_5__["w"])(this.el, 'ion-select-option', function _callee() {
+                    return regeneratorRuntime.async(function _callee$(_context) {
+                      while (1) {
+                        switch (_context.prev = _context.next) {
+                          case 0:
+                            _this2.updateOptions();
 
-                              _this2.updateOverlayOptions();
+                            _this2.updateOverlayOptions();
 
-                            case 2:
-                            case "end":
-                              return _context.stop();
-                          }
+                          case 2:
+                          case "end":
+                            return _context.stop();
                         }
-                      }, _callee);
-                    })));
+                      }
+                    });
+                  });
 
-                  case 5:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 5:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -264,57 +246,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "open",
-        value: function () {
-          var _open = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3(event) {
-            var _this3 = this;
+        value: function open(event) {
+          var _this3 = this;
 
-            var overlay;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    if (!(this.disabled || this.isExpanded)) {
-                      _context3.next = 2;
-                      break;
-                    }
+          var overlay;
+          return regeneratorRuntime.async(function open$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  if (!(this.disabled || this.isExpanded)) {
+                    _context3.next = 2;
+                    break;
+                  }
 
-                    return _context3.abrupt("return", undefined);
+                  return _context3.abrupt("return", undefined);
 
-                  case 2:
-                    _context3.next = 4;
-                    return this.createOverlay(event);
+                case 2:
+                  _context3.next = 4;
+                  return regeneratorRuntime.awrap(this.createOverlay(event));
 
-                  case 4:
-                    overlay = this.overlay = _context3.sent;
-                    this.isExpanded = true;
-                    overlay.onDidDismiss().then(function () {
-                      _this3.overlay = undefined;
-                      _this3.isExpanded = false;
+                case 4:
+                  overlay = this.overlay = _context3.sent;
+                  this.isExpanded = true;
+                  overlay.onDidDismiss().then(function () {
+                    _this3.overlay = undefined;
+                    _this3.isExpanded = false;
 
-                      _this3.setFocus();
-                    });
-                    _context3.next = 9;
-                    return overlay.present();
+                    _this3.setFocus();
+                  });
+                  _context3.next = 9;
+                  return regeneratorRuntime.awrap(overlay.present());
 
-                  case 9:
-                    return _context3.abrupt("return", overlay);
+                case 9:
+                  return _context3.abrupt("return", overlay);
 
-                  case 10:
-                  case "end":
-                    return _context3.stop();
-                }
+                case 10:
+                case "end":
+                  return _context3.stop();
               }
-            }, _callee3, this);
-          }));
-
-          function open(_x) {
-            return _open.apply(this, arguments);
-          }
-
-          return open;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "createOverlay",
         value: function createOverlay(ev) {
@@ -430,135 +402,105 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "openPopover",
-        value: function () {
-          var _openPopover = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4(ev) {
-            var interfaceOptions, mode, popoverOpts;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    interfaceOptions = this.interfaceOptions;
-                    mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-                    popoverOpts = Object.assign(Object.assign({
-                      mode: mode
-                    }, interfaceOptions), {
-                      component: 'ion-select-popover',
-                      cssClass: ['select-popover', interfaceOptions.cssClass],
-                      event: ev,
-                      componentProps: {
-                        header: interfaceOptions.header,
-                        subHeader: interfaceOptions.subHeader,
-                        message: interfaceOptions.message,
-                        value: this.value,
-                        options: this.createPopoverOptions(this.childOpts)
-                      }
-                    });
-                    return _context4.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["c"].create(popoverOpts));
+        value: function openPopover(ev) {
+          var interfaceOptions, mode, popoverOpts;
+          return regeneratorRuntime.async(function openPopover$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  interfaceOptions = this.interfaceOptions;
+                  mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+                  popoverOpts = Object.assign(Object.assign({
+                    mode: mode
+                  }, interfaceOptions), {
+                    component: 'ion-select-popover',
+                    cssClass: ['select-popover', interfaceOptions.cssClass],
+                    event: ev,
+                    componentProps: {
+                      header: interfaceOptions.header,
+                      subHeader: interfaceOptions.subHeader,
+                      message: interfaceOptions.message,
+                      value: this.value,
+                      options: this.createPopoverOptions(this.childOpts)
+                    }
+                  });
+                  return _context4.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["c"].create(popoverOpts));
 
-                  case 4:
-                  case "end":
-                    return _context4.stop();
-                }
+                case 4:
+                case "end":
+                  return _context4.stop();
               }
-            }, _callee4, this);
-          }));
-
-          function openPopover(_x2) {
-            return _openPopover.apply(this, arguments);
-          }
-
-          return openPopover;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "openActionSheet",
-        value: function () {
-          var _openActionSheet = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5() {
-            var mode, interfaceOptions, actionSheetOpts;
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
-              while (1) {
-                switch (_context5.prev = _context5.next) {
-                  case 0:
-                    mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-                    interfaceOptions = this.interfaceOptions;
-                    actionSheetOpts = Object.assign(Object.assign({
-                      mode: mode
-                    }, interfaceOptions), {
-                      buttons: this.createActionSheetButtons(this.childOpts),
-                      cssClass: ['select-action-sheet', interfaceOptions.cssClass]
-                    });
-                    return _context5.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["b"].create(actionSheetOpts));
+        value: function openActionSheet() {
+          var mode, interfaceOptions, actionSheetOpts;
+          return regeneratorRuntime.async(function openActionSheet$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+                  interfaceOptions = this.interfaceOptions;
+                  actionSheetOpts = Object.assign(Object.assign({
+                    mode: mode
+                  }, interfaceOptions), {
+                    buttons: this.createActionSheetButtons(this.childOpts),
+                    cssClass: ['select-action-sheet', interfaceOptions.cssClass]
+                  });
+                  return _context5.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["b"].create(actionSheetOpts));
 
-                  case 4:
-                  case "end":
-                    return _context5.stop();
-                }
+                case 4:
+                case "end":
+                  return _context5.stop();
               }
-            }, _callee5, this);
-          }));
-
-          function openActionSheet() {
-            return _openActionSheet.apply(this, arguments);
-          }
-
-          return openActionSheet;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "openAlert",
-        value: function () {
-          var _openAlert = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee6() {
-            var _this6 = this;
+        value: function openAlert() {
+          var _this6 = this;
 
-            var label, labelText, interfaceOptions, inputType, mode, alertOpts;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    label = this.getLabel();
-                    labelText = label ? label.textContent : null;
-                    interfaceOptions = this.interfaceOptions;
-                    inputType = this.multiple ? 'checkbox' : 'radio';
-                    mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-                    alertOpts = Object.assign(Object.assign({
-                      mode: mode
-                    }, interfaceOptions), {
-                      header: interfaceOptions.header ? interfaceOptions.header : labelText,
-                      inputs: this.createAlertInputs(this.childOpts, inputType),
-                      buttons: [{
-                        text: this.cancelText,
-                        role: 'cancel',
-                        handler: function handler() {
-                          _this6.ionCancel.emit();
-                        }
-                      }, {
-                        text: this.okText,
-                        handler: function handler(selectedValues) {
-                          _this6.value = selectedValues;
-                        }
-                      }],
-                      cssClass: ['select-alert', interfaceOptions.cssClass, this.multiple ? 'multiple-select-alert' : 'single-select-alert']
-                    });
-                    return _context6.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["a"].create(alertOpts));
+          var label, labelText, interfaceOptions, inputType, mode, alertOpts;
+          return regeneratorRuntime.async(function openAlert$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  label = this.getLabel();
+                  labelText = label ? label.textContent : null;
+                  interfaceOptions = this.interfaceOptions;
+                  inputType = this.multiple ? 'checkbox' : 'radio';
+                  mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+                  alertOpts = Object.assign(Object.assign({
+                    mode: mode
+                  }, interfaceOptions), {
+                    header: interfaceOptions.header ? interfaceOptions.header : labelText,
+                    inputs: this.createAlertInputs(this.childOpts, inputType),
+                    buttons: [{
+                      text: this.cancelText,
+                      role: 'cancel',
+                      handler: function handler() {
+                        _this6.ionCancel.emit();
+                      }
+                    }, {
+                      text: this.okText,
+                      handler: function handler(selectedValues) {
+                        _this6.value = selectedValues;
+                      }
+                    }],
+                    cssClass: ['select-alert', interfaceOptions.cssClass, this.multiple ? 'multiple-select-alert' : 'single-select-alert']
+                  });
+                  return _context6.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["a"].create(alertOpts));
 
-                  case 7:
-                  case "end":
-                    return _context6.stop();
-                }
+                case 7:
+                case "end":
+                  return _context6.stop();
               }
-            }, _callee6, this);
-          }));
-
-          function openAlert() {
-            return _openAlert.apply(this, arguments);
-          }
-
-          return openAlert;
-        }()
+            }
+          }, null, this);
+        }
         /**
          * Close the select interface.
          */
@@ -902,5 +844,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=60-es2015.js.map
+}]);
 //# sourceMappingURL=60-es5.js.map

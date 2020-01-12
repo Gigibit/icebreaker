@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"], {
@@ -161,70 +157,60 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return detachComponent;
     });
 
-    var attachComponent =
-    /*#__PURE__*/
-    function () {
-      var _ref = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee(delegate, container, component, cssClasses, componentProps) {
-        var el;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (!delegate) {
-                  _context.next = 2;
-                  break;
-                }
+    var attachComponent = function attachComponent(delegate, container, component, cssClasses, componentProps) {
+      var el;
+      return regeneratorRuntime.async(function attachComponent$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!delegate) {
+                _context.next = 2;
+                break;
+              }
 
-                return _context.abrupt("return", delegate.attachViewToDom(container, component, componentProps, cssClasses));
+              return _context.abrupt("return", delegate.attachViewToDom(container, component, componentProps, cssClasses));
 
-              case 2:
-                if (!(typeof component !== 'string' && !(component instanceof HTMLElement))) {
-                  _context.next = 4;
-                  break;
-                }
+            case 2:
+              if (!(typeof component !== 'string' && !(component instanceof HTMLElement))) {
+                _context.next = 4;
+                break;
+              }
 
-                throw new Error('framework delegate is missing');
+              throw new Error('framework delegate is missing');
 
-              case 4:
-                el = typeof component === 'string' ? container.ownerDocument && container.ownerDocument.createElement(component) : component;
+            case 4:
+              el = typeof component === 'string' ? container.ownerDocument && container.ownerDocument.createElement(component) : component;
 
-                if (cssClasses) {
-                  cssClasses.forEach(function (c) {
-                    return el.classList.add(c);
-                  });
-                }
+              if (cssClasses) {
+                cssClasses.forEach(function (c) {
+                  return el.classList.add(c);
+                });
+              }
 
-                if (componentProps) {
-                  Object.assign(el, componentProps);
-                }
+              if (componentProps) {
+                Object.assign(el, componentProps);
+              }
 
-                container.appendChild(el);
+              container.appendChild(el);
 
-                if (!el.componentOnReady) {
-                  _context.next = 11;
-                  break;
-                }
-
+              if (!el.componentOnReady) {
                 _context.next = 11;
-                return el.componentOnReady();
+                break;
+              }
 
-              case 11:
-                return _context.abrupt("return", el);
+              _context.next = 11;
+              return regeneratorRuntime.awrap(el.componentOnReady());
 
-              case 12:
-              case "end":
-                return _context.stop();
-            }
+            case 11:
+              return _context.abrupt("return", el);
+
+            case 12:
+            case "end":
+              return _context.stop();
           }
-        }, _callee);
-      }));
-
-      return function attachComponent(_x, _x2, _x3, _x4, _x5) {
-        return _ref.apply(this, arguments);
-      };
-    }();
+        }
+      });
+    };
 
     var detachComponent = function detachComponent(delegate, element) {
       if (element) {
@@ -601,38 +587,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
 
-    var runTransition =
-    /*#__PURE__*/
-    function () {
-      var _ref2 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2(opts) {
-        var animationBuilder, ani;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return getAnimationBuilder(opts);
+    var runTransition = function runTransition(opts) {
+      var animationBuilder, ani;
+      return regeneratorRuntime.async(function runTransition$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return regeneratorRuntime.awrap(getAnimationBuilder(opts));
 
-              case 2:
-                animationBuilder = _context2.sent;
-                ani = animationBuilder ? animation(animationBuilder, opts) : noAnimation(opts); // fast path for no animation
+            case 2:
+              animationBuilder = _context2.sent;
+              ani = animationBuilder ? animation(animationBuilder, opts) : noAnimation(opts); // fast path for no animation
 
-                return _context2.abrupt("return", ani);
+              return _context2.abrupt("return", ani);
 
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
+            case 5:
+            case "end":
+              return _context2.stop();
           }
-        }, _callee2);
-      }));
-
-      return function runTransition(_x6) {
-        return _ref2.apply(this, arguments);
-      };
-    }();
+        }
+      });
+    };
 
     var afterTransition = function afterTransition(opts) {
       var enteringEl = opts.enteringEl;
@@ -644,241 +620,191 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
 
-    var getAnimationBuilder =
-    /*#__PURE__*/
-    function () {
-      var _ref3 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee3(opts) {
-        var getAnimation;
-        return regeneratorRuntime.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                if (!(!opts.leavingEl || !opts.animated || opts.duration === 0)) {
-                  _context3.next = 2;
-                  break;
-                }
-
-                return _context3.abrupt("return", undefined);
-
-              case 2:
-                if (!opts.animationBuilder) {
-                  _context3.next = 4;
-                  break;
-                }
-
-                return _context3.abrupt("return", opts.animationBuilder);
-
-              case 4:
-                if (!(opts.mode === 'ios')) {
-                  _context3.next = 10;
-                  break;
-                }
-
-                _context3.next = 7;
-                return iosTransitionAnimation();
-
-              case 7:
-                _context3.t0 = _context3.sent.iosTransitionAnimation;
-                _context3.next = 13;
+    var getAnimationBuilder = function getAnimationBuilder(opts) {
+      var getAnimation;
+      return regeneratorRuntime.async(function getAnimationBuilder$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              if (!(!opts.leavingEl || !opts.animated || opts.duration === 0)) {
+                _context3.next = 2;
                 break;
+              }
 
-              case 10:
-                _context3.next = 12;
-                return mdTransitionAnimation();
+              return _context3.abrupt("return", undefined);
 
-              case 12:
-                _context3.t0 = _context3.sent.mdTransitionAnimation;
-
-              case 13:
-                getAnimation = _context3.t0;
-                return _context3.abrupt("return", getAnimation);
-
-              case 15:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }));
-
-      return function getAnimationBuilder(_x7) {
-        return _ref3.apply(this, arguments);
-      };
-    }();
-
-    var animation =
-    /*#__PURE__*/
-    function () {
-      var _ref4 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee4(animationBuilder, opts) {
-        var trans, mod, didComplete;
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
-                return waitForReady(opts, true);
-
-              case 2:
-                _context4.prev = 2;
-                _context4.next = 5;
-                return __webpack_require__.e(
-                /*! import() | index-69c37885-js */
-                "index-69c37885-js").then(__webpack_require__.bind(null,
-                /*! ./index-69c37885.js */
-                "./node_modules/@ionic/core/dist/esm/index-69c37885.js"));
-
-              case 5:
-                mod = _context4.sent;
-                _context4.next = 8;
-                return mod.create(animationBuilder, opts.baseEl, opts);
-
-              case 8:
-                trans = _context4.sent;
-                _context4.next = 14;
+            case 2:
+              if (!opts.animationBuilder) {
+                _context3.next = 4;
                 break;
+              }
 
-              case 11:
-                _context4.prev = 11;
-                _context4.t0 = _context4["catch"](2);
-                trans = animationBuilder(opts.baseEl, opts);
+              return _context3.abrupt("return", opts.animationBuilder);
 
-              case 14:
-                fireWillEvents(opts.enteringEl, opts.leavingEl);
-                _context4.next = 17;
-                return playTransition(trans, opts);
+            case 4:
+              if (!(opts.mode === 'ios')) {
+                _context3.next = 10;
+                break;
+              }
 
-              case 17:
-                didComplete = _context4.sent;
+              _context3.next = 7;
+              return regeneratorRuntime.awrap(iosTransitionAnimation());
 
-                if (opts.progressCallback) {
-                  opts.progressCallback(undefined);
-                }
+            case 7:
+              _context3.t0 = _context3.sent.iosTransitionAnimation;
+              _context3.next = 13;
+              break;
 
-                if (didComplete) {
-                  fireDidEvents(opts.enteringEl, opts.leavingEl);
-                }
+            case 10:
+              _context3.next = 12;
+              return regeneratorRuntime.awrap(mdTransitionAnimation());
 
-                return _context4.abrupt("return", {
-                  hasCompleted: didComplete,
-                  animation: trans
-                });
+            case 12:
+              _context3.t0 = _context3.sent.mdTransitionAnimation;
 
-              case 21:
-              case "end":
-                return _context4.stop();
-            }
+            case 13:
+              getAnimation = _context3.t0;
+              return _context3.abrupt("return", getAnimation);
+
+            case 15:
+            case "end":
+              return _context3.stop();
           }
-        }, _callee4, null, [[2, 11]]);
-      }));
+        }
+      });
+    };
 
-      return function animation(_x8, _x9) {
-        return _ref4.apply(this, arguments);
-      };
-    }();
+    var animation = function animation(animationBuilder, opts) {
+      var trans, mod, didComplete;
+      return regeneratorRuntime.async(function animation$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return regeneratorRuntime.awrap(waitForReady(opts, true));
 
-    var noAnimation =
-    /*#__PURE__*/
-    function () {
-      var _ref5 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee5(opts) {
-        var enteringEl, leavingEl;
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                enteringEl = opts.enteringEl;
-                leavingEl = opts.leavingEl;
-                _context5.next = 4;
-                return waitForReady(opts, false);
+            case 2:
+              _context4.prev = 2;
+              _context4.next = 5;
+              return regeneratorRuntime.awrap(__webpack_require__.e(
+              /*! import() | index-69c37885-js */
+              "index-69c37885-js").then(__webpack_require__.bind(null,
+              /*! ./index-69c37885.js */
+              "./node_modules/@ionic/core/dist/esm/index-69c37885.js")));
 
-              case 4:
-                fireWillEvents(enteringEl, leavingEl);
-                fireDidEvents(enteringEl, leavingEl);
-                return _context5.abrupt("return", {
-                  hasCompleted: true
-                });
+            case 5:
+              mod = _context4.sent;
+              _context4.next = 8;
+              return regeneratorRuntime.awrap(mod.create(animationBuilder, opts.baseEl, opts));
 
-              case 7:
-              case "end":
-                return _context5.stop();
-            }
+            case 8:
+              trans = _context4.sent;
+              _context4.next = 14;
+              break;
+
+            case 11:
+              _context4.prev = 11;
+              _context4.t0 = _context4["catch"](2);
+              trans = animationBuilder(opts.baseEl, opts);
+
+            case 14:
+              fireWillEvents(opts.enteringEl, opts.leavingEl);
+              _context4.next = 17;
+              return regeneratorRuntime.awrap(playTransition(trans, opts));
+
+            case 17:
+              didComplete = _context4.sent;
+
+              if (opts.progressCallback) {
+                opts.progressCallback(undefined);
+              }
+
+              if (didComplete) {
+                fireDidEvents(opts.enteringEl, opts.leavingEl);
+              }
+
+              return _context4.abrupt("return", {
+                hasCompleted: didComplete,
+                animation: trans
+              });
+
+            case 21:
+            case "end":
+              return _context4.stop();
           }
-        }, _callee5);
-      }));
+        }
+      }, null, null, [[2, 11]]);
+    };
 
-      return function noAnimation(_x10) {
-        return _ref5.apply(this, arguments);
-      };
-    }();
+    var noAnimation = function noAnimation(opts) {
+      var enteringEl, leavingEl;
+      return regeneratorRuntime.async(function noAnimation$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              enteringEl = opts.enteringEl;
+              leavingEl = opts.leavingEl;
+              _context5.next = 4;
+              return regeneratorRuntime.awrap(waitForReady(opts, false));
 
-    var waitForReady =
-    /*#__PURE__*/
-    function () {
-      var _ref6 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee6(opts, defaultDeep) {
-        var deep, promises;
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                deep = opts.deepWait !== undefined ? opts.deepWait : defaultDeep;
-                promises = deep ? [deepReady(opts.enteringEl), deepReady(opts.leavingEl)] : [shallowReady(opts.enteringEl), shallowReady(opts.leavingEl)];
-                _context6.next = 4;
-                return Promise.all(promises);
+            case 4:
+              fireWillEvents(enteringEl, leavingEl);
+              fireDidEvents(enteringEl, leavingEl);
+              return _context5.abrupt("return", {
+                hasCompleted: true
+              });
 
-              case 4:
-                _context6.next = 6;
-                return notifyViewReady(opts.viewIsReady, opts.enteringEl);
-
-              case 6:
-              case "end":
-                return _context6.stop();
-            }
+            case 7:
+            case "end":
+              return _context5.stop();
           }
-        }, _callee6);
-      }));
+        }
+      });
+    };
 
-      return function waitForReady(_x11, _x12) {
-        return _ref6.apply(this, arguments);
-      };
-    }();
+    var waitForReady = function waitForReady(opts, defaultDeep) {
+      var deep, promises;
+      return regeneratorRuntime.async(function waitForReady$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              deep = opts.deepWait !== undefined ? opts.deepWait : defaultDeep;
+              promises = deep ? [deepReady(opts.enteringEl), deepReady(opts.leavingEl)] : [shallowReady(opts.enteringEl), shallowReady(opts.leavingEl)];
+              _context6.next = 4;
+              return regeneratorRuntime.awrap(Promise.all(promises));
 
-    var notifyViewReady =
-    /*#__PURE__*/
-    function () {
-      var _ref7 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee7(viewIsReady, enteringEl) {
-        return regeneratorRuntime.wrap(function _callee7$(_context7) {
-          while (1) {
-            switch (_context7.prev = _context7.next) {
-              case 0:
-                if (!viewIsReady) {
-                  _context7.next = 3;
-                  break;
-                }
+            case 4:
+              _context6.next = 6;
+              return regeneratorRuntime.awrap(notifyViewReady(opts.viewIsReady, opts.enteringEl));
 
+            case 6:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      });
+    };
+
+    var notifyViewReady = function notifyViewReady(viewIsReady, enteringEl) {
+      return regeneratorRuntime.async(function notifyViewReady$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              if (!viewIsReady) {
                 _context7.next = 3;
-                return viewIsReady(enteringEl);
+                break;
+              }
 
-              case 3:
-              case "end":
-                return _context7.stop();
-            }
+              _context7.next = 3;
+              return regeneratorRuntime.awrap(viewIsReady(enteringEl));
+
+            case 3:
+            case "end":
+              return _context7.stop();
           }
-        }, _callee7);
-      }));
-
-      return function notifyViewReady(_x13, _x14) {
-        return _ref7.apply(this, arguments);
-      };
-    }();
+        }
+      });
+    };
 
     var playTransition = function playTransition(trans, opts) {
       var progressCallback = opts.progressCallback; // TODO: Remove AnimationBuilder
@@ -937,58 +863,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Promise.resolve();
     };
 
-    var deepReady =
-    /*#__PURE__*/
-    function () {
-      var _ref8 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee8(el) {
-        var element, stencilEl;
-        return regeneratorRuntime.wrap(function _callee8$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                element = el;
+    var deepReady = function deepReady(el) {
+      var element, stencilEl;
+      return regeneratorRuntime.async(function deepReady$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              element = el;
 
-                if (!element) {
-                  _context8.next = 10;
-                  break;
-                }
-
-                if (!(element.componentOnReady != null)) {
-                  _context8.next = 8;
-                  break;
-                }
-
-                _context8.next = 5;
-                return element.componentOnReady();
-
-              case 5:
-                stencilEl = _context8.sent;
-
-                if (!(stencilEl != null)) {
-                  _context8.next = 8;
-                  break;
-                }
-
-                return _context8.abrupt("return");
-
-              case 8:
+              if (!element) {
                 _context8.next = 10;
-                return Promise.all(Array.from(element.children).map(deepReady));
+                break;
+              }
 
-              case 10:
-              case "end":
-                return _context8.stop();
-            }
+              if (!(element.componentOnReady != null)) {
+                _context8.next = 8;
+                break;
+              }
+
+              _context8.next = 5;
+              return regeneratorRuntime.awrap(element.componentOnReady());
+
+            case 5:
+              stencilEl = _context8.sent;
+
+              if (!(stencilEl != null)) {
+                _context8.next = 8;
+                break;
+              }
+
+              return _context8.abrupt("return");
+
+            case 8:
+              _context8.next = 10;
+              return regeneratorRuntime.awrap(Promise.all(Array.from(element.children).map(deepReady)));
+
+            case 10:
+            case "end":
+              return _context8.stop();
           }
-        }, _callee8);
-      }));
-
-      return function deepReady(_x15) {
-        return _ref8.apply(this, arguments);
-      };
-    }();
+        }
+      });
+    };
 
     var setPageHidden = function setPageHidden(el, hidden) {
       if (hidden) {
@@ -1106,50 +1022,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var SCHEME = /^[a-z][a-z0-9+\-.]*:/;
 
-    var openURL =
-    /*#__PURE__*/
-    function () {
-      var _ref10 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee9(url, ev, direction) {
-        var router;
-        return regeneratorRuntime.wrap(function _callee9$(_context9) {
-          while (1) {
-            switch (_context9.prev = _context9.next) {
-              case 0:
-                if (!(url != null && url[0] !== '#' && !SCHEME.test(url))) {
-                  _context9.next = 5;
-                  break;
-                }
+    var openURL = function openURL(url, ev, direction) {
+      var router;
+      return regeneratorRuntime.async(function openURL$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              if (!(url != null && url[0] !== '#' && !SCHEME.test(url))) {
+                _context9.next = 5;
+                break;
+              }
 
-                router = document.querySelector('ion-router');
+              router = document.querySelector('ion-router');
 
-                if (!router) {
-                  _context9.next = 5;
-                  break;
-                }
+              if (!router) {
+                _context9.next = 5;
+                break;
+              }
 
-                if (ev != null) {
-                  ev.preventDefault();
-                }
+              if (ev != null) {
+                ev.preventDefault();
+              }
 
-                return _context9.abrupt("return", router.push(url, direction));
+              return _context9.abrupt("return", router.push(url, direction));
 
-              case 5:
-                return _context9.abrupt("return", false);
+            case 5:
+              return _context9.abrupt("return", false);
 
-              case 6:
-              case "end":
-                return _context9.stop();
-            }
+            case 6:
+            case "end":
+              return _context9.stop();
           }
-        }, _callee9);
-      }));
-
-      return function openURL(_x16, _x17, _x18) {
-        return _ref10.apply(this, arguments);
-      };
-    }();
+        }
+      });
+    };
     /***/
 
   },
@@ -1215,5 +1121,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /***/
 
   }
-}]); //# sourceMappingURL=common-es2015.js.map
+}]);
 //# sourceMappingURL=common-es5.js.map

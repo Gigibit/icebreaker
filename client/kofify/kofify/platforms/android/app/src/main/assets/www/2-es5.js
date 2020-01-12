@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -226,101 +222,81 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "buttonClick",
-        value: function () {
-          var _buttonClick = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee(button) {
-            var role, shouldDismiss;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    role = button.role;
+        value: function buttonClick(button) {
+          var role, shouldDismiss;
+          return regeneratorRuntime.async(function buttonClick$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  role = button.role;
 
-                    if (!Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["i"])(role)) {
-                      _context.next = 3;
-                      break;
-                    }
+                  if (!Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["i"])(role)) {
+                    _context.next = 3;
+                    break;
+                  }
 
-                    return _context.abrupt("return", this.dismiss(undefined, role));
+                  return _context.abrupt("return", this.dismiss(undefined, role));
 
-                  case 3:
-                    _context.next = 5;
-                    return this.callButtonHandler(button);
+                case 3:
+                  _context.next = 5;
+                  return regeneratorRuntime.awrap(this.callButtonHandler(button));
 
-                  case 5:
-                    shouldDismiss = _context.sent;
+                case 5:
+                  shouldDismiss = _context.sent;
 
-                    if (!shouldDismiss) {
-                      _context.next = 8;
-                      break;
-                    }
+                  if (!shouldDismiss) {
+                    _context.next = 8;
+                    break;
+                  }
 
-                    return _context.abrupt("return", this.dismiss(undefined, button.role));
+                  return _context.abrupt("return", this.dismiss(undefined, button.role));
 
-                  case 8:
-                    return _context.abrupt("return", Promise.resolve());
+                case 8:
+                  return _context.abrupt("return", Promise.resolve());
 
-                  case 9:
-                  case "end":
-                    return _context.stop();
-                }
+                case 9:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, this);
-          }));
-
-          function buttonClick(_x) {
-            return _buttonClick.apply(this, arguments);
-          }
-
-          return buttonClick;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "callButtonHandler",
-        value: function () {
-          var _callButtonHandler = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2(button) {
-            var rtn;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    if (!button) {
-                      _context2.next = 6;
-                      break;
-                    }
+        value: function callButtonHandler(button) {
+          var rtn;
+          return regeneratorRuntime.async(function callButtonHandler$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (!button) {
+                    _context2.next = 6;
+                    break;
+                  }
 
-                    _context2.next = 3;
-                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["s"])(button.handler);
+                  _context2.next = 3;
+                  return regeneratorRuntime.awrap(Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["s"])(button.handler));
 
-                  case 3:
-                    rtn = _context2.sent;
+                case 3:
+                  rtn = _context2.sent;
 
-                    if (!(rtn === false)) {
-                      _context2.next = 6;
-                      break;
-                    }
+                  if (!(rtn === false)) {
+                    _context2.next = 6;
+                    break;
+                  }
 
-                    return _context2.abrupt("return", false);
+                  return _context2.abrupt("return", false);
 
-                  case 6:
-                    return _context2.abrupt("return", true);
+                case 6:
+                  return _context2.abrupt("return", true);
 
-                  case 7:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 7:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2);
-          }));
-
-          function callButtonHandler(_x2) {
-            return _callButtonHandler.apply(this, arguments);
-          }
-
-          return callButtonHandler;
-        }()
+            }
+          });
+        }
       }, {
         key: "getButtons",
         value: function getButtons() {
@@ -422,5 +398,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=2-es2015.js.map
+}]);
 //# sourceMappingURL=2-es5.js.map

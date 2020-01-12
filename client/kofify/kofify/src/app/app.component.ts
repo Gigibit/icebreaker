@@ -9,11 +9,8 @@ import { Router } from '@angular/router';
 import { User } from './_models/user';
 import { TranslateService } from '@ngx-translate/core';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { UserService } from './_services/user.service';
-import { ImageLoaderConfigService } from 'ionic-image-loader';
 import { ChatService } from './_services/chat.service';
 import { timer } from 'rxjs';
-import { CoffeeService } from './_services/coffe.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -31,7 +28,6 @@ export class AppComponent {
     private authenticationService: AuthService,
     private chatService: ChatService,
     private screenOrientation: ScreenOrientation,
-    private imageLoaderConfig: ImageLoaderConfigService,
     private router: Router
     ) {
 
@@ -55,11 +51,6 @@ export class AppComponent {
           this.showSplash = false
         }) // <-- hide animation after 3s
         
-        this.imageLoaderConfig.setFallbackUrl('assets/imgs/user.svg'); // if images fail to load, display this image instead
-        this.imageLoaderConfig.enableSpinner(false)
-        this.imageLoaderConfig.setMaximumCacheSize(40 * 1024 * 1024); // set max size to 20MB
-        this.imageLoaderConfig.setMaximumCacheAge(7 * 24 * 60 * 60 * 1000); // 7 days
-        this.imageLoaderConfig.useImageTag(true);
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         // this language will be used as a fallback when a translation isn't found in the current language
         this.translate.setDefaultLang('en');

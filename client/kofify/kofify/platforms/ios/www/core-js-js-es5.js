@@ -5156,5 +5156,5 @@
     });
     /***/
   }
-}]); //# sourceMappingURL=core-js-js-es2015.js.map
+}]);
 //# sourceMappingURL=core-js-js-es5.js.map

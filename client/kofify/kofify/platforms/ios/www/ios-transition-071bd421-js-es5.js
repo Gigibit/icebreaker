@@ -540,5 +540,5 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     /***/
 
   }
-}]); //# sourceMappingURL=ios-transition-071bd421-js-es2015.js.map
+}]);
 //# sourceMappingURL=ios-transition-071bd421-js-es5.js.map

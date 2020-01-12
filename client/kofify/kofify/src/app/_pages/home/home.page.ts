@@ -1,6 +1,6 @@
-import { Component, OnInit, NgZone,  Renderer, OnDestroy } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { NativeGeocoderOptions, NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
-import { ModalController, PopoverController, LoadingController } from '@ionic/angular';
+import { PopoverController, Platform } from '@ionic/angular';
 import { CoffeeService } from '../../_services/coffe.service';
 import { UserService } from '../../_services/user.service';
 import { AuthService } from '../../_services/auth.service';
@@ -58,6 +58,7 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
     private coffeeService: CoffeeService,
     private userService: UserService,
     private geolocation: Geolocation,
+    private platform: Platform,
     public popoverController: PopoverController,
     private ngZone: NgZone,
     private oneSignal: OneSignal,
@@ -66,9 +67,6 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
     private toastService: ToastService,
     private nativeGeocoder: NativeGeocoder
     ) { 
-      //todo: remove mock parameters
-      this.geoLongitude = 9.164747499999999
-      this.geoLatitude = 45.480588499999996
       const _this = this
       window['ackSetLat'] =function(o){
         _this.geoLatitude = o
@@ -98,59 +96,72 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
     
     
     public async ngOnInit(): Promise<void> {
-      this.getGeolocation()
-      await this.onEnter();
-      
-      this.navSubscription = this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd && event.url === '/tabs/home') {
-          this.onEnter();
-        }
-      });
-      this.authService.userInfo().subscribe(data=>{
-        console.log(data)
+      this.platform.ready().then(() => {
+        this.getGeolocation()
+        this.onEnter();
+        
+        this.navSubscription = this.router.events.subscribe((event) => {
+          if (event instanceof NavigationEnd && event.url === '/tabs/home') {
+            this.onEnter();
+          }
+        });
+        this.authService.userInfo().subscribe(data=>{
+          console.log(data)
+        })
+        from(this.oneSignal.getIds()).subscribe(data=>{
+          this.userService
+          .subscribeToPushNotifications(data.userId ,data.pushToken)
+          .subscribe()
+        })
+        this.authService.currentUser.subscribe(user=>{
+          this.userImg = user && user.profileImg 
+        })
       })
-      from(this.oneSignal.getIds()).subscribe(data=>{
-        this.userService
-        .subscribeToPushNotifications(data.userId ,data.pushToken)
-        .subscribe()
-      })
-      this.authService.currentUser.subscribe(user=>{
-        this.userImg = user && user.profileImg 
-      })
-      
     }
     
     //Get current coordinates of device
     async getGeolocation(){
-      
-      this.geolocation.getCurrentPosition().then((resp) => {
-        this.useMyPosition = true;
-        this.geoLatitude = resp.coords.latitude;
-        this.geoLongitude = resp.coords.longitude; 
-        this.geoAccuracy = resp.coords.accuracy;
-        this.getGeoencoder(this.geoLatitude,this.geoLongitude);
-      }).catch((error) => {
-        this.useMyPosition = false;
+      console.log('getting current position method')
+      let self = this
+      navigator.geolocation.getCurrentPosition(function(resp){
+        console.log('promise')
+        self.useMyPosition = true;
+        self.geoLatitude = resp.coords.latitude;
+        self.geoLongitude = resp.coords.longitude; 
+        self.geoAccuracy = resp.coords.accuracy;
+        self.getGeoencoder(self.geoLatitude,self.geoLongitude);
+      },function(error) {
+        self.useMyPosition = false;
         console.log('error while getting position',error)
-      });
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 7000,
+        maximumAge: 0
+      })
     }
     
     //geocoder method to fetch address from coordinates passed as arguments
     getGeoencoder(latitude,longitude){
+      console.log('reverse gocode')
       this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
       .then((result: NativeGeocoderResult[]) => {
+        console.log('updating position')
         this.geoAddress = joinWithCommaOrEmpty( /* result[0].thoroughfare,*/ result[0].locality , result[0].subLocality , /* result[0].administrativeArea ,*/ result[0].countryName );
-        this.userService.updateAddress(this.geoAddress, latitude, longitude).subscribe()
+        this.userService.updateAddress(this.geoAddress, latitude, longitude).subscribe(response =>console.log(response))
       })
       .catch((error: any) => {
         console.log(error)
-        this.userService.updateAddress(null, latitude, longitude).subscribe()
+        this.userService.updateAddress(null, latitude, longitude).subscribe(response =>console.log(response))
       });
     }
     onUseMyPositionStatusChanged(){
       this.geoLatitude = null
       this.geoLongitude = null
-      if(this.useMyPosition){ this.getGeolocation() }
+      if(this.useMyPosition){ 
+        console.log('getting geolocation')
+        this.getGeolocation() 
+      }
       else if ( this.lastSelectedZone ){
         this.geoLatitude = Number.parseFloat(this.lastSelectedZone.y)
         this.geoLongitude = Number.parseFloat(this.lastSelectedZone.x) 

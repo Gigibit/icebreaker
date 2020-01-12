@@ -80,5 +80,5 @@
     /***/
 
   }
-}]); //# sourceMappingURL=swipe-back-35ad8e37-js-es2015.js.map
+}]);
 //# sourceMappingURL=swipe-back-35ad8e37-js-es5.js.map

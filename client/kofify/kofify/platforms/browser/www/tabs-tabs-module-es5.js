@@ -194,5 +194,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     })], TabsModule);
     /***/
   }
-}]); //# sourceMappingURL=tabs-tabs-module-es2015.js.map
+}]);
 //# sourceMappingURL=tabs-tabs-module-es5.js.map

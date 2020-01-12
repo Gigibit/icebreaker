@@ -1,7 +1,3 @@
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -464,96 +460,86 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "scrollToPoint",
-        value: function () {
-          var _scrollToPoint = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee(x, y) {
-            var duration,
-                el,
-                resolve,
-                startTime,
-                promise,
-                fromY,
-                fromX,
-                deltaY,
-                deltaX,
-                step,
-                _args = arguments;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    duration = _args.length > 2 && _args[2] !== undefined ? _args[2] : 0;
-                    el = this.scrollEl;
+        value: function scrollToPoint(x, y) {
+          var duration,
+              el,
+              resolve,
+              startTime,
+              promise,
+              fromY,
+              fromX,
+              deltaY,
+              deltaX,
+              step,
+              _args = arguments;
+          return regeneratorRuntime.async(function scrollToPoint$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  duration = _args.length > 2 && _args[2] !== undefined ? _args[2] : 0;
+                  el = this.scrollEl;
 
-                    if (!(duration < 32)) {
-                      _context.next = 6;
-                      break;
+                  if (!(duration < 32)) {
+                    _context.next = 6;
+                    break;
+                  }
+
+                  if (y != null) {
+                    el.scrollTop = y;
+                  }
+
+                  if (x != null) {
+                    el.scrollLeft = x;
+                  }
+
+                  return _context.abrupt("return");
+
+                case 6:
+                  startTime = 0;
+                  promise = new Promise(function (r) {
+                    return resolve = r;
+                  });
+                  fromY = el.scrollTop;
+                  fromX = el.scrollLeft;
+                  deltaY = y != null ? y - fromY : 0;
+                  deltaX = x != null ? x - fromX : 0; // scroll loop
+
+                  step = function step(timeStamp) {
+                    var linearTime = Math.min(1, (timeStamp - startTime) / duration) - 1;
+                    var easedT = Math.pow(linearTime, 3) + 1;
+
+                    if (deltaY !== 0) {
+                      el.scrollTop = Math.floor(easedT * deltaY + fromY);
                     }
 
-                    if (y != null) {
-                      el.scrollTop = y;
+                    if (deltaX !== 0) {
+                      el.scrollLeft = Math.floor(easedT * deltaX + fromX);
                     }
 
-                    if (x != null) {
-                      el.scrollLeft = x;
+                    if (easedT < 1) {
+                      // do not use DomController here
+                      // must use nativeRaf in order to fire in the next frame
+                      // TODO: remove as any
+                      requestAnimationFrame(step);
+                    } else {
+                      resolve();
                     }
-
-                    return _context.abrupt("return");
-
-                  case 6:
-                    startTime = 0;
-                    promise = new Promise(function (r) {
-                      return resolve = r;
-                    });
-                    fromY = el.scrollTop;
-                    fromX = el.scrollLeft;
-                    deltaY = y != null ? y - fromY : 0;
-                    deltaX = x != null ? x - fromX : 0; // scroll loop
-
-                    step = function step(timeStamp) {
-                      var linearTime = Math.min(1, (timeStamp - startTime) / duration) - 1;
-                      var easedT = Math.pow(linearTime, 3) + 1;
-
-                      if (deltaY !== 0) {
-                        el.scrollTop = Math.floor(easedT * deltaY + fromY);
-                      }
-
-                      if (deltaX !== 0) {
-                        el.scrollLeft = Math.floor(easedT * deltaX + fromX);
-                      }
-
-                      if (easedT < 1) {
-                        // do not use DomController here
-                        // must use nativeRaf in order to fire in the next frame
-                        // TODO: remove as any
-                        requestAnimationFrame(step);
-                      } else {
-                        resolve();
-                      }
-                    }; // chill out for a frame first
+                  }; // chill out for a frame first
 
 
-                    requestAnimationFrame(function (ts) {
-                      startTime = ts;
-                      step(ts);
-                    });
-                    return _context.abrupt("return", promise);
+                  requestAnimationFrame(function (ts) {
+                    startTime = ts;
+                    step(ts);
+                  });
+                  return _context.abrupt("return", promise);
 
-                  case 15:
-                  case "end":
-                    return _context.stop();
-                }
+                case 15:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, this);
-          }));
-
-          function scrollToPoint(_x, _x2) {
-            return _scrollToPoint.apply(this, arguments);
-          }
-
-          return scrollToPoint;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "onScrollStart",
         value: function onScrollStart() {
@@ -908,58 +894,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(Header, [{
         key: "componentDidLoad",
-        value: function () {
-          var _componentDidLoad = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    _context2.next = 2;
-                    return this.checkCollapsibleHeader();
+        value: function componentDidLoad() {
+          return regeneratorRuntime.async(function componentDidLoad$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return regeneratorRuntime.awrap(this.checkCollapsibleHeader());
 
-                  case 2:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 2:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2, this);
-          }));
-
-          function componentDidLoad() {
-            return _componentDidLoad.apply(this, arguments);
-          }
-
-          return componentDidLoad;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "componentDidUpdate",
-        value: function () {
-          var _componentDidUpdate = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    _context3.next = 2;
-                    return this.checkCollapsibleHeader();
+        value: function componentDidUpdate() {
+          return regeneratorRuntime.async(function componentDidUpdate$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return regeneratorRuntime.awrap(this.checkCollapsibleHeader());
 
-                  case 2:
-                  case "end":
-                    return _context3.stop();
-                }
+                case 2:
+                case "end":
+                  return _context3.stop();
               }
-            }, _callee3, this);
-          }));
-
-          function componentDidUpdate() {
-            return _componentDidUpdate.apply(this, arguments);
-          }
-
-          return componentDidUpdate;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "componentDidUnload",
         value: function componentDidUnload() {
@@ -967,53 +933,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "checkCollapsibleHeader",
-        value: function () {
-          var _checkCollapsibleHeader = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4() {
-            var hasCollapse, canCollapse, pageEl, contentEl;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    // Determine if the header can collapse
-                    hasCollapse = this.collapse === 'condense';
-                    canCollapse = hasCollapse && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this) === 'ios' ? hasCollapse : false;
+        value: function checkCollapsibleHeader() {
+          var hasCollapse, canCollapse, pageEl, contentEl;
+          return regeneratorRuntime.async(function checkCollapsibleHeader$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  // Determine if the header can collapse
+                  hasCollapse = this.collapse === 'condense';
+                  canCollapse = hasCollapse && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this) === 'ios' ? hasCollapse : false;
 
-                    if (!(!canCollapse && this.collapsibleHeaderInitialized)) {
-                      _context4.next = 6;
-                      break;
-                    }
+                  if (!(!canCollapse && this.collapsibleHeaderInitialized)) {
+                    _context4.next = 6;
+                    break;
+                  }
 
-                    this.destroyCollapsibleHeader();
+                  this.destroyCollapsibleHeader();
+                  _context4.next = 11;
+                  break;
+
+                case 6:
+                  if (!(canCollapse && !this.collapsibleHeaderInitialized)) {
                     _context4.next = 11;
                     break;
+                  }
 
-                  case 6:
-                    if (!(canCollapse && !this.collapsibleHeaderInitialized)) {
-                      _context4.next = 11;
-                      break;
-                    }
+                  pageEl = this.el.closest('ion-app,ion-page,.ion-page,page-inner');
+                  contentEl = pageEl ? pageEl.querySelector('ion-content') : null;
+                  _context4.next = 11;
+                  return regeneratorRuntime.awrap(this.setupCollapsibleHeader(contentEl, pageEl));
 
-                    pageEl = this.el.closest('ion-app,ion-page,.ion-page,page-inner');
-                    contentEl = pageEl ? pageEl.querySelector('ion-content') : null;
-                    _context4.next = 11;
-                    return this.setupCollapsibleHeader(contentEl, pageEl);
-
-                  case 11:
-                  case "end":
-                    return _context4.stop();
-                }
+                case 11:
+                case "end":
+                  return _context4.stop();
               }
-            }, _callee4, this);
-          }));
-
-          function checkCollapsibleHeader() {
-            return _checkCollapsibleHeader.apply(this, arguments);
-          }
-
-          return checkCollapsibleHeader;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "destroyCollapsibleHeader",
         value: function destroyCollapsibleHeader() {
@@ -1029,100 +985,90 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "setupCollapsibleHeader",
-        value: function () {
-          var _setupCollapsibleHeader = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5(contentEl, pageEl) {
-            var _this4 = this;
+        value: function setupCollapsibleHeader(contentEl, pageEl) {
+          var _this4 = this;
 
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
-              while (1) {
-                switch (_context5.prev = _context5.next) {
-                  case 0:
-                    if (!(!contentEl || !pageEl)) {
-                      _context5.next = 3;
-                      break;
+          return regeneratorRuntime.async(function setupCollapsibleHeader$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  if (!(!contentEl || !pageEl)) {
+                    _context5.next = 3;
+                    break;
+                  }
+
+                  console.error('ion-header requires a content to collapse, make sure there is an ion-content.');
+                  return _context5.abrupt("return");
+
+                case 3:
+                  _context5.next = 5;
+                  return regeneratorRuntime.awrap(contentEl.getScrollElement());
+
+                case 5:
+                  this.scrollEl = _context5.sent;
+                  Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
+                    var headers = pageEl.querySelectorAll('ion-header');
+                    var mainHeader = Array.from(headers).find(function (header) {
+                      return header.collapse !== 'condense';
+                    });
+
+                    if (!mainHeader || !_this4.scrollEl) {
+                      return;
                     }
 
-                    console.error('ion-header requires a content to collapse, make sure there is an ion-content.');
-                    return _context5.abrupt("return");
+                    var mainHeaderIndex = createHeaderIndex(mainHeader);
+                    var scrollHeaderIndex = createHeaderIndex(_this4.el);
 
-                  case 3:
-                    _context5.next = 5;
-                    return contentEl.getScrollElement();
+                    if (!mainHeaderIndex || !scrollHeaderIndex) {
+                      return;
+                    }
 
-                  case 5:
-                    this.scrollEl = _context5.sent;
+                    setHeaderActive(mainHeaderIndex, false);
                     Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
-                      var headers = pageEl.querySelectorAll('ion-header');
-                      var mainHeader = Array.from(headers).find(function (header) {
-                        return header.collapse !== 'condense';
-                      });
-
-                      if (!mainHeader || !_this4.scrollEl) {
-                        return;
-                      }
-
-                      var mainHeaderIndex = createHeaderIndex(mainHeader);
-                      var scrollHeaderIndex = createHeaderIndex(_this4.el);
-
-                      if (!mainHeaderIndex || !scrollHeaderIndex) {
-                        return;
-                      }
-
-                      setHeaderActive(mainHeaderIndex, false);
-                      Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
-                        var mainHeaderHeight = mainHeaderIndex.el.clientHeight;
-                        /**
-                         * Handle interaction between toolbar collapse and
-                         * showing/hiding content in the primary ion-header
-                         * as well as progressively showing/hiding the main header
-                         * border as the top-most toolbar collapses or expands.
-                         */
-
-                        var toolbarIntersection = function toolbarIntersection(ev) {
-                          handleToolbarIntersection(ev, mainHeaderIndex, scrollHeaderIndex);
-                        };
-
-                        _this4.intersectionObserver = new IntersectionObserver(toolbarIntersection, {
-                          threshold: [0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-                          rootMargin: "-".concat(mainHeaderHeight, "px 0px 0px 0px")
-                        });
-
-                        _this4.intersectionObserver.observe(scrollHeaderIndex.toolbars[0].el);
-                      });
+                      var mainHeaderHeight = mainHeaderIndex.el.clientHeight;
                       /**
-                       * Handle scaling of large iOS titles and
-                       * showing/hiding border on last toolbar
-                       * in primary header
+                       * Handle interaction between toolbar collapse and
+                       * showing/hiding content in the primary ion-header
+                       * as well as progressively showing/hiding the main header
+                       * border as the top-most toolbar collapses or expands.
                        */
 
-                      _this4.contentScrollCallback = function () {
-                        handleContentScroll(_this4.scrollEl, scrollHeaderIndex);
+                      var toolbarIntersection = function toolbarIntersection(ev) {
+                        handleToolbarIntersection(ev, mainHeaderIndex, scrollHeaderIndex);
                       };
 
-                      _this4.scrollEl.addEventListener('scroll', _this4.contentScrollCallback);
-                    });
-                    Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
-                      cloneElement('ion-title');
-                      cloneElement('ion-back-button');
-                    });
-                    this.collapsibleHeaderInitialized = true;
+                      _this4.intersectionObserver = new IntersectionObserver(toolbarIntersection, {
+                        threshold: [0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                        rootMargin: "-".concat(mainHeaderHeight, "px 0px 0px 0px")
+                      });
 
-                  case 9:
-                  case "end":
-                    return _context5.stop();
-                }
+                      _this4.intersectionObserver.observe(scrollHeaderIndex.toolbars[0].el);
+                    });
+                    /**
+                     * Handle scaling of large iOS titles and
+                     * showing/hiding border on last toolbar
+                     * in primary header
+                     */
+
+                    _this4.contentScrollCallback = function () {
+                      handleContentScroll(_this4.scrollEl, scrollHeaderIndex);
+                    };
+
+                    _this4.scrollEl.addEventListener('scroll', _this4.contentScrollCallback);
+                  });
+                  Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
+                    cloneElement('ion-title');
+                    cloneElement('ion-back-button');
+                  });
+                  this.collapsibleHeaderInitialized = true;
+
+                case 9:
+                case "end":
+                  return _context5.stop();
               }
-            }, _callee5, this);
-          }));
-
-          function setupCollapsibleHeader(_x3, _x4) {
-            return _setupCollapsibleHeader.apply(this, arguments);
-          }
-
-          return setupCollapsibleHeader;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "render",
         value: function render() {
@@ -1182,92 +1128,82 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee6() {
-            var _this5 = this;
+        value: function connectedCallback() {
+          var _this5 = this;
 
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    _context6.next = 2;
-                    return __webpack_require__.e(
-                    /*! import() | swipe-back-35ad8e37-js */
-                    "swipe-back-35ad8e37-js").then(__webpack_require__.bind(null,
-                    /*! ./swipe-back-35ad8e37.js */
-                    "./node_modules/@ionic/core/dist/esm/swipe-back-35ad8e37.js"));
+          return regeneratorRuntime.async(function connectedCallback$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return regeneratorRuntime.awrap(__webpack_require__.e(
+                  /*! import() | swipe-back-35ad8e37-js */
+                  "swipe-back-35ad8e37-js").then(__webpack_require__.bind(null,
+                  /*! ./swipe-back-35ad8e37.js */
+                  "./node_modules/@ionic/core/dist/esm/swipe-back-35ad8e37.js")));
 
-                  case 2:
-                    _context6.t0 = this.el;
+                case 2:
+                  _context6.t0 = this.el;
 
-                    _context6.t1 = function () {
-                      return !!_this5.swipeHandler && _this5.swipeHandler.canStart() && _this5.animationEnabled;
-                    };
+                  _context6.t1 = function () {
+                    return !!_this5.swipeHandler && _this5.swipeHandler.canStart() && _this5.animationEnabled;
+                  };
 
-                    _context6.t2 = function () {
-                      return _this5.swipeHandler && _this5.swipeHandler.onStart();
-                    };
+                  _context6.t2 = function () {
+                    return _this5.swipeHandler && _this5.swipeHandler.onStart();
+                  };
 
-                    _context6.t3 = function (step) {
-                      return _this5.ani && _this5.ani.progressStep(step);
-                    };
+                  _context6.t3 = function (step) {
+                    return _this5.ani && _this5.ani.progressStep(step);
+                  };
 
-                    _context6.t4 = function (shouldComplete, step, dur) {
-                      if (_this5.ani) {
-                        _this5.animationEnabled = false;
+                  _context6.t4 = function (shouldComplete, step, dur) {
+                    if (_this5.ani) {
+                      _this5.animationEnabled = false;
 
-                        _this5.ani.onFinish(function () {
-                          _this5.animationEnabled = true;
+                      _this5.ani.onFinish(function () {
+                        _this5.animationEnabled = true;
 
-                          if (_this5.swipeHandler) {
-                            _this5.swipeHandler.onEnd(shouldComplete);
-                          }
-                        }, {
-                          oneTimeCallback: true
-                        }); // Account for rounding errors in JS
-
-
-                        var newStepValue = shouldComplete ? -0.001 : 0.001;
-                        /**
-                         * Animation will be reversed here, so need to
-                         * reverse the easing curve as well
-                         *
-                         * Additionally, we need to account for the time relative
-                         * to the new easing curve, as `stepValue` is going to be given
-                         * in terms of a linear curve.
-                         */
-
-                        if (!shouldComplete) {
-                          _this5.ani.easing('cubic-bezier(1, 0, 0.68, 0.28)');
-
-                          newStepValue += Object(_cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["g"])(new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.68, 0.28), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 1), step);
-                        } else {
-                          newStepValue += Object(_cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["g"])(new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.32, 0.72), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 1), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 1), step);
+                        if (_this5.swipeHandler) {
+                          _this5.swipeHandler.onEnd(shouldComplete);
                         }
+                      }, {
+                        oneTimeCallback: true
+                      }); // Account for rounding errors in JS
 
-                        _this5.ani.progressEnd(shouldComplete ? 1 : 0, newStepValue, dur);
+
+                      var newStepValue = shouldComplete ? -0.001 : 0.001;
+                      /**
+                       * Animation will be reversed here, so need to
+                       * reverse the easing curve as well
+                       *
+                       * Additionally, we need to account for the time relative
+                       * to the new easing curve, as `stepValue` is going to be given
+                       * in terms of a linear curve.
+                       */
+
+                      if (!shouldComplete) {
+                        _this5.ani.easing('cubic-bezier(1, 0, 0.68, 0.28)');
+
+                        newStepValue += Object(_cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["g"])(new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.68, 0.28), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 1), step);
+                      } else {
+                        newStepValue += Object(_cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["g"])(new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.32, 0.72), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 1), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 1), step);
                       }
-                    };
 
-                    this.gesture = _context6.sent.createSwipeBackGesture(_context6.t0, _context6.t1, _context6.t2, _context6.t3, _context6.t4);
-                    this.swipeHandlerChanged();
+                      _this5.ani.progressEnd(shouldComplete ? 1 : 0, newStepValue, dur);
+                    }
+                  };
 
-                  case 9:
-                  case "end":
-                    return _context6.stop();
-                }
+                  this.gesture = _context6.sent.createSwipeBackGesture(_context6.t0, _context6.t1, _context6.t2, _context6.t3, _context6.t4);
+                  this.swipeHandlerChanged();
+
+                case 9:
+                case "end":
+                  return _context6.stop();
               }
-            }, _callee6, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "componentWillLoad",
         value: function componentWillLoad() {
@@ -1285,285 +1221,225 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "commit",
-        value: function () {
-          var _commit = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee7(enteringEl, leavingEl, opts) {
-            var unlock, changed;
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
-              while (1) {
-                switch (_context7.prev = _context7.next) {
-                  case 0:
-                    _context7.next = 2;
-                    return this.lock();
+        value: function commit(enteringEl, leavingEl, opts) {
+          var unlock, changed;
+          return regeneratorRuntime.async(function commit$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  _context7.next = 2;
+                  return regeneratorRuntime.awrap(this.lock());
 
-                  case 2:
-                    unlock = _context7.sent;
-                    changed = false;
-                    _context7.prev = 4;
-                    _context7.next = 7;
-                    return this.transition(enteringEl, leavingEl, opts);
+                case 2:
+                  unlock = _context7.sent;
+                  changed = false;
+                  _context7.prev = 4;
+                  _context7.next = 7;
+                  return regeneratorRuntime.awrap(this.transition(enteringEl, leavingEl, opts));
 
-                  case 7:
-                    changed = _context7.sent;
-                    _context7.next = 13;
-                    break;
+                case 7:
+                  changed = _context7.sent;
+                  _context7.next = 13;
+                  break;
 
-                  case 10:
-                    _context7.prev = 10;
-                    _context7.t0 = _context7["catch"](4);
-                    console.error(_context7.t0);
+                case 10:
+                  _context7.prev = 10;
+                  _context7.t0 = _context7["catch"](4);
+                  console.error(_context7.t0);
 
-                  case 13:
-                    unlock();
-                    return _context7.abrupt("return", changed);
+                case 13:
+                  unlock();
+                  return _context7.abrupt("return", changed);
 
-                  case 15:
-                  case "end":
-                    return _context7.stop();
-                }
+                case 15:
+                case "end":
+                  return _context7.stop();
               }
-            }, _callee7, this, [[4, 10]]);
-          }));
-
-          function commit(_x5, _x6, _x7) {
-            return _commit.apply(this, arguments);
-          }
-
-          return commit;
-        }()
+            }
+          }, null, this, [[4, 10]]);
+        }
         /** @internal */
 
       }, {
         key: "setRouteId",
-        value: function () {
-          var _setRouteId = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee8(id, params, direction) {
-            var changed;
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
-              while (1) {
-                switch (_context8.prev = _context8.next) {
-                  case 0:
-                    _context8.next = 2;
-                    return this.setRoot(id, params, {
-                      duration: direction === 'root' ? 0 : undefined,
-                      direction: direction === 'back' ? 'back' : 'forward'
-                    });
+        value: function setRouteId(id, params, direction) {
+          var changed;
+          return regeneratorRuntime.async(function setRouteId$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return regeneratorRuntime.awrap(this.setRoot(id, params, {
+                    duration: direction === 'root' ? 0 : undefined,
+                    direction: direction === 'back' ? 'back' : 'forward'
+                  }));
 
-                  case 2:
-                    changed = _context8.sent;
-                    return _context8.abrupt("return", {
-                      changed: changed,
-                      element: this.activeEl
-                    });
+                case 2:
+                  changed = _context8.sent;
+                  return _context8.abrupt("return", {
+                    changed: changed,
+                    element: this.activeEl
+                  });
 
-                  case 4:
-                  case "end":
-                    return _context8.stop();
-                }
+                case 4:
+                case "end":
+                  return _context8.stop();
               }
-            }, _callee8, this);
-          }));
-
-          function setRouteId(_x8, _x9, _x10) {
-            return _setRouteId.apply(this, arguments);
-          }
-
-          return setRouteId;
-        }()
+            }
+          }, null, this);
+        }
         /** @internal */
 
       }, {
         key: "getRouteId",
-        value: function () {
-          var _getRouteId = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee9() {
-            var active;
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
-              while (1) {
-                switch (_context9.prev = _context9.next) {
-                  case 0:
-                    active = this.activeEl;
-                    return _context9.abrupt("return", active ? {
-                      id: active.tagName,
-                      element: active
-                    } : undefined);
+        value: function getRouteId() {
+          var active;
+          return regeneratorRuntime.async(function getRouteId$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  active = this.activeEl;
+                  return _context9.abrupt("return", active ? {
+                    id: active.tagName,
+                    element: active
+                  } : undefined);
 
-                  case 2:
-                  case "end":
-                    return _context9.stop();
-                }
+                case 2:
+                case "end":
+                  return _context9.stop();
               }
-            }, _callee9, this);
-          }));
-
-          function getRouteId() {
-            return _getRouteId.apply(this, arguments);
-          }
-
-          return getRouteId;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "setRoot",
-        value: function () {
-          var _setRoot = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee10(component, params, opts) {
-            var leavingEl, enteringEl;
-            return regeneratorRuntime.wrap(function _callee10$(_context10) {
-              while (1) {
-                switch (_context10.prev = _context10.next) {
-                  case 0:
-                    if (!(this.activeComponent === component)) {
-                      _context10.next = 2;
-                      break;
-                    }
+        value: function setRoot(component, params, opts) {
+          var leavingEl, enteringEl;
+          return regeneratorRuntime.async(function setRoot$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  if (!(this.activeComponent === component)) {
+                    _context10.next = 2;
+                    break;
+                  }
 
-                    return _context10.abrupt("return", false);
+                  return _context10.abrupt("return", false);
 
-                  case 2:
-                    // attach entering view to DOM
-                    leavingEl = this.activeEl;
-                    _context10.next = 5;
-                    return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_5__["a"])(this.delegate, this.el, component, ['ion-page', 'ion-page-invisible'], params);
+                case 2:
+                  // attach entering view to DOM
+                  leavingEl = this.activeEl;
+                  _context10.next = 5;
+                  return regeneratorRuntime.awrap(Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_5__["a"])(this.delegate, this.el, component, ['ion-page', 'ion-page-invisible'], params));
 
-                  case 5:
-                    enteringEl = _context10.sent;
-                    this.activeComponent = component;
-                    this.activeEl = enteringEl; // commit animation
+                case 5:
+                  enteringEl = _context10.sent;
+                  this.activeComponent = component;
+                  this.activeEl = enteringEl; // commit animation
 
-                    _context10.next = 10;
-                    return this.commit(enteringEl, leavingEl, opts);
+                  _context10.next = 10;
+                  return regeneratorRuntime.awrap(this.commit(enteringEl, leavingEl, opts));
 
-                  case 10:
-                    _context10.next = 12;
-                    return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_5__["d"])(this.delegate, leavingEl);
+                case 10:
+                  _context10.next = 12;
+                  return regeneratorRuntime.awrap(Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_5__["d"])(this.delegate, leavingEl));
 
-                  case 12:
-                    return _context10.abrupt("return", true);
+                case 12:
+                  return _context10.abrupt("return", true);
 
-                  case 13:
-                  case "end":
-                    return _context10.stop();
-                }
+                case 13:
+                case "end":
+                  return _context10.stop();
               }
-            }, _callee10, this);
-          }));
-
-          function setRoot(_x11, _x12, _x13) {
-            return _setRoot.apply(this, arguments);
-          }
-
-          return setRoot;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "transition",
-        value: function () {
-          var _transition = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee11(enteringEl, leavingEl) {
-            var _this6 = this;
+        value: function transition(enteringEl, leavingEl) {
+          var _this6 = this;
 
-            var opts,
-                el,
-                mode,
-                animated,
-                animationBuilder,
-                _args11 = arguments;
-            return regeneratorRuntime.wrap(function _callee11$(_context11) {
-              while (1) {
-                switch (_context11.prev = _context11.next) {
-                  case 0:
-                    opts = _args11.length > 2 && _args11[2] !== undefined ? _args11[2] : {};
+          var opts,
+              el,
+              mode,
+              animated,
+              animationBuilder,
+              _args11 = arguments;
+          return regeneratorRuntime.async(function transition$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  opts = _args11.length > 2 && _args11[2] !== undefined ? _args11[2] : {};
 
-                    if (!(leavingEl === enteringEl)) {
-                      _context11.next = 3;
-                      break;
-                    }
+                  if (!(leavingEl === enteringEl)) {
+                    _context11.next = 3;
+                    break;
+                  }
 
-                    return _context11.abrupt("return", false);
+                  return _context11.abrupt("return", false);
 
-                  case 3:
-                    // emit nav will change event
-                    this.ionNavWillChange.emit();
-                    el = this.el, mode = this.mode;
-                    animated = this.animated && _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true);
-                    animationBuilder = this.animation || opts.animationBuilder || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('navAnimation');
-                    _context11.next = 9;
-                    return Object(_index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_6__["t"])(Object.assign({
-                      mode: mode,
-                      animated: animated,
-                      animationBuilder: animationBuilder,
-                      enteringEl: enteringEl,
-                      leavingEl: leavingEl,
-                      baseEl: el,
-                      progressCallback: opts.progressAnimation ? function (ani) {
-                        return _this6.ani = ani;
-                      } : undefined
-                    }, opts));
+                case 3:
+                  // emit nav will change event
+                  this.ionNavWillChange.emit();
+                  el = this.el, mode = this.mode;
+                  animated = this.animated && _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true);
+                  animationBuilder = this.animation || opts.animationBuilder || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('navAnimation');
+                  _context11.next = 9;
+                  return regeneratorRuntime.awrap(Object(_index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_6__["t"])(Object.assign({
+                    mode: mode,
+                    animated: animated,
+                    animationBuilder: animationBuilder,
+                    enteringEl: enteringEl,
+                    leavingEl: leavingEl,
+                    baseEl: el,
+                    progressCallback: opts.progressAnimation ? function (ani) {
+                      return _this6.ani = ani;
+                    } : undefined
+                  }, opts)));
 
-                  case 9:
-                    // emit nav changed event
-                    this.ionNavDidChange.emit();
-                    return _context11.abrupt("return", true);
+                case 9:
+                  // emit nav changed event
+                  this.ionNavDidChange.emit();
+                  return _context11.abrupt("return", true);
 
-                  case 11:
-                  case "end":
-                    return _context11.stop();
-                }
+                case 11:
+                case "end":
+                  return _context11.stop();
               }
-            }, _callee11, this);
-          }));
-
-          function transition(_x14, _x15) {
-            return _transition.apply(this, arguments);
-          }
-
-          return transition;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "lock",
-        value: function () {
-          var _lock = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee12() {
-            var p, resolve;
-            return regeneratorRuntime.wrap(function _callee12$(_context12) {
-              while (1) {
-                switch (_context12.prev = _context12.next) {
-                  case 0:
-                    p = this.waitPromise;
-                    this.waitPromise = new Promise(function (r) {
-                      return resolve = r;
-                    });
+        value: function lock() {
+          var p, resolve;
+          return regeneratorRuntime.async(function lock$(_context12) {
+            while (1) {
+              switch (_context12.prev = _context12.next) {
+                case 0:
+                  p = this.waitPromise;
+                  this.waitPromise = new Promise(function (r) {
+                    return resolve = r;
+                  });
 
-                    if (!(p !== undefined)) {
-                      _context12.next = 5;
-                      break;
-                    }
-
+                  if (!(p !== undefined)) {
                     _context12.next = 5;
-                    return p;
+                    break;
+                  }
 
-                  case 5:
-                    return _context12.abrupt("return", resolve);
+                  _context12.next = 5;
+                  return regeneratorRuntime.awrap(p);
 
-                  case 6:
-                  case "end":
-                    return _context12.stop();
-                }
+                case 5:
+                  return _context12.abrupt("return", resolve);
+
+                case 6:
+                case "end":
+                  return _context12.stop();
               }
-            }, _callee12, this);
-          }));
-
-          function lock() {
-            return _lock.apply(this, arguments);
-          }
-
-          return lock;
-        }()
+            }
+          }, null, this);
+        }
       }, {
         key: "render",
         value: function render() {
@@ -1771,5 +1647,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=5-es2015.js.map
+}]);
 //# sourceMappingURL=5-es5.js.map

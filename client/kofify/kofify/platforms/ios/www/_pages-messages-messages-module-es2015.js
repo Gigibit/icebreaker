@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n    <div *ngIf=\"chats && chats.length == 0\">\n        <ion-label padding>{{'no_messages' | translate }}</ion-label>\n    </div>\n    <ion-list *ngIf=\"!chats\">\n        <ion-item>\n          <ion-avatar class=\"user-message-img\" slot=\"start\">\n            <ion-skeleton-text></ion-skeleton-text>\n          </ion-avatar>\n          <ion-label>\n            <ion-skeleton-text animated style=\"width: 70%; height: 17px;\"></ion-skeleton-text>\n            <ion-skeleton-text animated style=\"width: 40%;\"></ion-skeleton-text>\n          </ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-avatar class=\"user-message-img\" slot=\"start\">\n            <ion-skeleton-text></ion-skeleton-text>\n          </ion-avatar>\n          <ion-label>\n            <ion-skeleton-text animated style=\"width: 70%; height: 17px;\"></ion-skeleton-text>\n            <ion-skeleton-text animated style=\"width: 40%;\"></ion-skeleton-text>\n          </ion-label>\n        </ion-item>        <ion-item>\n          <ion-avatar class=\"user-message-img\" slot=\"start\">\n            <ion-skeleton-text></ion-skeleton-text>\n          </ion-avatar>\n          <ion-label>\n            <ion-skeleton-text animated style=\"width: 70%; height: 17px;\"></ion-skeleton-text>\n            <ion-skeleton-text animated style=\"width: 40%;\"></ion-skeleton-text>\n          </ion-label>\n        </ion-item>\n      </ion-list>\n    <ion-list *ngIf=\"chats && chats.length > 0\">\n        <ion-item *ngFor=\"let chat of chats\" (click)=\"goToChat(chat, $event)\">\n          <ion-avatar id=\"chat-img-{{chat.id}}\" class=\"user-message-img user-message-img-show\" slot=\"start\">\n            <img \n            class=\"user-img imgInLoading\"\n            (load)=\"loadImg($event)\" \n            onError=\"this.src='../../assets/imgs/user.svg';\"             \n            [src]=\"chat.img\">\n          </ion-avatar>\n          <ion-label class=\"chat-name\">\n            <h3>{{chat.name}}</h3>\n            <p *ngIf=\"chat.lastMessage\" [class.notReadMessage]=\"chat.lastMessage.readBy.indexOf(user?.id) == -1\">{{chat.lastMessage.content}}</p>\n          </ion-label>\n          <div class=\"not-read-checker\" *ngIf=\"chat.lastMessage.readBy.indexOf(user?.id) == -1\">&bull;</div>\n        </ion-item>\n      </ion-list>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n    <div *ngIf=\"chats && chats.length == 0\">\n        <ion-label padding>{{'no_messages' | translate }}</ion-label>\n    </div>\n    <ion-list *ngIf=\"!chats\">\n        <ion-item>\n          <ion-avatar class=\"user-message-img\" slot=\"start\">\n            <ion-skeleton-text></ion-skeleton-text>\n          </ion-avatar>\n          <ion-label>\n            <ion-skeleton-text animated style=\"width: 70%; height: 17px;\"></ion-skeleton-text>\n            <ion-skeleton-text animated style=\"width: 40%;\"></ion-skeleton-text>\n          </ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-avatar class=\"user-message-img\" slot=\"start\">\n            <ion-skeleton-text></ion-skeleton-text>\n          </ion-avatar>\n          <ion-label>\n            <ion-skeleton-text animated style=\"width: 70%; height: 17px;\"></ion-skeleton-text>\n            <ion-skeleton-text animated style=\"width: 40%;\"></ion-skeleton-text>\n          </ion-label>\n        </ion-item>        <ion-item>\n          <ion-avatar class=\"user-message-img\" slot=\"start\">\n            <ion-skeleton-text></ion-skeleton-text>\n          </ion-avatar>\n          <ion-label>\n            <ion-skeleton-text animated style=\"width: 70%; height: 17px;\"></ion-skeleton-text>\n            <ion-skeleton-text animated style=\"width: 40%;\"></ion-skeleton-text>\n          </ion-label>\n        </ion-item>\n      </ion-list>\n    <ion-list *ngIf=\"chats && chats.length > 0\">\n        <ion-item *ngFor=\"let chat of chats\" (click)=\"goToChat(chat, $event)\">\n          <ion-avatar id=\"chat-img-{{chat.id}}\" class=\"user-message-img user-message-img-show\" slot=\"start\">\n            <img \n            class=\"user-img\"\n            (load)=\"loadImg($event)\" \n            onError=\"this.src='../../assets/imgs/user.svg';\"             \n            src=\"{{chat.img}}\" />\n          </ion-avatar>\n          <ion-label class=\"chat-name\">\n            <h3>{{chat.name}}</h3>\n            <p *ngIf=\"chat.lastMessage\" [class.notReadMessage]=\"chat.lastMessage.readBy.indexOf(user?.id) == -1\">{{chat.lastMessage.content}}</p>\n          </ion-label>\n          <div class=\"not-read-checker\" *ngIf=\"chat.lastMessage.readBy.indexOf(user?.id) == -1\">&bull;</div>\n        </ion-item>\n      </ion-list>\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -73,7 +73,7 @@ MessagesPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".notReadMessage {\n  font-weight: bold;\n  color: #999; }\n\n.user-message-img {\n  background: #fff;\n  display: block;\n  transition: all linear 0.3s;\n  height: 45px;\n  width: 45px; }\n\n.not-read-checker {\n  color: #888;\n  position: absolute;\n  top: 0;\n  right: 0;\n  font-size: 21px;\n  margin-right: 17px; }\n\n.chat-name > h3 {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  margin-right: 50px;\n  overflow: hidden; }\n\n.imgLoaded {\n  -webkit-animation: fadein 3s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 3s; }\n\n.imgInLoading {\n  opacity: 0; }\n\n.user-message-img-hide {\n  opacity: 0; }\n\n.user-message-img-show {\n  opacity: 1; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fcGFnZXMvbWVzc2FnZXMvbWVzc2FnZXMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQWlCO0VBQ2pCLFdBQVcsRUFBQTs7QUFJZjtFQUVJLGdCQUFpQjtFQUNqQixjQUFjO0VBQ2QsMkJBQTJCO0VBQzNCLFlBQVk7RUFDWixXQUFXLEVBQUE7O0FBRWY7RUFDSSxXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLE1BQU07RUFDTixRQUFRO0VBQ1IsZUFBZTtFQUNmLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsa0JBQWtCO0VBQ2xCLGdCQUFnQixFQUFBOztBQUVwQjtFQUNJLDRCQUE0QjtFQUFFLG9DQUFBO0VBQ0gsaUJBQUE7RUFDQSxzQkFBQTtFQUNBLGlCQUFBO0VBQ3RCLG9CQUFvQixFQUFBOztBQUk3QjtFQUNJLFVBQVUsRUFBQTs7QUFHZDtFQUNJLFVBQVUsRUFBQTs7QUFHZDtFQUNJLFVBQVUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL19wYWdlcy9tZXNzYWdlcy9tZXNzYWdlcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubm90UmVhZE1lc3NhZ2V7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgY29sb3I6ICM5OTk7XG59XG5cblxuLnVzZXItbWVzc2FnZS1pbWd7XG4gICAgLy8gYm9yZGVyOiAycHggc29saWQgIzIyMjtcbiAgICBiYWNrZ3JvdW5kOiAjZmZmIDtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICB0cmFuc2l0aW9uOiBhbGwgbGluZWFyIDAuM3M7XG4gICAgaGVpZ2h0OiA0NXB4O1xuICAgIHdpZHRoOiA0NXB4O1xufVxuLm5vdC1yZWFkLWNoZWNrZXJ7XG4gICAgY29sb3I6ICM4ODg7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMDtcbiAgICByaWdodDogMDtcbiAgICBmb250LXNpemU6IDIxcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAxN3B4O1xufVxuLmNoYXQtbmFtZT5oM3tcbiAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIG1hcmdpbi1yaWdodDogNTBweDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xufVxuLmltZ0xvYWRlZCB7XG4gICAgLXdlYmtpdC1hbmltYXRpb246IGZhZGVpbiAzczsgLyogU2FmYXJpLCBDaHJvbWUgYW5kIE9wZXJhID4gMTIuMSAqL1xuICAgIC1tb3otYW5pbWF0aW9uOiBmYWRlaW4gM3M7IC8qIEZpcmVmb3ggPCAxNiAqL1xuICAgICAtbXMtYW5pbWF0aW9uOiBmYWRlaW4gM3M7IC8qIEludGVybmV0IEV4cGxvcmVyICovXG4gICAgICAtby1hbmltYXRpb246IGZhZGVpbiAzczsgLyogT3BlcmEgPCAxMi4xICovXG4gICAgICAgICBhbmltYXRpb246IGZhZGVpbiAzcztcbn1cblxuXG4uaW1nSW5Mb2FkaW5ne1xuICAgIG9wYWNpdHk6IDA7XG59XG5cbi51c2VyLW1lc3NhZ2UtaW1nLWhpZGV7XG4gICAgb3BhY2l0eTogMDtcbn1cblxuLnVzZXItbWVzc2FnZS1pbWctc2hvdyB7XG4gICAgb3BhY2l0eTogMTtcblxufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".notReadMessage {\n  font-weight: bold;\n  color: #999; }\n\n.user-message-img {\n  background: #fff;\n  display: block;\n  -webkit-transition: all linear 0.3s;\n  transition: all linear 0.3s;\n  height: 45px;\n  width: 45px; }\n\n.not-read-checker {\n  color: #888;\n  position: absolute;\n  top: 0;\n  right: 0;\n  font-size: 21px;\n  margin-right: 17px; }\n\n.chat-name > h3 {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  margin-right: 50px;\n  overflow: hidden; }\n\n.user-message-img-hide {\n  opacity: 0; }\n\n.user-message-img-show {\n  opacity: 1; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWlnaWNob3VncmFkL2FyY2hpbWVkaWEvcHJvamVjdHMva29raWZ5L2ljZWJyZWFrZXIvY2xpZW50L2tvZmlmeS9rb2ZpZnkvc3JjL2FwcC9fcGFnZXMvbWVzc2FnZXMvbWVzc2FnZXMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQWlCO0VBQ2pCLFdBQVcsRUFBQTs7QUFJZjtFQUVJLGdCQUFpQjtFQUNqQixjQUFjO0VBQ2QsbUNBQTJCO0VBQTNCLDJCQUEyQjtFQUMzQixZQUFZO0VBQ1osV0FBVyxFQUFBOztBQUVmO0VBQ0ksV0FBVztFQUNYLGtCQUFrQjtFQUNsQixNQUFNO0VBQ04sUUFBUTtFQUNSLGVBQWU7RUFDZixrQkFBa0IsRUFBQTs7QUFFdEI7RUFDSSx1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQixnQkFBZ0IsRUFBQTs7QUFJcEI7RUFDSSxVQUFVLEVBQUE7O0FBR2Q7RUFDSSxVQUFVLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9fcGFnZXMvbWVzc2FnZXMvbWVzc2FnZXMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5vdFJlYWRNZXNzYWdle1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGNvbG9yOiAjOTk5O1xufVxuXG5cbi51c2VyLW1lc3NhZ2UtaW1ne1xuICAgIC8vIGJvcmRlcjogMnB4IHNvbGlkICMyMjI7XG4gICAgYmFja2dyb3VuZDogI2ZmZiA7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgdHJhbnNpdGlvbjogYWxsIGxpbmVhciAwLjNzO1xuICAgIGhlaWdodDogNDVweDtcbiAgICB3aWR0aDogNDVweDtcbn1cbi5ub3QtcmVhZC1jaGVja2Vye1xuICAgIGNvbG9yOiAjODg4O1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgcmlnaHQ6IDA7XG4gICAgZm9udC1zaXplOiAyMXB4O1xuICAgIG1hcmdpbi1yaWdodDogMTdweDtcbn1cbi5jaGF0LW5hbWU+aDN7XG4gICAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICBtYXJnaW4tcmlnaHQ6IDUwcHg7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuXG4udXNlci1tZXNzYWdlLWltZy1oaWRle1xuICAgIG9wYWNpdHk6IDA7XG59XG5cbi51c2VyLW1lc3NhZ2UtaW1nLXNob3cge1xuICAgIG9wYWNpdHk6IDE7XG5cbn0iXX0= */");
 
 /***/ }),
 
@@ -93,7 +93,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/chat.service */ "./src/app/_services/chat.service.ts");
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/auth.service */ "./src/app/_services/auth.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
 
 
 
@@ -102,9 +104,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MessagesPage = class MessagesPage {
-    constructor(router, authService, chatService, zone) {
+    constructor(router, authService, loadCtrl, chatService, zone) {
         this.router = router;
         this.authService = authService;
+        this.loadCtrl = loadCtrl;
         this.chatService = chatService;
         this.zone = zone;
         this.chatService.notificationCount.next(0);
@@ -113,14 +116,14 @@ let MessagesPage = class MessagesPage {
         });
     }
     ngOnInit() {
-        let imgs = document.getElementsByClassName('user-img');
-        for (var index = 0; index < imgs.length; index++) {
-            const element = imgs[index];
-            element.classList.remove('imgLoaded');
-            element.classList.add('imgInLoading');
-        }
+        // let imgs = document.getElementsByClassName('user-img')
+        // for(var index = 0; index < imgs.length; index++) {
+        //   const element = imgs[index];
+        //   element.classList.remove('imgLoaded')
+        //   element.classList.add('imgInLoading')
+        // }
         this.getChats();
-        this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["filter"])(event => event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationStart"])).subscribe((route) => this.getChats());
+        this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(event => event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationStart"])).subscribe((route) => this.getChats());
         this.chatService.updateChatSubject.subscribe((e) => this.getChats());
     }
     getChats() {
@@ -131,31 +134,37 @@ let MessagesPage = class MessagesPage {
         });
     }
     goToChat(chat) {
-        if (chat.enabled) {
-            this.chatService.setActiveChat(chat);
-            this.router.navigate(['/chat', chat.id]);
-        }
-        else {
-            let image = document.getElementById('chat-img-' + chat.id);
-            this.chatService.unlock(chat).subscribe(_chat => {
-                image.classList.remove('user-message-img-show');
-                image.classList.add('user-message-img-hide');
-                chat.img = _chat.img;
-                chat.enabled = _chat.enabled;
-                setTimeout(() => {
-                    image.classList.add('user-message-img-show');
-                    image.classList.remove('user-message-img-hide');
-                    this.chatService.setActiveChat(chat);
-                    this.router.navigate(['/chat', chat.id]);
-                }, 1000);
-            });
-        }
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            if (chat.enabled) {
+                this.chatService.setActiveChat(chat);
+                this.router.navigate(['/chat', chat.id]);
+            }
+            else {
+                let image = document.getElementById('chat-img-' + chat.id);
+                let loader = yield this.loadCtrl.create();
+                loader.present();
+                this.chatService.unlock(chat)
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(() => loader.dismiss()))
+                    .subscribe(_chat => {
+                    image.classList.remove('user-message-img-show');
+                    image.classList.add('user-message-img-hide');
+                    chat.img = _chat.img;
+                    chat.enabled = _chat.enabled;
+                    setTimeout(() => {
+                        image.classList.add('user-message-img-show');
+                        image.classList.remove('user-message-img-hide');
+                        this.chatService.setActiveChat(chat);
+                        this.router.navigate(['/chat', chat.id]);
+                    }, 1000);
+                });
+            }
+        });
     }
     loadImg($event) {
-        this.zone.run(() => {
-            $event.target.classList.remove('imgInLoading');
-            $event.target.classList.add('imgLoaded');
-        });
+        // this.zone.run(()=>{
+        //   $event.target.classList.remove('imgInLoading')
+        //   $event.target.classList.add('imgLoaded')
+        // })
     }
     ngOnDestroy() {
         // always unsubscribe your subscriptions to prevent leaks
@@ -165,6 +174,7 @@ let MessagesPage = class MessagesPage {
 MessagesPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["LoadingController"] },
     { type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_4__["ChatService"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
 ];
@@ -176,6 +186,7 @@ MessagesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
         src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["LoadingController"],
         src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_4__["ChatService"],
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
 ], MessagesPage);

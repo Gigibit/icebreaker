@@ -230,5 +230,5 @@
     var MOUSE_WAIT = 2500;
     /***/
   }
-}]); //# sourceMappingURL=tap-click-ca00ce7f-js-es2015.js.map
+}]);
 //# sourceMappingURL=tap-click-ca00ce7f-js-es5.js.map

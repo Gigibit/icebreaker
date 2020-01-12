@@ -51,7 +51,6 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
-import { IonicImageLoader } from 'ionic-image-loader';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilterComponent } from './_components/filter/filter.component';
 
@@ -106,7 +105,6 @@ function createTranslateLoader(http: HttpClient) {
     }), 
     AppRoutingModule,
     ChatRoomPageModule,
-    IonicImageLoader.forRoot(),
     DragulaModule.forRoot(),
     HttpClientModule,
 //    SharedModule,

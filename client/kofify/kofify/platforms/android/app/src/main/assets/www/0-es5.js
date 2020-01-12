@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -139,30 +135,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTop",
-        value: function () {
-          var _getTop = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    return _context.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-action-sheet'));
+        value: function getTop() {
+          return regeneratorRuntime.async(function getTop$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  return _context.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-action-sheet'));
 
-                  case 1:
-                  case "end":
-                    return _context.stop();
-                }
+                case 1:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee);
-          }));
-
-          function getTop() {
-            return _getTop.apply(this, arguments);
-          }
-
-          return getTop;
-        }()
+            }
+          });
+        }
       }]);
 
       return ActionSheetController;
@@ -210,30 +196,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTop",
-        value: function () {
-          var _getTop2 = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    return _context2.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-alert'));
+        value: function getTop() {
+          return regeneratorRuntime.async(function getTop$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  return _context2.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-alert'));
 
-                  case 1:
-                  case "end":
-                    return _context2.stop();
-                }
+                case 1:
+                case "end":
+                  return _context2.stop();
               }
-            }, _callee2);
-          }));
-
-          function getTop() {
-            return _getTop2.apply(this, arguments);
-          }
-
-          return getTop;
-        }()
+            }
+          });
+        }
       }]);
 
       return AlertController;
@@ -332,30 +308,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTop",
-        value: function () {
-          var _getTop3 = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    return _context3.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-loading'));
+        value: function getTop() {
+          return regeneratorRuntime.async(function getTop$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  return _context3.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-loading'));
 
-                  case 1:
-                  case "end":
-                    return _context3.stop();
-                }
+                case 1:
+                case "end":
+                  return _context3.stop();
               }
-            }, _callee3);
-          }));
-
-          function getTop() {
-            return _getTop3.apply(this, arguments);
-          }
-
-          return getTop;
-        }()
+            }
+          });
+        }
       }]);
 
       return LoadingController;
@@ -403,30 +369,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTop",
-        value: function () {
-          var _getTop4 = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4() {
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    return _context4.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-modal'));
+        value: function getTop() {
+          return regeneratorRuntime.async(function getTop$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  return _context4.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-modal'));
 
-                  case 1:
-                  case "end":
-                    return _context4.stop();
-                }
+                case 1:
+                case "end":
+                  return _context4.stop();
               }
-            }, _callee4);
-          }));
-
-          function getTop() {
-            return _getTop4.apply(this, arguments);
-          }
-
-          return getTop;
-        }()
+            }
+          });
+        }
       }]);
 
       return ModalController;
@@ -474,30 +430,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTop",
-        value: function () {
-          var _getTop5 = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5() {
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
-              while (1) {
-                switch (_context5.prev = _context5.next) {
-                  case 0:
-                    return _context5.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-picker'));
+        value: function getTop() {
+          return regeneratorRuntime.async(function getTop$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  return _context5.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-picker'));
 
-                  case 1:
-                  case "end":
-                    return _context5.stop();
-                }
+                case 1:
+                case "end":
+                  return _context5.stop();
               }
-            }, _callee5);
-          }));
-
-          function getTop() {
-            return _getTop5.apply(this, arguments);
-          }
-
-          return getTop;
-        }()
+            }
+          });
+        }
       }]);
 
       return PickerController;
@@ -545,30 +491,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTop",
-        value: function () {
-          var _getTop6 = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee6() {
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    return _context6.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-popover'));
+        value: function getTop() {
+          return regeneratorRuntime.async(function getTop$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  return _context6.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-popover'));
 
-                  case 1:
-                  case "end":
-                    return _context6.stop();
-                }
+                case 1:
+                case "end":
+                  return _context6.stop();
               }
-            }, _callee6);
-          }));
-
-          function getTop() {
-            return _getTop6.apply(this, arguments);
-          }
-
-          return getTop;
-        }()
+            }
+          });
+        }
       }]);
 
       return PopoverController;
@@ -613,30 +549,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTop",
-        value: function () {
-          var _getTop7 = _asyncToGenerator(
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee7() {
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
-              while (1) {
-                switch (_context7.prev = _context7.next) {
-                  case 0:
-                    return _context7.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-toast'));
+        value: function getTop() {
+          return regeneratorRuntime.async(function getTop$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  return _context7.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-toast'));
 
-                  case 1:
-                  case "end":
-                    return _context7.stop();
-                }
+                case 1:
+                case "end":
+                  return _context7.stop();
               }
-            }, _callee7);
-          }));
-
-          function getTop() {
-            return _getTop7.apply(this, arguments);
-          }
-
-          return getTop;
-        }()
+            }
+          });
+        }
       }]);
 
       return ToastController;
@@ -644,5 +570,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
 
   }
-}]); //# sourceMappingURL=0-es2015.js.map
+}]);
 //# sourceMappingURL=0-es5.js.map

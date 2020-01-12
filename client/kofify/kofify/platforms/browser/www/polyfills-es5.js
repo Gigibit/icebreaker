@@ -20373,5 +20373,5 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/polyfills.ts");
     /***/
   }
-}, [[1, "runtime"]]]); //# sourceMappingURL=polyfills-es5-es2015.js.map
+}, [[1, "runtime"]]]);
 //# sourceMappingURL=polyfills-es5.js.map
