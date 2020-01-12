@@ -105,7 +105,7 @@ export class LocalizedUsersComponent implements OnInit {
     }
     add($event, localizedUser : LocalizedUser) {
       $event.preventDefault()
-      const element = $event.target.parentElement.parentElement.parentElement.querySelector('ion-card');
+      const element = $event.target.querySelector('ion-card');
       if (element.classList.contains('localized-user-card')){
         if(element.classList.contains('card-selected')){
           element.classList.remove('card-selected')
