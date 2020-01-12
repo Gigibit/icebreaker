@@ -19,12 +19,9 @@ const COLUMN_COUNT = 4
   styleUrls: ['./user-profile.page.scss'],
 })
 export class UserProfilePage implements OnInit {
-  uri
-  //requestedProposals: Proposal[]
-     // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
   slideOpts = {
     initialSlide: 0,
-    speed: 400
+    speed: 400,
   };
   userInfo: User 
   constructor(
