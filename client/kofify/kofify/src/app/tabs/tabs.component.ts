@@ -21,7 +21,7 @@ import { ChatService } from '../_services/chat.service';
   </ion-tabs>`,
   styleUrls: ['./tabs.component.scss'],
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent {
   notificationCount = 0
   constructor(
     chatService: ChatService
@@ -29,8 +29,5 @@ export class TabsComponent implements OnInit {
       chatService.notificationCount.subscribe(count=>this.notificationCount = count)
       chatService.getNotificationCount()
     }
-
-  ngOnInit() {
-  }
 
 }

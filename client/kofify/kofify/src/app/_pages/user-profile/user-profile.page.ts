@@ -24,65 +24,69 @@ export class UserProfilePage implements OnInit {
     speed: 400,
   };
   userInfo: User 
+  credits : String
+  
   constructor(
     private location: Location,
     private toastController: ToastController,
     private modalController: ModalController,
-
+    
     // private loadingController: LoadingController,
     // private ref: ChangeDetectorRef, 
     private popoverController: PopoverController,
     private userService: UserService,
     private authService : AuthService,
     // private router: Router
-
+    
     ) { 
     }
     
     ngOnInit() {
-      
       this.authService.currentUser.subscribe(user=>{
-         this.userInfo = user
-         console.log(this.userInfo)
-
+        this.userInfo = user
+        console.log(this.userInfo)
+        
       })
     }
     
-      async presentToast(text) {
-        const toast = await this.toastController.create({
-          message: text,
-          position: 'bottom',
-          duration: 3000
-        });
-        toast.present();
-      }
-    
-        async userPopover(event){
-          const popover = await this.popoverController.create({
-            component: UserProfilePopoverComponent,
-            event: event
-          });
-          return await popover.present();
-        }
-
-        
-    
-      openPreview(img) {
-        this.modalController.create({
-          component: ImageModalComponent,
-          componentProps: {
-            img: img
-          }
-        }).then(modal => {
-          modal.present();
-        });
-      }
-      editProfile(){
-        this.modalController.create({
-          component: EditUserProfileComponent,
-        }).then(modal => {
-          modal.present();
-        });
-      }
-
+    async presentToast(text) {
+      const toast = await this.toastController.create({
+        message: text,
+        position: 'bottom',
+        duration: 3000
+      });
+      toast.present();
     }
+    
+    async userPopover(event){
+      const popover = await this.popoverController.create({
+        component: UserProfilePopoverComponent,
+        event: event
+      });
+      return await popover.present();
+    }
+    
+    ionViewWillEnter(){
+      this.userService.getCredits().subscribe( credits => this.credits = credits)
+    }
+    
+    openPreview(img) {
+      this.modalController.create({
+        component: ImageModalComponent,
+        componentProps: {
+          img: img
+        }
+      }).then(modal => {
+        modal.present();
+      });
+    }
+    editProfile(){
+      this.modalController.create({
+        component: EditUserProfileComponent,
+      }).then(modal => {
+        modal.present();
+      });
+    }
+    
+  }
+  

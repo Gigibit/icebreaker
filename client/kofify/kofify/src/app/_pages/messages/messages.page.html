@@ -36,21 +36,18 @@
           </ion-label>
         </ion-item>
       </ion-list>
-    <ion-list *ngIf="chats && chats.length > 0">
         <ion-item *ngFor="let chat of chats" (click)="goToChat(chat, $event)">
-          <ion-avatar id="chat-img-{{chat.id}}" class="user-message-img user-message-img-show" slot="start">
             <img 
             class="user-img"
-            (load)="loadImg($event)" 
+            (load)="loadImg($event)"
+            (click)="$event.stopPropagation(); viewProfile(chat.users[0].user.id)"
             onError="this.src='../../assets/imgs/user.svg';"             
             src="{{chat.img}}" />
-          </ion-avatar>
           <ion-label class="chat-name">
             <h3>{{chat.name}}</h3>
             <p *ngIf="chat.lastMessage" [class.notReadMessage]="chat.lastMessage.readBy.indexOf(user?.id) == -1">{{chat.lastMessage.content}}</p>
           </ion-label>
           <div class="not-read-checker" *ngIf="chat.lastMessage.readBy.indexOf(user?.id) == -1"></div>
         </ion-item>
-      </ion-list>
 
 </ion-content>

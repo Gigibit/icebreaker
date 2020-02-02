@@ -35,8 +35,6 @@ let TabsComponent = class TabsComponent {
         chatService.notificationCount.subscribe(count => this.notificationCount = count);
         chatService.getNotificationCount();
     }
-    ngOnInit() {
-    }
 };
 TabsComponent.ctorParameters = () => [
     { type: _services_chat_service__WEBPACK_IMPORTED_MODULE_2__["ChatService"] }

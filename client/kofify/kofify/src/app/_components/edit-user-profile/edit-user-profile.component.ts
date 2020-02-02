@@ -175,7 +175,7 @@ export class EditUserProfileComponent implements OnInit {
           if(id != 'false')
             sorting.push( new Number(id) )
         }
-      }
+      } else sorting = null
       if(somethingChanged){ 
         const loader = await this.loadingCtrl.create()
         loader.present()

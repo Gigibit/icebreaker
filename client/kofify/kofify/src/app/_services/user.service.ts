@@ -8,7 +8,6 @@ import { Platform } from '@ionic/angular';
 import { User, UserMapper, UpdatableUserInfo } from '../_models/user';
 import { concatMap, concat, finalize } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
-import { map } from 'leaflet';
 import { PricingPlan, PricingPlanMapper } from '../_models/pricing-plan';
 const ID = "%ID%"
 
@@ -16,9 +15,7 @@ const CONTEXT = AUTH_SERVER + '/api/get-context'
 const UPLOAD_URL = SERVICE_SERVER + "/users/me/images"
 const UPDATE_PROFILE_IMG_URL = SERVICE_SERVER + "/users/me/image"
 const UPDATE_INFO = SERVICE_SERVER + "/users/me"
-const USER_INFO = SERVICE_SERVER + "/api/get-user-info/"
-const PROPS_HIM = SERVICE_SERVER + "/api/props/"
-const UNPROPS_HIM = SERVICE_SERVER + "/api/unprops/"
+const GET_CREDITS = SERVICE_SERVER + "/users/me/credit"
 const UPDATE_USER_ADDRESS = SERVICE_SERVER + "/users/position"
 const SUBSCRIBE_TO_PUSH_URL = SERVICE_SERVER + "/notifications"
 const GET_USER_BY_ID = SERVICE_SERVER + `/users/${ID}`
@@ -144,7 +141,12 @@ export class UserService {
       
     }
     
-    
+    getCredits(){
+      return this.http.get(GET_CREDITS).pipe(concatMap(response =>{
+        let credits = response['credit'] && response['credit']['credits']
+        return of(credits)
+      }))
+    }
     
     udateProfileImg(sourceType: PictureSourceType, onUri: (string)=>void = null, onError: (error)=>void = null):Promise<User> {
       return new Promise((resolve, reject)=>{
@@ -260,17 +262,6 @@ export class UserService {
       newFileName = n + ".jpg";
       return newFileName;
     }
-    getUserInfo(userId: string){
-      return this.http.get(USER_INFO + userId)
-    }
-    propsHim(userInfo: User){
-      console.log(userInfo)
-      return this.http.post(PROPS_HIM + userInfo.id, {})
-    }
-    unpropsHim(userInfo: User){
-      return this.http.post(UNPROPS_HIM + userInfo.id, {})
-    }
-    
     
     
     updateAddress(address : string, latitude: number, longitude: number){

@@ -13,18 +13,18 @@
 <ion-content class="ion-padding no-scroll">
   <h1 class="range-title">
     <ion-icon size="small" slot="start" name="ios-pin"></ion-icon>
-    {{maxDistance}} m</h1>
+    {{maxDistance}} m
+  </h1>
   <!-- <app-autocomplete-input [static]="true" *ngIf="!useMyPosition" ngDefaultControl  [placeholder]="'district'" (onSearchResult)="onZoneSelected($event)" [region]="selectedCity" ></app-autocomplete-input> -->
-  <ion-range *ngIf="!flipped" (mouseup)="onRangeChanged()" (touchend)="onRangeChanged()" pin="true" [(ngModel)]="maxDistance"  min="50" max="5000" step="50">
-    <ion-icon size="small" slot="start" name="ios-walk"></ion-icon>
-    <ion-icon slot="end" name="ios-walk"></ion-icon>
-  </ion-range>
-  
+  <div class="range-wrapper">
+    <ion-range *ngIf="!flipped" (mouseup)="onRangeChanged()" (touchend)="onRangeChanged()" pin="true" [(ngModel)]="maxDistance"  min="50" max="5000" step="50">
+    </ion-range>
+  </div>  
+
   <div class="player border-radius-50" [ngClass]="flipped ?'height-0':''" [class.voted]="flipped" color="primary">
-    <div class="front flippable" (click)="flipIt()" >
+    <div class="front flippable" (click)="flipIt()">
       <div id="container flippable" >
         <div class="coffee-container flippable">
-          <!-- <img src="/src/assets/imgs/coffee.svg"> -->
           <div [class]="'coffee-mug' + ' ' + coffeeContainerVisibilitiy" >
             <div class="coffee-container">
               <div [class]="'coffee' + ' ' + loadClass"></div>

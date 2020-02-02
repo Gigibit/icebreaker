@@ -5,12 +5,13 @@
 
 
 .user-message-img{
-    // border: 2px solid #222;
     background: #fff ;
     display: block;
-    transition: all linear 0.3s;
+    transition: opacity linear 0.3s;
     height: 45px;
     width: 45px;
+    border-radius: 100%;
+    background-size: 100%;
 }
 .not-read-checker{
     background: red;
@@ -28,10 +29,15 @@
     margin-right: 50px;
     overflow: hidden;
 }
-
+.user-img{
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    border-radius: 100%;
+}
 
 .user-message-img-hide{
-    opacity: 0;
+    opacity: 0.3;
 }
 
 .user-message-img-show {

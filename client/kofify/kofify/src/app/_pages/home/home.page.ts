@@ -136,7 +136,7 @@ export class HomePage implements OnInit, OnEnter, OnDestroy {
       },
       {
         enableHighAccuracy: false,
-        timeout: 7000,
+        timeout: 15000,
         maximumAge: 0
       })
     }

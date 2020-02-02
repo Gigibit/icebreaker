@@ -41,6 +41,7 @@ export class ChatRoomPage implements OnInit{
   ngOnInit(){
     this.chat = this.chatService.getActiveChat()
     this.route.paramMap.subscribe(params=>{
+      this.messages = []
       this.chatKey = params.get('with')
       this.chatService.getMessages(this.chatKey).subscribe(data=>{
         data.forEach(message=>{

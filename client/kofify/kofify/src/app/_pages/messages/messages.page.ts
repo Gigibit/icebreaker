@@ -30,21 +30,19 @@ export class MessagesPage implements OnInit{
     })
   }
 
+  
   ngOnInit(){
-    // let imgs = document.getElementsByClassName('user-img')
-    // for(var index = 0; index < imgs.length; index++) {
-    //   const element = imgs[index];
-    //   element.classList.remove('imgLoaded')
-    //   element.classList.add('imgInLoading')
-    // }
-    this.getChats()
     this.router.events.pipe(
-      filter(event => event instanceof NavigationStart)
+      filter(event =>event instanceof NavigationStart && event.url === '/tabs/messages')
     ).subscribe((route) =>this.getChats());
+
     this.chatService.updateChatSubject.subscribe((e)=>this.getChats())
   }
+  ionViewWillLeave(){
 
+  }
   getChats(){
+    this.chats = null
     if(this.chatSubscription != null) this.chatSubscription.unsubscribe()
     this.chatSubscription = this.chatService.getChats().subscribe(response=>{
       this.zone.run(()=> this.chats = ChatMapper.fromJsonArray(response['chats']))
@@ -74,14 +72,15 @@ export class MessagesPage implements OnInit{
         }, 1000)
       })
     }
-    
 
   }
+  viewProfile(id){
+    this.router.navigate(['view-profile',id])
+  }
   loadImg($event){
-    // this.zone.run(()=>{
-    //   $event.target.classList.remove('imgInLoading')
-    //   $event.target.classList.add('imgLoaded')
-    // })
+    this.zone.run(()=>{
+      
+    })
   }
 
 

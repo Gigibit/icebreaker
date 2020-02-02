@@ -164,3 +164,19 @@ ion-content{
 .user-img{
     height: 57vh;
 }
+.user-info-credits{
+    text-align: right;
+    color: #ffd700;
+}
+.user-info-credits p{
+    font-size: 21px;
+    font-weight: bold;
+    padding-right: 20px;
+    color: #ffd700;
+
+}
+.user-info-credits ion-icon{
+    font-size: 21px;
+    float: right;
+    margin-right: 20px;
+}
