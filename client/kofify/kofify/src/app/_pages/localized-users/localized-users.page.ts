@@ -91,16 +91,20 @@ export class LocalizedUsersComponent implements OnInit {
       this.router.navigate(['view-profile',localizedUser.user.id])
     }
     
-    invite(){
-      this.coffeeService.sendInvitation(this.invitationIds).subscribe(response=>{
-        this.toastService.alert('invitation_sent')
-        var lights = document.getElementsByClassName("card-selected");
-        while (lights.length)
-        lights[0].classList.remove("card-selected");
-        this.compose = false
-      })
-      
+    invite() {
+      if (this.invitationIds.length != 0) {
+        this.coffeeService.sendInvitation(this.invitationIds).subscribe(response => {
+          this.toastService.alert('invitation_sent')
+          var lights = document.getElementsByClassName("card-selected");
+          while (lights.length)
+            lights[0].classList.remove("card-selected");
+          this.compose = false
+        })
+      } else {
+        console.error("this.invitationIds is empty, unable to send invitation")
+      }
     }
+
     distanceFromUser(localizedUser: LocalizedUser){
       return getFormattedDistance(localizedUser.distance)
     }
