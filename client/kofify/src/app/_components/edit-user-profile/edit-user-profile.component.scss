@@ -1,0 +1,57 @@
+.image-container-wrapper{
+    height: 120px;
+    overflow: hidden;
+}
+.image-container img{
+    height: 100px;
+    width: 100px;
+}
+.image-container{
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid #222;
+    height: 103px;
+    width: 100px;
+    position: relative;
+}
+.gallery{
+    width: 100%;
+}
+.delete-account-btn{
+    width: 100%;
+    --background: transparent;
+    color: #cccccc;
+    bottom: 0;
+    margin-top: 50%;
+    z-index: 9999;
+    opacity: 0.8;
+    --border: none;
+    --box-shadow: none;
+}
+
+.bio-textarea{
+    margin-bottom: 50px;
+}
+
+.edit-icon{
+    position: absolute;
+    top: 40%;
+    border-radius: 50%;
+    background: #f1f1f1;
+    border: 1px solid #222;
+    color: #222;
+    z-index: 2;
+    height: 15px;
+    width: 15px;
+    padding: 5px;
+    display: block;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.about-me-txtarea{
+    border: 2px solid lightgrey;
+}
+

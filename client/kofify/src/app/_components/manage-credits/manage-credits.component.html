@@ -1,0 +1,16 @@
+<ion-header no-border>
+    <ion-toolbar transparent>
+      
+      <ion-buttons slot="end"  (click)="close()">
+        <ion-icon ios="ios-close" md="ios-close"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center" *ngIf="credits">you have {{ credits }} credits.</h1>
+  <ion-icon class="cafe-icon" name="cafe"></ion-icon>
+
+  <ion-button class="get-credits-btn" (click)="onBuyMoreCreditsTap()"> buy more credits </ion-button>
+  <ion-button [disabled]="!rewardButtonEnabled" class="get-credits-btn" (click)="rewardAvailable ? onRewardTap() : toastNoRewardAvailable()"> see a video </ion-button>
+</ion-content>
