@@ -47,26 +47,15 @@ export class AdmobFreeService {
         // handle event
       })
       document.addEventListener('admob.rewardvideo.events.LOAD_FAIL', () => {
-        this.onRewardVideoListener && this.onRewardVideoListener.onFail()
+        this.onRewardVideoListener && this.onRewardVideoListener.onFail('LOAD_FAIL')
 
       })
-      document.addEventListener('admob.rewardvideo.events.CLOSE', () => {
-        // handle event
-        this.onRewardVideoListener && this.onRewardVideoListener.onFail()
 
-      })
       document.addEventListener('admob.rewardvideo.events.REWARD', () => {
         // handle event
        this.onRewardVideoListener && this.onRewardVideoListener.onReward()
 
       })
-      // // Load ad configuration
-      // this.admobFree.interstitial.config(this.interstitialConfig);
-      // //Prepare Ad to Show
-      // this.admobFree.interstitial.prepare()
-      //   .then(() => {
-      //     // alert(1);
-      //   }).catch(e => alert(e));
  
       if(!this.RewardVideoConfig.isTesting)
       this.RewardVideoConfig.id = this.platform.is('ios')      ? 'ca-app-pub-6771007436830318/9397716981' :
@@ -93,16 +82,16 @@ export class AdmobFreeService {
               .then(()=> console.log('showing...'))
               .catch(e => {
                 console.log(e)
-                this.onRewardVideoListener && this.onRewardVideoListener.onFail()
+                this.onRewardVideoListener && this.onRewardVideoListener.onFail(e)
               });
           })
           .catch(e => {
             console.log(e)
-            this.onRewardVideoListener && this.onRewardVideoListener.onFail()
+            this.onRewardVideoListener && this.onRewardVideoListener.onFail(e)
           });
         }).catch(e => {
           console.log(e)
-          this.onRewardVideoListener && this.onRewardVideoListener.onFail()
+          this.onRewardVideoListener && this.onRewardVideoListener.onFail(e)
         });
       })
     return this
@@ -115,5 +104,5 @@ export class AdmobFreeService {
 }
 export interface OnRewardVideoListener{
   onReward: () => void
-  onFail: () => void
+  onFail: (e) => void
 }

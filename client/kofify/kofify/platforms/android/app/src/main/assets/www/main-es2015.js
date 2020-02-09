@@ -1547,6 +1547,7 @@ let ManageCreditsComponent = class ManageCreditsComponent {
         this.userService = userService;
         this.toastService = toastService;
         this.admobService = admobService;
+        this.authService = authService;
         //let the user press button first we have to notify user, regardless of whether the videos are available or not
         this.rewardButtonEnabled = true;
         this.rewardAvailable = false;
@@ -1602,11 +1603,14 @@ let ManageCreditsComponent = class ManageCreditsComponent {
                         let admobRewardAvailable = admobCredit && admobCredit['count'] < admobCredit['countMax'];
                         this.credits = data && data['credit'] && data['credit']['credits'];
                         this.rewardAvailable = admobRewardAvailable;
+                        this.authService.currentUserValue.credits = this.credits;
+                        this.authService.contextRefresh(this.authService.currentUserValue);
                     });
                 },
-                onFail: () => {
+                onFail: (e) => {
                     this.toastService.somethingWentWrong();
                     loader.dismiss();
+                    console.log(e);
                 }
             });
         });
@@ -1712,6 +1716,7 @@ let SelectPlanComponent = class SelectPlanComponent {
             this.iap
                 .buy(selectedPlanId)
                 .then((data) => {
+                console.log(data);
                 this.iap.consume(data.productType, data.receipt, data.signature);
                 this.userService.finalizePayment(data).subscribe(data => console.log(data));
                 this.modalCtrl.dismiss();
@@ -3569,23 +3574,12 @@ let AdmobFreeService = class AdmobFreeService {
                 // handle event
             });
             document.addEventListener('admob.rewardvideo.events.LOAD_FAIL', () => {
-                this.onRewardVideoListener && this.onRewardVideoListener.onFail();
-            });
-            document.addEventListener('admob.rewardvideo.events.CLOSE', () => {
-                // handle event
-                this.onRewardVideoListener && this.onRewardVideoListener.onFail();
+                this.onRewardVideoListener && this.onRewardVideoListener.onFail('LOAD_FAIL');
             });
             document.addEventListener('admob.rewardvideo.events.REWARD', () => {
                 // handle event
                 this.onRewardVideoListener && this.onRewardVideoListener.onReward();
             });
-            // // Load ad configuration
-            // this.admobFree.interstitial.config(this.interstitialConfig);
-            // //Prepare Ad to Show
-            // this.admobFree.interstitial.prepare()
-            //   .then(() => {
-            //     // alert(1);
-            //   }).catch(e => alert(e));
             if (!this.RewardVideoConfig.isTesting)
                 this.RewardVideoConfig.id = this.platform.is('ios') ? 'ca-app-pub-6771007436830318/9397716981' :
                     this.platform.is('android') ? 'ca-app-pub-6771007436830318/2995960166' : '';
@@ -3605,16 +3599,16 @@ let AdmobFreeService = class AdmobFreeService {
                         .then(() => console.log('showing...'))
                         .catch(e => {
                         console.log(e);
-                        this.onRewardVideoListener && this.onRewardVideoListener.onFail();
+                        this.onRewardVideoListener && this.onRewardVideoListener.onFail(e);
                     });
                 })
                     .catch(e => {
                     console.log(e);
-                    this.onRewardVideoListener && this.onRewardVideoListener.onFail();
+                    this.onRewardVideoListener && this.onRewardVideoListener.onFail(e);
                 });
             }).catch(e => {
                 console.log(e);
-                this.onRewardVideoListener && this.onRewardVideoListener.onFail();
+                this.onRewardVideoListener && this.onRewardVideoListener.onFail(e);
             });
         });
         return this;

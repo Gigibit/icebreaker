@@ -62,7 +62,7 @@ export class AuthService {
       return token;
     }));
   }
-  refreshCredit(creditResponse:string){
+  refreshCredit(creditResponse){
     let admobCredit = creditResponse && creditResponse['admobCredit']
     let admobRewardAvailable = admobCredit && creditResponse['count'] < creditResponse['countMax'];
     this.currentUserValue.credits = creditResponse && creditResponse['credits']

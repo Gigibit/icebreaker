@@ -2022,7 +2022,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.loadingCtrl = loadingCtrl;
         this.userService = userService;
         this.toastService = toastService;
-        this.admobService = admobService; //let the user press button first we have to notify user, regardless of whether the videos are available or not
+        this.admobService = admobService;
+        this.authService = authService; //let the user press button first we have to notify user, regardless of whether the videos are available or not
 
         this.rewardButtonEnabled = true;
         this.rewardAvailable = false;
@@ -2135,12 +2136,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           var admobRewardAvailable = admobCredit && admobCredit['count'] < admobCredit['countMax'];
                           _this8.credits = data && data['credit'] && data['credit']['credits'];
                           _this8.rewardAvailable = admobRewardAvailable;
+                          _this8.authService.currentUserValue.credits = _this8.credits;
+
+                          _this8.authService.contextRefresh(_this8.authService.currentUserValue);
                         });
                       },
-                      onFail: function onFail() {
+                      onFail: function onFail(e) {
                         _this8.toastService.somethingWentWrong();
 
                         loader.dismiss();
+                        console.log(e);
                       }
                     });
 
@@ -2324,6 +2329,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     selectedPlanId = this.plans[index].id;
                     console.log(selectedPlanId);
                     this.iap.buy(selectedPlanId).then(function (data) {
+                      console.log(data);
+
                       _this10.iap.consume(data.productType, data.receipt, data.signature);
 
                       _this10.userService.finalizePayment(data).subscribe(function (data) {
@@ -5030,23 +5037,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           document.addEventListener('admob.rewardvideo.events.COMPLETE', function () {// handle event
           });
           document.addEventListener('admob.rewardvideo.events.LOAD_FAIL', function () {
-            _this19.onRewardVideoListener && _this19.onRewardVideoListener.onFail();
-          });
-          document.addEventListener('admob.rewardvideo.events.CLOSE', function () {
-            // handle event
-            _this19.onRewardVideoListener && _this19.onRewardVideoListener.onFail();
+            _this19.onRewardVideoListener && _this19.onRewardVideoListener.onFail('LOAD_FAIL');
           });
           document.addEventListener('admob.rewardvideo.events.REWARD', function () {
             // handle event
             _this19.onRewardVideoListener && _this19.onRewardVideoListener.onReward();
-          }); // // Load ad configuration
-          // this.admobFree.interstitial.config(this.interstitialConfig);
-          // //Prepare Ad to Show
-          // this.admobFree.interstitial.prepare()
-          //   .then(() => {
-          //     // alert(1);
-          //   }).catch(e => alert(e));
-
+          });
           if (!_this19.RewardVideoConfig.isTesting) _this19.RewardVideoConfig.id = _this19.platform.is('ios') ? 'ca-app-pub-6771007436830318/9397716981' : _this19.platform.is('android') ? 'ca-app-pub-6771007436830318/2995960166' : ''; // Load ad configuration
 
           _this19.admobFree.rewardVideo.config(_this19.RewardVideoConfig);
@@ -5068,15 +5064,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   return console.log('showing...');
                 }).catch(function (e) {
                   console.log(e);
-                  _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
+                  _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail(e);
                 });
               }).catch(function (e) {
                 console.log(e);
-                _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
+                _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail(e);
               });
             }).catch(function (e) {
               console.log(e);
-              _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail();
+              _this20.onRewardVideoListener && _this20.onRewardVideoListener.onFail(e);
             });
           });
           return this;

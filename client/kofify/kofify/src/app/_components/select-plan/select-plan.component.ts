@@ -60,8 +60,12 @@ export class SelectPlanComponent implements OnInit {
     this.iap
       .buy(selectedPlanId)
       .then((data)=> {
-        this.iap.consume(data.productType, data.receipt, data.signature)
-        this.userService.finalizePayment(data).subscribe(data=>console.log(data))
+        console.log(data)
+        this.iap.consume(data.productType, data.receipt, data.signature).then(()=>{
+          this.userService.finalizePayment(data).subscribe(data=>{
+            console.log(data)
+          })
+        })
         this.modalCtrl.dismiss()
       })
  

@@ -59,14 +59,19 @@ export class MessagesPage implements OnInit{
       this.chatService.unlock(chat)
       .pipe(finalize(()=> loader.dismiss()))
       .subscribe(_chat=>{
-        image.classList.remove('user-message-img-show')
-        image.classList.add('user-message-img-hide')
+        if (image != null) {
+          image.classList.remove('user-message-img-show')
+          image.classList.add('user-message-img-hide')
+        }
+
         chat.img = _chat.img
         chat.enabled = _chat.enabled
 
         setTimeout(()=>{
-          image.classList.add('user-message-img-show')
-          image.classList.remove('user-message-img-hide')
+          if (image != null) {
+            image.classList.add('user-message-img-show')
+            image.classList.remove('user-message-img-hide')
+          }
           this.chatService.setActiveChat(chat)
           this.router.navigate(['/chat', chat.id])
         }, 1000)

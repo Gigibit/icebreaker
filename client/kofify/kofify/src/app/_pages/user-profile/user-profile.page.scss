@@ -173,7 +173,12 @@ ion-content{
     font-weight: bold;
     padding-right: 20px;
     color: #ffd700;
-
+}
+.user-info-credits{
+    position: absolute;
+    top: 90%;
+    bottom: 0;
+    right: 0;
 }
 .user-info-credits ion-icon{
     font-size: 21px;

@@ -26,7 +26,7 @@ export class ManageCreditsComponent implements OnInit {
     private userService: UserService,
     private toastService: ToastService,
     private admobService: AdmobFreeService,
-    authService: AuthService
+    private authService: AuthService
   ) { 
     authService.currentUser.subscribe(user=>{
       console.log(user)
@@ -77,11 +77,14 @@ export class ManageCreditsComponent implements OnInit {
           let admobRewardAvailable = admobCredit && admobCredit['count'] < admobCredit['countMax'];
           this.credits = data && data['credit'] && data['credit']['credits']
           this.rewardAvailable = admobRewardAvailable
+          this.authService.currentUserValue.credits = this.credits
+          this.authService.contextRefresh(this.authService.currentUserValue)
         })
       },
-      onFail: ()=>{ 
+      onFail: (e)=>{ 
         this.toastService.somethingWentWrong()
         loader.dismiss() 
+        console.log(e)
       }
     })
   }

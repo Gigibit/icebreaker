@@ -289,17 +289,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function invite() {
           var _this2 = this;
 
-          this.coffeeService.sendInvitation(this.invitationIds).subscribe(function (response) {
-            _this2.toastService.alert('invitation_sent');
+          if (this.invitationIds.length != 0) {
+            this.coffeeService.sendInvitation(this.invitationIds).subscribe(function (response) {
+              _this2.toastService.alert('invitation_sent');
 
-            var lights = document.getElementsByClassName("card-selected");
+              var lights = document.getElementsByClassName("card-selected");
 
-            while (lights.length) {
-              lights[0].classList.remove("card-selected");
-            }
+              while (lights.length) {
+                lights[0].classList.remove("card-selected");
+              }
 
-            _this2.compose = false;
-          });
+              _this2.compose = false;
+            });
+          } else {
+            console.error("this.invitationIds is empty, unable to send invitation");
+          }
         }
       }, {
         key: "distanceFromUser",

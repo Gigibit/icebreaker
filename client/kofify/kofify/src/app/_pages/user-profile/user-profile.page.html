@@ -38,7 +38,7 @@
       <ion-label class="user-info-text">
         <p>{{userInfo?.bio}}</p>
       </ion-label>
-      <ion-label class="user-info-credits">
+      <ion-label class="user-info-credits" (click)="manageCredits()">
         <p>{{credits}}</p>
         <ion-icon name="card"></ion-icon>
       </ion-label>

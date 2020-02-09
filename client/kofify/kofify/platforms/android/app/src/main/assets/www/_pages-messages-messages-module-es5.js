@@ -280,13 +280,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.chatService.unlock(chat).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () {
                       return loader.dismiss();
                     })).subscribe(function (_chat) {
-                      image.classList.remove('user-message-img-show');
-                      image.classList.add('user-message-img-hide');
+                      if (image != null) {
+                        image.classList.remove('user-message-img-show');
+                        image.classList.add('user-message-img-hide');
+                      }
+
                       chat.img = _chat.img;
                       chat.enabled = _chat.enabled;
                       setTimeout(function () {
-                        image.classList.add('user-message-img-show');
-                        image.classList.remove('user-message-img-hide');
+                        if (image != null) {
+                          image.classList.add('user-message-img-show');
+                          image.classList.remove('user-message-img-hide');
+                        }
 
                         _this4.chatService.setActiveChat(chat);
 

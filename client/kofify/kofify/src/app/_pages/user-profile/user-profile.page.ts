@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../_services/auth.service';
 import { UserProfilePopoverComponent } from 'src/app/_components/user-profile-popover/user-profile-popover.component';
 import { EditUserProfileComponent } from 'src/app/_components/edit-user-profile/edit-user-profile.component';
+import { ManageCreditsComponent } from 'src/app/_components/manage-credits/manage-credits.component';
 
 const COLUMN_COUNT = 4
 
@@ -37,15 +38,14 @@ export class UserProfilePage implements OnInit {
     private userService: UserService,
     private authService : AuthService,
     // private router: Router
-    
+    private modalCtrl: ModalController
     ) { 
     }
     
     ngOnInit() {
       this.authService.currentUser.subscribe(user=>{
         this.userInfo = user
-        console.log(this.userInfo)
-        
+        this.credits = user.credits        
       })
     }
     
@@ -76,6 +76,13 @@ export class UserProfilePage implements OnInit {
         componentProps: {
           img: img
         }
+      }).then(modal => {
+        modal.present();
+      });
+    }
+    manageCredits(){
+      this.modalCtrl.create({
+        component: ManageCreditsComponent,
       }).then(modal => {
         modal.present();
       });
