@@ -2331,10 +2331,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     this.iap.buy(selectedPlanId).then(function (data) {
                       console.log(data);
 
-                      _this10.iap.consume(data.productType, data.receipt, data.signature);
-
-                      _this10.userService.finalizePayment(data).subscribe(function (data) {
-                        return console.log(data);
+                      _this10.iap.consume(data.productType, data.receipt, data.signature).then(function () {
+                        _this10.userService.finalizePayment(data).subscribe(function (data) {
+                          console.log(data);
+                        });
                       });
 
                       _this10.modalCtrl.dismiss();

@@ -1717,8 +1717,11 @@ let SelectPlanComponent = class SelectPlanComponent {
                 .buy(selectedPlanId)
                 .then((data) => {
                 console.log(data);
-                this.iap.consume(data.productType, data.receipt, data.signature);
-                this.userService.finalizePayment(data).subscribe(data => console.log(data));
+                this.iap.consume(data.productType, data.receipt, data.signature).then(() => {
+                    this.userService.finalizePayment(data).subscribe(data => {
+                        console.log(data);
+                    });
+                });
                 this.modalCtrl.dismiss();
             });
         });
