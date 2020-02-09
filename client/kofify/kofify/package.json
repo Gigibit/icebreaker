@@ -136,10 +136,6 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-admobpro": {
-        "PLAY_SERVICES_VERSION": "16.0.0",
-        "ADMOB_APP_ID": "ca-app-pub-6771007436830318~4967517385"
-      },
       "cordova-plugin-admob-free": {
         "ADMOB_APP_ID": "ca-app-pub-6771007436830318~4967517385"
       },

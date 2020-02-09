@@ -8,14 +8,15 @@ ion-content{
     background-image: url('../../../assets/imgs/landing-placeholder.jpg');
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position-y: -60px;
 }
 form{
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(rgba(20,20,20,0.8), rgba(20,20,20,1) 57%);
 }
 
 .fb-btn-wrp{
