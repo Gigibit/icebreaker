@@ -1,7 +1,0 @@
-{
-  "name": "drinkly",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
