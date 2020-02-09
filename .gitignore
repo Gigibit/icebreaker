@@ -1,3 +1,3 @@
-client/kofify/kofify/node_modules/
-client/kofify/kofify/www/
-client/kofify/kofify/platforms/
+www/
+node_modules/
+platforms/
