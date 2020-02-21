@@ -7508,9 +7508,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var AUTH_SERVER = 'https://kofify.com';
-    var SERVICE_SERVER = 'https://kofify.com';
-    var WEBSOCKET_SERVICE_SERVER = 'https://kofify.com/chat-websocket';
+    var AUTH_SERVER = 'https://www.kofify.com';
+    var SERVICE_SERVER = 'https://www.kofify.com';
+    var WEBSOCKET_SERVICE_SERVER = 'https://www.kofify.com/chat-websocket';
     /***/
   },
 

@@ -5107,9 +5107,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WEBSOCKET_SERVICE_SERVER", function() { return WEBSOCKET_SERVICE_SERVER; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
-const AUTH_SERVER = 'https://kofify.com';
-const SERVICE_SERVER = 'https://kofify.com';
-const WEBSOCKET_SERVICE_SERVER = 'https://kofify.com/chat-websocket';
+const AUTH_SERVER = 'https://www.kofify.com';
+const SERVICE_SERVER = 'https://www.kofify.com';
+const WEBSOCKET_SERVICE_SERVER = 'https://www.kofify.com/chat-websocket';
 
 
 /***/ }),
