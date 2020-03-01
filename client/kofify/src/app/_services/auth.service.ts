@@ -88,7 +88,10 @@ export class AuthService {
   }
   
   
-  
+  refreshCurrentUser(){
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUserValue));
+    this.currentUserSubject.next(this.currentUserValue);
+  }
   
   contextRefresh(user:User){
     localStorage.setItem('currentUser', JSON.stringify(user));
