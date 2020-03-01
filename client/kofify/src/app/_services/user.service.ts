@@ -6,7 +6,7 @@ import { AUTH_SERVER, SERVICE_SERVER } from '../config';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx'
 import { Platform } from '@ionic/angular';
 import { User, UserMapper, UpdatableUserInfo } from '../_models/user';
-import { concatMap, concat, finalize } from 'rxjs/operators';
+import { concatMap, concat, finalize, map } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { PricingPlan, PricingPlanMapper } from '../_models/pricing-plan';
 const ID = "%ID%"
@@ -220,7 +220,6 @@ export class UserService {
     uploadImageData(upload_url, formData: FormData, getUpdatedUser:(user:User,response: any)=>User) : Promise<User> {
       return new Promise<User>((resolve, reject)=>{
         this.http.post(upload_url, formData ).subscribe(__response => {
-          console.log('image successful updated -->' + __response['url'] )
           let user = getUpdatedUser(this.auth.currentUserValue, __response)
           console.log('user in upload image data-->', user)
           this.auth.contextRefresh(user)

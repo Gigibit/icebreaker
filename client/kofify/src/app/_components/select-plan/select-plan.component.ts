@@ -5,6 +5,7 @@ import { ModalController, IonSlides, Platform } from '@ionic/angular';
 import { UserService } from 'src/app/_services/user.service';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { ToastService } from 'src/app/_services/toast.service';
+import { AuthService } from 'src/app/_services/auth.service';
 
 interface Product {
   transactionId: string;
@@ -24,6 +25,7 @@ export class SelectPlanComponent implements OnInit {
   constructor(
     public platform: Platform, 
     private iap: InAppPurchase,
+    private authService: AuthService,
     private modalCtrl: ModalController,
     private toastService: ToastService,
     private userService: UserService
@@ -60,16 +62,14 @@ export class SelectPlanComponent implements OnInit {
     this.iap
       .buy(selectedPlanId)
       .then((data)=> {
-        console.log(data)
         this.iap.consume(data.productType, data.receipt, data.signature).then(()=>{
           this.userService.finalizePayment(data).subscribe(data=>{
-            console.log(data)
+            this.authService.currentUserValue.credits = data && data['credit'] && data['credit']['credits']
+            this.authService.contextRefresh(this.authService.currentUserValue)
           })
         })
         this.modalCtrl.dismiss()
       })
  
     }
-  
-   
 }
