@@ -9,7 +9,8 @@
 
 <ion-content>
   <h1 class="ion-text-center" *ngIf="credits">you have {{ credits }} credits.</h1>
-  <ion-icon class="cafe-icon" name="cafe"></ion-icon>
+  <!-- <ion-icon class="cafe-icon" name="cafe"></ion-icon> -->
+  <img class="cafe-icon" src="../../../assets/imgs/coffee.svg">
 
   <ion-button class="get-credits-btn" (click)="onBuyMoreCreditsTap()"> buy more credits </ion-button>
   <ion-button [disabled]="!rewardButtonEnabled" class="get-credits-btn" (click)="rewardAvailable ? onRewardTap() : toastNoRewardAvailable()"> see a video </ion-button>
